@@ -1,3 +1,4 @@
+![msi projekt](https://toxy.hu/fs/msilogofeher.png)
 # MSI_Projekt
 Központi adatbázis kezelő szoftver az egészségügyi adminisztráció megkönnyitésére.
 
