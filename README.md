@@ -6,8 +6,7 @@ Központi adatbázis kezelő szoftver az egészségügyi adminisztráció megkö
 
 ### Jellegzetességek
 - Adatbázis titkositási technológia.
-- Munkaszüneti napok megtekintése.
-- Beosztás alapján egyéni naptár készítése.
+
 ## Verziószám
 0.0.1?
 
