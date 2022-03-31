@@ -2,7 +2,9 @@
 Központi adatbázis kezelő szoftver az egészségügyi adminisztráció megkönnyitésére.
 
 ## Leírás
-
+Projektünk célja egy könnyen kezelhető, átlátható szoftver készitése, amely 
+megkönnyiti, meggyorsitja és biztonságossá teszi a mindennapi adatfeldolgozást
+az egészségügyi intézményekben.
 
 ### Jellegzetességek
 - Adatbázis titkositási technológia.
