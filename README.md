@@ -6,7 +6,9 @@ Központi adatbázis kezelő szoftver az egészségügyi adminisztráció megkö
 
 ### Jellegzetességek
 - Adatbázis titkositási technológia.
-
+- Felhasználó barát grafikus interfész.
+- Páciensek adatainak lekérdezése különböző szempontok szerint.
+- 
 ## Verziószám
 0.0.1?
 
