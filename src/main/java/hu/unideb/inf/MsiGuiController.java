@@ -65,6 +65,7 @@ public class MsiGuiController implements Initializable{
             ((MsiGuiController)fxmlLoader.getController()).init(stage);
             stage.show();
 
+
         } catch (IOException e) {
             e.printStackTrace();
         }
