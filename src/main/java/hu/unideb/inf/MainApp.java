@@ -1,22 +1,15 @@
 package hu.unideb.inf;
 
+import hu.unideb.inf.Controller.MsiGuiController;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
-import java.io.IOException;
 
 
 public class MainApp extends Application {
