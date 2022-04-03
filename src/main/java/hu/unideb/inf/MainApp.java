@@ -23,14 +23,16 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/fxml/loginpage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/loginpage.fxml"));
         Scene scene = new Scene(loader.load());
         stage.setScene(scene);
         scene.setFill(Color.TRANSPARENT);
         stage.setResizable(false);
         stage.setTitle("MSI Projekt");
-      //  stage.getIcons().add(new Image(getClass().getResourceAsStream("/icon.png")));
         stage.initStyle(StageStyle.TRANSPARENT);
+        stage.getIcons().add(new Image("/fxml/img/windowsicon.png"));
+
+        ((MsiGuiController)loader.getController()).init(stage);
         stage.show();
 
         /*Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));

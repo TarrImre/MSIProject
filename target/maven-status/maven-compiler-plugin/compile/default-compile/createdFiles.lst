@@ -1,6 +1,3 @@
-hu\unideb\inf\Modell\Patient.class
-hu\unideb\inf\Controller\MsiGuiController.class
 hu\unideb\inf\Main.class
-hu\unideb\inf\Controller\LoginPageController.class
-hu\unideb\inf\DAO\PatientDAO.class
+hu\unideb\inf\MsiGuiController.class
 hu\unideb\inf\MainApp.class

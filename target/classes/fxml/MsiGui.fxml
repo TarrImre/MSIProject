@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -10,149 +11,173 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.MsiGuiController">
    <children>
-      <SplitPane dividerPositions="0.77734375" layoutY="20.0" prefHeight="640.0" prefWidth="1280.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="1128.0">
-               <children>
-                  <SplitPane dividerPositions="0.49375" orientation="VERTICAL" prefHeight="640.0" prefWidth="1280.0">
-                    <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0">
-                           <children>
-                              <TableView id="tableView1" fx:id="table" prefHeight="317.0" prefWidth="1280.0" stylesheets="@style.css">
-                                 <columns>
-                                    <TableColumn fx:id="kartonszam" maxWidth="750.0" minWidth="51.0" prefWidth="92.0" text="Kartonszám" />
-                                    <TableColumn fx:id="nev" maxWidth="750.0" minWidth="34.0" prefWidth="128.0" text="Név" />
-                                    <TableColumn fx:id="anyjaneve" maxWidth="750.0" minWidth="72.0" prefWidth="93.0" text="Anyja neve" />
-                                    <TableColumn fx:id="szuletesidatum" maxWidth="750.0" minWidth="31.0" prefWidth="123.0" text="Születési dátum" />
-                                    <TableColumn fx:id="taj" maxWidth="643.0" minWidth="105.0" prefWidth="155.0" text="TAJ / Azonosító" />
-                                    <TableColumn fx:id="iranyitoszam" maxWidth="750.0" minWidth="61.0" prefWidth="108.0" text="Irányítószám" />
-                                    <TableColumn fx:id="varos" maxWidth="750.0" minWidth="31.0" prefWidth="102.0" text="Város" />
-                                    <TableColumn fx:id="utca" maxWidth="750.0" minWidth="31.0" prefWidth="102.0" text="Utca" />
-                                    <TableColumn fx:id="hazszam" maxWidth="750.0" minWidth="0.0" prefWidth="75.0" text="Házszám" />
-                                    <TableColumn fx:id="ures" maxWidth="750.0" minWidth="31.0" prefWidth="297.0" />
-                                 </columns>
-                              </TableView>
-                           </children>
-                        </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="1128.0">
-                           <children>
-                              <TabPane prefHeight="321.0" prefWidth="1280.0" styleClass="tabpane" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE">
-                                <tabs>
-                                  <Tab text="Felvétel">
-                                    <content>
-                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="959.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="1128.0">
+         <children>
+            <SplitPane dividerPositions="0.48536209553158705" layoutY="19.0" orientation="VERTICAL" prefHeight="649.0" prefWidth="1280.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0">
+                     <children>
+                        <TableView id="tableView1" fx:id="table" prefHeight="649.0" prefWidth="1280.0" stylesheets="@style.css">
+                           <columns>
+                              <TableColumn fx:id="kartonszam" maxWidth="750.0" minWidth="51.0" prefWidth="92.0" text="Kartonszám" />
+                              <TableColumn fx:id="nev" maxWidth="750.0" minWidth="34.0" prefWidth="100.0" text="Név" />
+                              <TableColumn fx:id="nev1" maxWidth="750.0" minWidth="34.0" prefWidth="60.0" text="Neme" />
+                              <TableColumn fx:id="anyjaneve" maxWidth="750.0" minWidth="72.0" prefWidth="127.0" text="Anyja neve" />
+                              <TableColumn fx:id="szuletesidatum" maxWidth="750.0" minWidth="31.0" prefWidth="138.0" text="Születési dátum" />
+                              <TableColumn fx:id="taj" maxWidth="643.0" minWidth="0.0" prefWidth="165.0" text="TAJ / Azonosító" />
+                              <TableColumn fx:id="iranyitoszam" maxWidth="750.0" minWidth="61.0" prefWidth="126.0" text="Irányítószám" />
+                              <TableColumn fx:id="varos" maxWidth="750.0" minWidth="31.0" prefWidth="101.0" text="Város" />
+                              <TableColumn fx:id="utca" maxWidth="750.0" minWidth="24.0" prefWidth="141.0" text="Utca" />
+                              <TableColumn fx:id="hazszam" maxWidth="231.0" minWidth="0.0" prefWidth="231.0" text="Házszám" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="1128.0" style="-fx-background-color: #e3fbff;">
+                     <children>
+                        <TabPane prefHeight="328.0" prefWidth="1280.0" styleClass="tabpane" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab text="Felvétel">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1280.0">
+                                       <children>
+                                          <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="347.0" spacing="5.0">
                                              <children>
-                                                <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="347.0" spacing="5.0">
-                                                   <children>
-                                                      <Label id="label4" fx:id="kartonszam_label" minWidth="-Infinity" text="Kartonszam" />
-                                                      <TextField id="textField1" fx:id="kartonszam_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
-                                                      <ImageView fitHeight="24.0" fitWidth="20.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@refresh32x32.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                   </children>
-                                                </HBox>
-                                                <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="49.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
-                                                   <children>
-                                                      <Label id="label4" fx:id="nev_label" minWidth="-Infinity" text="Név" />
-                                                      <TextField id="textField1" fx:id="nev_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
-                                                   </children>
-                                                </HBox>
-                                                <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="84.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
-                                                   <children>
-                                                      <Label id="label4" fx:id="anyaneve_label" minWidth="-Infinity" text="Anyja neve" />
-                                                      <TextField id="textField1" fx:id="anyjaneve_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
-                                                   </children>
-                                                </HBox>
-                                                <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="119.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
-                                                   <children>
-                                                      <Label id="label4" fx:id="taj_label" minWidth="-Infinity" text="TAJ / Azonosító" />
-                                                      <TextField id="textField1" fx:id="taj_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
-                                                   </children>
-                                                </HBox>
-                                                <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="154.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
-                                                   <children>
-                                                      <Label id="label4" fx:id="szuletesidatum_label" minWidth="-Infinity" text="Születési dátum" />
-                                                      <TextField id="textField1" fx:id="szuletesidatum_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
-                                                   </children>
-                                                </HBox>
-                                                <TextArea id="textArea1" fx:id="betegsegek_input" layoutX="94.0" layoutY="196.0" prefHeight="77.0" prefWidth="533.0" styleClass="betegseg" wrapText="true" />
-                                                <Label id="label2" layoutX="14.0" layoutY="195.0" text="Betegségek" />
-                                                <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="14.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
-                                                   <children>
-                                                      <Label id="label4" fx:id="iranyitoszam_label" minWidth="-Infinity" text="Irányítószám" />
-                                                      <TextField id="textField1" fx:id="iranyitoszam_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
-                                                   </children>
-                                                </HBox>
-                                                <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="49.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
-                                                   <children>
-                                                      <Label id="label4" fx:id="varos_label" minWidth="-Infinity" text="Város" />
-                                                      <TextField id="textField1" fx:id="varos_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
-                                                   </children>
-                                                </HBox>
-                                                <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="84.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
-                                                   <children>
-                                                      <Label id="label4" fx:id="utca_label" minWidth="-Infinity" text="Utca" />
-                                                      <TextField id="textField1" fx:id="utca_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
-                                                   </children>
-                                                </HBox>
-                                                <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="119.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
-                                                   <children>
-                                                      <Label id="label4" fx:id="hazszam_label" minWidth="-Infinity" text="Házszám" />
-                                                      <TextField id="textField1" fx:id="hazszam_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
-                                                   </children>
-                                                </HBox>
-                                                <VBox layoutX="733.0" layoutY="45.0" prefHeight="198.0" prefWidth="194.0">
-                                                   <children>
-                                                      <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Betegfelvétel" />
-                                                      <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="GOMB">
-                                                         <VBox.margin>
-                                                            <Insets bottom="20.0" top="20.0" />
-                                                         </VBox.margin>
-                                                      </Button>
-                                                      <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Beteg törlése" />
-                                                   </children>
-                                                </VBox>
-                                             </children></AnchorPane>
-                                    </content>
-                                  </Tab>
-                                  <Tab text="Keresés">
-                                    <content>
-                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                    </content>
-                                  </Tab>
-                                </tabs>
-                              </TabPane>
-                           </children>
-                        </AnchorPane>
-                    </items>
-                  </SplitPane>
-               </children></AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="sidepane">
-               <children>
-                  <ImageView fitHeight="142.0" fitWidth="136.0" layoutX="69.0" layoutY="252.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@sidelogofeher.png" />
-                     </image>
-                  </ImageView>
-               </children></AnchorPane>
-        </items>
-      </SplitPane>
-      <ImageView fitHeight="49.0" fitWidth="136.0" layoutX="572.0" layoutY="666.0" pickOnBounds="true" preserveRatio="true">
+                                                <Label id="label4" fx:id="kartonszam_label" minWidth="-Infinity" text="Kartonszam" />
+                                                <TextField id="textField1" fx:id="kartonszam_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <ImageView fitHeight="24.0" fitWidth="20.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/refresh32x32.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </HBox>
+                                          <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="49.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
+                                             <children>
+                                                <Label id="label4" fx:id="nev_label" minWidth="-Infinity" text="Név" />
+                                                <TextField id="textField1" fx:id="nev_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                          <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="84.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
+                                             <children>
+                                                <Label id="label4" fx:id="anyaneve_label" minWidth="-Infinity" text="Anyja neve" />
+                                                <TextField id="textField1" fx:id="anyjaneve_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                          <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="119.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
+                                             <children>
+                                                <Label id="label4" fx:id="taj_label" minWidth="-Infinity" text="TAJ / Azonosító" />
+                                                <TextField id="textField1" fx:id="taj_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                          <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="154.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
+                                             <children>
+                                                <Label id="label4" fx:id="szuletesidatum_label" minWidth="-Infinity" text="Születési dátum" />
+                                                <TextField id="textField1" fx:id="szuletesidatum_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                          <TextArea id="textArea1" fx:id="betegsegek_input" layoutX="94.0" layoutY="196.0" prefHeight="77.0" prefWidth="533.0" styleClass="betegseg" wrapText="true" />
+                                          <Label id="label2" layoutX="14.0" layoutY="195.0" text="Betegségek" />
+                                          <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="14.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
+                                             <children>
+                                                <Label id="label4" fx:id="iranyitoszam_label" minWidth="-Infinity" text="Irányítószám" />
+                                                <TextField id="textField1" fx:id="iranyitoszam_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                          <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="49.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
+                                             <children>
+                                                <Label id="label4" fx:id="varos_label" minWidth="-Infinity" text="Város" />
+                                                <TextField id="textField1" fx:id="varos_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                          <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="84.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
+                                             <children>
+                                                <Label id="label4" fx:id="utca_label" minWidth="-Infinity" text="Utca" />
+                                                <TextField id="textField1" fx:id="utca_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                          <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="119.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
+                                             <children>
+                                                <Label id="label4" fx:id="hazszam_label" minWidth="-Infinity" prefHeight="17.0" prefWidth="51.0" text="Házszám" />
+                                                <TextField id="textField1" fx:id="hazszam_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                          <VBox layoutX="733.0" layoutY="45.0" prefHeight="198.0" prefWidth="194.0">
+                                             <children>
+                                                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Adatok felvétele" />
+                                                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="GOMB">
+                                                   <VBox.margin>
+                                                      <Insets bottom="20.0" top="20.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Beteg törlése" />
+                                             </children>
+                                          </VBox>
+                                          <HBox layoutX="390.0" layoutY="154.0" prefHeight="25.0" prefWidth="237.0">
+                                             <children>
+                                                <Label alignment="TOP_CENTER" text="Neme:">
+                                                   <HBox.margin>
+                                                      <Insets top="3.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <RadioButton contentDisplay="RIGHT" mnemonicParsing="false" text="Férfi">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="neme" />
+                                                   </toggleGroup>
+                                                   <HBox.margin>
+                                                      <Insets left="22.0" top="3.0" />
+                                                   </HBox.margin>
+                                                </RadioButton>
+                                                <RadioButton mnemonicParsing="false" text="Nő" toggleGroup="$neme">
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" top="3.0" />
+                                                   </HBox.margin>
+                                                </RadioButton>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                       </padding>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                            <Tab text="Keresés">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1280.0" />
+                              </content>
+                            </Tab>
+                          </tabs>
+                        </TabPane>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="41.0" fitWidth="136.0" layoutX="583.0" layoutY="674.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@msilogofeher.png" />
+            <Image url="@img/msilogofeher.png" />
          </image>
       </ImageView>
-      <Text layoutX="1004.0" layoutY="695.0" opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Készítette: Dobos Martin | Laza Sándor | Tarr Imre" />
+      <Text layoutX="997.0" layoutY="699.0" opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Készítette: Dobos Martin | Laza Sándor | Tarr Imre" />
+      <Pane fx:id="topPane" prefHeight="20.0" prefWidth="1280.0">
+         <children>
+            <Button layoutX="1259.0" layoutY="-2.0" mnemonicParsing="false" onAction="#Close" prefHeight="16.0" prefWidth="16.0" styleClass="CloseButtonImage" />
+            <Button layoutX="1241.0" layoutY="-1.0" mnemonicParsing="false" onAction="#Talca" prefHeight="25.0" prefWidth="16.0" styleClass="TalcaButtonImage" />
+            <Button layoutX="1223.0" layoutY="-2.0" mnemonicParsing="false" onAction="#Talca" prefHeight="25.0" prefWidth="16.0" styleClass="SettingsButtonImage" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

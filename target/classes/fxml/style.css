@@ -1,20 +1,29 @@
+/*SZÍNEK
+sötétkék: #3e97a8
+halvány : #e3fbff
+sötétebb : #aaedfa
+gomb aktív: #ebb18f
+világos: #aaedfa
+*/
+
 .root{
    /* -fx-background-color: linear-gradient(to bottom right, #cfffc9, #ffeab0);*/
-   -fx-background-color: #9E7777;
+   -fx-background-color: #3e97a8;
     /*-fx-background-radius: 15;*/
 	-fx-font: 12px "Helvetica";
 }
 
 .table-view {
 	-fx-padding: -1px;
-    -fx-background-color: #F5E8C7;
-}
-.table-view .column-header{
-	-fx-background-color: #6F4C5B;
+    -fx-background-color:#e3fbff;
 	
 }
+.table-view .column-header{
+	-fx-background-color: #aaedfa;
+
+}
 .table-view .column-header .label{
-    -fx-text-fill: white;
+    -fx-text-fill: #333333;
 }
 
 
@@ -22,11 +31,11 @@
 
 
 .tabpane{
-	-fx-background-color: linear-gradient(to bottom right, #F5E8C7, #F5E8C7);
+	-fx-background-color: linear-gradient(to bottom right, #e3fbff, #e3fbff);
 }
 .tab-pane .tab-header-area .tab-header-background {
     /*-fx-opacity: 0;*/
-	-fx-background-color: #9E7777;
+	-fx-background-color: #3e97a8;
 }
 .tab-pane
 {
@@ -37,26 +46,26 @@
 }
 .tab-pane .tab
 {
-    -fx-background-color: #DEBA9D;
+    -fx-background-color: #aaedfa;
 }
 .tab-pane .tab:selected
 {
-    -fx-background-color: #F5E8C7;
+    -fx-background-color: #e3fbff;
 }
 
 .text-field {
-    -fx-background-color: #FFF , #DEBA9D;
+    -fx-background-color: #FFF , #aaedfa;
     -fx-background-insets: 0 0 0 0, 0 0 0 0;
 	-fx-background-radius: 0;
 	/*-fx-opacity:0.4;*/
 }
 .text-field:focused {
-    -fx-background-color: #a9a9a9 , white , white;
+    -fx-background-color: #7bdaed , #7bdaed;
     -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1;
 }
 .text-area {
-	-fx-control-inner-background:#788777;
-	-fx-highlight-text-fill: #000000; -fx-text-fill: #00ff00;
+	-fx-control-inner-background:#aaedfa;
+	-fx-highlight-text-fill: #000000; -fx-text-fill: black;
 	/*-fx-opacity:0.4;*/
 }
 .text-area .scroll-pane {
@@ -71,7 +80,7 @@
 }
 .text-area:focused {
     -fx-background-insets: 0;
-    -fx-background-color: transparent, white, transparent, white;
+    -fx-background-color: transparent, #7bdaed, transparent, #7bdaed;
     -fx-background-radius: 0, 0, 0, 0;
 
     -fx-focus-color: -fx-control-inner-background;
@@ -82,7 +91,7 @@
 
 
 .betegseg{
-	-fx-background-color:  #DEBA9D;
+	-fx-background-color:  #aaedfa;
     -fx-background-insets: 0 0 0 0, 0 0 0 0;
 	-fx-background-radius: 0;
 }
@@ -92,42 +101,49 @@
 .custom-button {
     -fx-font-size: 16px;
     -fx-padding: 10;
-    -fx-background-color: #DEBA9D;
+    -fx-background-color: #aaedfa;
 	-fx-background-radius: 0;
 }
 .custom-button:hover {
     -fx-font-size: 16px;
     -fx-padding: 10;
-    -fx-background-color: #F5E8C7;
+    -fx-background-color: #7bdaed;
 	-fx-background-radius: 0;
 }
 
 .sidepane{
-	-fx-background-color: #DEBA9D;
+	-fx-background-color: #aaedfa;
 }
 
 
 
 .split-pane:horizontal > .split-pane-divider {
-   -fx-background-color: #6F4C5B;
+   -fx-background-color:#aaedfa;
 }
 .split-pane:vertical > .split-pane-divider {
-   -fx-background-color: #6F4C5B;
+   -fx-background-color: #aaedfa;
 }
 
-/*
-scene.setFill(Color.TRANSPARENT);
-Stage.initStyle(StageStyle.TRANSPARENT);
-stage.setResizable(false);
-stage.setTitle(MSI projekt);
-stage.getIcons().add(new Image(getClass().getResourceAsStream("/icon.png")));
-*/
 
 
 
-
-
-
+.radio-button .radio {
+	-fx-background-color:  #aaedfa;
+	-fx-border-color: 0px;
+	-fx-border-radius: 0px; 
+}
+/*.check-box .mark {
+ 	-fx-shape: "M1.73,12.91 8.1,19.28 22.79,4.59 22.79,1.59 8.1,16.28 1.73,9.91";
+}*/
+.radio-button:selected /*.mark*/{
+	-fx-background-color:  #7bdaed;
+}
+.radio-button:selected .dot{
+	-fx-background-color:  #7bdaed;
+}
+.radio-button:selected .radio {
+	-fx-background-color: 0px;
+}
 
 
 
@@ -135,11 +151,46 @@ stage.getIcons().add(new Image(getClass().getResourceAsStream("/icon.png")));
 		LOGIN
 *************************/
 .loginhatter{
-	-fx-background-color: linear-gradient(to bottom right, #DEBA9D, #6F4C5B);
+	-fx-background-color: linear-gradient(to bottom right, #aaedfa, #3e97a8);
 }
 .logininput{
-	-fx-background-color:#F5E8C7;
+	-fx-background-color:#e3fbff;
 }
 .logininput:focused{
-	-fx-background-color:#DEBA9D;
+	-fx-background-color:#aaedfa;
+}
+
+
+
+/*SZÍNEK
+vöröses: #3e97a8
+halvány sárga: #e3fbff
+sötétebb sárga: #aaedfa
+gomb aktív: #ebb18f
+lila: #aaedfa
+*/
+
+
+
+
+.CloseButtonImage { 
+    -fx-background-image: url('img/closeimage2.png');
+    -fx-background-size: 100%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 50%;
+	-fx-background-color:transparent;
+}
+.TalcaButtonImage { 
+    -fx-background-image: url('img/talcaimage.png');
+    -fx-background-size: 100%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 50%;
+	-fx-background-color:transparent;
+}
+.SettingsButtonImage { 
+    -fx-background-image: url('img/settings.png');
+    -fx-background-size: 80%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 50%;
+	-fx-background-color:transparent;
 }
