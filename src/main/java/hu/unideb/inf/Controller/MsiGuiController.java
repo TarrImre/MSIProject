@@ -11,10 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
@@ -46,12 +43,12 @@ public class MsiGuiController implements Initializable {
     @FXML
     private TextField taj_input;
 
-    /*
+
     @FXML
     private TextField szuletesidatum_input;
 
     @FXML
-    private TextField betegsegek_input;
+    private TextArea betegsegek_input;
 
     @FXML
     private TextField iranyitoszam_input;
@@ -62,7 +59,7 @@ public class MsiGuiController implements Initializable {
 
     @FXML
     private TextField hazszam_input;
-    */
+
     //@FXML
     //private RadioButton nem_input;
 
@@ -143,13 +140,13 @@ public class MsiGuiController implements Initializable {
             Patient patient = new Patient();
             patient.setName(nev_input.getText());
             patient.setCity(varos_input.getText());
-            patient.setBirthDate("anyad");
+            patient.setBirthDate(anyjaneve_input.getText());
             patient.setCardNumber(Integer.parseInt(kartonszam_input.getText()));
-            patient.setDiagnose("agyrák");
+            patient.setDiagnose(betegsegek_input.getText());
             patient.setNameOfMother(anyjaneve_input.getText());
-            patient.setStreetNumber(3);
-            patient.setZipCode(4372);
-            patient.setStreet("rózsa");
+            patient.setStreetNumber(Integer.parseInt(utca_input.getText()));
+            patient.setZipCode(Integer.parseInt(iranyitoszam_input.getText()));
+            patient.setStreet(utca_input.getText());
             patient.setSocialInsuranceId(Integer.parseInt(taj_input.getText()));
             aDAO.savePatient(patient);
         }catch(Exception e){
