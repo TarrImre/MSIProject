@@ -1,0 +1,187 @@
+/*SZÍNEK
+vöröses: #7fd4d1
+halvány sárga: #ffecba
+sötétebb sárga: #dbb18f
+gomb aktív: #ebb18f
+lila: #6F4C5B
+*/
+
+.root{
+   /* -fx-background-color: linear-gradient(to bottom right, #cfffc9, #ffeab0);*/
+   -fx-background-color: #7fd4d1;
+    /*-fx-background-radius: 15;*/
+	-fx-font: 12px "Helvetica";
+}
+
+.table-view {
+	-fx-padding: -1px;
+    -fx-background-color: #fafafa;
+}
+.table-view .column-header{
+	-fx-background-color: #6F4C5B;
+}
+.table-view .column-header .label{
+    -fx-text-fill: white;
+}
+
+
+.list-view, .split-pane { -fx-background-insets: 0; -fx-padding: 0; }
+
+
+.tabpane{
+	-fx-background-color: linear-gradient(to bottom right, #ffecba, #ffecba);
+}
+.tab-pane .tab-header-area .tab-header-background {
+    /*-fx-opacity: 0;*/
+	-fx-background-color: #7fd4d1;
+}
+.tab-pane
+{
+    -fx-tab-min-width:90px;
+}
+.tab{
+    -fx-background-insets: 0 1 0 1,0,0;
+}
+.tab-pane .tab
+{
+    -fx-background-color: #dbb18f;
+}
+.tab-pane .tab:selected
+{
+    -fx-background-color: #ffecba;
+}
+
+.text-field {
+    -fx-background-color: #FFF , #dbb18f;
+    -fx-background-insets: 0 0 0 0, 0 0 0 0;
+	-fx-background-radius: 0;
+	/*-fx-opacity:0.4;*/
+}
+.text-field:focused {
+    -fx-background-color: #dbb18f , #dbb18f;
+    -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1;
+}
+.text-area {
+	-fx-control-inner-background:#dbb18f;
+	-fx-highlight-text-fill: #000000; -fx-text-fill: black;
+	/*-fx-opacity:0.4;*/
+}
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+	
+}
+.text-area:focused {
+    -fx-background-insets: 0;
+    -fx-background-color: transparent, #dbb18f, transparent, #dbb18f;
+    -fx-background-radius: 0, 0, 0, 0;
+
+    -fx-focus-color: -fx-control-inner-background;
+    -fx-faint-focus-color: -fx-control-inner-background;
+    -fx-text-box-border: -fx-control-inner-background;
+    -fx-border-width: -1;
+}
+
+
+.betegseg{
+	-fx-background-color:  #dbb18f;
+    -fx-background-insets: 0 0 0 0, 0 0 0 0;
+	-fx-background-radius: 0;
+}
+
+
+
+.custom-button {
+    -fx-font-size: 16px;
+    -fx-padding: 10;
+    -fx-background-color: #dbb18f;
+	-fx-background-radius: 0;
+}
+.custom-button:hover {
+    -fx-font-size: 16px;
+    -fx-padding: 10;
+    -fx-background-color: #ebb18f;
+	-fx-background-radius: 0;
+}
+
+.sidepane{
+	-fx-background-color: #dbb18f;
+}
+
+
+
+.split-pane:horizontal > .split-pane-divider {
+   -fx-background-color:#6F4C5B;
+}
+.split-pane:vertical > .split-pane-divider {
+   -fx-background-color: #6F4C5B;
+}
+
+
+
+
+.radio-button .radio {
+	-fx-background-color:  #dbb18f;
+	-fx-border-color: 0px;
+	-fx-border-radius: 0px; 
+}
+/*.check-box .mark {
+ 	-fx-shape: "M1.73,12.91 8.1,19.28 22.79,4.59 22.79,1.59 8.1,16.28 1.73,9.91";
+}*/
+.radio-button:selected /*.mark*/{
+	-fx-background-color:  #ebb18f;
+}
+.radio-button:selected .dot{
+	-fx-background-color:  #ebb18f;
+}
+.radio-button:selected .radio {
+	-fx-background-color: 0px;
+}
+
+
+
+/*************************
+		LOGIN
+*************************/
+.loginhatter{
+	-fx-background-color: linear-gradient(to bottom right, #dbb18f, #6F4C5B);
+}
+.logininput{
+	-fx-background-color:#ffecba;
+}
+.logininput:focused{
+	-fx-background-color:#dbb18f;
+}
+
+
+
+/*SZÍNEK
+vöröses: #7fd4d1
+halvány sárga: #ffecba
+sötétebb sárga: #dbb18f
+gomb aktív: #ebb18f
+lila: #6F4C5B
+*/
+
+
+
+
+.CloseButtonImage { 
+    -fx-background-image: url('img/closeimage2.png');
+    -fx-background-size: 100%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 50%;
+	-fx-background-color:transparent;
+}
+.TalcaButtonImage { 
+    -fx-background-image: url('img/talcaimage.png');
+    -fx-background-size: 100%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 50%;
+	-fx-background-color:transparent;
+}
