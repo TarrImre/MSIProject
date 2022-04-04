@@ -32,8 +32,13 @@ public class MsiGuiController implements Initializable {
     @FXML
     private TextField nev_input;
 
-    /*@FXML
+    @FXML
+    private TextField varos_input;
+
+
+    @FXML
     private TextField kartonszam_input;
+
 
     @FXML
     private TextField anyjaneve_input;
@@ -41,6 +46,7 @@ public class MsiGuiController implements Initializable {
     @FXML
     private TextField taj_input;
 
+    /*
     @FXML
     private TextField szuletesidatum_input;
 
@@ -50,17 +56,16 @@ public class MsiGuiController implements Initializable {
     @FXML
     private TextField iranyitoszam_input;
 
-    @FXML
-    private TextField varos_input;
 
     @FXML
     private TextField utca_input;
 
     @FXML
-    private TextField hazszam_input;*/
-
+    private TextField hazszam_input;
+    */
     //@FXML
     //private RadioButton nem_input;
+
 
     public void setModel(Model model) {
         this.model = model;
@@ -98,6 +103,7 @@ public class MsiGuiController implements Initializable {
 
     @FXML
     void mainwindow(ActionEvent event) {
+
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MsiGui.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
@@ -136,15 +142,15 @@ public class MsiGuiController implements Initializable {
         try(JPAPatientDAO aDAO = new JPAPatientDAO();){
             Patient patient = new Patient();
             patient.setName(nev_input.getText());
-            patient.setCity("beltek");
-            patient.setBirthDate("2000-09-20");
-            patient.setCardNumber(1);
-            patient.setDiagnose("healthy");
-            patient.setNameOfMother("éva");
+            patient.setCity(varos_input.getText());
+            patient.setBirthDate("anyad");
+            patient.setCardNumber(Integer.parseInt(kartonszam_input.getText()));
+            patient.setDiagnose("agyrák");
+            patient.setNameOfMother(anyjaneve_input.getText());
             patient.setStreetNumber(3);
             patient.setZipCode(4372);
             patient.setStreet("rózsa");
-            patient.setSocialInsuranceId(111);
+            patient.setSocialInsuranceId(Integer.parseInt(taj_input.getText()));
             aDAO.savePatient(patient);
         }catch(Exception e){
             e.printStackTrace();
