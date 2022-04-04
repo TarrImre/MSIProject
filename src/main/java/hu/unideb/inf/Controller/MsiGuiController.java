@@ -140,11 +140,11 @@ public class MsiGuiController implements Initializable {
             Patient patient = new Patient();
             patient.setName(nev_input.getText());
             patient.setCity(varos_input.getText());
-            patient.setBirthDate(anyjaneve_input.getText());
+            patient.setBirthDate(szuletesidatum_input.getText());
             patient.setCardNumber(Integer.parseInt(kartonszam_input.getText()));
             patient.setDiagnose(betegsegek_input.getText());
             patient.setNameOfMother(anyjaneve_input.getText());
-            patient.setStreetNumber(Integer.parseInt(utca_input.getText()));
+            patient.setStreetNumber(Integer.parseInt(hazszam_input.getText()));
             patient.setZipCode(Integer.parseInt(iranyitoszam_input.getText()));
             patient.setStreet(utca_input.getText());
             patient.setSocialInsuranceId(Integer.parseInt(taj_input.getText()));
