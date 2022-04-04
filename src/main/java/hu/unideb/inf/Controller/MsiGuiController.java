@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
@@ -17,10 +18,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+public class MsiGuiController implements Initializable {
 
-public class MsiGuiController implements Initializable{
-
-    @FXML private  Pane topPane;
+    @FXML private Pane topPane;
     private double x,y;
 
     public void init(Stage stage){
@@ -62,8 +62,8 @@ public class MsiGuiController implements Initializable{
             stage.setScene(new Scene(root1));
             stage.getIcons().add(new Image("/fxml/img/windowsicon.png"));
             ((MsiGuiController)fxmlLoader.getController()).init(stage);
+            Close(event);
             stage.show();
-
 
         } catch (IOException e) {
             e.printStackTrace();

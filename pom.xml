@@ -23,6 +23,7 @@
             <artifactId>hibernate-entitymanager</artifactId>
             <version>5.4.4.Final</version>
         </dependency>
+
         <!-- Database -->
         <dependency>
             <groupId>com.h2database</groupId>
@@ -38,6 +39,11 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>11</version>
+        </dependency>
+        <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+            <version>2.9.1</version>
         </dependency>
     </dependencies>
     <build>
