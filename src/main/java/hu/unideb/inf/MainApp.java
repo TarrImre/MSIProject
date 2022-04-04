@@ -1,5 +1,6 @@
 package hu.unideb.inf;
 
+import hu.unideb.inf.Controller.MsiGuiController;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 
@@ -23,7 +24,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/loginpage.fxml"));
+        FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/fxml/loginpage.fxml"));
         Scene scene = new Scene(loader.load());
         stage.setScene(scene);
         scene.setFill(Color.TRANSPARENT);
