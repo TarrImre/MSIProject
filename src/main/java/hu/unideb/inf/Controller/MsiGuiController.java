@@ -11,16 +11,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,10 +27,12 @@ public class MsiGuiController implements Initializable {
 
     private Model model;
 
+
+
     @FXML
     private TextField nev_input;
 
-    /*@FXML
+    @FXML
     private TextField kartonszam_input;
 
     @FXML
@@ -45,7 +45,7 @@ public class MsiGuiController implements Initializable {
     private TextField szuletesidatum_input;
 
     @FXML
-    private TextField betegsegek_input;
+    private TextArea betegsegek_input;
 
     @FXML
     private TextField iranyitoszam_input;
@@ -57,10 +57,13 @@ public class MsiGuiController implements Initializable {
     private TextField utca_input;
 
     @FXML
-    private TextField hazszam_input;*/
+    private TextField hazszam_input;
 
-    //@FXML
-    //private RadioButton nem_input;
+    @FXML
+    private RadioButton radioMale;
+
+    @FXML
+    private RadioButton radioFemale;
 
     public void setModel(Model model) {
         this.model = model;
@@ -111,7 +114,6 @@ public class MsiGuiController implements Initializable {
             Close(event);
             stage.show();
 
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -129,27 +131,57 @@ public class MsiGuiController implements Initializable {
 
     }
 
+    @FXML
     public void PatientRegisterButtonPushed(ActionEvent event) {
-
-        /**/
 
         try(JPAPatientDAO aDAO = new JPAPatientDAO();){
             Patient patient = new Patient();
             patient.setName(nev_input.getText());
-            patient.setCity("beltek");
-            patient.setBirthDate("2000-09-20");
-            patient.setCardNumber(1);
-            patient.setDiagnose("healthy");
-            patient.setNameOfMother("éva");
-            patient.setStreetNumber(3);
-            patient.setZipCode(4372);
-            patient.setStreet("rózsa");
-            patient.setSocialInsuranceId(111);
+            patient.setCity(varos_input.getText());
+            patient.setBirthDate(szuletesidatum_input.getText());
+            patient.setCardNumber(Integer.parseInt(kartonszam_input.getText()));
+            patient.setDiagnose(betegsegek_input.getText());
+            patient.setNameOfMother(anyjaneve_input.getText());
+            patient.setStreetNumber(Integer.parseInt(hazszam_input.getText()));
+            patient.setZipCode(Integer.parseInt(iranyitoszam_input.getText()));
+            patient.setStreet(utca_input.getText());
+            patient.setSocialInsuranceId(Integer.parseInt(taj_input.getText()));
+
+            if (radioMale.isSelected()){
+                patient.setGender("MALE");
+            }else {
+                patient.setGender("FEMALE");
+            }
+
             aDAO.savePatient(patient);
+
+            clearTexts();
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Betegfelvétel Sikeres");
+            alert.setContentText("A beteg sikeresen felvételre került!");
+            alert.showAndWait();
+
         }catch(Exception e){
             e.printStackTrace();
         }
 
         //ELLENORZES?
+    }
+
+    private void clearTexts() {
+        nev_input.setText("");
+        varos_input.setText("");
+        iranyitoszam_input.setText("");
+        utca_input.setText("");
+        iranyitoszam_input.setText("");
+        taj_input.setText("");
+        kartonszam_input.setText("");
+        betegsegek_input.setText("");
+        szuletesidatum_input.setText("");
+        anyjaneve_input.setText("");
+        hazszam_input.setText("");
+        radioMale.setSelected(false);
+        radioFemale.setSelected(false);
     }
 }

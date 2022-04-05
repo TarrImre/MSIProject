@@ -131,7 +131,7 @@
                                                       <Insets top="3.0" />
                                                    </HBox.margin>
                                                 </Label>
-                                                <RadioButton contentDisplay="RIGHT" mnemonicParsing="false" text="Férfi">
+                                                <RadioButton fx:id="radioMale" contentDisplay="RIGHT" mnemonicParsing="false" text="Férfi">
                                                    <toggleGroup>
                                                       <ToggleGroup fx:id="neme" />
                                                    </toggleGroup>
@@ -139,7 +139,7 @@
                                                       <Insets left="22.0" top="3.0" />
                                                    </HBox.margin>
                                                 </RadioButton>
-                                                <RadioButton mnemonicParsing="false" text="Nő" toggleGroup="$neme">
+                                                <RadioButton fx:id="radioFemale" mnemonicParsing="false" text="Nő" toggleGroup="$neme">
                                                    <HBox.margin>
                                                       <Insets left="20.0" top="3.0" />
                                                    </HBox.margin>

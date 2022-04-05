@@ -19,6 +19,20 @@ public class Patient implements Serializable {
     private String street;
     private int streetNumber;
     private String diagnose;
+    //@Enumerated(EnumType.STRING)
+    private String gender;
+
+    /*public enum GenderType{
+        MALE,FEMALE,NA
+    }*/
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public int getId() {
         return id;
