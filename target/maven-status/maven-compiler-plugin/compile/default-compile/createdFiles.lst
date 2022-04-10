@@ -1,7 +1,7 @@
-hu\unideb\inf\Modell\Patient.class
-hu\unideb\inf\Controller\MsiGuiController.class
 hu\unideb\inf\Main.class
 hu\unideb\inf\DAO\PatientDAO.class
+hu\unideb\inf\Modell\Patient.class
+hu\unideb\inf\MsiGuiController.class
 hu\unideb\inf\DAO\FilePatientDAO.class
 hu\unideb\inf\MainApp.class
 hu\unideb\inf\Modell\Model.class

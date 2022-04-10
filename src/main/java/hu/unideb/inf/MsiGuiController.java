@@ -1,7 +1,6 @@
-package hu.unideb.inf.Controller;
+package hu.unideb.inf;
 
 import hu.unideb.inf.DAO.JPAPatientDAO;
-import hu.unideb.inf.DAO.PatientDAO;
 import hu.unideb.inf.Modell.Model;
 import hu.unideb.inf.Modell.Patient;
 import javafx.event.ActionEvent;
@@ -18,7 +17,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -70,17 +68,16 @@ public class MsiGuiController implements Initializable {
     }
 
     @FXML private Pane topPane;
-    private double x,y;
+    @FXML private double x,y;
 
     public void init(Stage stage){
-
         topPane.setOnMousePressed(mouseEvent -> {
             x = mouseEvent.getSceneX();
             y = mouseEvent.getSceneY();
         });
         topPane.setOnMouseDragged(mouseEvent -> {
-            stage.setX(mouseEvent.getSceneX()-x);
-            stage.setY(mouseEvent.getSceneY()-y);
+            stage.setX(mouseEvent.getScreenX()-x);
+            stage.setY(mouseEvent.getScreenY()-y);
 
         });
 
@@ -119,7 +116,51 @@ public class MsiGuiController implements Initializable {
         }
     }
 
+    @FXML
+    void registerwindow(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/registerpage.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setTitle("MSI Projekt");
+            stage.setScene(new Scene(root1));
+            stage.getIcons().add(new Image("/fxml/img/windowsicon.png"));
+            ((MsiGuiController)fxmlLoader.getController()).init(stage);
+            Close(event);
+            stage.show();
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void loginwindow(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loginpage.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setTitle("MSI Projekt");
+            stage.setScene(new Scene(root1));
+            stage.getIcons().add(new Image("/fxml/img/windowsicon.png"));
+            ((MsiGuiController)fxmlLoader.getController()).init(stage);
+            Close(event);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @FXML
+    void Exit(ActionEvent event) {
+        loginwindow(event);
+    }
 
     @FXML
     void Settings(ActionEvent event) {
