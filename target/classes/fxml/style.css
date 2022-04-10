@@ -194,3 +194,10 @@ lila: #aaedfa
     -fx-background-position: 50%;
 	-fx-background-color:transparent;
 }
+.LogoutButtonImage { 
+    -fx-background-image: url('img/logout.png');
+    -fx-background-size: 80%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10%;
+	-fx-background-color:transparent;
+}
