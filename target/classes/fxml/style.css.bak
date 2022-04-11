@@ -1,27 +1,29 @@
 /*SZÍNEK
-vöröses: #7fd4d1
-halvány sárga: #ffecba
-sötétebb sárga: #dbb18f
+sötétkék: #3e97a8
+halvány : #e3fbff
+sötétebb : #aaedfa
 gomb aktív: #ebb18f
-lila: #6F4C5B
+világos: #aaedfa
 */
 
 .root{
    /* -fx-background-color: linear-gradient(to bottom right, #cfffc9, #ffeab0);*/
-   -fx-background-color: #7fd4d1;
+   -fx-background-color: #3e97a8;
     /*-fx-background-radius: 15;*/
 	-fx-font: 12px "Helvetica";
 }
 
 .table-view {
 	-fx-padding: -1px;
-    -fx-background-color: #fafafa;
+    -fx-background-color:#e3fbff;
+	
 }
 .table-view .column-header{
-	-fx-background-color: #6F4C5B;
+	-fx-background-color: #aaedfa;
+
 }
 .table-view .column-header .label{
-    -fx-text-fill: white;
+    -fx-text-fill: #333333;
 }
 
 
@@ -29,11 +31,11 @@ lila: #6F4C5B
 
 
 .tabpane{
-	-fx-background-color: linear-gradient(to bottom right, #ffecba, #ffecba);
+	-fx-background-color: linear-gradient(to bottom right, #e3fbff, #e3fbff);
 }
 .tab-pane .tab-header-area .tab-header-background {
     /*-fx-opacity: 0;*/
-	-fx-background-color: #7fd4d1;
+	-fx-background-color: #3e97a8;
 }
 .tab-pane
 {
@@ -44,25 +46,25 @@ lila: #6F4C5B
 }
 .tab-pane .tab
 {
-    -fx-background-color: #dbb18f;
+    -fx-background-color: #aaedfa;
 }
 .tab-pane .tab:selected
 {
-    -fx-background-color: #ffecba;
+    -fx-background-color: #e3fbff;
 }
 
 .text-field {
-    -fx-background-color: #FFF , #dbb18f;
+    -fx-background-color: #FFF , #aaedfa;
     -fx-background-insets: 0 0 0 0, 0 0 0 0;
 	-fx-background-radius: 0;
 	/*-fx-opacity:0.4;*/
 }
 .text-field:focused {
-    -fx-background-color: #dbb18f , #dbb18f;
+    -fx-background-color: #7bdaed , #7bdaed;
     -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1;
 }
 .text-area {
-	-fx-control-inner-background:#dbb18f;
+	-fx-control-inner-background:#aaedfa;
 	-fx-highlight-text-fill: #000000; -fx-text-fill: black;
 	/*-fx-opacity:0.4;*/
 }
@@ -78,7 +80,7 @@ lila: #6F4C5B
 }
 .text-area:focused {
     -fx-background-insets: 0;
-    -fx-background-color: transparent, #dbb18f, transparent, #dbb18f;
+    -fx-background-color: transparent, #7bdaed, transparent, #7bdaed;
     -fx-background-radius: 0, 0, 0, 0;
 
     -fx-focus-color: -fx-control-inner-background;
@@ -89,7 +91,7 @@ lila: #6F4C5B
 
 
 .betegseg{
-	-fx-background-color:  #dbb18f;
+	-fx-background-color:  #aaedfa;
     -fx-background-insets: 0 0 0 0, 0 0 0 0;
 	-fx-background-radius: 0;
 }
@@ -99,34 +101,34 @@ lila: #6F4C5B
 .custom-button {
     -fx-font-size: 16px;
     -fx-padding: 10;
-    -fx-background-color: #dbb18f;
+    -fx-background-color: #aaedfa;
 	-fx-background-radius: 0;
 }
 .custom-button:hover {
     -fx-font-size: 16px;
     -fx-padding: 10;
-    -fx-background-color: #ebb18f;
+    -fx-background-color: #7bdaed;
 	-fx-background-radius: 0;
 }
 
 .sidepane{
-	-fx-background-color: #dbb18f;
+	-fx-background-color: #aaedfa;
 }
 
 
 
 .split-pane:horizontal > .split-pane-divider {
-   -fx-background-color:#6F4C5B;
+   -fx-background-color:#aaedfa;
 }
 .split-pane:vertical > .split-pane-divider {
-   -fx-background-color: #6F4C5B;
+   -fx-background-color: #aaedfa;
 }
 
 
 
 
 .radio-button .radio {
-	-fx-background-color:  #dbb18f;
+	-fx-background-color:  #aaedfa;
 	-fx-border-color: 0px;
 	-fx-border-radius: 0px; 
 }
@@ -134,13 +136,20 @@ lila: #6F4C5B
  	-fx-shape: "M1.73,12.91 8.1,19.28 22.79,4.59 22.79,1.59 8.1,16.28 1.73,9.91";
 }*/
 .radio-button:selected /*.mark*/{
-	-fx-background-color:  #ebb18f;
+	-fx-background-color:  #7bdaed;
 }
 .radio-button:selected .dot{
-	-fx-background-color:  #ebb18f;
+	-fx-background-color:  #7bdaed;
 }
 .radio-button:selected .radio {
 	-fx-background-color: 0px;
+}
+
+
+
+.tabpaneanchorpane{
+	-fx-background-color:#e3fbff;
+
 }
 
 
@@ -149,23 +158,23 @@ lila: #6F4C5B
 		LOGIN
 *************************/
 .loginhatter{
-	-fx-background-color: linear-gradient(to bottom right, #dbb18f, #6F4C5B);
+	-fx-background-color: linear-gradient(to bottom right, #aaedfa, #3e97a8);
 }
 .logininput{
-	-fx-background-color:#ffecba;
+	-fx-background-color:#e3fbff;
 }
 .logininput:focused{
-	-fx-background-color:#dbb18f;
+	-fx-background-color:#aaedfa;
 }
 
 
 
 /*SZÍNEK
-vöröses: #7fd4d1
-halvány sárga: #ffecba
-sötétebb sárga: #dbb18f
+vöröses: #3e97a8
+halvány sárga: #e3fbff
+sötétebb sárga: #aaedfa
 gomb aktív: #ebb18f
-lila: #6F4C5B
+lila: #aaedfa
 */
 
 
@@ -184,4 +193,50 @@ lila: #6F4C5B
     -fx-background-repeat: no-repeat;
     -fx-background-position: 50%;
 	-fx-background-color:transparent;
+}
+.SettingsButtonImage { 
+    -fx-background-image: url('img/settings.png');
+    -fx-background-size: 80%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 50%;
+	-fx-background-color:transparent;
+}
+.LogoutButtonImage { 
+    -fx-background-image: url('img/logout.png');
+    -fx-background-size: 80%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10%;
+	-fx-background-color:transparent;
+}
+.HelpButtonImage { 
+    -fx-background-image: url('img/help.png');
+    -fx-background-size: 100%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 50%;
+	-fx-background-color:transparent;
+}
+
+
+
+.overlay{
+	-fx-background-color: linear-gradient(to bottom right, #aaedfa, #3e97a8);
+}
+.Bigbutton { 
+    -fx-background-color:#aaedfa;
+	-fx-padding:50px;
+    -fx-background-size: 100%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 50%;
+}
+.Bigbutton.help{
+	 -fx-background-image: url('img/help.png');
+}
+.Bigbutton.settings{
+	 -fx-background-image: url('img/settings.png');
+}
+.Bigbutton.close{
+	 -fx-background-image: url('img/closeimage2.png');
+}
+.Bigbutton.logout{
+	-fx-background-image: url('img/logout.png');
 }
