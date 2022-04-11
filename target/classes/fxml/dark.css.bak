@@ -1,25 +1,25 @@
 /*SZÍNEK
-sötétkék: #3e97a8
-halvány : #e3fbff
-sötétebb : #aaedfa
-gomb aktív: #ebb18f
-világos: #aaedfa
+vörös: #9E7777
+világos sárga: #F5E8C7
+lila:  #6F4C5B
+sötét sárga: #DEBA9D
+gomb aktív: #d4ab8a
 */
 
 .root{
    /* -fx-background-color: linear-gradient(to bottom right, #cfffc9, #ffeab0);*/
-   -fx-background-color: #3e97a8;
+   -fx-background-color: #9E7777;
     /*-fx-background-radius: 15;*/
 	-fx-font: 12px "Helvetica";
 }
 
 .table-view {
 	-fx-padding: -1px;
-    -fx-background-color:#e3fbff;
+    -fx-background-color:#F5E8C7;
 	
 }
 .table-view .column-header{
-	-fx-background-color: #aaedfa;
+	-fx-background-color: #DEBA9D;
 
 }
 .table-view .column-header .label{
@@ -31,11 +31,11 @@ világos: #aaedfa
 
 
 .tabpane{
-	-fx-background-color: linear-gradient(to bottom right, #e3fbff, #e3fbff);
+	-fx-background-color: linear-gradient(to bottom right, #F5E8C7, #F5E8C7);
 }
 .tab-pane .tab-header-area .tab-header-background {
     /*-fx-opacity: 0;*/
-	-fx-background-color: #3e97a8;
+	-fx-background-color: #DEBA9D;
 }
 .tab-pane
 {
@@ -46,25 +46,25 @@ világos: #aaedfa
 }
 .tab-pane .tab
 {
-    -fx-background-color: #aaedfa;
+    -fx-background-color: #d4ab8a;
 }
 .tab-pane .tab:selected
 {
-    -fx-background-color: #e3fbff;
+    -fx-background-color: #F5E8C7;
 }
 
 .text-field {
-    -fx-background-color: #FFF , #aaedfa;
+    -fx-background-color: #FFF , #DEBA9D;
     -fx-background-insets: 0 0 0 0, 0 0 0 0;
 	-fx-background-radius: 0;
 	/*-fx-opacity:0.4;*/
 }
 .text-field:focused {
-    -fx-background-color: #7bdaed , #7bdaed;
+    -fx-background-color:#d4ab8a , #d4ab8a;
     -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1;
 }
 .text-area {
-	-fx-control-inner-background:#aaedfa;
+	-fx-control-inner-background:#DEBA9D;
 	-fx-highlight-text-fill: #000000; -fx-text-fill: black;
 	/*-fx-opacity:0.4;*/
 }
@@ -80,7 +80,7 @@ világos: #aaedfa
 }
 .text-area:focused {
     -fx-background-insets: 0;
-    -fx-background-color: transparent, #7bdaed, transparent, #7bdaed;
+    -fx-background-color: transparent,#d4ab8a, transparent, #d4ab8a;
     -fx-background-radius: 0, 0, 0, 0;
 
     -fx-focus-color: -fx-control-inner-background;
@@ -91,7 +91,7 @@ világos: #aaedfa
 
 
 .betegseg{
-	-fx-background-color:  #aaedfa;
+	-fx-background-color:  #DEBA9D;
     -fx-background-insets: 0 0 0 0, 0 0 0 0;
 	-fx-background-radius: 0;
 }
@@ -101,13 +101,13 @@ világos: #aaedfa
 .custom-button {
     -fx-font-size: 16px;
     -fx-padding: 10;
-    -fx-background-color: #aaedfa;
+    -fx-background-color: #DEBA9D;
 	-fx-background-radius: 0;
 }
 .custom-button:hover {
     -fx-font-size: 16px;
     -fx-padding: 10;
-    -fx-background-color: #7bdaed;
+    -fx-background-color: #d4ab8a;
 	-fx-background-radius: 0;
 }
 
@@ -115,20 +115,26 @@ világos: #aaedfa
 	-fx-background-color: #aaedfa;
 }
 
-
+/*SZÍNEK
+vörös: #9E7777
+világos sárga: #F5E8C7
+lila:  #6F4C5B
+sötét sárga: #DEBA9D
+gomb aktív: #d4ab8a
+*/
 
 .split-pane:horizontal > .split-pane-divider {
-   -fx-background-color:#aaedfa;
+   -fx-background-color: #6F4C5B;
 }
 .split-pane:vertical > .split-pane-divider {
-   -fx-background-color: #aaedfa;
+   -fx-background-color: #6F4C5B;
 }
 
 
 
 
 .radio-button .radio {
-	-fx-background-color:  #aaedfa;
+	-fx-background-color:  #DEBA9D;
 	-fx-border-color: 0px;
 	-fx-border-radius: 0px; 
 }
@@ -136,10 +142,10 @@ világos: #aaedfa
  	-fx-shape: "M1.73,12.91 8.1,19.28 22.79,4.59 22.79,1.59 8.1,16.28 1.73,9.91";
 }*/
 .radio-button:selected /*.mark*/{
-	-fx-background-color:  #7bdaed;
+	-fx-background-color:   #DEBA9D;
 }
 .radio-button:selected .dot{
-	-fx-background-color:  #7bdaed;
+	-fx-background-color:   #DEBA9D;
 }
 .radio-button:selected .radio {
 	-fx-background-color: 0px;
@@ -148,7 +154,7 @@ világos: #aaedfa
 
 
 .tabpaneanchorpane{
-	-fx-background-color:#e3fbff;
+	-fx-background-color:#F5E8C7;
 
 }
 
@@ -169,14 +175,15 @@ világos: #aaedfa
 
 
 
-/*SZÍNEK
-vöröses: #3e97a8
-halvány sárga: #e3fbff
-sötétebb sárga: #aaedfa
-gomb aktív: #ebb18f
-lila: #aaedfa
-*/
 
+
+/*SZÍNEK
+vörös: #9E7777
+világos sárga: #F5E8C7
+lila:  #6F4C5B
+sötét sárga: #DEBA9D
+gomb aktív: #d4ab8a
+*/
 
 
 
@@ -218,8 +225,9 @@ lila: #aaedfa
 
 
 
+
 .overlay{
-	-fx-background-color: linear-gradient(to bottom right, #aaedfa, #3e97a8);
+	-fx-background-color: linear-gradient(to bottom right, #aaedfa, #9E7777);
 }
 .Bigbutton { 
     -fx-background-color:#aaedfa;

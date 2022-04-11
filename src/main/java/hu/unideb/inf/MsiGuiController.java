@@ -102,6 +102,28 @@ public class MsiGuiController implements Initializable {
 
 
     @FXML
+    private Pane overlay;
+    @FXML
+    private Button overlaybutton,overlayhidebutton;
+
+    @FXML
+    void overlayAction(ActionEvent event) {
+
+        if (event.getSource() == overlaybutton)
+        {
+            overlay.toFront();
+        }
+
+    }
+    @FXML
+    void overlayActionHide(ActionEvent event) {
+        if (event.getSource() == overlayhidebutton)
+        {
+            overlay.toBack();
+        }
+    }
+
+    @FXML
     private void Close(ActionEvent event) {
         Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
         s.close();

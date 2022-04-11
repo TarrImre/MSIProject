@@ -222,3 +222,29 @@ gomb aktív: #d4ab8a
     -fx-background-position: 50%;
 	-fx-background-color:transparent;
 }
+
+
+
+
+.overlay{
+	-fx-background-color: linear-gradient(to bottom right, #F5E8C7, #9E7777);
+}
+.Bigbutton { 
+    -fx-background-color:#aaedfa;
+	-fx-padding:50px;
+    -fx-background-size: 80%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 50%;
+}
+.Bigbutton.help{
+	 -fx-background-image: url('img/help.png');
+}
+.Bigbutton.settings{
+	 -fx-background-image: url('img/settings.png');
+}
+.Bigbutton.close{
+	 -fx-background-image: url('img/closeimage2.png');
+}
+.Bigbutton.logout{
+	-fx-background-image: url('img/logout.png');
+}
