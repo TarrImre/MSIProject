@@ -11,7 +11,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.effect.Light;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -85,6 +87,21 @@ public class MsiGuiController implements Initializable {
 
 
     @FXML
+    private AnchorPane parent;
+
+    public void LightButton(ActionEvent event){
+        parent.getStylesheets().remove("fxml/dark.css");
+        parent.getStylesheets().add("fxml/style.css");
+
+    }
+    public void DarkButton(ActionEvent event){
+        parent.getStylesheets().remove("fxml/style.css");
+        parent.getStylesheets().add("fxml/dark.css");
+
+    }
+
+
+    @FXML
     private void Close(ActionEvent event) {
         Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
         s.close();
@@ -109,7 +126,9 @@ public class MsiGuiController implements Initializable {
             stage.getIcons().add(new Image("/fxml/img/windowsicon.png"));
             ((MsiGuiController)fxmlLoader.getController()).init(stage);
             Close(event);
+
             stage.show();
+
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -155,6 +174,28 @@ public class MsiGuiController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    void Helpp(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/ThemesSettings.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setTitle("MSI Projekt");
+            stage.setScene(new Scene(root1));
+            stage.getIcons().add(new Image("/fxml/img/windowsicon.png"));
+            ((MsiGuiController)fxmlLoader.getController()).init(stage);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 
 
     @FXML

@@ -147,6 +147,13 @@ világos: #aaedfa
 
 
 
+.tabpaneanchorpane{
+	-fx-background-color:#e3fbff;
+
+}
+
+
+
 /*************************
 		LOGIN
 *************************/
@@ -199,5 +206,12 @@ lila: #aaedfa
     -fx-background-size: 80%;
     -fx-background-repeat: no-repeat;
     -fx-background-position: 10%;
+	-fx-background-color:transparent;
+}
+.HelpButtonImage { 
+    -fx-background-image: url('img/help.png');
+    -fx-background-size: 100%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 50%;
 	-fx-background-color:transparent;
 }
