@@ -28,7 +28,7 @@
             <Button fx:id="overlayhidebutton" layoutX="989.0" layoutY="391.0" mnemonicParsing="false" onAction="#overlayActionHide" prefHeight="200.0" prefWidth="200.0" stylesheets="@style.css">
                <styleClass>
                   <String fx:value="Bigbutton" />
-                  <String fx:value="help" />
+                  <String fx:value="close" />
                </styleClass>
             </Button>
             <Button fx:id="overlayhidebutton1" layoutX="706.0" layoutY="391.0" mnemonicParsing="false" onAction="#overlayActionHide" prefHeight="200.0" prefWidth="200.0" stylesheets="@style.css">
@@ -43,14 +43,14 @@
                   <String fx:value="logout" />
                </styleClass>
             </Button>
-            <Button fx:id="overlayhidebutton111" layoutX="119.0" layoutY="391.0" mnemonicParsing="false" onAction="#overlayActionHide" prefHeight="200.0" prefWidth="200.0" stylesheets="@style.css">
+            <Button fx:id="overlayhidebutton111" layoutX="119.0" layoutY="391.0" mnemonicParsing="false" onAction="#Helpp" prefHeight="200.0" prefWidth="200.0" stylesheets="@style.css">
                <styleClass>
                   <String fx:value="Bigbutton" />
-                  <String fx:value="close" />
+                  <String fx:value="help" />
                </styleClass>
             </Button>
-            <Button layoutX="276.0" layoutY="241.0" mnemonicParsing="false" onAction="#DarkButton" text="Dark" />
-            <Button layoutX="343.0" layoutY="241.0" mnemonicParsing="false" onAction="#LightButton" text="Light" />
+            <Button layoutX="276.0" layoutY="241.0" mnemonicParsing="false" onAction="#DarkButton" styleClass="custom-button" text="Dark" />
+            <Button layoutX="343.0" layoutY="241.0" mnemonicParsing="false" onAction="#LightButton" styleClass="custom-button" text="Light" />
          </children>
       </Pane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="1128.0">
@@ -177,8 +177,6 @@
                                                 </RadioButton>
                                              </children>
                                           </HBox>
-                                          <Button layoutX="1120.0" layoutY="49.0" mnemonicParsing="false" onAction="#DarkButton" text="Dark" />
-                                          <Button layoutX="1120.0" layoutY="97.0" mnemonicParsing="false" onAction="#LightButton" text="Light" />
                                        </children>
                                        <padding>
                                           <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
@@ -211,7 +209,6 @@
             <Button layoutX="1241.0" layoutY="-1.0" mnemonicParsing="false" onAction="#Talca" prefHeight="25.0" prefWidth="16.0" styleClass="TalcaButtonImage" />
             <Button fx:id="overlaybutton" layoutX="1210.0" layoutY="-2.0" mnemonicParsing="false" onAction="#overlayAction" prefHeight="25.0" prefWidth="16.0" styleClass="SettingsButtonImage" />
             <Button layoutX="1226.0" layoutY="-2.0" mnemonicParsing="false" onAction="#Exit" prefHeight="25.0" prefWidth="16.0" styleClass="LogoutButtonImage" />
-            <Button layoutX="1192.0" layoutY="-2.0" mnemonicParsing="false" onAction="#Helpp" prefHeight="25.0" prefWidth="16.0" styleClass="HelpButtonImage" />
          </children>
       </Pane>
    </children>
