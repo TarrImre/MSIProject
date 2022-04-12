@@ -27,34 +27,34 @@ public class MsiGuiController implements Initializable {
     private Model model;
 
     @FXML
-    private TextField nev_input;
+    private TextField name_input;
 
     @FXML
-    private TextField kartonszam_input;
+    private TextField cardnum_input;
 
     @FXML
-    private TextField anyjaneve_input;
+    private TextField mothersname_input;
 
     @FXML
     private TextField taj_input;
 
     @FXML
-    private TextField szuletesidatum_input;
+    private TextField birthdate_input;
 
     @FXML
-    private TextArea betegsegek_input;
+    private TextArea diagnose_input;
 
     @FXML
-    private TextField iranyitoszam_input;
+    private TextField zipcode_input;
 
     @FXML
-    private TextField varos_input;
+    private TextField city_input;
 
     @FXML
-    private TextField utca_input;
+    private TextField street_input;
 
     @FXML
-    private TextField hazszam_input;
+    private TextField housenum_input;
 
     @FXML
     private RadioButton radioMale;
@@ -233,17 +233,17 @@ public class MsiGuiController implements Initializable {
     @FXML
     public void PatientRegisterButtonPushed(ActionEvent event) {
 
-        try(JPAPatientDAO aDAO = new JPAPatientDAO();){
+        try(JPAPatientDAO aDAO = new JPAPatientDAO()){
             Patient patient = new Patient();
-            patient.setName(nev_input.getText());
-            patient.setCity(varos_input.getText());
-            patient.setBirthDate(szuletesidatum_input.getText());
-            patient.setCardNumber(Integer.parseInt(kartonszam_input.getText()));
-            patient.setDiagnose(betegsegek_input.getText());
-            patient.setNameOfMother(anyjaneve_input.getText());
-            patient.setStreetNumber(Integer.parseInt(hazszam_input.getText()));
-            patient.setZipCode(Integer.parseInt(iranyitoszam_input.getText()));
-            patient.setStreet(utca_input.getText());
+            patient.setName(name_input.getText());
+            patient.setCity(city_input.getText());
+            patient.setBirthDate(birthdate_input.getText());
+            patient.setCardNumber(Integer.parseInt(cardnum_input.getText()));
+            patient.setDiagnose(diagnose_input.getText());
+            patient.setNameOfMother(mothersname_input.getText());
+            patient.setStreetNumber(Integer.parseInt(housenum_input.getText()));
+            patient.setZipCode(Integer.parseInt(zipcode_input.getText()));
+            patient.setStreet(street_input.getText());
             patient.setSocialInsuranceId(Integer.parseInt(taj_input.getText()));
 
             if (radioMale.isSelected()){
@@ -269,17 +269,17 @@ public class MsiGuiController implements Initializable {
     }
 
     private void clearTexts() {
-        nev_input.setText("");
-        varos_input.setText("");
-        iranyitoszam_input.setText("");
-        utca_input.setText("");
-        iranyitoszam_input.setText("");
+        name_input.setText("");
+        city_input.setText("");
+        zipcode_input.setText("");
+        street_input.setText("");
+        zipcode_input.setText("");
         taj_input.setText("");
-        kartonszam_input.setText("");
-        betegsegek_input.setText("");
-        szuletesidatum_input.setText("");
-        anyjaneve_input.setText("");
-        hazszam_input.setText("");
+        cardnum_input.setText("");
+        diagnose_input.setText("");
+        birthdate_input.setText("");
+        mothersname_input.setText("");
+        housenum_input.setText("");
         radioMale.setSelected(false);
         radioFemale.setSelected(false);
     }
