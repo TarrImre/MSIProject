@@ -11,7 +11,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.effect.Light;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -26,8 +25,6 @@ import java.util.ResourceBundle;
 public class MsiGuiController implements Initializable {
 
     private Model model;
-
-
 
     @FXML
     private TextField nev_input;
@@ -70,9 +67,10 @@ public class MsiGuiController implements Initializable {
     }
 
     @FXML private Pane topPane;
-    @FXML private double x,y;
+    private double x,y;
 
     public void init(Stage stage){
+
         topPane.setOnMousePressed(mouseEvent -> {
             x = mouseEvent.getSceneX();
             y = mouseEvent.getSceneY();
@@ -84,7 +82,6 @@ public class MsiGuiController implements Initializable {
         });
 
     }
-
 
     @FXML
     private AnchorPane parent;
@@ -148,15 +145,12 @@ public class MsiGuiController implements Initializable {
             stage.getIcons().add(new Image("/fxml/img/windowsicon.png"));
             ((MsiGuiController)fxmlLoader.getController()).init(stage);
             Close(event);
-
             stage.show();
-
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
     @FXML
     void registerwindow(ActionEvent event) {
         try {
@@ -224,6 +218,7 @@ public class MsiGuiController implements Initializable {
     void Exit(ActionEvent event) {
         loginwindow(event);
     }
+
 
     @FXML
     void Settings(ActionEvent event) {
