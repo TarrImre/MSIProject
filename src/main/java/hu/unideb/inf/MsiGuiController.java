@@ -127,7 +127,7 @@ public class MsiGuiController implements Initializable {
     }
 
     @FXML
-    private void Talca(ActionEvent event) {
+    private void Tray(ActionEvent event) {
         Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
         s.setIconified(true);
     }
