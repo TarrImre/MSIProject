@@ -1,11 +1,13 @@
 package hu.unideb.inf.DAO;
 
 import hu.unideb.inf.Modell.User;
+import org.h2.engine.Session;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transaction;
 import java.util.List;
 
 public class JPAUserDAO implements UserDAO {
@@ -35,6 +37,19 @@ public class JPAUserDAO implements UserDAO {
         TypedQuery<User> query = entityManager.createQuery("SELECT user FROM User user", User.class);
         List<User> users = query.getResultList();
         return users;
+    }
+
+    public boolean validate(String userName, String password) {
+
+        TypedQuery<User> query = entityManager.createQuery("from User u where u.username = :userName and u.password = :password",User.class).setParameter("userName", userName);
+        query.setParameter("userName",userName);
+        query.setParameter("password",password);
+        try {
+            User user = query.getSingleResult();
+            return true;
+        } catch( javax.persistence.NoResultException e ){
+            return false;
+        }
     }
 
     @Override

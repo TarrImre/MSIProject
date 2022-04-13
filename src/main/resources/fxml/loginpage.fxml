@@ -9,14 +9,14 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="320.0" styleClass="loginhatter" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.MsiGuiController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="320.0" styleClass="loginhatter" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.LoginController">
    <children>
       <ImageView fitHeight="45.0" fitWidth="142.0" layoutX="98.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/msilogofeher.png" />
          </image>
       </ImageView>
-      <Button layoutX="96.0" layoutY="267.0" mnemonicParsing="false" onAction="#mainwindow" prefHeight="45.0" prefWidth="129.0" styleClass="custom-button" text="Belépés" />
+      <Button layoutX="96.0" layoutY="267.0" mnemonicParsing="false" onAction="#loginButtonPushed" prefHeight="45.0" prefWidth="129.0" styleClass="custom-button" text="Belépés" />
       <Text layoutX="59.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jelszó" />
       <TextField fx:id="username" layoutX="60.0" layoutY="134.0" prefHeight="37.0" prefWidth="200.0" styleClass="logininput" />
       <Text layoutX="59.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Felhasználónév" />
@@ -26,7 +26,7 @@
             <Button layoutX="281.0" layoutY="6.0" mnemonicParsing="false" onAction="#Tray" prefHeight="25.0" prefWidth="16.0" styleClass="TalcaButtonImage" />
          </children>
       </Pane>
-      <Button layoutX="96.0" layoutY="324.0" mnemonicParsing="false" onAction="#registerwindow" prefHeight="45.0" prefWidth="129.0" styleClass="custom-button" text="Regisztráció" />
+      <Button layoutX="96.0" layoutY="324.0" mnemonicParsing="false" onAction="#openUserRegistration" prefHeight="45.0" prefWidth="129.0" styleClass="custom-button" text="Regisztráció" />
       <PasswordField fx:id="password" layoutX="59.0" layoutY="213.0" prefHeight="37.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

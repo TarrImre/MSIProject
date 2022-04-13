@@ -64,15 +64,6 @@ public class MsiGuiController implements Initializable {
     @FXML
     private RadioButton radioFemale;
 
-    @FXML
-    private TextField usernamereg;
-
-    @FXML
-    private TextField emailreg;
-
-    @FXML
-    private TextField passwordreg;
-
 
     public void setModel(Model model) {
         this.model = model;
@@ -109,7 +100,6 @@ public class MsiGuiController implements Initializable {
 
     }
 
-
     @FXML
     private Pane overlay;
     @FXML
@@ -144,44 +134,8 @@ public class MsiGuiController implements Initializable {
         s.setIconified(true);
     }
 
-    @FXML
-    void mainwindow(ActionEvent event) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MsiGui.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setTitle("MSI Projekt");
-            stage.setScene(new Scene(root1));
-            stage.getIcons().add(new Image("/fxml/img/windowsicon.png"));
-            ((MsiGuiController)fxmlLoader.getController()).init(stage);
-            Close(event);
-            stage.show();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    @FXML
-    void registerwindow(ActionEvent event) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/registerpage.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setTitle("MSI Projekt");
-            stage.setScene(new Scene(root1));
-            stage.getIcons().add(new Image("/fxml/img/windowsicon.png"));
-            ((MsiGuiController)fxmlLoader.getController()).init(stage);
-            Close(event);
-            stage.show();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     @FXML
     void loginwindow(ActionEvent event) {
@@ -222,13 +176,10 @@ public class MsiGuiController implements Initializable {
         }
     }
 
-
-
-
-
     @FXML
     void Exit(ActionEvent event) {
         loginwindow(event);
+        //BIZTOSAN KILEP?
     }
 
 
@@ -241,28 +192,6 @@ public class MsiGuiController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
-
-    @FXML
-    public void UserRegisterButtonPushed(ActionEvent event) {
-        try(JPAUserDAO userDAO = new JPAUserDAO()) {
-            User user = new User();
-            user.setUsername(usernamereg.getText());
-            user.setEmail(emailreg.getText());
-            user.setPassword(passwordreg.getText());
-
-            userDAO.saveUser(user);
-
-
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("A regisztráció sikeres!");
-            alert.showAndWait();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-
-        //ellenorzes
-    }
-
 
 
     @FXML
@@ -320,4 +249,6 @@ public class MsiGuiController implements Initializable {
         radioFemale.setSelected(false);
 
     }
+
+
 }

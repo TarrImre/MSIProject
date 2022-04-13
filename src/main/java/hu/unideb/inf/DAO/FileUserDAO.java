@@ -1,6 +1,5 @@
 package hu.unideb.inf.DAO;
 
-import hu.unideb.inf.Modell.Patient;
 import hu.unideb.inf.Modell.User;
 
 
@@ -60,11 +59,19 @@ public class FileUserDAO implements UserDAO {
     }
 
     @Override
+    public boolean validate(String userName, String password) {
+        return false;
+    }
+
+
+    @Override
     public List<User> getUsers() {
         return users;
     }
 
+
     @Override
-    public void close() throws Exception { }
+    public void close() throws Exception {
 
     }
+}
