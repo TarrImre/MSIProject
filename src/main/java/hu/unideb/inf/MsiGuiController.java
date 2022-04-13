@@ -1,8 +1,10 @@
 package hu.unideb.inf;
 
 import hu.unideb.inf.DAO.JPAPatientDAO;
+import hu.unideb.inf.DAO.JPAUserDAO;
 import hu.unideb.inf.Modell.Model;
 import hu.unideb.inf.Modell.Patient;
+import hu.unideb.inf.Modell.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -61,6 +63,16 @@ public class MsiGuiController implements Initializable {
 
     @FXML
     private RadioButton radioFemale;
+
+    @FXML
+    private TextField usernamereg;
+
+    @FXML
+    private TextField emailreg;
+
+    @FXML
+    private TextField passwordreg;
+
 
     public void setModel(Model model) {
         this.model = model;
@@ -231,6 +243,29 @@ public class MsiGuiController implements Initializable {
     }
 
     @FXML
+    public void UserRegisterButtonPushed(ActionEvent event) {
+        try(JPAUserDAO userDAO = new JPAUserDAO()) {
+            User user = new User();
+            user.setUsername(usernamereg.getText());
+            user.setEmail(emailreg.getText());
+            user.setPassword(passwordreg.getText());
+
+            userDAO.saveUser(user);
+
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("A regisztráció sikeres!");
+            alert.showAndWait();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        //ellenorzes
+    }
+
+
+
+    @FXML
     public void PatientRegisterButtonPushed(ActionEvent event) {
 
         try(JPAPatientDAO aDAO = new JPAPatientDAO()){
@@ -269,6 +304,7 @@ public class MsiGuiController implements Initializable {
     }
 
     private void clearTexts() {
+        //betegfelvetel
         name_input.setText("");
         city_input.setText("");
         zipcode_input.setText("");
@@ -282,5 +318,6 @@ public class MsiGuiController implements Initializable {
         housenum_input.setText("");
         radioMale.setSelected(false);
         radioFemale.setSelected(false);
+
     }
 }
