@@ -86,6 +86,7 @@ public class UserRegistrationController implements Initializable{
             if (isEqual(emailRegSecond.getText(), emailReg.getText()) && isEqual(passwordReg.getText(), passwordRegSecond.getText())){
                 registerButton.setText("Sikeres regisztráció!");
                 userDAO.saveUser(user);
+
                 //Thread.sleep(2000);
                 loginwindow(event);
 
