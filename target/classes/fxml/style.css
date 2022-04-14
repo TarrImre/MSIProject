@@ -110,7 +110,18 @@ világos: #aaedfa
     -fx-background-color: #7bdaed;
 	-fx-background-radius: 0;
 }
-
+.custom-button.register {
+    -fx-font-size: 16px;
+    -fx-padding: 10;
+    -fx-background-color: #89c2cc;
+	-fx-background-radius: 0;
+}
+.custom-button.register:hover {
+    -fx-font-size: 16px;
+    -fx-padding: 10;
+    -fx-background-color: #7bdaed;
+	-fx-background-radius: 0;
+}
 .sidepane{
 	-fx-background-color: #aaedfa;
 }

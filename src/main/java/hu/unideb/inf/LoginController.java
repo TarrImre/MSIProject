@@ -4,6 +4,7 @@ import hu.unideb.inf.DAO.JPAUserDAO;
 import hu.unideb.inf.DAO.UserDAO;
 import hu.unideb.inf.Modell.User;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -66,16 +67,15 @@ public class LoginController implements Serializable {
     }
 
     @FXML
+    private Label errorLabel;
+    @FXML
     void loginButtonPushed(ActionEvent event) {
 
         try(JPAUserDAO userDAO = new JPAUserDAO()) {
             if (!userDAO.validate(username.getText(), password.getText())){
                 clearTexts();
-                //EROORGUI
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sikertelen bejelentekzes");
-                alert.setContentText("felhasznalo nem talalhato");
-                alert.showAndWait();
+                errorLabel.setStyle("-fx-font-weight: bold;");
+                errorLabel.setText("Ilyen felhasználó nem létezik!");
             }
             else{
 
