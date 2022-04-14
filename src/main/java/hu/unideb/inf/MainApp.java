@@ -24,7 +24,7 @@ public class MainApp extends Application {
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.getIcons().add(new Image("/fxml/img/windowsicon.png"));
 
-        ((MsiGuiController)loader.getController()).init(stage);
+        ((LoginController)loader.getController()).init(stage);
         stage.show();
 
         /*Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));

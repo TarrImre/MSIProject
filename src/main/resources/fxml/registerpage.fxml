@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="400.0" styleClass="loginhatter" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.MsiGuiController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="400.0" styleClass="loginhatter" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.UserRegistrationController">
    <children>
       <ImageView fitHeight="45.0" fitWidth="142.0" layoutX="98.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -17,21 +13,21 @@
          </image>
       </ImageView>
       <Text layoutX="59.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jelszó" />
-      <TextField fx:id="usernamereg" layoutX="61.0" layoutY="113.0" prefHeight="37.0" prefWidth="283.0" styleClass="logininput" />
+      <TextField fx:id="usernameReg" layoutX="61.0" layoutY="113.0" prefHeight="37.0" prefWidth="283.0" styleClass="logininput" />
       <Text layoutX="60.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Felhasználónév" />
       <Pane fx:id="topPane" layoutX="-3.0" layoutY="-2.0" prefHeight="37.0" prefWidth="409.0">
          <children>
             <Button layoutX="379.0" layoutY="6.0" mnemonicParsing="false" onAction="#Close" prefHeight="16.0" prefWidth="16.0" styleClass="CloseButtonImage" />
-            <Button layoutX="363.0" layoutY="6.0" mnemonicParsing="false" onAction="#Talca" prefHeight="25.0" prefWidth="16.0" styleClass="TalcaButtonImage" />
+            <Button layoutX="363.0" layoutY="6.0" mnemonicParsing="false" onAction="#Tray" prefHeight="25.0" prefWidth="16.0" styleClass="TalcaButtonImage" />
          </children>
       </Pane>
-      <Button layoutX="150.0" layoutY="414.0" mnemonicParsing="false" onAction="#loginwindow" styleClass="custom-button" text="Regisztráció" />
-      <TextField fx:id="emailreg" layoutX="59.0" layoutY="175.0" prefHeight="37.0" prefWidth="283.0" styleClass="logininput" />
+      <Button layoutX="150.0" layoutY="414.0" mnemonicParsing="false" onAction="#UserRegisterButtonPushed" styleClass="custom-button" text="Regisztráció" />
+      <TextField fx:id="emailReg" layoutX="59.0" layoutY="175.0" prefHeight="37.0" prefWidth="283.0" styleClass="logininput" />
       <Text layoutX="58.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
-      <TextField fx:id="emailagainreg" layoutX="59.0" layoutY="236.0" prefHeight="37.0" prefWidth="283.0" styleClass="logininput" />
+      <TextField fx:id="emailRegSecond" layoutX="59.0" layoutY="236.0" prefHeight="37.0" prefWidth="283.0" styleClass="logininput" />
       <Text layoutX="58.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email újra" />
-      <PasswordField fx:id="passwordreg" layoutX="58.0" layoutY="297.0" prefHeight="37.0" prefWidth="283.0" />
+      <PasswordField fx:id="passwordReg" layoutX="58.0" layoutY="297.0" prefHeight="37.0" prefWidth="283.0" />
       <Text layoutX="59.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jelszó újra" />
-      <PasswordField fx:id="passwordagainreg" layoutX="58.0" layoutY="357.0" prefHeight="37.0" prefWidth="283.0" />
+      <PasswordField fx:id="passwordRegSecond" layoutX="58.0" layoutY="357.0" prefHeight="37.0" prefWidth="283.0" />
    </children>
 </AnchorPane>

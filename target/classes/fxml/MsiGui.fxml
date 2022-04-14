@@ -86,7 +86,7 @@
                                           <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="347.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="kartonszam_label" minWidth="-Infinity" text="Kartonszam" />
-                                                <TextField id="textField1" fx:id="kartonszam_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="cardnum_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                                 <ImageView fitHeight="24.0" fitWidth="20.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
                                                    <image>
                                                       <Image url="@img/refresh32x32.png" />
@@ -97,13 +97,13 @@
                                           <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="49.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="nev_label" minWidth="-Infinity" text="Név" />
-                                                <TextField id="textField1" fx:id="nev_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="name_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="84.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="anyaneve_label" minWidth="-Infinity" text="Anyja neve" />
-                                                <TextField id="textField1" fx:id="anyjaneve_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="mothersname_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="119.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
@@ -115,33 +115,33 @@
                                           <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="154.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="szuletesidatum_label" minWidth="-Infinity" text="Születési dátum" />
-                                                <TextField id="textField1" fx:id="szuletesidatum_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="birthdate_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
-                                          <TextArea id="textArea1" fx:id="betegsegek_input" layoutX="94.0" layoutY="196.0" prefHeight="77.0" prefWidth="533.0" styleClass="betegseg" wrapText="true" />
+                                          <TextArea id="textArea1" fx:id="diagnose_input" layoutX="94.0" layoutY="196.0" prefHeight="77.0" prefWidth="533.0" styleClass="betegseg" wrapText="true" />
                                           <Label id="label2" layoutX="14.0" layoutY="195.0" text="Betegségek" />
                                           <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="14.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="iranyitoszam_label" minWidth="-Infinity" text="Irányítószám" />
-                                                <TextField id="textField1" fx:id="iranyitoszam_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="zipcode_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="49.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="varos_label" minWidth="-Infinity" text="Város" />
-                                                <TextField id="textField1" fx:id="varos_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="city_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="84.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="utca_label" minWidth="-Infinity" text="Utca" />
-                                                <TextField id="textField1" fx:id="utca_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="street_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="119.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="hazszam_label" minWidth="-Infinity" prefHeight="17.0" prefWidth="51.0" text="Házszám" />
-                                                <TextField id="textField1" fx:id="hazszam_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="housenum_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <VBox layoutX="733.0" layoutY="45.0" prefHeight="198.0" prefWidth="194.0">
@@ -206,7 +206,7 @@
       <Pane fx:id="topPane" prefHeight="20.0" prefWidth="1280.0">
          <children>
             <Button layoutX="1259.0" layoutY="-2.0" mnemonicParsing="false" onAction="#Close" prefHeight="16.0" prefWidth="16.0" styleClass="CloseButtonImage" />
-            <Button layoutX="1241.0" layoutY="-1.0" mnemonicParsing="false" onAction="#Talca" prefHeight="25.0" prefWidth="16.0" styleClass="TalcaButtonImage" />
+            <Button layoutX="1241.0" layoutY="-1.0" mnemonicParsing="false" onAction="#Tray" prefHeight="25.0" prefWidth="16.0" styleClass="TalcaButtonImage" />
             <Button fx:id="overlaybutton" layoutX="1210.0" layoutY="-2.0" mnemonicParsing="false" onAction="#overlayAction" prefHeight="25.0" prefWidth="16.0" styleClass="SettingsButtonImage" />
             <Button layoutX="1226.0" layoutY="-2.0" mnemonicParsing="false" onAction="#Exit" prefHeight="25.0" prefWidth="16.0" styleClass="LogoutButtonImage" />
          </children>
