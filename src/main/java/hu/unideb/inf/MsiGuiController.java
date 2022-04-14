@@ -138,7 +138,7 @@ public class MsiGuiController implements Initializable {
 
 
     @FXML
-    void loginwindow(ActionEvent event) {
+    public void loginwindow(ActionEvent event) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loginpage.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
@@ -195,6 +195,8 @@ public class MsiGuiController implements Initializable {
 
 
     @FXML
+    private Label SuccesPatient;
+    @FXML
     public void PatientRegisterButtonPushed(ActionEvent event) {
 
         try(JPAPatientDAO aDAO = new JPAPatientDAO()){
@@ -220,10 +222,8 @@ public class MsiGuiController implements Initializable {
 
             clearTexts();
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Betegfelvétel Sikeres");
-            alert.setContentText("A beteg sikeresen felvételre került!");
-            alert.showAndWait();
+            SuccesPatient.setStyle("-fx-font-weight: bold;");
+            SuccesPatient.setText("A beteg sikeresen felvételre került!");
 
         }catch(Exception e){
             e.printStackTrace();

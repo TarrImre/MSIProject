@@ -13,6 +13,6 @@
             <Button layoutX="281.0" layoutY="6.0" mnemonicParsing="false" onAction="#Tray" prefHeight="25.0" prefWidth="16.0" styleClass="TalcaButtonImage" />
          </children>
       </Pane>
-      <Label fx:id="errorLabel" layoutX="36.0" layoutY="35.0" style="-fx-font-size: 20;" text="ERROR" textFill="#3c3c3c" />
+      <Label layoutX="36.0" layoutY="35.0" style="-fx-font-size: 20;" text="ERROR" textFill="#3c3c3c" />
    </children>
 </AnchorPane>

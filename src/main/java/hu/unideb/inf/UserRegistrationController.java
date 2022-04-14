@@ -10,6 +10,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
@@ -69,6 +71,9 @@ public class UserRegistrationController implements Initializable{
     }
 
     @FXML
+    private Button registerButton;
+
+    @FXML
     public void UserRegisterButtonPushed(ActionEvent event) {
         try(JPAUserDAO userDAO = new JPAUserDAO()) {
             User user = new User();
@@ -79,12 +84,11 @@ public class UserRegistrationController implements Initializable{
             user.setPassword(passwordRegSecond.getText());
             
             if (isEqual(emailRegSecond.getText(), emailReg.getText()) && isEqual(passwordReg.getText(), passwordRegSecond.getText())){
+                registerButton.setText("Sikeres regisztráció!");
                 userDAO.saveUser(user);
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("A regisztráció sikeres! Jelentkezz be!");
-                alert.showAndWait();
-                //VISSZA LOGIN GUIRA
-                //MsiGuiController.loginwindow();
+                //Thread.sleep(2000);
+                loginwindow(event);
+
             }else{
                 textNotMatchesError();
             }
@@ -94,6 +98,17 @@ public class UserRegistrationController implements Initializable{
         }
 
         //ellenorzes
+    }
+
+    private void loginwindow(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loginpage.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.getIcons().add(new Image("/img/windowsicon.png"));
+        ((MsiGuiController)fxmlLoader.getController()).init(stage);
+        stage.show();
     }
 
     @Override
@@ -114,12 +129,12 @@ public class UserRegistrationController implements Initializable{
         passwordRegSecond.setText("");
     }
 
-    private void textNotMatchesError(){
+    @FXML
+    private Label registerErrorLabel;
 
-        //ATIRNI ERROR GUIRA
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Hiba! A jelszo/email mezok nem egyeznek!");
-        alert.showAndWait();
+    private void textNotMatchesError(){
+        registerErrorLabel.setStyle("-fx-font-weight: bold;");
+        registerErrorLabel.setText("Hiba! A jelszo/email mezok nem egyeznek!");
         clearTexts();
     }
 }
