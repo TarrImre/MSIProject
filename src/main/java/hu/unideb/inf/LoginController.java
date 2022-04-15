@@ -75,15 +75,22 @@ public class LoginController implements Serializable {
         try(JPAUserDAO userDAO = new JPAUserDAO()) {
 
             if (!isAllFilled()){
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setContentText("minden mezot kiotelezo kitolteni4");
-                alert.showAndWait();
+                errorLabel.setStyle("" +
+                        "-fx-font-weight:bold;\n" +
+                        "\t-fx-background-color:rgba(215, 117, 117, 0.8);\n" +
+                        "\t-fx-border-color: red;\n" +
+                        "\t-fx-border-width:2px;");
+                errorLabel.setText("Minden mezőt kötelező kitölteni!");
                 return;
             }
 
             if (!userDAO.validate(username.getText(), password.getText())){
                 clearTexts();
-                errorLabel.setStyle("-fx-font-weight: bold;");
+                errorLabel.setStyle("" +
+                        "-fx-font-weight:bold;\n" +
+                        "\t-fx-background-color:rgba(215, 117, 117, 0.8);\n" +
+                        "\t-fx-border-color: red;\n" +
+                        "\t-fx-border-width:2px;");
                 errorLabel.setText("Ilyen felhasználó nem létezik!");
             }
             else{

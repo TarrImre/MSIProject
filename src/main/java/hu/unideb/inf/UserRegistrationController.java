@@ -74,13 +74,19 @@ public class UserRegistrationController implements Initializable{
     private Button registerButton;
 
     @FXML
+    private Label registerErrorLabel;
+
+    @FXML
     public void UserRegisterButtonPushed(ActionEvent event) {
         try(JPAUserDAO userDAO = new JPAUserDAO()) {
 
             if (!isAllFilled()){
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setContentText("Minden mezőt kötelező kitölteni!");
-                alert.showAndWait();
+                registerErrorLabel.setStyle("" +
+                        "-fx-font-weight:bold;\n" +
+                        "\t-fx-background-color:rgba(215, 117, 117, 0.8);\n" +
+                        "\t-fx-border-color: red;\n" +
+                        "\t-fx-border-width:2px;");
+                registerErrorLabel.setText("Minden mezőt kötelező kitölteni!");
                 return;
             }
 
@@ -108,7 +114,10 @@ public class UserRegistrationController implements Initializable{
         //ellenorzes
     }
 
-
+    @FXML
+    void backtologin2(ActionEvent event) throws IOException {
+        loginwindow(event);
+    }
 
     private void loginwindow(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loginpage.fxml"));
@@ -116,8 +125,10 @@ public class UserRegistrationController implements Initializable{
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.centerOnScreen();
         stage.getIcons().add(new Image("/img/windowsicon.png"));
-        ((MsiGuiController)fxmlLoader.getController()).init(stage);
+        ((UserRegistrationController)fxmlLoader.getController()).init(stage);
+        Close(event);
         stage.show();
     }
 
@@ -139,11 +150,14 @@ public class UserRegistrationController implements Initializable{
         passwordRegSecond.setText("");
     }
 
-    @FXML
-    private Label registerErrorLabel;
 
     private void textNotMatchesError(){
-        registerErrorLabel.setStyle("-fx-font-weight: bold;");
+        registerErrorLabel.setStyle("" +
+                "-fx-font-weight:bold;\n" +
+                "\t-fx-background-color:rgba(215, 117, 117, 0.8);\n" +
+                "\t-fx-border-color: red;\n" +
+                "\t-fx-border-width:2px;\n" +
+                "\t-fx-min-width:100px;");
         registerErrorLabel.setText("Hiba! A jelszo/email mezok nem egyeznek!");
         clearTexts();
     }
