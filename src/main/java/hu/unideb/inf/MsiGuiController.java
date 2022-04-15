@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
@@ -22,6 +23,7 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class MsiGuiController implements Initializable {
@@ -33,6 +35,7 @@ public class MsiGuiController implements Initializable {
 
     @FXML
     private TextField cardnum_input;
+
 
     @FXML
     private TextField mothersname_input;
@@ -122,6 +125,25 @@ public class MsiGuiController implements Initializable {
         }
     }
 
+
+    @FXML Pane exitoverlay;
+    @FXML Button ExitOverlayButtonShow,ExitOverlayButtonHide;
+    @FXML
+    void ExitOverlayButtonAction(ActionEvent event) {
+        if (event.getSource() == ExitOverlayButtonShow)
+        {
+            exitoverlay.toFront();
+        }
+    }
+    @FXML
+    void ExitOverlayButtonActionHide2(ActionEvent event) {
+        if (event.getSource() == ExitOverlayButtonHide)
+        {
+            exitoverlay.toBack();
+        }
+    }
+
+
     @FXML
     private void Close(ActionEvent event) {
         Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -177,7 +199,7 @@ public class MsiGuiController implements Initializable {
     }
 
     @FXML
-    void Exit(ActionEvent event) {
+    void LogoutButton(ActionEvent event) {
         loginwindow(event);
         //BIZTOSAN KILEP?
     }
@@ -194,6 +216,25 @@ public class MsiGuiController implements Initializable {
     }
 
 
+
+    @FXML Button RandomNumberButton;
+    @FXML
+    void RandomNumberAction(ActionEvent event) {
+        Random rand = new Random();
+        int n = rand.nextInt(1000);
+        n += 1;
+
+        if (event.getSource() == RandomNumberButton)
+        {
+            cardnum_input.setText(Integer.toString(n));
+        }
+    }
+    @FXML
+    void DisableMouse2(MouseEvent event) {
+        cardnum_input.setEditable(false);
+    }
+
+
     @FXML
     private Label SuccesPatient;
     @FXML
@@ -202,9 +243,12 @@ public class MsiGuiController implements Initializable {
         try(JPAPatientDAO aDAO = new JPAPatientDAO()){
 
             if (!isAllFilled()){
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setContentText("Minden mezőt kötelező kitölteni!");
-                alert.showAndWait();
+                SuccesPatient.setStyle("" +
+                        "-fx-font-weight:bold;\n" +
+                        "\t-fx-background-color:rgba(215, 117, 117, 0.8);\n" +
+                        "\t-fx-border-color: red;\n" +
+                        "\t-fx-border-width:2px;");
+                SuccesPatient.setText("Minden mezőt kötelező kitölteni!");
                 return;
             }
 
@@ -230,7 +274,11 @@ public class MsiGuiController implements Initializable {
 
             clearTexts();
 
-            SuccesPatient.setStyle("-fx-font-weight: bold;");
+            SuccesPatient.setStyle("" +
+                    "-fx-font-weight:bold;\n" +
+                    "\t-fx-background-color:rgba(123, 215, 117, 0.8);\n" +
+                    "\t-fx-border-color: green;\n" +
+                    "\t-fx-border-width:2px;");
             SuccesPatient.setText("A beteg sikeresen felvételre került!");
 
         }catch(Exception e){

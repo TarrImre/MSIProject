@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -12,28 +13,34 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" styleClass="loginhatter" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.UserRegistrationController">
    <children>
-      <ImageView fitHeight="45.0" fitWidth="142.0" layoutX="141.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="45.0" fitWidth="42.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@img/msilogofeher.png" />
+            <Image url="@img/sidelogofeher.png" />
          </image>
       </ImageView>
-      <Text layoutX="60.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jelszó" />
-      <TextField fx:id="usernameReg" layoutX="62.0" layoutY="95.0" prefHeight="37.0" prefWidth="283.0" styleClass="logininput" />
-      <Text layoutX="61.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Felhasználónév" />
+      <Text layoutX="58.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jelszó" />
+      <TextField fx:id="usernameReg" layoutX="60.0" layoutY="73.0" prefHeight="37.0" prefWidth="283.0" styleClass="logininput" />
+      <Text layoutX="59.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Felhasználónév" />
       <Pane fx:id="topPane" layoutX="-3.0" layoutY="-2.0" prefHeight="37.0" prefWidth="409.0">
          <children>
             <Button layoutX="379.0" layoutY="6.0" mnemonicParsing="false" onAction="#Close" prefHeight="16.0" prefWidth="16.0" styleClass="CloseButtonImage" />
             <Button layoutX="363.0" layoutY="6.0" mnemonicParsing="false" onAction="#Tray" prefHeight="25.0" prefWidth="16.0" styleClass="TalcaButtonImage" />
          </children>
       </Pane>
-      <Button fx:id="registerButton" layoutX="147.0" layoutY="430.0" mnemonicParsing="false" onAction="#UserRegisterButtonPushed" styleClass="custom-button" text="Regisztráció" />
-      <TextField fx:id="emailReg" layoutX="60.0" layoutY="157.0" prefHeight="37.0" prefWidth="283.0" styleClass="logininput" />
-      <Text layoutX="59.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
-      <TextField fx:id="emailRegSecond" layoutX="60.0" layoutY="218.0" prefHeight="37.0" prefWidth="283.0" styleClass="logininput" />
-      <Text layoutX="59.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email újra" />
-      <PasswordField fx:id="passwordReg" layoutX="59.0" layoutY="279.0" prefHeight="37.0" prefWidth="283.0" styleClass="logininput" />
-      <Text layoutX="60.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jelszó újra" />
-      <PasswordField fx:id="passwordRegSecond" layoutX="59.0" layoutY="339.0" prefHeight="37.0" prefWidth="283.0" styleClass="logininput" />
-      <Label fx:id="registerErrorLabel" layoutX="85.0" layoutY="398.0" prefHeight="17.0" prefWidth="255.0" textAlignment="CENTER" />
+      <Button fx:id="registerButton" layoutX="102.0" layoutY="409.0" mnemonicParsing="false" onAction="#UserRegisterButtonPushed" prefHeight="45.0" prefWidth="200.0" styleClass="custom-button" text="Regisztráció" />
+      <TextField fx:id="emailReg" layoutX="58.0" layoutY="135.0" prefHeight="37.0" prefWidth="283.0" styleClass="logininput" />
+      <Text layoutX="57.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
+      <TextField fx:id="emailRegSecond" layoutX="58.0" layoutY="196.0" prefHeight="37.0" prefWidth="283.0" styleClass="logininput" />
+      <Text layoutX="57.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email újra" />
+      <PasswordField fx:id="passwordReg" layoutX="57.0" layoutY="257.0" prefHeight="37.0" prefWidth="283.0" styleClass="logininput" />
+      <Text layoutX="58.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jelszó újra" />
+      <PasswordField fx:id="passwordRegSecond" layoutX="57.0" layoutY="317.0" prefHeight="37.0" prefWidth="283.0" styleClass="logininput" />
+      <Label fx:id="registerErrorLabel" alignment="CENTER" layoutX="58.0" layoutY="367.0" prefHeight="25.0" prefWidth="280.0" textAlignment="CENTER" />
+      <Button layoutX="102.0" layoutY="454.0" mnemonicParsing="false" onAction="#backtologin2" prefHeight="45.0" prefWidth="200.0" text="Bejelentkezés">
+         <styleClass>
+            <String fx:value="custom-button" />
+            <String fx:value="register" />
+         </styleClass>
+      </Button>
    </children>
 </AnchorPane>

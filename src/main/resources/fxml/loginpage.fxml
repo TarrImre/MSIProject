@@ -34,6 +34,6 @@
             <String fx:value="register" />
          </styleClass></Button>
       <PasswordField fx:id="password" layoutX="59.0" layoutY="213.0" prefHeight="37.0" prefWidth="200.0" styleClass="logininput" />
-      <Label fx:id="errorLabel" layoutX="74.0" layoutY="268.0" prefHeight="17.0" prefWidth="181.0" />
+      <Label fx:id="errorLabel" alignment="CENTER" layoutX="18.0" layoutY="269.0" prefHeight="17.0" prefWidth="280.0" textAlignment="CENTER" />
    </children>
 </AnchorPane>

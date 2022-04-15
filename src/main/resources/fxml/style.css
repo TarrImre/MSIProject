@@ -226,7 +226,13 @@ lila: #aaedfa
     -fx-background-position: 50%;
 	-fx-background-color:transparent;
 }
-
+.RandomNumberButton{ 
+    -fx-background-image: url('img/refresh32x32.png');
+    -fx-background-size: 100%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 50%;
+	-fx-background-color:transparent;
+}
 
 
 .overlay{
@@ -250,4 +256,16 @@ lila: #aaedfa
 }
 .Bigbutton.logout{
 	-fx-background-image: url('img/logout.png');
+}
+
+
+
+
+.registerError{
+	-fx-font-weight:bold;
+	-fx-background-color:rgba(215, 117, 117, 0.8);
+	-fx-border-color: red;
+	-fx-border-width:2px;
+	-fx-min-width:100px;
+	
 }
