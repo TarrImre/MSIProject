@@ -76,6 +76,14 @@ public class UserRegistrationController implements Initializable{
     @FXML
     public void UserRegisterButtonPushed(ActionEvent event) {
         try(JPAUserDAO userDAO = new JPAUserDAO()) {
+
+            if (!isAllFilled()){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Minden mezőt kötelező kitölteni!");
+                alert.showAndWait();
+                return;
+            }
+
             User user = new User();
             user.setUsername(usernameReg.getText());
             user.setEmail(emailReg.getText());
@@ -86,7 +94,6 @@ public class UserRegistrationController implements Initializable{
             if (isEqual(emailRegSecond.getText(), emailReg.getText()) && isEqual(passwordReg.getText(), passwordRegSecond.getText())){
                 registerButton.setText("Sikeres regisztráció!");
                 userDAO.saveUser(user);
-
                 //Thread.sleep(2000);
                 loginwindow(event);
 
@@ -100,6 +107,8 @@ public class UserRegistrationController implements Initializable{
 
         //ellenorzes
     }
+
+
 
     private void loginwindow(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loginpage.fxml"));
@@ -137,5 +146,14 @@ public class UserRegistrationController implements Initializable{
         registerErrorLabel.setStyle("-fx-font-weight: bold;");
         registerErrorLabel.setText("Hiba! A jelszo/email mezok nem egyeznek!");
         clearTexts();
+    }
+
+    private boolean isAllFilled() {
+        if(usernameReg.getText() == null || usernameReg.getText().trim().isEmpty()) return false;
+        if(emailReg.getText() == null || emailReg.getText().trim().isEmpty()) return false;
+        if(emailRegSecond.getText() == null || emailRegSecond.getText().trim().isEmpty()) return false;
+        if(passwordReg.getText() == null || passwordReg.getText().trim().isEmpty()) return false;
+        if(passwordRegSecond.getText() == null || passwordRegSecond.getText().trim().isEmpty()) return false;
+        return true;
     }
 }
