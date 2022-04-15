@@ -68,10 +68,19 @@ public class LoginController implements Serializable {
 
     @FXML
     private Label errorLabel;
+
     @FXML
     void loginButtonPushed(ActionEvent event) {
 
         try(JPAUserDAO userDAO = new JPAUserDAO()) {
+
+            if (!isAllFilled()){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("minden mezot kiotelezo kitolteni4");
+                alert.showAndWait();
+                return;
+            }
+
             if (!userDAO.validate(username.getText(), password.getText())){
                 clearTexts();
                 errorLabel.setStyle("-fx-font-weight: bold;");
@@ -131,5 +140,12 @@ public class LoginController implements Serializable {
     private void clearTexts(){
         username.setText("");
         password.setText("");
+    }
+
+    private boolean isAllFilled() {
+        if(username.getText() == null || username.getText().trim().isEmpty()) return false;
+        if(password.getText() == null || password.getText().trim().isEmpty()) return false;
+
+        return true;
     }
 }

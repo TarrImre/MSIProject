@@ -200,6 +200,14 @@ public class MsiGuiController implements Initializable {
     public void PatientRegisterButtonPushed(ActionEvent event) {
 
         try(JPAPatientDAO aDAO = new JPAPatientDAO()){
+
+            if (!isAllFilled()){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Minden mezőt kötelező kitölteni!");
+                alert.showAndWait();
+                return;
+            }
+
             Patient patient = new Patient();
             patient.setName(name_input.getText());
             patient.setCity(city_input.getText());
@@ -238,7 +246,6 @@ public class MsiGuiController implements Initializable {
         city_input.setText("");
         zipcode_input.setText("");
         street_input.setText("");
-        zipcode_input.setText("");
         taj_input.setText("");
         cardnum_input.setText("");
         diagnose_input.setText("");
@@ -247,7 +254,22 @@ public class MsiGuiController implements Initializable {
         housenum_input.setText("");
         radioMale.setSelected(false);
         radioFemale.setSelected(false);
+    }
 
+    private boolean isAllFilled(){
+        if(name_input.getText() == null || name_input.getText().trim().isEmpty()) return false;
+        if(city_input.getText() == null || city_input.getText().trim().isEmpty()) return false;
+        if(zipcode_input.getText() == null || zipcode_input.getText().trim().isEmpty()) return false;
+        if(street_input.getText() == null || street_input.getText().trim().isEmpty()) return false;
+        if(taj_input.getText() == null || taj_input.getText().trim().isEmpty()) return false;
+        if(cardnum_input.getText() == null || cardnum_input.getText().trim().isEmpty()) return false;
+        if(diagnose_input.getText() == null || diagnose_input.getText().trim().isEmpty()) return false;
+        if(birthdate_input.getText() == null || birthdate_input.getText().trim().isEmpty()) return false;
+        if(mothersname_input.getText() == null || mothersname_input.getText().trim().isEmpty()) return false;
+        if(housenum_input.getText() == null || housenum_input.getText().trim().isEmpty()) return false;
+        if (!radioMale.isSelected() && !radioFemale.isSelected()) return false;
+
+        return true;
     }
 
 
