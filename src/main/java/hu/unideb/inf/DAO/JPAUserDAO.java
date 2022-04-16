@@ -52,6 +52,28 @@ public class JPAUserDAO implements UserDAO {
         }
     }
 
+    public boolean usernameAlreadyExists(String userName){
+        TypedQuery<User> query = entityManager.createQuery("from User u where u.username = :userName",User.class).setParameter("userName", userName);
+        query.setParameter("userName",userName);
+
+        List<User> ret = query.getResultList();
+
+        if (ret.size() > 0) return true;
+
+        return false;
+    }
+
+    public boolean emailAlreadyExists(String email){
+        TypedQuery<User> query = entityManager.createQuery("from User u where u.email = :email",User.class).setParameter("email", email);
+        query.setParameter("email",email);
+
+        List<User> ret = query.getResultList();
+
+        if (ret.size() > 0) return true;
+
+        return false;
+    }
+
     @Override
     public void close() throws Exception {
         entityManager.close();

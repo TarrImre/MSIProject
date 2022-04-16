@@ -237,18 +237,18 @@ public class MsiGuiController implements Initializable {
 
     @FXML
     private Label SuccesPatient;
+
     @FXML
     public void PatientRegisterButtonPushed(ActionEvent event) {
 
         try(JPAPatientDAO aDAO = new JPAPatientDAO()){
 
             if (!isAllFilled()){
-                SuccesPatient.setStyle("" +
-                        "-fx-font-weight:bold;\n" +
-                        "\t-fx-background-color:rgba(215, 117, 117, 0.8);\n" +
-                        "\t-fx-border-color: red;\n" +
-                        "\t-fx-border-width:2px;");
-                SuccesPatient.setText("Minden mezőt kötelező kitölteni!");
+                Message("Minden mezőt kötelező kitölteni!");
+                return;
+            }
+            if (!zipcode_input.getText().matches("[0-9]+") || !taj_input.getText().matches("[0-9]+")){
+                Message("Az irányítószám és tajszám mezők\n csak számokat tartalmazhatnak!");
                 return;
             }
 
@@ -274,12 +274,7 @@ public class MsiGuiController implements Initializable {
 
             clearTexts();
 
-            SuccesPatient.setStyle("" +
-                    "-fx-font-weight:bold;\n" +
-                    "\t-fx-background-color:rgba(123, 215, 117, 0.8);\n" +
-                    "\t-fx-border-color: green;\n" +
-                    "\t-fx-border-width:2px;");
-            SuccesPatient.setText("A beteg sikeresen felvételre került!");
+            Message("A beteg sikeresen felvételre került!");
 
         }catch(Exception e){
             e.printStackTrace();
@@ -321,4 +316,12 @@ public class MsiGuiController implements Initializable {
     }
 
 
+    private void Message(String message){
+        SuccesPatient.setStyle("" +
+                "-fx-font-weight:bold;\n" +
+                "\t-fx-background-color:rgba(215, 117, 117, 0.8);\n" +
+                "\t-fx-border-color: red;\n" +
+                "\t-fx-border-width:2px;");
+        SuccesPatient.setText(message);
+    }
 }

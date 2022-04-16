@@ -18,10 +18,13 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static org.junit.Assert.assertTrue;
 
 public class UserRegistrationController implements Initializable{
 
@@ -90,17 +93,40 @@ public class UserRegistrationController implements Initializable{
                 return;
             }
 
+            if (!isValidEmailAddress(emailReg.getText())){
+                registerErrorLabel.setStyle("" +
+                        "-fx-font-weight:bold;\n" +
+                        "\t-fx-background-color:rgba(215, 117, 117, 0.8);\n" +
+                        "\t-fx-border-color: red;\n" +
+                        "\t-fx-border-width:2px;");
+                registerErrorLabel.setText("Helyes e-mail formátumot adjon meg!");
+                return;
+            }
+
             User user = new User();
             user.setUsername(usernameReg.getText());
             user.setEmail(emailReg.getText());
             user.setEmail(emailRegSecond.getText());
             user.setPassword(passwordReg.getText());
             user.setPassword(passwordRegSecond.getText());
+
+            if (userDAO.usernameAlreadyExists(user.getUsername()) || userDAO.emailAlreadyExists(user.getEmail())){
+                registerErrorLabel.setStyle("" +
+                        "-fx-font-weight:bold;\n" +
+                        "\t-fx-background-color:rgba(215, 117, 117, 0.8);\n" +
+                        "\t-fx-border-color: red;\n" +
+                        "\t-fx-border-width:2px;");
+                registerErrorLabel.setText("Ez a felhasználónév/email már foglalt!");
+                return;
+            }
             
             if (isEqual(emailRegSecond.getText(), emailReg.getText()) && isEqual(passwordReg.getText(), passwordRegSecond.getText())){
                 registerButton.setText("Sikeres regisztráció!");
                 userDAO.saveUser(user);
                 //Thread.sleep(2000);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Sikeres regisztracio!");
+                alert.showAndWait();
                 loginwindow(event);
 
             }else{
@@ -169,5 +195,12 @@ public class UserRegistrationController implements Initializable{
         if(passwordReg.getText() == null || passwordReg.getText().trim().isEmpty()) return false;
         if(passwordRegSecond.getText() == null || passwordRegSecond.getText().trim().isEmpty()) return false;
         return true;
+    }
+
+    public boolean isValidEmailAddress(String email) {
+        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(email);
+        return m.matches();
     }
 }

@@ -63,6 +63,15 @@ public class FileUserDAO implements UserDAO {
         return false;
     }
 
+    @Override
+    public boolean usernameAlreadyExists(String userName){
+        return false;
+    }
+
+    @Override
+    public boolean emailAlreadyExists(String email){
+        return false;
+    }
 
     @Override
     public List<User> getUsers() {

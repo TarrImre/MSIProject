@@ -9,5 +9,7 @@ public interface UserDAO extends AutoCloseable {
     public void deleteUser(User user);
     public void updateUser(User user);
     public boolean validate(String userName, String password);
+    public boolean usernameAlreadyExists(String userName);
+    public boolean emailAlreadyExists(String email);
     public List<User> getUsers();
 }
