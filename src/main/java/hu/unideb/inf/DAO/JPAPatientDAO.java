@@ -41,6 +41,18 @@ public class JPAPatientDAO implements PatientDAO{
         return patients;
     }
 
+    public boolean cardnumberAlreadyExists(int cardNumber) {
+        TypedQuery<Patient> query = entityManager.createQuery("from Patient p where p.cardNumber = :cardNumber",Patient.class).setParameter("cardNumber", cardNumber);
+        query.setParameter("cardNumber",cardNumber);
+
+        List<Patient> ret = query.getResultList();
+
+        if (ret.size() > 0) return true;
+
+        return false;
+    }
+
+
     @Override
     public void close() throws Exception {
         entityManager.close();

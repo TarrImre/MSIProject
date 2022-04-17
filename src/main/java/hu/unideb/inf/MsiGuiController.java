@@ -238,14 +238,22 @@ public class MsiGuiController implements Initializable {
     @FXML Button RandomNumberButton;
     @FXML
     void RandomNumberAction(ActionEvent event) {
-        Random rand = new Random();
-        int n = rand.nextInt(10000);
-        n += 1;
+        try (JPAPatientDAO patientDAO = new JPAPatientDAO()) {
+            Random rand = new Random();
+            int n = rand.nextInt(10000);
+            n += 1;
 
-        if (event.getSource() == RandomNumberButton)
-        {
-            cardnum_input.setText(Integer.toString(n));
+            if (patientDAO.cardnumberAlreadyExists(n)){
+                RandomNumberAction(event);
+            }
+            else if (event.getSource() == RandomNumberButton)
+            {
+                cardnum_input.setText(Integer.toString(n));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
         }
+
     }
     @FXML
     void DisableMouse2(MouseEvent event) {
