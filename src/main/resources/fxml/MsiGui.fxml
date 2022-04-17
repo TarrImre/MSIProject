@@ -24,7 +24,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.MsiGuiController">
    <children>
-      <Pane fx:id="themeoverlay" layoutX="372.0" layoutY="96.0" prefHeight="482.0" prefWidth="382.0" styleClass="overlay" stylesheets="@style.css">
+      <Pane fx:id="themeoverlay" layoutX="440.0" layoutY="96.0" prefHeight="479.0" prefWidth="387.0" styleClass="overlay" stylesheets="@style.css">
          <children>
             <Pane layoutX="14.0" layoutY="14.0" prefHeight="91.0" prefWidth="173.0" styleClass="themePaneBg">
                <children>
@@ -149,33 +149,21 @@
             <Button fx:id="themeoverlayButtonHide" layoutX="172.0" layoutY="433.0" mnemonicParsing="false" onAction="#themeoverlayActionHide" text="Close" />
          </children>
       </Pane>
-      <Pane fx:id="overlay" layoutY="19.0" prefHeight="649.0" prefWidth="1280.0" styleClass="overlay" stylesheets="@style.css">
+      <Pane fx:id="overlay" layoutX="367.0" layoutY="283.0" prefHeight="149.0" prefWidth="529.0" styleClass="overlay" stylesheets="@style.css">
          <children>
-            <Button fx:id="overlayhidebutton" layoutX="989.0" layoutY="391.0" mnemonicParsing="false" onAction="#overlayActionHide" prefHeight="200.0" prefWidth="200.0" stylesheets="@style.css">
-               <styleClass>
-                  <String fx:value="Bigbutton" />
-                  <String fx:value="close" />
-               </styleClass>
-            </Button>
-            <Button layoutX="706.0" layoutY="391.0" mnemonicParsing="false" onAction="#overlayActionHide" prefHeight="200.0" prefWidth="200.0" stylesheets="@style.css">
-               <styleClass>
-                  <String fx:value="Bigbutton" />
-                  <String fx:value="settings" />
-               </styleClass>
-            </Button>
-            <Button layoutX="1166.0" layoutY="10.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#overlayActionHide" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css">
+            <Button fx:id="overlayhidebutton" layoutX="331.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#overlayActionHide" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css">
                <styleClass>
                   <String fx:value="Bigbutton" />
                   <String fx:value="logout" />
                </styleClass>
             </Button>
-            <Button layoutX="1051.0" layoutY="10.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#Helpp" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css">
+            <Button layoutX="216.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#Helpp" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css">
                <styleClass>
                   <String fx:value="Bigbutton" />
                   <String fx:value="help" />
                </styleClass>
             </Button>
-            <Button fx:id="themeoverlayButton" layoutX="939.0" layoutY="10.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#themeoverlayAction" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css">
+            <Button fx:id="themeoverlayButton" layoutX="104.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#themeoverlayAction" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css">
                <styleClass>
                   <String fx:value="Bigbutton" />
                   <String fx:value="themes" />

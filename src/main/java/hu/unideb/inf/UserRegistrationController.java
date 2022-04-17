@@ -100,7 +100,7 @@ public class UserRegistrationController implements Initializable{
             }
 
             if(!isValidUsername(usernameReg.getText())){
-                errorMessage("Helytelen felhasználóvé formátum!");
+                errorMessage("Helytelen felhasználónév formátum!\n-Minimum 5 karakter\n-Nem tartalmazhat számot");
                 clearTexts();
                 return;
                 //6 - 30 hosszú betűvel kell kezdődnie
@@ -108,7 +108,7 @@ public class UserRegistrationController implements Initializable{
             }
 
             if (!isValidPassword(passwordReg.getText())){
-                errorMessage("Helytelen jelszó formátum!");
+                errorMessage("Helytelen jelszó formátum!\n-Legalább 1 kis, 1 nagybetűt, számot\n-Minimum 8 karakter és maximum 20");
                 clearTexts();
                 return;
 
