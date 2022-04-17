@@ -25,6 +25,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.security.*;
+import java.math.*;
 
 import static org.junit.Assert.assertTrue;
 
@@ -130,6 +132,7 @@ public class UserRegistrationController implements Initializable{
             
             if (isEqual(emailRegSecond.getText(), emailReg.getText()) && isEqual(passwordReg.getText(), passwordRegSecond.getText())){
                 registerButton.setText("Sikeres regisztráció!");
+                user.setPassword(MD5Encryption(passwordReg.getText()));
                 userDAO.saveUser(user);
                 //Thread.sleep(2000);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -227,6 +230,14 @@ public class UserRegistrationController implements Initializable{
         Matcher m = p.matcher(password);
 
         return m.matches();
+    }
+
+    private static String MD5Encryption(String s) throws Exception {
+
+        MessageDigest m = MessageDigest.getInstance("MD5");
+        m.update(s.getBytes(),0,s.length());
+
+        return new BigInteger(1,m.digest()).toString(16);
     }
 
     public static boolean isValidUsername(String name)

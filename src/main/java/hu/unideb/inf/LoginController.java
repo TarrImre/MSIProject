@@ -25,6 +25,8 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.math.BigInteger;
+import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,7 +86,7 @@ public class LoginController implements Serializable {
                 return;
             }
 
-            if (!userDAO.validate(username.getText(), password.getText())){
+            if (!userDAO.validate(username.getText(), MD5Encryption(password.getText()))){
                 clearTexts();
                 errorLabel.setStyle("" +
                         "-fx-font-weight:bold;\n" +
@@ -155,4 +157,14 @@ public class LoginController implements Serializable {
 
         return true;
     }
+
+
+    private static String MD5Encryption(String s) throws Exception {
+
+        MessageDigest m = MessageDigest.getInstance("MD5");
+        m.update(s.getBytes(),0,s.length());
+
+        return new BigInteger(1,m.digest()).toString(16);
+    }
+
 }
