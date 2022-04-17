@@ -92,12 +92,12 @@ public class MsiGuiController implements Initializable {
     @FXML
     private AnchorPane parent;
 
-    public void LightButton(ActionEvent event){
+    public void BlueButton(ActionEvent event){
         parent.getStylesheets().remove("fxml/dark.css");
         parent.getStylesheets().add("fxml/style.css");
 
     }
-    public void DarkButton(ActionEvent event){
+    public void AutumnButton(ActionEvent event){
         parent.getStylesheets().remove("fxml/style.css");
         parent.getStylesheets().add("fxml/dark.css");
 
@@ -145,6 +145,28 @@ public class MsiGuiController implements Initializable {
 
 
     @FXML
+    private Pane themeoverlay;
+    @FXML
+    private Button themeoverlayButton,themeoverlayButtonHide;
+
+    @FXML
+    void themeoverlayAction(ActionEvent event) {
+
+        if (event.getSource() == themeoverlayButton)
+        {
+            themeoverlay.toFront();
+        }
+
+    }
+    @FXML
+    void themeoverlayActionHide(ActionEvent event) {
+        if (event.getSource() == themeoverlayButtonHide)
+        {
+            themeoverlay.toBack();
+        }
+    }
+
+    @FXML
     private void Close(ActionEvent event) {
         Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
         s.close();
@@ -160,7 +182,7 @@ public class MsiGuiController implements Initializable {
 
 
     @FXML
-    public void loginwindow(ActionEvent event) {
+    public void loginwindow_mainprogram(ActionEvent event) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loginpage.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
@@ -199,16 +221,11 @@ public class MsiGuiController implements Initializable {
     }
 
     @FXML
-    void LogoutButton(ActionEvent event) {
-        loginwindow(event);
+    public void LogoutButton(ActionEvent event) {
+        loginwindow_mainprogram(event);
         //BIZTOSAN KILEP?
     }
 
-
-    @FXML
-    void Settings(ActionEvent event) {
-        //DARK THEME
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -221,7 +238,7 @@ public class MsiGuiController implements Initializable {
     @FXML
     void RandomNumberAction(ActionEvent event) {
         Random rand = new Random();
-        int n = rand.nextInt(1000);
+        int n = rand.nextInt(10000);
         n += 1;
 
         if (event.getSource() == RandomNumberButton)
@@ -274,7 +291,7 @@ public class MsiGuiController implements Initializable {
 
             clearTexts();
 
-            Message("A beteg sikeresen felvételre került!");
+            MessageSuccess("A beteg sikeresen felvételre került!");
 
         }catch(Exception e){
             e.printStackTrace();
@@ -323,5 +340,13 @@ public class MsiGuiController implements Initializable {
                 "\t-fx-border-color: red;\n" +
                 "\t-fx-border-width:2px;");
         SuccesPatient.setText(message);
+    }
+    private void MessageSuccess(String messageSuccess){
+        SuccesPatient.setStyle("" +
+                "-fx-font-weight:bold;\n" +
+                "\t-fx-background-color:rgba(116, 214, 137, 0.8);\n" +
+                "\t-fx-border-color: green;\n" +
+                "\t-fx-border-width:2px;");
+        SuccesPatient.setText(messageSuccess);
     }
 }

@@ -121,13 +121,9 @@ public class UserRegistrationController implements Initializable{
             }
             
             if (isEqual(emailRegSecond.getText(), emailReg.getText()) && isEqual(passwordReg.getText(), passwordRegSecond.getText())){
-                registerButton.setText("Sikeres regisztráció!");
                 userDAO.saveUser(user);
                 //Thread.sleep(2000);
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setContentText("Sikeres regisztracio!");
-                alert.showAndWait();
-                loginwindow(event);
+                succesregister(event);
 
             }else{
                 textNotMatchesError();
@@ -143,6 +139,23 @@ public class UserRegistrationController implements Initializable{
     @FXML
     void backtologin2(ActionEvent event) throws IOException {
         loginwindow(event);
+    }
+
+    @FXML
+    void successRegisterButton(ActionEvent event)  throws IOException {
+        loginwindow(event);
+    }
+
+    private void succesregister(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/error.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.getIcons().add(new Image("/img/windowsicon.png"));
+        ((UserRegistrationController)fxmlLoader.getController()).init(stage);
+        stage.show();
     }
 
     private void loginwindow(ActionEvent event) throws IOException {
