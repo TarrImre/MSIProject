@@ -100,7 +100,7 @@ public class UserRegistrationController implements Initializable{
             }
 
             if(!isValidUsername(usernameReg.getText())){
-                errorMessage("Helytelen felhasználóvé formátum!");
+                errorMessage("Helytelen felhasználónév formátum!");
                 clearTexts();
                 return;
                 //6 - 30 hosszú betűvel kell kezdődnie
