@@ -37,7 +37,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" onAction="#BlueButton" prefHeight="21.0" prefWidth="55.0" styleClass="themeButton" text="Váltás" />
+                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" onAction="#BlueButton" prefHeight="21.0" prefWidth="70.0" styleClass="themeButton" text="Alkalmazás" />
                </children>
             </Pane>
             <Pane layoutX="198.0" layoutY="14.0" prefHeight="91.0" prefWidth="173.0" styleClass="themePaneBg">
@@ -52,7 +52,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Button layoutX="14.0" layoutY="60.0" mnemonicParsing="false" onAction="#AutumnButton" prefHeight="17.0" prefWidth="55.0" styleClass="themeButton" text="Váltás" />
+                  <Button layoutX="14.0" layoutY="60.0" mnemonicParsing="false" onAction="#AutumnButton" prefHeight="21.0" prefWidth="70.0" styleClass="themeButton" text="Alkalmazás" />
                </children>
             </Pane>
             <Pane layoutX="14.0" layoutY="114.0" prefHeight="91.0" prefWidth="173.0" styleClass="themePaneBg">
@@ -67,7 +67,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="55.0" styleClass="themeButton" text="Váltás" />
+                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="70.0" styleClass="themeButton" text="Alkalmazás" />
                </children>
             </Pane>
             <Pane layoutX="198.0" layoutY="114.0" prefHeight="91.0" prefWidth="173.0" styleClass="themePaneBg">
@@ -82,7 +82,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="55.0" styleClass="themeButton" text="Váltás" />
+                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="70.0" styleClass="themeButton" text="Alkalmazás" />
                </children>
             </Pane>
             <Pane layoutX="14.0" layoutY="215.0" prefHeight="91.0" prefWidth="173.0" styleClass="themePaneBg">
@@ -97,7 +97,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="55.0" styleClass="themeButton" text="Váltás" />
+                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="70.0" styleClass="themeButton" text="Alkalmazás" />
                </children>
             </Pane>
             <Pane layoutX="198.0" layoutY="215.0" prefHeight="91.0" prefWidth="173.0" styleClass="themePaneBg">
@@ -112,7 +112,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="55.0" styleClass="themeButton" text="Váltás" />
+                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="70.0" styleClass="themeButton" text="Alkalmazás" />
                </children>
             </Pane>
             <Pane layoutX="14.0" layoutY="316.0" prefHeight="91.0" prefWidth="173.0" styleClass="themePaneBg">
@@ -127,7 +127,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="55.0" styleClass="themeButton" text="Váltás" />
+                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="70.0" styleClass="themeButton" text="Alkalmazás" />
                </children>
             </Pane>
             <Pane layoutX="198.0" layoutY="316.0" prefHeight="91.0" prefWidth="173.0" styleClass="themePaneBg">
@@ -142,10 +142,10 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="55.0" styleClass="themeButton" text="Váltás" />
+                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="70.0" styleClass="themeButton" text="Alkalmazás" />
                </children>
             </Pane>
-            <Button fx:id="themeoverlayButtonHide" layoutX="172.0" layoutY="433.0" mnemonicParsing="false" onAction="#themeoverlayActionHide" text="Close" />
+            <Button fx:id="themeoverlayButtonHide" layoutX="158.0" layoutY="420.0" mnemonicParsing="false" onAction="#themeoverlayActionHide" prefHeight="38.0" prefWidth="81.0" styleClass="custom-button" text="Bezárás" />
          </children>
       </Pane>
       <Pane fx:id="overlay" layoutX="367.0" layoutY="283.0" prefHeight="149.0" prefWidth="529.0" styleClass="overlay" stylesheets="@style.css">
