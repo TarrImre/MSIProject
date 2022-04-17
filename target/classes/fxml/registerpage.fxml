@@ -27,7 +27,7 @@
             <Button layoutX="363.0" layoutY="6.0" mnemonicParsing="false" onAction="#Tray" prefHeight="25.0" prefWidth="16.0" styleClass="TalcaButtonImage" />
          </children>
       </Pane>
-      <Button fx:id="registerButton" layoutX="102.0" layoutY="409.0" mnemonicParsing="false" onAction="#UserRegisterButtonPushed" prefHeight="45.0" prefWidth="200.0" styleClass="custom-button" text="Regisztráció" />
+      <Button fx:id="registerButton" layoutX="-1.0" layoutY="454.0" mnemonicParsing="false" onAction="#UserRegisterButtonPushed" prefHeight="45.0" prefWidth="200.0" styleClass="custom-button" text="Regisztráció" />
       <TextField fx:id="emailReg" layoutX="58.0" layoutY="135.0" prefHeight="37.0" prefWidth="283.0" styleClass="logininput" />
       <Text layoutX="57.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
       <TextField fx:id="emailRegSecond" layoutX="58.0" layoutY="196.0" prefHeight="37.0" prefWidth="283.0" styleClass="logininput" />
@@ -35,8 +35,8 @@
       <PasswordField fx:id="passwordReg" layoutX="57.0" layoutY="257.0" prefHeight="37.0" prefWidth="283.0" styleClass="logininput" />
       <Text layoutX="58.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jelszó újra" />
       <PasswordField fx:id="passwordRegSecond" layoutX="57.0" layoutY="317.0" prefHeight="37.0" prefWidth="283.0" styleClass="logininput" />
-      <Label fx:id="registerErrorLabel" alignment="CENTER" layoutX="58.0" layoutY="367.0" prefHeight="25.0" prefWidth="280.0" textAlignment="CENTER" />
-      <Button layoutX="102.0" layoutY="454.0" mnemonicParsing="false" onAction="#backtologin2" prefHeight="45.0" prefWidth="200.0" text="Bejelentkezés">
+      <Label fx:id="registerErrorLabel" alignment="CENTER" layoutX="58.0" layoutY="367.0" prefHeight="62.0" prefWidth="280.0" textAlignment="CENTER" />
+      <Button layoutX="198.0" layoutY="454.0" mnemonicParsing="false" onAction="#backtologin2" prefHeight="45.0" prefWidth="202.0" text="Bejelentkezés">
          <styleClass>
             <String fx:value="custom-button" />
             <String fx:value="register" />

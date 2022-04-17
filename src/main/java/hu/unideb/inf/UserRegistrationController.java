@@ -25,6 +25,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.security.*;
+import java.math.*;
 
 import static org.junit.Assert.assertTrue;
 
@@ -98,7 +100,7 @@ public class UserRegistrationController implements Initializable{
             }
 
             if(!isValidUsername(usernameReg.getText())){
-                errorMessage("Helytelen felhasználóvé formátum!");
+                errorMessage("Helytelen felhasználónév formátum!\n-Minimum 5 karakter\n-Nem tartalmazhat számot");
                 clearTexts();
                 return;
                 //6 - 30 hosszú betűvel kell kezdődnie
@@ -106,7 +108,7 @@ public class UserRegistrationController implements Initializable{
             }
 
             if (!isValidPassword(passwordReg.getText())){
-                errorMessage("Helytelen jelszó formátum!");
+                errorMessage("Helytelen jelszó formátum!\n-Legalább 1 kis, 1 nagybetűt, számot\n-Minimum 8 karakter és maximum 20");
                 clearTexts();
                 return;
 
@@ -129,9 +131,14 @@ public class UserRegistrationController implements Initializable{
             }
             
             if (isEqual(emailRegSecond.getText(), emailReg.getText()) && isEqual(passwordReg.getText(), passwordRegSecond.getText())){
+                registerButton.setText("Sikeres regisztráció!");
+                user.setPassword(MD5Encryption(passwordReg.getText()));
                 userDAO.saveUser(user);
                 //Thread.sleep(2000);
-                succesregister(event);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Sikeres regisztracio!");
+                alert.showAndWait();
+                loginwindow(event);
 
             }else{
                 errorMessage("A jelszó/email mezők nem egyeznek!");
@@ -149,23 +156,6 @@ public class UserRegistrationController implements Initializable{
     @FXML
     void backtologin2(ActionEvent event) throws IOException {
         loginwindow(event);
-    }
-
-    @FXML
-    void successRegisterButton(ActionEvent event)  throws IOException {
-        loginwindow(event);
-    }
-
-    private void succesregister(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/error.fxml"));
-        Parent root = (Parent) fxmlLoader.load();
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.getIcons().add(new Image("/img/windowsicon.png"));
-        ((UserRegistrationController)fxmlLoader.getController()).init(stage);
-        stage.show();
     }
 
     private void loginwindow(ActionEvent event) throws IOException {
@@ -240,6 +230,14 @@ public class UserRegistrationController implements Initializable{
         Matcher m = p.matcher(password);
 
         return m.matches();
+    }
+
+    private static String MD5Encryption(String s) throws Exception {
+
+        MessageDigest m = MessageDigest.getInstance("MD5");
+        m.update(s.getBytes(),0,s.length());
+
+        return new BigInteger(1,m.digest()).toString(16);
     }
 
     public static boolean isValidUsername(String name)
