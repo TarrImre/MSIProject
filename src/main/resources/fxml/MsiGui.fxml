@@ -20,7 +20,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.MsiGuiController">
    <children>
@@ -38,7 +37,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" onAction="#BlueButton" prefHeight="21.0" prefWidth="55.0" styleClass="themeButton" text="Váltás" />
+                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" onAction="#BlueButton" prefHeight="21.0" prefWidth="70.0" styleClass="themeButton" text="Alkalmazás" />
                </children>
             </Pane>
             <Pane layoutX="198.0" layoutY="14.0" prefHeight="91.0" prefWidth="173.0" styleClass="themePaneBg">
@@ -53,7 +52,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Button layoutX="14.0" layoutY="60.0" mnemonicParsing="false" onAction="#AutumnButton" prefHeight="17.0" prefWidth="55.0" styleClass="themeButton" text="Váltás" />
+                  <Button layoutX="14.0" layoutY="60.0" mnemonicParsing="false" onAction="#AutumnButton" prefHeight="21.0" prefWidth="70.0" styleClass="themeButton" text="Alkalmazás" />
                </children>
             </Pane>
             <Pane layoutX="14.0" layoutY="114.0" prefHeight="91.0" prefWidth="173.0" styleClass="themePaneBg">
@@ -68,7 +67,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="55.0" styleClass="themeButton" text="Váltás" />
+                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="70.0" styleClass="themeButton" text="Alkalmazás" />
                </children>
             </Pane>
             <Pane layoutX="198.0" layoutY="114.0" prefHeight="91.0" prefWidth="173.0" styleClass="themePaneBg">
@@ -83,7 +82,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="55.0" styleClass="themeButton" text="Váltás" />
+                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="70.0" styleClass="themeButton" text="Alkalmazás" />
                </children>
             </Pane>
             <Pane layoutX="14.0" layoutY="215.0" prefHeight="91.0" prefWidth="173.0" styleClass="themePaneBg">
@@ -98,7 +97,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="55.0" styleClass="themeButton" text="Váltás" />
+                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="70.0" styleClass="themeButton" text="Alkalmazás" />
                </children>
             </Pane>
             <Pane layoutX="198.0" layoutY="215.0" prefHeight="91.0" prefWidth="173.0" styleClass="themePaneBg">
@@ -113,7 +112,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="55.0" styleClass="themeButton" text="Váltás" />
+                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="70.0" styleClass="themeButton" text="Alkalmazás" />
                </children>
             </Pane>
             <Pane layoutX="14.0" layoutY="316.0" prefHeight="91.0" prefWidth="173.0" styleClass="themePaneBg">
@@ -128,7 +127,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="55.0" styleClass="themeButton" text="Váltás" />
+                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="70.0" styleClass="themeButton" text="Alkalmazás" />
                </children>
             </Pane>
             <Pane layoutX="198.0" layoutY="316.0" prefHeight="91.0" prefWidth="173.0" styleClass="themePaneBg">
@@ -143,10 +142,10 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="55.0" styleClass="themeButton" text="Váltás" />
+                  <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="70.0" styleClass="themeButton" text="Alkalmazás" />
                </children>
             </Pane>
-            <Button fx:id="themeoverlayButtonHide" layoutX="172.0" layoutY="433.0" mnemonicParsing="false" onAction="#themeoverlayActionHide" text="Close" />
+            <Button fx:id="themeoverlayButtonHide" layoutX="158.0" layoutY="420.0" mnemonicParsing="false" onAction="#themeoverlayActionHide" prefHeight="38.0" prefWidth="81.0" styleClass="custom-button" text="Bezárás" />
          </children>
       </Pane>
       <Pane fx:id="overlay" layoutX="367.0" layoutY="283.0" prefHeight="149.0" prefWidth="529.0" styleClass="overlay" stylesheets="@style.css">
@@ -327,7 +326,6 @@
             <Image url="@img/msilogofeher.png" />
          </image>
       </ImageView>
-      <Text layoutX="997.0" layoutY="699.0" opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Készítette: Dobos Martin | Laza Sándor | Tarr Imre" />
       <Pane fx:id="topPane" prefHeight="20.0" prefWidth="1280.0">
          <children>
             <Button fx:id="ExitOverlayButtonShow" layoutX="1259.0" layoutY="-2.0" mnemonicParsing="false" onAction="#ExitOverlayButtonAction" prefHeight="16.0" prefWidth="16.0" styleClass="CloseButtonImage" />

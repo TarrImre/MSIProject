@@ -100,7 +100,7 @@ public class UserRegistrationController implements Initializable{
             }
 
             if(!isValidUsername(usernameReg.getText())){
-                errorMessage("Helytelen felhasználónév formátum!");
+                errorMessage("Helytelen felhasználónév formátum!\n-Minimum 5 karakter\n-Nem tartalmazhat számot");
                 clearTexts();
                 return;
                 //6 - 30 hosszú betűvel kell kezdődnie
@@ -108,7 +108,7 @@ public class UserRegistrationController implements Initializable{
             }
 
             if (!isValidPassword(passwordReg.getText())){
-                errorMessage("Helytelen jelszó formátum!");
+                errorMessage("Helytelen jelszó formátum!\n-Legalább 1 kis, 1 nagybetűt, számot\n-Minimum 8 karakter és maximum 20");
                 clearTexts();
                 return;
 
@@ -135,10 +135,7 @@ public class UserRegistrationController implements Initializable{
                 user.setPassword(MD5Encryption(passwordReg.getText()));
                 userDAO.saveUser(user);
                 //Thread.sleep(2000);
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setContentText("Sikeres regisztracio!");
-                alert.showAndWait();
-                loginwindow(event);
+                succesregister(event);
 
             }else{
                 errorMessage("A jelszó/email mezők nem egyeznek!");
@@ -156,6 +153,22 @@ public class UserRegistrationController implements Initializable{
     @FXML
     void backtologin2(ActionEvent event) throws IOException {
         loginwindow(event);
+    }
+
+    @FXML
+    void successRegisterButton(ActionEvent event)  throws IOException {
+        loginwindow(event);
+    }
+    private void succesregister(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/error.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.getIcons().add(new Image("/img/windowsicon.png"));
+        ((UserRegistrationController)fxmlLoader.getController()).init(stage);
+        stage.show();
     }
 
     private void loginwindow(ActionEvent event) throws IOException {
