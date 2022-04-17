@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="320.0" styleClass="loginhatter" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.MsiGuiController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="320.0" styleClass="successregister" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.UserRegistrationController">
    <children>
       <Pane fx:id="topPane" layoutX="-3.0" layoutY="-2.0" prefHeight="37.0" prefWidth="326.0">
          <children>
@@ -13,6 +13,7 @@
             <Button layoutX="281.0" layoutY="6.0" mnemonicParsing="false" onAction="#Tray" prefHeight="25.0" prefWidth="16.0" styleClass="TalcaButtonImage" />
          </children>
       </Pane>
-      <Label layoutX="36.0" layoutY="35.0" style="-fx-font-size: 20;" text="ERROR" textFill="#3c3c3c" />
+      <Button layoutX="124.0" layoutY="56.0" mnemonicParsing="false" onAction="#successRegisterButton" prefHeight="30.0" prefWidth="73.0" styleClass="SuccessRegisterButton" text="Kész" />
+      <Label layoutX="73.0" layoutY="20.0" style="-fx-font-size: 20;" text="Sikeres regisztráció!" textFill="#3c3c3c" />
    </children>
 </AnchorPane>
