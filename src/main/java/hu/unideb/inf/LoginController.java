@@ -91,7 +91,7 @@ public class LoginController implements Serializable {
                         "\t-fx-background-color:rgba(215, 117, 117, 0.8);\n" +
                         "\t-fx-border-color: red;\n" +
                         "\t-fx-border-width:2px;");
-                errorLabel.setText("Ilyen felhasználó nem létezik!");
+                errorLabel.setText("A felhasználó nem létezik!");
             }
             else{
 

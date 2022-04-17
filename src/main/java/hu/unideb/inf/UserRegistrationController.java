@@ -23,6 +23,8 @@ import org.junit.Test;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static org.junit.Assert.assertTrue;
 
@@ -84,23 +86,33 @@ public class UserRegistrationController implements Initializable{
         try(JPAUserDAO userDAO = new JPAUserDAO()) {
 
             if (!isAllFilled()){
-                registerErrorLabel.setStyle("" +
-                        "-fx-font-weight:bold;\n" +
-                        "\t-fx-background-color:rgba(215, 117, 117, 0.8);\n" +
-                        "\t-fx-border-color: red;\n" +
-                        "\t-fx-border-width:2px;");
-                registerErrorLabel.setText("Minden mezőt kötelező kitölteni!");
+                errorMessage("Minden mezőt kötelező kitölteni!");
+                clearTexts();
                 return;
             }
 
             if (!isValidEmailAddress(emailReg.getText())){
-                registerErrorLabel.setStyle("" +
-                        "-fx-font-weight:bold;\n" +
-                        "\t-fx-background-color:rgba(215, 117, 117, 0.8);\n" +
-                        "\t-fx-border-color: red;\n" +
-                        "\t-fx-border-width:2px;");
-                registerErrorLabel.setText("Helyes e-mail formátumot adjon meg!");
+                errorMessage("Helyes e-mail formátumot adjon meg!");
+                clearTexts();
                 return;
+            }
+
+            if(!isValidUsername(usernameReg.getText())){
+                errorMessage("Helytelen felhasználóvé formátum!");
+                clearTexts();
+                return;
+                //6 - 30 hosszú betűvel kell kezdődnie
+                //nem tartlamaz spec karatert kivéve _
+            }
+
+            if (!isValidPassword(passwordReg.getText())){
+                errorMessage("Helytelen jelszó formátum!");
+                clearTexts();
+                return;
+
+                //A JELSZÓNAK TARTALAMZNI KELL 1 KIS 1 NAGY BETŰT LEGALÁBB, SZÁMOT,
+                //NEM LEHET BENNE WHITE SPACE ÉS 8-20 KARATKER LEHET
+                //NEM FÉR KI IMI BAZMEG
             }
 
             User user = new User();
@@ -111,12 +123,8 @@ public class UserRegistrationController implements Initializable{
             user.setPassword(passwordRegSecond.getText());
 
             if (userDAO.usernameAlreadyExists(user.getUsername()) || userDAO.emailAlreadyExists(user.getEmail())){
-                registerErrorLabel.setStyle("" +
-                        "-fx-font-weight:bold;\n" +
-                        "\t-fx-background-color:rgba(215, 117, 117, 0.8);\n" +
-                        "\t-fx-border-color: red;\n" +
-                        "\t-fx-border-width:2px;");
-                registerErrorLabel.setText("Ez a felhasználónév/email már foglalt!");
+                errorMessage("Ez a felhasználónév/email már foglalt!");
+                //clearTexts();
                 return;
             }
             
@@ -126,7 +134,9 @@ public class UserRegistrationController implements Initializable{
                 succesregister(event);
 
             }else{
-                textNotMatchesError();
+                errorMessage("A jelszó/email mezők nem egyeznek!");
+                clearTexts();
+                return;
             }
 
         }catch(Exception e){
@@ -189,18 +199,6 @@ public class UserRegistrationController implements Initializable{
         passwordRegSecond.setText("");
     }
 
-
-    private void textNotMatchesError(){
-        registerErrorLabel.setStyle("" +
-                "-fx-font-weight:bold;\n" +
-                "\t-fx-background-color:rgba(215, 117, 117, 0.8);\n" +
-                "\t-fx-border-color: red;\n" +
-                "\t-fx-border-width:2px;\n" +
-                "\t-fx-min-width:100px;");
-        registerErrorLabel.setText("Hiba! A jelszo/email mezok nem egyeznek!");
-        clearTexts();
-    }
-
     private boolean isAllFilled() {
         if(usernameReg.getText() == null || usernameReg.getText().trim().isEmpty()) return false;
         if(emailReg.getText() == null || emailReg.getText().trim().isEmpty()) return false;
@@ -214,6 +212,48 @@ public class UserRegistrationController implements Initializable{
         String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
         java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
         java.util.regex.Matcher m = p.matcher(email);
+        return m.matches();
+    }
+
+    private void errorMessage(String message){
+        registerErrorLabel.setStyle("" +
+                "-fx-font-weight:bold;\n" +
+                "\t-fx-background-color:rgba(215, 117, 117, 0.8);\n" +
+                "\t-fx-border-color: red;\n" +
+                "\t-fx-border-width:2px;");
+        registerErrorLabel.setText(message);
+    }
+
+    private static boolean isValidPassword(String password)
+    {
+        String regex = "^(?=.*[0-9])"
+                + "(?=.*[a-z])(?=.*[A-Z])"
+                + "(?=\\S+$).{8,20}$";
+
+
+        Pattern p = Pattern.compile(regex);
+
+        if (password == null) {
+            return false;
+        }
+
+        Matcher m = p.matcher(password);
+
+        return m.matches();
+    }
+
+    public static boolean isValidUsername(String name)
+    {
+        String regex = "^[A-Za-z]\\w{5,29}$";
+
+        Pattern p = Pattern.compile(regex);
+
+        if (name == null) {
+            return false;
+        }
+
+        Matcher m = p.matcher(name);
+
         return m.matches();
     }
 }

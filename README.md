@@ -12,7 +12,7 @@ az egészségügyi intézményekben.
 - Páciensek adatainak lekérdezése különböző szempontok szerint.
 
 ## Verziószám
-0.0.1?
+0.4.1
 
 ### Fejlesztők
 Laza Sándor --- lazasandor17@gmail.com  
