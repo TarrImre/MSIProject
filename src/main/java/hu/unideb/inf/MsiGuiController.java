@@ -5,6 +5,8 @@ import hu.unideb.inf.DAO.JPAUserDAO;
 import hu.unideb.inf.Modell.Model;
 import hu.unideb.inf.Modell.Patient;
 import hu.unideb.inf.Modell.User;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -23,19 +26,54 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Random;
-import java.util.ResourceBundle;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
+import java.util.*;
 
 public class MsiGuiController implements Initializable {
 
     private Model model;
 
     @FXML
+    private TableView<Patient> patientsTable;
+
+    @FXML
+    private TableColumn<Patient, Integer> cardNumberCol;
+
+    @FXML
+    private TableColumn<Patient, String> nameCol;
+
+    @FXML
+    private TableColumn<Patient, String> mothersNameCol;
+
+    @FXML
+    private TableColumn<Patient, String> genderCol;
+
+    @FXML
+    private TableColumn<Patient, String> birthDateCol;
+
+    @FXML
+    private TableColumn<Patient, String> insuranceIDCol;
+
+    @FXML
+    private TableColumn<Patient, Integer> zipcodeCol;
+
+    @FXML
+    private TableColumn<Patient, String> cityCol;
+
+    @FXML
+    private TableColumn<Patient, String> streetCol;
+
+    @FXML
+    private TableColumn<Patient, String> streetNumberCol;
+
+    @FXML
     private TextField name_input;
 
     @FXML
     private TextField cardnum_input;
-
 
     @FXML
     private TextField mothersname_input;
@@ -97,6 +135,7 @@ public class MsiGuiController implements Initializable {
         parent.getStylesheets().add("fxml/style.css");
 
     }
+
     public void AutumnButton(ActionEvent event){
         parent.getStylesheets().remove("fxml/style.css");
         parent.getStylesheets().add("fxml/dark.css");
@@ -117,6 +156,7 @@ public class MsiGuiController implements Initializable {
         }
 
     }
+
     @FXML
     void overlayActionHide(ActionEvent event) {
         if (event.getSource() == overlayhidebutton)
@@ -125,10 +165,12 @@ public class MsiGuiController implements Initializable {
         }
     }
 
-
     @FXML Pane exitoverlay;
+
     @FXML Button ExitOverlayButtonShow,ExitOverlayButtonHide;
+
     @FXML
+
     void ExitOverlayButtonAction(ActionEvent event) {
         if (event.getSource() == ExitOverlayButtonShow)
         {
@@ -143,10 +185,10 @@ public class MsiGuiController implements Initializable {
         }
     }
 
-
 //THEME
     @FXML
     private Pane themeoverlay;
+
     @FXML
     private Button themeoverlayButton,themeoverlayButtonHide;
 
@@ -159,6 +201,7 @@ public class MsiGuiController implements Initializable {
         }
 
     }
+
     @FXML
     void themeoverlayActionHide(ActionEvent event) {
         if (event.getSource() == themeoverlayButtonHide)
@@ -178,9 +221,6 @@ public class MsiGuiController implements Initializable {
         Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
         s.setIconified(true);
     }
-
-
-
 
     @FXML
     public void loginwindow_mainprogram(ActionEvent event) {
@@ -227,15 +267,23 @@ public class MsiGuiController implements Initializable {
         //BIZTOSAN KILEP?
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        cardNumberCol.setCellValueFactory(new PropertyValueFactory<>("cardNumber"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        mothersNameCol.setCellValueFactory(new PropertyValueFactory<>("nameOfMother"));
+        genderCol.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        birthDateCol.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
+        insuranceIDCol.setCellValueFactory(new PropertyValueFactory<>("socialInsuranceId"));
+        zipcodeCol.setCellValueFactory(new PropertyValueFactory<>("zipCode"));
+        cityCol.setCellValueFactory(new PropertyValueFactory<>("city"));
+        streetCol.setCellValueFactory(new PropertyValueFactory<>("street"));
+        streetNumberCol.setCellValueFactory(new PropertyValueFactory<>("streetNumber"));
+        patientsTable.setItems(listPatientsToUI());
     }
 
-
-
     @FXML Button RandomNumberButton;
+
     @FXML
     void RandomNumberAction(ActionEvent event) {
         try (JPAPatientDAO patientDAO = new JPAPatientDAO()) {
@@ -255,14 +303,32 @@ public class MsiGuiController implements Initializable {
         }
 
     }
+
     @FXML
     void DisableMouse2(MouseEvent event) {
         cardnum_input.setEditable(false);
     }
 
-
     @FXML
     private Label SuccesPatient;
+
+    ObservableList<Patient> listPatientsToUI(){
+        ObservableList<Patient> patients = FXCollections.observableArrayList();
+
+        try(JPAPatientDAO aDAO = new JPAPatientDAO()){
+            List<Patient> listOfPatients = aDAO.getPatients();
+
+            for (Patient p : listOfPatients){
+                patients.add(p);
+                System.out.println(p.toString());
+            }
+
+        }catch (Exception e){
+
+        }
+
+        return patients;
+    }
 
     @FXML
     public void PatientRegisterButtonPushed(ActionEvent event) {
@@ -277,6 +343,13 @@ public class MsiGuiController implements Initializable {
                 Message("Az irányítószám és tajszám mezők\n csak számokat tartalmazhatnak!");
                 return;
             }
+            if(taj_input.getText().length() != 9){
+                Message("A tajszám 9 számot tartalmaz!");
+                return;
+            }
+            if(!isValidBirthDate(birthdate_input.getText())){
+                Message("Helytelen születési dátum!\nHelyes formátum: ÉÉÉÉ-HH-NN");
+            }
 
             Patient patient = new Patient();
             patient.setName(name_input.getText());
@@ -285,7 +358,7 @@ public class MsiGuiController implements Initializable {
             patient.setCardNumber(Integer.parseInt(cardnum_input.getText()));
             patient.setDiagnose(diagnose_input.getText());
             patient.setNameOfMother(mothersname_input.getText());
-            patient.setStreetNumber(Integer.parseInt(housenum_input.getText()));
+            patient.setStreetNumber(housenum_input.getText());
             patient.setZipCode(Integer.parseInt(zipcode_input.getText()));
             patient.setStreet(street_input.getText());
             patient.setSocialInsuranceId(Integer.parseInt(taj_input.getText()));
@@ -301,6 +374,7 @@ public class MsiGuiController implements Initializable {
             clearTexts();
 
             MessageSuccess("A beteg sikeresen felvételre került!");
+            patientsTable.setItems(listPatientsToUI());
 
         }catch(Exception e){
             e.printStackTrace();
@@ -315,10 +389,10 @@ public class MsiGuiController implements Initializable {
         city_input.setText("");
         zipcode_input.setText("");
         street_input.setText("");
-        taj_input.setText("");
+        taj_input.setText("");  //9 SZÁM
         cardnum_input.setText("");
         diagnose_input.setText("");
-        birthdate_input.setText("");
+        birthdate_input.setText(""); //YYYY-MM-DD FORMÁTUM
         mothersname_input.setText("");
         housenum_input.setText("");
         radioMale.setSelected(false);
@@ -341,7 +415,6 @@ public class MsiGuiController implements Initializable {
         return true;
     }
 
-
     private void Message(String message){
         SuccesPatient.setStyle("" +
                 "-fx-font-weight:bold;\n" +
@@ -350,6 +423,7 @@ public class MsiGuiController implements Initializable {
                 "\t-fx-border-width:2px;");
         SuccesPatient.setText(message);
     }
+
     private void MessageSuccess(String messageSuccess){
         SuccesPatient.setStyle("" +
                 "-fx-font-weight:bold;\n" +
@@ -357,5 +431,17 @@ public class MsiGuiController implements Initializable {
                 "\t-fx-border-color: green;\n" +
                 "\t-fx-border-width:2px;");
         SuccesPatient.setText(messageSuccess);
+    }
+
+    private boolean isValidBirthDate(String date){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        try {
+            LocalDate birthdate = LocalDate.parse(date, formatter);
+            return true;
+
+        } catch (DateTimeParseException e) {
+            return false;
+        }
     }
 }
