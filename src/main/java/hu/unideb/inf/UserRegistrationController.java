@@ -227,8 +227,7 @@ public class UserRegistrationController implements Initializable{
         registerErrorLabel.setText(message);
     }
 
-    private static boolean isValidPassword(String password)
-    {
+    private static boolean isValidPassword(String password) {
         String regex = "^(?=.*[0-9])"
                 + "(?=.*[a-z])(?=.*[A-Z])"
                 + "(?=\\S+$).{8,20}$";
@@ -253,8 +252,7 @@ public class UserRegistrationController implements Initializable{
         return new BigInteger(1,m.digest()).toString(16);
     }
 
-    public static boolean isValidUsername(String name)
-    {
+    public static boolean isValidUsername(String name) {
         String regex = "^[A-Za-z]\\w{5,29}$";
 
         Pattern p = Pattern.compile(regex);

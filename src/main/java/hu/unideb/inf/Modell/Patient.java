@@ -2,7 +2,6 @@ package hu.unideb.inf.Modell;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 
 @Entity
 public class Patient implements Serializable {
@@ -17,7 +16,7 @@ public class Patient implements Serializable {
     private int zipCode;
     private String city;
     private String street;
-    private int streetNumber;
+    private String streetNumber;
     private String diagnose;
     //@Enumerated(EnumType.STRING)
     private String gender;
@@ -106,11 +105,11 @@ public class Patient implements Serializable {
         this.street = street;
     }
 
-    public int getStreetNumber() {
+    public String getStreetNumber() {
         return streetNumber;
     }
 
-    public void setStreetNumber(int streetNumber) {
+    public void setStreetNumber(String streetNumber) {
         this.streetNumber = streetNumber;
     }
 
