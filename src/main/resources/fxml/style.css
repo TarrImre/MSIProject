@@ -22,10 +22,30 @@ világos: #aaedfa
 	-fx-background-color: #aaedfa;
 
 }
+.table-column{
+	-fx-alignment: CENTER;
+}
 .table-view .column-header .label{
     -fx-text-fill: #333333;
 }
-
+.table-view .table-cell{
+    -fx-border-color: transparent;
+    -fx-padding: 2 0 2 10px;
+}
+.table-row-cell: hover {
+    -fx-background-color: #93f9b911;
+    -fx-text-background-color: red;
+}
+.table-row-cell: odd{
+    -fx-background-color: #93f9b911;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+.table-row-cell: even{
+    -fx-background-color: #1dbbdd11;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
 
 .list-view, .split-pane { -fx-background-insets: 0; -fx-padding: 0; }
 
