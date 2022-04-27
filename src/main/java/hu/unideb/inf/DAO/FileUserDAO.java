@@ -13,7 +13,7 @@ public class FileUserDAO implements UserDAO {
 
     public FileUserDAO(){
         try(FileInputStream fis = new FileInputStream("users.ser");
-            ObjectInputStream ois = new ObjectInputStream(fis);) {
+            ObjectInputStream ois = new ObjectInputStream(fis)) {
             users = (List<User>)ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
             users = new ArrayList<>();
@@ -23,7 +23,7 @@ public class FileUserDAO implements UserDAO {
 
     public void serialize(){
         try (FileOutputStream fos = new FileOutputStream("user.ser");
-             ObjectOutputStream oos = new ObjectOutputStream(fos);) {
+             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
             oos.writeObject(users);
         } catch (IOException e) {
             e.printStackTrace();

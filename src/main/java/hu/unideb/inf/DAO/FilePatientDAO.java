@@ -12,7 +12,7 @@ public class FilePatientDAO implements PatientDAO{
 
     public FilePatientDAO(){
         try(FileInputStream fis = new FileInputStream("patients.ser");
-            ObjectInputStream ois = new ObjectInputStream(fis);) {
+            ObjectInputStream ois = new ObjectInputStream(fis)) {
             patients = (List<Patient>)ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
             patients = new ArrayList<>();
@@ -21,7 +21,7 @@ public class FilePatientDAO implements PatientDAO{
 
     public void serialize(){
         try (FileOutputStream fos = new FileOutputStream("patient.ser");
-             ObjectOutputStream oos = new ObjectOutputStream(fos);) {
+             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
             oos.writeObject(patients);
         } catch (IOException e) {
             e.printStackTrace();
