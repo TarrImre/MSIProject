@@ -221,51 +221,49 @@ public class MsiGuiController implements Initializable {
         Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
         s.setIconified(true);
     }
-
     @FXML
-    public void loginwindow_mainprogram(ActionEvent event) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loginpage.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setTitle("MSI Projekt");
-            stage.setScene(new Scene(root1));
-            stage.getIcons().add(new Image("/fxml/img/windowsicon.png"));
-            ((MsiGuiController)fxmlLoader.getController()).init(stage);
-            Close(event);
-            stage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    void Helpp(ActionEvent event) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/ThemesSettings.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setTitle("MSI Projekt");
-            stage.setScene(new Scene(root1));
-            stage.getIcons().add(new Image("/fxml/img/windowsicon.png"));
-            ((MsiGuiController)fxmlLoader.getController()).init(stage);
-            stage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    public void LogoutButton(ActionEvent event) {
-        loginwindow_mainprogram(event);
+    public void LogoutButton(ActionEvent event) throws IOException {
+        loginwindow_main(event);
         //BIZTOSAN KILEP?
     }
+
+
+    private void loginwindow_main(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loginpage.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.getIcons().add(new Image("/img/windowsicon.png"));
+        ((MsiGuiController)fxmlLoader.getController()).init(stage);
+        Close(event);
+        stage.show();
+    }
+
+    @FXML
+    private Pane overlay_help;
+
+    @FXML
+    private Button helpButton,helpButtonHide;
+
+    @FXML
+    void HelpAction(ActionEvent event) {
+
+        if (event.getSource() == helpButton)
+        {
+            overlay_help.toFront();
+        }
+
+    }
+    @FXML
+    void helpOverlayActionHide(ActionEvent event) {
+        if (event.getSource() == helpButtonHide)
+        {
+            overlay_help.toBack();
+        }
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
