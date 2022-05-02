@@ -48,12 +48,9 @@ public class FilePatientDAO implements PatientDAO{
     public void updatePatient(Patient patient) {
         if (patients.contains(patient)) {
             patients.remove(patient);
-            patients.add(patient);
-            serialize();
-        }else{
-            patients.add(patient);
-            serialize();
         }
+        patients.add(patient);
+        serialize();
     }
 
     @Override
