@@ -268,8 +268,15 @@ public class MsiGuiController implements Initializable {
     }
 
 
+    @FXML
+    private ChoiceBox<String> myChoiceBox;
+
+    private String[] searchelements={"Név","Város","Kartonszám","TAJ/Azonosító"};
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        myChoiceBox.getItems().addAll(searchelements);
+
         cardNumberCol.setCellValueFactory(new PropertyValueFactory<>("cardNumber"));
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         mothersNameCol.setCellValueFactory(new PropertyValueFactory<>("nameOfMother"));
@@ -311,7 +318,7 @@ public class MsiGuiController implements Initializable {
     }
 
     @FXML
-    private Label SuccesPatient;
+    private Label SuccesPatient,RemoveSuccesPatient;
 
     ObservableList<Patient> listPatientsToUI(){
         ObservableList<Patient> patients = FXCollections.observableArrayList();
@@ -336,17 +343,17 @@ public class MsiGuiController implements Initializable {
 
         try(JPAPatientDAO aDAO = new JPAPatientDAO()){
             if(cardnumToRemove.getText().isEmpty()){
-                Message("A törléshez ki kell tölteni a kartonszám mezőt!"); //NEM JO HELYEN JÖN A MESSAGE IMI
+                RemoveSuccesPatient("A törléshez ki kell tölteni a kartonszám mezőt!"); //NEM JO HELYEN JÖN A MESSAGE IMI
                 return;
             }
 
             if (!cardnumToRemove.getText().matches("[0-9]+")){
-                Message("A kartonszám csak számot tartalmaz!"); //NEM JO HELYEN JÖN A MESSAGE IMI
+                RemoveSuccesPatient("A kartonszám csak számot tartalmaz!"); //NEM JO HELYEN JÖN A MESSAGE IMI
                 return;
             }
 
             if (!aDAO.cardnumberAlreadyExists(Integer.parseInt(cardnumToRemove.getText()))){
-                Message("A kartonszám nem létezik!"); //NEM JO HELYEN JÖN A MESSAGE IMI
+                RemoveSuccesPatient("A kartonszám nem létezik!"); //NEM JO HELYEN JÖN A MESSAGE IMI
                 return;
             }
 
@@ -461,6 +468,15 @@ public class MsiGuiController implements Initializable {
                 "\t-fx-border-color: red;\n" +
                 "\t-fx-border-width:2px;");
         SuccesPatient.setText(message);
+    }
+
+    private void RemoveSuccesPatient(String messageRemove){
+        RemoveSuccesPatient.setStyle("" +
+                "-fx-font-weight:bold;\n" +
+                "\t-fx-background-color:rgba(215, 117, 117, 0.8);\n" +
+                "\t-fx-border-color: red;\n" +
+                "\t-fx-border-width:2px;");
+        RemoveSuccesPatient.setText(messageRemove);
     }
 
     private void MessageSuccess(String messageSuccess){
