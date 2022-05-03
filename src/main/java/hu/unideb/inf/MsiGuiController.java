@@ -395,6 +395,7 @@ public class MsiGuiController implements Initializable {
             }
             if(!isValidBirthDate(birthdate_input.getText())){
                 Message("Helytelen születési dátum!\nHelyes formátum: ÉÉÉÉ-HH-NN");
+                return;
             }
 
             Patient patient = new Patient();
