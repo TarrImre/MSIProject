@@ -91,6 +91,9 @@ public class MsiGuiController implements Initializable {
     private TextArea diagnose_input;
 
     @FXML
+    private TextArea patientDiagnoseArea;
+
+    @FXML
     private TextField zipcode_input;
 
     @FXML
@@ -103,10 +106,16 @@ public class MsiGuiController implements Initializable {
     private TextField housenum_input;
 
     @FXML
+    private TextField searchElementInput;
+
+    @FXML
     private RadioButton radioMale;
 
     @FXML
     private RadioButton radioFemale;
+
+    @FXML
+    private Label foundElementsNumber;
 
 
     public void setModel(Model model) {
@@ -320,6 +329,42 @@ public class MsiGuiController implements Initializable {
     @FXML
     private Label SuccesPatient,RemoveSuccesPatient;
 
+    ObservableList<Patient> listPatientsForSearching(String elementToSearch, String searchBarText){
+        ObservableList<Patient> patients = FXCollections.observableArrayList();
+
+        try(JPAPatientDAO aDAO = new JPAPatientDAO()){
+            List<Patient> listOfPatients = aDAO.getPatients();
+
+            for (Patient p : listOfPatients){
+                if (elementToSearch.contains("Név")){
+                    if (p.getName().matches(searchBarText)){
+                        patients.add(p);
+                    }
+                }
+                else if(elementToSearch.matches("Kartonszám")){
+                    if (Integer.parseInt(searchBarText) == p.getCardNumber()){
+                        patients.add(p);
+                    }
+                }
+                else if(elementToSearch.contains("Város")){
+                    if (p.getCity().matches(searchBarText)){
+                        patients.add(p);
+                    }
+                }
+                else if(elementToSearch.matches("TAJ/Azonosító")){
+                    if (Integer.parseInt(searchBarText) == p.getSocialInsuranceId()){
+                        patients.add(p);
+                    }
+                }
+            }
+
+        }catch (Exception e){
+
+        }
+
+        return patients;
+    }
+
     ObservableList<Patient> listPatientsToUI(){
         ObservableList<Patient> patients = FXCollections.observableArrayList();
 
@@ -328,7 +373,6 @@ public class MsiGuiController implements Initializable {
 
             for (Patient p : listOfPatients){
                 patients.add(p);
-                System.out.println(p.toString());
             }
 
         }catch (Exception e){
@@ -343,17 +387,17 @@ public class MsiGuiController implements Initializable {
 
         try(JPAPatientDAO aDAO = new JPAPatientDAO()){
             if(cardnumToRemove.getText().isEmpty()){
-                RemoveSuccesPatient("A törléshez ki kell tölteni a kartonszám mezőt!"); //NEM JO HELYEN JÖN A MESSAGE IMI
+                SearchPatientFailed("A törléshez ki kell tölteni a kartonszám mezőt!"); //NEM JO HELYEN JÖN A MESSAGE IMI
                 return;
             }
 
             if (!cardnumToRemove.getText().matches("[0-9]+")){
-                RemoveSuccesPatient("A kartonszám csak számot tartalmaz!"); //NEM JO HELYEN JÖN A MESSAGE IMI
+                SearchPatientFailed("A kartonszám csak számot tartalmaz!"); //NEM JO HELYEN JÖN A MESSAGE IMI
                 return;
             }
 
             if (!aDAO.cardnumberAlreadyExists(Integer.parseInt(cardnumToRemove.getText()))){
-                RemoveSuccesPatient("A kartonszám nem létezik!"); //NEM JO HELYEN JÖN A MESSAGE IMI
+                SearchPatientFailed("A kartonszám nem létezik!"); //NEM JO HELYEN JÖN A MESSAGE IMI
                 return;
             }
 
@@ -385,8 +429,8 @@ public class MsiGuiController implements Initializable {
                 Message("Minden mezőt kötelező kitölteni!");
                 return;
             }
-            if (!zipcode_input.getText().matches("[0-9]+") || !taj_input.getText().matches("[0-9]+")){
-                Message("Az irányítószám és tajszám mezők\n csak számokat tartalmazhatnak!");
+            if (!zipcode_input.getText().matches("[0-9]+") || !taj_input.getText().matches("[0-9]+") || !housenum_input.getText().matches("[0-9]+")){
+                Message("Az irányítószám, házszám és tajszám mezők\n csak számokat tartalmazhatnak!");
                 return;
             }
             if(taj_input.getText().length() != 9){
@@ -397,6 +441,12 @@ public class MsiGuiController implements Initializable {
                 Message("Helytelen születési dátum!\nHelyes formátum: ÉÉÉÉ-HH-NN");
                 return;
             }
+            if (!name_input.getText().matches("[a-zA-Z]+") || !mothersname_input.getText().matches("[a-zA-Z]+") || !city_input.getText().matches("[a-zA-Z]+") || !street_input.getText().matches("[a-zA-Z]+"))
+            {
+                Message("A Név, Anyja neve, Város és Utca mezők\n csak betűket tartalmazhatnak!");
+                return;
+            }
+
 
             Patient patient = new Patient();
             patient.setName(name_input.getText());
@@ -428,6 +478,67 @@ public class MsiGuiController implements Initializable {
         }
 
         //ELLENORZES?
+    }
+
+    @FXML
+    public void SearchButtonPushed(ActionEvent event){
+        String elementToSearch = searchElementInput.getText();
+        String choiceBoxValue = myChoiceBox.getValue();
+        if (elementToSearch.isEmpty()){
+            SearchPatientFailed("Írjon be keresendő szöveget!");
+            return;
+        }
+        if (choiceBoxValue == null){
+            SearchPatientFailed("Válassza ki mi alapján szeretne keresni!");
+            return;
+        }
+
+        int foundPatientsLength = 0;
+
+        if (choiceBoxValue.matches("Név")){
+            if (!elementToSearch.matches("[a-zA-z+]+")){
+                SearchPatientFailed("A név csak betűt tartalmazhat!");
+                return;
+            }
+            patientsTable.setItems(listPatientsForSearching("Név",elementToSearch));
+            foundPatientsLength = listPatientsForSearching("Név",elementToSearch).size();
+        }else if(choiceBoxValue.matches("Kartonszám")){
+            if (!elementToSearch.matches("[0-9]+")){
+                SearchPatientFailed("A kartonszám csak számot tartalmazhat!");
+                return;
+            }
+            patientsTable.setItems(listPatientsForSearching("Kartonszám",elementToSearch));
+            foundPatientsLength = listPatientsForSearching("Kartonszám",elementToSearch).size();
+        }else if(choiceBoxValue.matches("Város")){
+            if (!elementToSearch.matches("[a-zA-z+]+")){
+                SearchPatientFailed("A város csak betűt tartalmazhat!");
+                return;
+            }
+            patientsTable.setItems(listPatientsForSearching("Város",elementToSearch));
+            foundPatientsLength = listPatientsForSearching("Város",elementToSearch).size();
+        }else if(choiceBoxValue.matches("TAJ/Azonosító")){
+            if (!elementToSearch.matches("[0-9]+") || elementToSearch.length() !=9){
+                SearchPatientFailed("A tajszám csak számot tartalmazhat,\n és 9 szám lehet!");
+                return;
+            }
+            patientsTable.setItems(listPatientsForSearching("TAJ/Azonosító",elementToSearch));
+            foundPatientsLength = listPatientsForSearching("TAJ/Azonosító",elementToSearch).size();
+        }
+
+        foundElementsNumber.setText("" + foundPatientsLength);
+        SearchPatientSuccess("Sikeres Keresés");
+        searchElementInput.setText("");
+    }
+
+    @FXML
+    public void ListAllPatientPushed(ActionEvent event){
+        patientsTable.setItems(listPatientsToUI());
+        foundElementsNumber.setText("X");
+        SearchPatientSuccess("Betegek listázva.");
+    }
+
+    private void GetPatientDiagnose(){
+
     }
 
     private void clearTexts() {
@@ -471,7 +582,16 @@ public class MsiGuiController implements Initializable {
         SuccesPatient.setText(message);
     }
 
-    private void RemoveSuccesPatient(String messageRemove){
+    private void SearchPatientSuccess(String messageRemove){
+        RemoveSuccesPatient.setStyle("" +
+                "-fx-font-weight:bold;\n" +
+                "\t-fx-background-color:rgba(116, 214, 137, 0.8);\n" +
+                "\t-fx-border-color: green;\n" +
+                "\t-fx-border-width:2px;");
+        RemoveSuccesPatient.setText(messageRemove);
+    }
+
+    private void SearchPatientFailed(String messageRemove){
         RemoveSuccesPatient.setStyle("" +
                 "-fx-font-weight:bold;\n" +
                 "\t-fx-background-color:rgba(215, 117, 117, 0.8);\n" +

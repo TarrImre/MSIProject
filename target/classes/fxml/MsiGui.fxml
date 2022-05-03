@@ -334,17 +334,18 @@
                                                    </padding>
                                                    <children>
                                                       <ChoiceBox fx:id="myChoiceBox" layoutX="98.0" layoutY="39.0" prefWidth="150.0" />
-                                                      <TextField fx:id="searchelements_input" layoutX="266.0" layoutY="39.0" prefHeight="25.0" prefWidth="197.0" />
+                                                      <TextField fx:id="searchElementInput" layoutX="266.0" layoutY="39.0" prefHeight="25.0" prefWidth="197.0" promptText="Írja be a keresendő szöveget!" />
                                                       <Label fx:id="RemoveSuccesPatient" alignment="CENTER" layoutX="147.0" layoutY="80.0" prefHeight="100.0" prefWidth="238.0" />
                                                    </children>
                                                 </AnchorPane>
-                                                <Button layoutX="666.0" layoutY="55.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Keresés" />
+                                                <Button layoutX="666.0" layoutY="55.0" mnemonicParsing="false" onAction="#SearchButtonPushed" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Keresés" />
                                                 <Pane layoutX="666.0" layoutY="116.0" prefHeight="45.0" prefWidth="199.0" styleClass="successregister">
                                                    <children>
-                                                      <Label layoutX="66.0" layoutY="10.0" prefHeight="25.0" prefWidth="29.0" style="-fx-font-size: 16;" text="X" />
+                                                      <Label fx:id="foundElementsNumber" layoutX="66.0" layoutY="10.0" prefHeight="25.0" prefWidth="29.0" style="-fx-font-size: 16;" text="X" />
                                                       <Label layoutX="93.0" layoutY="10.0" style="-fx-font-size: 16;" text="Találat" />
                                                    </children>
                                                 </Pane>
+                                                <Button layoutX="666.0" layoutY="171.0" mnemonicParsing="false" onAction="#ListAllPatientPushed" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Összes beteg listázása" />
                                              </children>
                                           </Pane>
                                        </children></AnchorPane>
