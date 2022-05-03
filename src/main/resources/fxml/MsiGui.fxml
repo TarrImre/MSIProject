@@ -1,27 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.MsiGuiController">
+<AnchorPane id="AnchorPane" fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.MsiGuiController">
    <children>
       <Pane fx:id="themeoverlay" layoutX="440.0" layoutY="96.0" prefHeight="479.0" prefWidth="387.0" styleClass="overlay" stylesheets="@style.css">
          <children>
@@ -320,8 +307,8 @@
                                        <children>
                                           <Pane layoutX="934.0" layoutY="47.0" prefHeight="216.0" prefWidth="301.0" styleClass="loginhatter">
                                              <children>
-                                                <Button fx:id="patientRemoveButton" layoutX="51.0" layoutY="143.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Beteg törlése" />
-                                                <TextField fx:id="cardnum_remove" layoutX="27.0" layoutY="67.0" prefHeight="41.0" prefWidth="248.0" />
+                                                <Button fx:id="patientRemoveButton" layoutX="51.0" layoutY="143.0" mnemonicParsing="false" onAction="#PatientRemoveButtonPushed" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Beteg törlése" />
+                                                <TextField fx:id="cardnumToRemove" layoutX="27.0" layoutY="67.0" prefHeight="41.0" prefWidth="248.0" />
                                                 <Label layoutX="27.0" layoutY="50.0" text="Kartonszám" />
                                              </children>
                                           </Pane>

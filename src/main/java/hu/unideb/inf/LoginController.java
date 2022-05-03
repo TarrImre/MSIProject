@@ -153,9 +153,7 @@ public class LoginController implements Serializable {
 
     private boolean isAllFilled() {
         if(username.getText() == null || username.getText().trim().isEmpty()) return false;
-        if(password.getText() == null || password.getText().trim().isEmpty()) return false;
-
-        return true;
+        return password.getText() != null && !password.getText().trim().isEmpty();
     }
 
 

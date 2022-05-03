@@ -70,6 +70,9 @@ public class MsiGuiController implements Initializable {
     private TableColumn<Patient, String> streetNumberCol;
 
     @FXML
+    private TextField cardnumToRemove;
+
+    @FXML
     private TextField name_input;
 
     @FXML
@@ -326,6 +329,44 @@ public class MsiGuiController implements Initializable {
         }
 
         return patients;
+    }
+
+    @FXML
+    public void PatientRemoveButtonPushed(ActionEvent event){
+
+        try(JPAPatientDAO aDAO = new JPAPatientDAO()){
+            if(cardnumToRemove.getText().isEmpty()){
+                Message("A törléshez ki kell tölteni a kartonszám mezőt!"); //NEM JO HELYEN JÖN A MESSAGE IMI
+                return;
+            }
+
+            if (!cardnumToRemove.getText().matches("[0-9]+")){
+                Message("A kartonszám csak számot tartalmaz!"); //NEM JO HELYEN JÖN A MESSAGE IMI
+                return;
+            }
+
+            if (!aDAO.cardnumberAlreadyExists(Integer.parseInt(cardnumToRemove.getText()))){
+                Message("A kartonszám nem létezik!"); //NEM JO HELYEN JÖN A MESSAGE IMI
+                return;
+            }
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("BIZTOSAN TÖLRI?"); // IGEN vagy NEM gui?
+            alert.showAndWait();
+
+            List<Patient> patients = aDAO.getPatients();
+
+            for (Patient p : patients){
+                if (p.getCardNumber() == Integer.parseInt(cardnumToRemove.getText())){
+                    aDAO.deletePatient(p);
+                }
+            }
+
+            patientsTable.setItems(listPatientsToUI());
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
