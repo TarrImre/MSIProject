@@ -100,7 +100,7 @@ public class UserRegistrationController implements Initializable{
             }
 
             if(!isValidUsername(usernameReg.getText())){
-                errorMessage("Helytelen felhasználónév formátum!\n-Minimum 5 karakter\n-Nem tartalmazhat számot");
+                errorMessage("Helytelen felhasználónév formátum!\n-Minimum 3 karakter\n-Nem tartalmazhat számot");
                 clearTexts();
                 return;
                 //6 - 30 hosszú betűvel kell kezdődnie
@@ -253,7 +253,7 @@ public class UserRegistrationController implements Initializable{
     }
 
     public static boolean isValidUsername(String name) {
-        String regex = "^[A-Za-z]\\w{5,29}$";
+        String regex = "^[A-Za-z]\\w{2,29}$";
 
         Pattern p = Pattern.compile(regex);
 

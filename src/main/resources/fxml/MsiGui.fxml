@@ -196,7 +196,7 @@
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0">
                      <children>
-                        <TableView id="tableView1" fx:id="patientsTable" prefHeight="649.0" prefWidth="1280.0" stylesheets="@style.css">
+                        <TableView id="tableView1" fx:id="patientsTable" onMouseClicked="#clickTable" prefHeight="649.0" prefWidth="1280.0" stylesheets="@style.css">
                            <columns>
                               <TableColumn fx:id="cardNumberCol" maxWidth="750.0" minWidth="51.0" prefWidth="116.0" text="Kartonszám" />
                               <TableColumn fx:id="nameCol" maxWidth="750.0" minWidth="34.0" prefWidth="99.0" text="Név" />
@@ -341,7 +341,7 @@
                                                 <Button layoutX="666.0" layoutY="55.0" mnemonicParsing="false" onAction="#SearchButtonPushed" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Keresés" />
                                                 <Pane layoutX="666.0" layoutY="116.0" prefHeight="45.0" prefWidth="199.0" styleClass="successregister">
                                                    <children>
-                                                      <Label fx:id="foundElementsNumber" layoutX="66.0" layoutY="10.0" prefHeight="25.0" prefWidth="29.0" style="-fx-font-size: 16;" text="X" />
+                                                      <Label fx:id="foundElementsNumber" layoutX="66.0" layoutY="10.0" prefHeight="25.0" prefWidth="29.0" style="-fx-font-size: 16;" />
                                                       <Label layoutX="93.0" layoutY="10.0" style="-fx-font-size: 16;" text="Találat" />
                                                    </children>
                                                 </Pane>

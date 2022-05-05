@@ -337,7 +337,7 @@ public class MsiGuiController implements Initializable {
 
             for (Patient p : listOfPatients){
                 if (elementToSearch.contains("Név")){
-                    if (p.getName().matches(searchBarText)){
+                    if (p.getName().contains(searchBarText)){
                         patients.add(p);
                     }
                 }
@@ -441,7 +441,7 @@ public class MsiGuiController implements Initializable {
                 Message("Helytelen születési dátum!\nHelyes formátum: ÉÉÉÉ-HH-NN");
                 return;
             }
-            if (!name_input.getText().matches("[a-zA-Z]+") || !mothersname_input.getText().matches("[a-zA-Z]+") || !city_input.getText().matches("[a-zA-Z]+") || !street_input.getText().matches("[a-zA-Z]+"))
+            if (!name_input.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+") || !mothersname_input.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+") || !city_input.getText().matches("[[a-zA-Z]+ÉÁÖÜÓŐÚŰÍéáöüóőúűí]+") || !street_input.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+"))
             {
                 Message("A Név, Anyja neve, Város és Utca mezők\n csak betűket tartalmazhatnak!");
                 return;
@@ -496,7 +496,7 @@ public class MsiGuiController implements Initializable {
         int foundPatientsLength = 0;
 
         if (choiceBoxValue.matches("Név")){
-            if (!elementToSearch.matches("[a-zA-z+]+")){
+            if (!elementToSearch.matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+")){
                 SearchPatientFailed("A név csak betűt tartalmazhat!");
                 return;
             }
@@ -510,7 +510,7 @@ public class MsiGuiController implements Initializable {
             patientsTable.setItems(listPatientsForSearching("Kartonszám",elementToSearch));
             foundPatientsLength = listPatientsForSearching("Kartonszám",elementToSearch).size();
         }else if(choiceBoxValue.matches("Város")){
-            if (!elementToSearch.matches("[a-zA-z+]+")){
+            if (!elementToSearch.matches("[[a-zA-Z]+ÉÁÖÜÓŐÚŰÍéáöüóőúűí]+")){
                 SearchPatientFailed("A város csak betűt tartalmazhat!");
                 return;
             }
@@ -537,8 +537,15 @@ public class MsiGuiController implements Initializable {
         SearchPatientSuccess("Betegek listázva.");
     }
 
-    private void GetPatientDiagnose(){
+    @FXML
+    public void clickTable(MouseEvent event){
+        if (event.getClickCount() == 1){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText(patientsTable.getSelectionModel().getSelectedItem().getDiagnose());
+            alert.showAndWait();
 
+            //UI ban 3. fül elkészitése
+        }
     }
 
     private void clearTexts() {
