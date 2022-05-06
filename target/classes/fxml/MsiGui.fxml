@@ -206,8 +206,9 @@
                               <TableColumn fx:id="insuranceIDCol" maxWidth="643.0" minWidth="0.0" prefWidth="152.0" text="TAJ / Azonosító" />
                               <TableColumn fx:id="zipcodeCol" maxWidth="750.0" minWidth="61.0" prefWidth="131.0" text="Irányítószám" />
                               <TableColumn fx:id="cityCol" maxWidth="750.0" minWidth="31.0" prefWidth="119.0" text="Város" />
-                              <TableColumn fx:id="streetCol" maxWidth="750.0" minWidth="24.0" prefWidth="160.0" text="Utca" />
-                              <TableColumn fx:id="streetNumberCol" maxWidth="231.0" minWidth="0.0" prefWidth="133.0" text="Házszám" />
+                              <TableColumn fx:id="streetCol" maxWidth="750.0" minWidth="24.0" prefWidth="178.0" text="Utca" />
+                              <TableColumn fx:id="streetNumberCol" maxWidth="231.0" minWidth="0.0" prefWidth="115.0" text="Házszám" />
+                              <TableColumn maxWidth="250.0" minWidth="250.0" prefWidth="250.0" resizable="false" />
                            </columns>
                         </TableView>
                      </children>
@@ -255,7 +256,7 @@
                                              </children>
                                           </HBox>
                                           <TextArea id="textArea1" fx:id="diagnose_input" layoutX="94.0" layoutY="196.0" prefHeight="77.0" prefWidth="533.0" styleClass="betegseg" wrapText="true" />
-                                          <Label id="label2" layoutX="14.0" layoutY="195.0" text="Diagnosztika" />
+                                          <Label id="label2" layoutX="14.0" layoutY="195.0" prefHeight="17.0" prefWidth="59.0" text="Diagnózis" />
                                           <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="14.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="iranyitoszam_label" minWidth="-Infinity" text="Irányítószám" />
@@ -328,32 +329,157 @@
                                           </Pane>
                                           <Pane layoutX="14.0" layoutY="14.0" prefHeight="276.0" prefWidth="887.0" styleClass="loginhatter">
                                              <children>
-                                                <AnchorPane layoutX="265.0" layoutY="48.0" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="387.0">
-                                                   <padding>
-                                                      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-                                                   </padding>
-                                                   <children>
-                                                      <ChoiceBox fx:id="myChoiceBox" layoutX="14.0" layoutY="14.0" prefWidth="150.0" />
-                                                      <TextField fx:id="searchElementInput" layoutX="167.0" layoutY="14.0" prefHeight="25.0" prefWidth="197.0" promptText="Írja be a keresendő szöveget!" />
-                                                      <Label fx:id="RemoveSuccesPatient" alignment="CENTER" layoutX="45.0" layoutY="66.0" prefHeight="100.0" prefWidth="238.0" />
-                                                   </children>
-                                                </AnchorPane>
-                                                <Button layoutX="666.0" layoutY="55.0" mnemonicParsing="false" onAction="#SearchButtonPushed" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Keresés" />
-                                                <Pane layoutX="666.0" layoutY="116.0" prefHeight="45.0" prefWidth="199.0" styleClass="successregister">
+                                                <Button layoutX="666.0" layoutY="171.0" mnemonicParsing="false" onAction="#ListAllPatientPushed" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Összes beteg listázása" />
+                                                <Button layoutX="666.0" layoutY="58.0" mnemonicParsing="false" onAction="#SearchButtonPushed" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Keresés" />
+                                                <ChoiceBox fx:id="myChoiceBox" layoutX="49.0" layoutY="45.0" prefWidth="150.0" />
+                                                <TextField fx:id="searchElementInput" layoutX="219.0" layoutY="45.0" prefHeight="25.0" prefWidth="197.0" promptText="Írja be a keresendő szöveget!" />
+                                                <Pane fx:id="foundElementsNumberID" layoutX="666.0" layoutY="116.0" opacity="0.0" prefHeight="45.0" prefWidth="199.0" styleClass="successregister">
                                                    <children>
                                                       <Label fx:id="foundElementsNumber" layoutX="66.0" layoutY="10.0" prefHeight="25.0" prefWidth="29.0" style="-fx-font-size: 16;" />
                                                       <Label layoutX="93.0" layoutY="10.0" style="-fx-font-size: 16;" text="Találat" />
                                                    </children>
                                                 </Pane>
-                                                <Button layoutX="666.0" layoutY="171.0" mnemonicParsing="false" onAction="#ListAllPatientPushed" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Összes beteg listázása" />
-                                                <TextArea fx:id="patientDiagnoseArea" layoutX="14.0" layoutY="61.0" prefHeight="200.0" prefWidth="236.0" />
-                                                <Label layoutX="23.0" layoutY="7.0" prefHeight="25.0" prefWidth="224.0" text="Kattintson egy betegre a listában, hogy" />
-                                                <Label layoutX="23.0" layoutY="32.0" prefHeight="25.0" prefWidth="219.0" text="lekérdezze a diagnosztikáját!" />
+                                                <AnchorPane layoutX="232.0" layoutY="127.0" minHeight="0.0" minWidth="0.0" prefHeight="149.0" prefWidth="322.0">
+                                                   <padding>
+                                                      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                                   </padding>
+                                                   <children>
+                                                      <Label fx:id="RemoveSuccesPatient" alignment="CENTER" layoutX="49.0" layoutY="25.0" prefHeight="100.0" prefWidth="238.0" />
+                                                   </children>
+                                                </AnchorPane>
                                              </children>
                                           </Pane>
                                        </children></AnchorPane>
                               </content>
                             </Tab>
+                              <Tab text="Diagnózis">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1280.0">
+                                       <children>
+                                          <Pane layoutX="934.0" layoutY="47.0" prefHeight="216.0" prefWidth="301.0" styleClass="loginhatter">
+                                             <children>
+                                                <Button layoutX="51.0" layoutY="83.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Valami Gomb" />
+                                             </children>
+                                          </Pane>
+                                          <Pane layoutX="14.0" layoutY="14.0" prefHeight="276.0" prefWidth="887.0" styleClass="loginhatter">
+                                             <children>
+                                                <Label fx:id="SelectPatientLabel" layoutX="209.0" layoutY="104.0" prefHeight="68.0" prefWidth="469.0" style="-fx-font-size: 24;" text="A legkérdezéshez, válasszon ki egy beteget!" />
+                                                <Button fx:id="ConfirmButton_SelectPatientLabel" layoutX="328.0" layoutY="195.0" mnemonicParsing="false" onAction="#ConfirmButton_SelectPatientLabel_Action" opacity="0.0" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Rendben" />
+                                                <Label fx:id="DiagnoseLabel" layoutX="99.0" layoutY="32.0" style="-fx-font-size: 16; -fx-font-weight: bold;" />
+                                                <Label fx:id="Diagnoses" layoutX="99.0" layoutY="57.0" style="-fx-font-size: 16;" />
+                                             </children>
+                                          </Pane>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab fx:id="Modify" text="Módosítás">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1280.0">
+                                       <children>
+                                          <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
+                                             <children>
+                                                <Label id="label4" fx:id="kartonszam_label1" minWidth="-Infinity" text="Kartonszám" />
+                                                <TextField id="textField1" fx:id="cardnum_input_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS">
+                                                   <cursor>
+                                                      <Cursor fx:constant="DEFAULT" />
+                                                   </cursor>
+                                                </TextField>
+                                             </children>
+                                          </HBox>
+                                          <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="49.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
+                                             <children>
+                                                <Label id="label4" fx:id="nev_label1" minWidth="-Infinity" text="Név" />
+                                                <TextField id="textField1" fx:id="name_input_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                          <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="84.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
+                                             <children>
+                                                <Label id="label4" fx:id="anyaneve_label1" minWidth="-Infinity" text="Anyja neve" />
+                                                <TextField id="textField1" fx:id="mothersname_input_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                          <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="119.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
+                                             <children>
+                                                <Label id="label4" fx:id="taj_label1" minWidth="-Infinity" text="TAJ / Azonosító" />
+                                                <TextField id="textField1" fx:id="taj_input_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                          <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="154.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
+                                             <children>
+                                                <Label id="label4" fx:id="szuletesidatum_label1" minWidth="-Infinity" text="Születési dátum" />
+                                                <TextField id="textField1" fx:id="birthdate_input_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                          <TextArea id="textArea1" fx:id="diagnose_input_modify" layoutX="94.0" layoutY="196.0" prefHeight="77.0" prefWidth="533.0" styleClass="betegseg" wrapText="true" />
+                                          <Label id="label2" layoutX="14.0" layoutY="195.0" prefHeight="17.0" prefWidth="59.0" text="Diagnózis" />
+                                          <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="14.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
+                                             <children>
+                                                <Label id="label4" fx:id="iranyitoszam_label1" minWidth="-Infinity" text="Irányítószám" />
+                                                <TextField id="textField1" fx:id="zipcode_input_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                          <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="49.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
+                                             <children>
+                                                <Label id="label4" fx:id="varos_label1" minWidth="-Infinity" text="Város" />
+                                                <TextField id="textField1" fx:id="city_input_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                          <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="84.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
+                                             <children>
+                                                <Label id="label4" fx:id="utca_label1" minWidth="-Infinity" text="Utca" />
+                                                <TextField id="textField1" fx:id="street_input_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                          <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="119.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
+                                             <children>
+                                                <Label id="label4" fx:id="hazszam_label1" minWidth="-Infinity" prefHeight="17.0" prefWidth="51.0" text="Házszám" />
+                                                <TextField id="textField1" fx:id="housenum_input_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                          <HBox layoutX="686.0" layoutY="210.0" />
+                                          <HBox layoutX="390.0" layoutY="154.0" prefHeight="25.0" prefWidth="237.0">
+                                             <children>
+                                                <Label alignment="TOP_CENTER" text="Nem:">
+                                                   <HBox.margin>
+                                                      <Insets top="3.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <RadioButton fx:id="radioMale_modify" contentDisplay="RIGHT" mnemonicParsing="false" text="Férfi">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="neme1" />
+                                                   </toggleGroup>
+                                                   <HBox.margin>
+                                                      <Insets left="22.0" top="3.0" />
+                                                   </HBox.margin>
+                                                </RadioButton>
+                                                <RadioButton fx:id="radioFemale_modify" mnemonicParsing="false" text="Nő" toggleGroup="$neme1">
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" top="3.0" />
+                                                   </HBox.margin>
+                                                </RadioButton>
+                                             </children>
+                                          </HBox>
+                                          <Button fx:id="ApplyModify" layoutX="668.0" layoutY="187.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Módosítások mentése" />
+                                          <Pane layoutX="922.0" layoutY="27.0" prefHeight="216.0" prefWidth="301.0" styleClass="loginhatter">
+                                             <children>
+                                                <Button fx:id="LoadCardnumModifyButton" layoutX="51.0" layoutY="143.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Betöltés" />
+                                                <TextField fx:id="LoadCardnumModify" layoutX="27.0" layoutY="67.0" prefHeight="41.0" prefWidth="248.0" />
+                                                <Label layoutX="75.0" layoutY="43.0" text="Betöltés kartonszám alapján!" />
+                                             </children>
+                                          </Pane>
+                                          <Pane fx:id="SuccesModify" layoutX="669.0" layoutY="127.0" prefHeight="45.0" prefWidth="199.0" styleClass="successregister">
+                                             <children>
+                                                <Label layoutX="44.0" layoutY="10.0" style="-fx-font-size: 16;" text="Sikeres módítás" />
+                                             </children>
+                                          </Pane>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                       </padding>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
                           </tabs>
                         </TabPane>
                      </children>
