@@ -1,10 +1,8 @@
 package hu.unideb.inf;
 
 import hu.unideb.inf.DAO.JPAPatientDAO;
-import hu.unideb.inf.DAO.JPAUserDAO;
 import hu.unideb.inf.Modell.Model;
 import hu.unideb.inf.Modell.Patient;
-import hu.unideb.inf.Modell.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,17 +18,13 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.time.format.ResolverStyle;
 import java.util.*;
 
 public class MsiGuiController implements Initializable {
@@ -92,12 +86,6 @@ public class MsiGuiController implements Initializable {
     private TextArea diagnose_input;
 
     @FXML
-    private TextArea patientDiagnoseArea;
-
-    @FXML
-    private TextField zipcode_input;
-
-    @FXML
     private TextField city_input;
 
     @FXML
@@ -105,6 +93,39 @@ public class MsiGuiController implements Initializable {
 
     @FXML
     private TextField housenum_input;
+
+    @FXML
+    private TextField zipcode_input;
+
+    @FXML
+    private TextField name_modify;
+
+    @FXML
+    private TextField cardnum_modify;
+
+    @FXML
+    private TextField mothersname_modify;
+
+    @FXML
+    private TextField taj_modify;
+
+    @FXML
+    private TextField birthdate_modify;
+
+    @FXML
+    private TextArea diagnose_modify;
+
+    @FXML
+    private TextField zipcode_modify;
+
+    @FXML
+    private TextField city_modify;
+
+    @FXML
+    private TextField street_modify;
+
+    @FXML
+    private TextField housenum_modify;
 
     @FXML
     private TextField searchElementInput;
@@ -116,8 +137,13 @@ public class MsiGuiController implements Initializable {
     private RadioButton radioFemale;
 
     @FXML
-    private Label foundElementsNumber;
+    private RadioButton radioMale_modify;
 
+    @FXML
+    private RadioButton radioFemale_modify;
+
+    @FXML
+    private Label foundElementsNumber;
 
     public void setModel(Model model) {
         this.model = model;
@@ -478,7 +504,6 @@ public class MsiGuiController implements Initializable {
             e.printStackTrace();
         }
 
-        //ELLENORZES?
     }
 
     @FXML private Pane foundElementsNumberID;
@@ -556,8 +581,80 @@ public class MsiGuiController implements Initializable {
             DiagnoseLabel.setText("Diagnózis:");
             Diagnoses.setText(patientsTable.getSelectionModel().getSelectedItem().getDiagnose());
             ConfirmButton_SelectPatientLabel.setOpacity(1);
+            cardnum_modify.setText(String.valueOf(patientsTable.getSelectionModel().getSelectedItem().getCardNumber()));
+            name_modify.setText(patientsTable.getSelectionModel().getSelectedItem().getName());
+            mothersname_modify.setText(patientsTable.getSelectionModel().getSelectedItem().getNameOfMother());
+            taj_modify.setText(String.valueOf(patientsTable.getSelectionModel().getSelectedItem().getSocialInsuranceId()));
+            birthdate_modify.setText(patientsTable.getSelectionModel().getSelectedItem().getBirthDate());
+            zipcode_modify.setText(String.valueOf(patientsTable.getSelectionModel().getSelectedItem().getZipCode()));
+            city_modify.setText(patientsTable.getSelectionModel().getSelectedItem().getCity());
+            street_modify.setText(patientsTable.getSelectionModel().getSelectedItem().getStreet());
+            housenum_modify.setText(patientsTable.getSelectionModel().getSelectedItem().getStreetNumber());
+            diagnose_modify.setText(patientsTable.getSelectionModel().getSelectedItem().getDiagnose());
         }
     }
+
+    @FXML
+    public void modifyButtonPushed(ActionEvent event){
+        try(JPAPatientDAO aDAO = new JPAPatientDAO()){
+
+            if (!zipcode_modify.getText().matches("[0-9]+") || !taj_modify.getText().matches("[0-9]+") || !housenum_modify.getText().matches("[0-9]+")){
+                Message("Az irányítószám, házszám és tajszám mezők\n csak számokat tartalmazhatnak!");
+                return;
+            }
+            if(taj_modify.getText().length() != 9){
+                Message("A tajszám 9 számot tartalmaz!");
+                return;
+            }
+            if(!isValidBirthDate(birthdate_modify.getText())){
+                Message("Helytelen születési dátum!\nHelyes formátum: ÉÉÉÉ-HH-NN");
+                return;
+            }
+            if (!name_modify.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+") || !mothersname_modify.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+") || !city_modify.getText().matches("[[a-zA-Z]+ÉÁÖÜÓŐÚŰÍéáöüóőúűí]+") || !street_modify.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+"))
+            {
+                Message("A Név, Anyja neve, Város és Utca mezők\n csak betűket tartalmazhatnak!");
+                return;
+            }
+
+            List<Patient> patients = aDAO.getPatients();
+
+            for (Patient p : patients){
+                if (p.getCardNumber() == Integer.parseInt(cardnum_modify.getText())){
+                    aDAO.deletePatient(p);
+                }
+            }
+
+            Patient patient = new Patient();
+            patient.setName(name_modify.getText());
+            patient.setCity(city_modify.getText());
+            patient.setBirthDate(birthdate_modify.getText());
+            patient.setCardNumber(Integer.parseInt(cardnum_modify.getText()));
+            patient.setDiagnose(diagnose_modify.getText());
+            patient.setNameOfMother(mothersname_modify.getText());
+            patient.setStreetNumber(housenum_modify.getText());
+            patient.setZipCode(Integer.parseInt(zipcode_modify.getText()));
+            patient.setStreet(street_modify.getText());
+            patient.setSocialInsuranceId(Integer.parseInt(taj_modify.getText()));
+
+            if (radioMale_modify.isSelected()){
+                patient.setGender("MALE");
+            }else {
+                patient.setGender("FEMALE");
+            }
+            aDAO.savePatient(patient);
+            clearTexts();
+
+            patientsTable.setItems(listPatientsToUI());
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+
+
     public void ConfirmButton_SelectPatientLabel_Action(ActionEvent event){
         SelectPatientLabel.setText("A legkérdezéshez, válasszon ki egy beteget!");
         DiagnoseLabel.setText("");
@@ -580,6 +677,20 @@ public class MsiGuiController implements Initializable {
         housenum_input.setText("");
         radioMale.setSelected(false);
         radioFemale.setSelected(false);
+        //modify
+        name_modify.setText("");
+        city_modify.setText("");
+        zipcode_modify.setText("");
+        street_modify.setText("");
+        taj_modify.setText("");  //9 SZÁM
+        cardnum_modify.setText("");
+        diagnose_modify.setText("");
+        birthdate_modify.setText(""); //YYYY-MM-DD FORMÁTUM
+        mothersname_modify.setText("");
+        housenum_modify.setText("");
+        radioMale_modify.setSelected(false);
+        radioFemale_modify.setSelected(false);
+
     }
 
     private boolean isAllFilled(){
