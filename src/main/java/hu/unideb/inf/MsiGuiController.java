@@ -24,6 +24,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -387,17 +388,17 @@ public class MsiGuiController implements Initializable {
 
         try(JPAPatientDAO aDAO = new JPAPatientDAO()){
             if(cardnumToRemove.getText().isEmpty()){
-                SearchPatientFailed("A törléshez ki kell tölteni a kartonszám mezőt!"); //NEM JO HELYEN JÖN A MESSAGE IMI
+                SearchPatientFailed("A törléshez ki kell tölteni a kartonszám mezőt!");
                 return;
             }
 
             if (!cardnumToRemove.getText().matches("[0-9]+")){
-                SearchPatientFailed("A kartonszám csak számot tartalmaz!"); //NEM JO HELYEN JÖN A MESSAGE IMI
+                SearchPatientFailed("A kartonszám csak számot tartalmaz!");
                 return;
             }
 
             if (!aDAO.cardnumberAlreadyExists(Integer.parseInt(cardnumToRemove.getText()))){
-                SearchPatientFailed("A kartonszám nem létezik!"); //NEM JO HELYEN JÖN A MESSAGE IMI
+                SearchPatientFailed("A kartonszám nem létezik!");
                 return;
             }
 
@@ -480,16 +481,20 @@ public class MsiGuiController implements Initializable {
         //ELLENORZES?
     }
 
+    @FXML private Pane foundElementsNumberID;
     @FXML
     public void SearchButtonPushed(ActionEvent event){
+
         String elementToSearch = searchElementInput.getText();
         String choiceBoxValue = myChoiceBox.getValue();
         if (elementToSearch.isEmpty()){
             SearchPatientFailed("Írjon be keresendő szöveget!");
+            foundElementsNumberID.setOpacity(0);
             return;
         }
         if (choiceBoxValue == null){
             SearchPatientFailed("Válassza ki mi alapján szeretne keresni!");
+            foundElementsNumberID.setOpacity(0);
             return;
         }
 
@@ -498,6 +503,7 @@ public class MsiGuiController implements Initializable {
         if (choiceBoxValue.matches("Név")){
             if (!elementToSearch.matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+")){
                 SearchPatientFailed("A név csak betűt tartalmazhat!");
+                foundElementsNumberID.setOpacity(0);
                 return;
             }
             patientsTable.setItems(listPatientsForSearching("Név",elementToSearch));
@@ -505,6 +511,7 @@ public class MsiGuiController implements Initializable {
         }else if(choiceBoxValue.matches("Kartonszám")){
             if (!elementToSearch.matches("[0-9]+")){
                 SearchPatientFailed("A kartonszám csak számot tartalmazhat!");
+                foundElementsNumberID.setOpacity(0);
                 return;
             }
             patientsTable.setItems(listPatientsForSearching("Kartonszám",elementToSearch));
@@ -512,6 +519,7 @@ public class MsiGuiController implements Initializable {
         }else if(choiceBoxValue.matches("Város")){
             if (!elementToSearch.matches("[[a-zA-Z]+ÉÁÖÜÓŐÚŰÍéáöüóőúűí]+")){
                 SearchPatientFailed("A város csak betűt tartalmazhat!");
+                foundElementsNumberID.setOpacity(0);
                 return;
             }
             patientsTable.setItems(listPatientsForSearching("Város",elementToSearch));
@@ -519,12 +527,13 @@ public class MsiGuiController implements Initializable {
         }else if(choiceBoxValue.matches("TAJ/Azonosító")){
             if (!elementToSearch.matches("[0-9]+") || elementToSearch.length() !=9){
                 SearchPatientFailed("A tajszám csak számot tartalmazhat,\n és 9 szám lehet!");
+                foundElementsNumberID.setOpacity(0);
                 return;
             }
             patientsTable.setItems(listPatientsForSearching("TAJ/Azonosító",elementToSearch));
             foundPatientsLength = listPatientsForSearching("TAJ/Azonosító",elementToSearch).size();
         }
-
+        foundElementsNumberID.setOpacity(1);
         foundElementsNumber.setText("" + foundPatientsLength);
         SearchPatientSuccess("Sikeres Keresés");
         searchElementInput.setText("");
@@ -533,20 +542,29 @@ public class MsiGuiController implements Initializable {
     @FXML
     public void ListAllPatientPushed(ActionEvent event){
         patientsTable.setItems(listPatientsToUI());
-        foundElementsNumber.setText("X");
+        foundElementsNumberID.setOpacity(0);
         SearchPatientSuccess("Betegek listázva.");
     }
+
+    @FXML private Label SelectPatientLabel,DiagnoseLabel,Diagnoses;
+    @FXML private Button ConfirmButton_SelectPatientLabel;
 
     @FXML
     public void clickTable(MouseEvent event){
         if (event.getClickCount() == 1){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText(patientsTable.getSelectionModel().getSelectedItem().getDiagnose());
-            alert.showAndWait();
-
-            //UI ban 3. fül elkészitése
+            SelectPatientLabel.setText("");
+            DiagnoseLabel.setText("Diagnózis:");
+            Diagnoses.setText(patientsTable.getSelectionModel().getSelectedItem().getDiagnose());
+            ConfirmButton_SelectPatientLabel.setOpacity(1);
         }
     }
+    public void ConfirmButton_SelectPatientLabel_Action(ActionEvent event){
+        SelectPatientLabel.setText("A legkérdezéshez, válasszon ki egy beteget!");
+        DiagnoseLabel.setText("");
+        Diagnoses.setText("");
+        ConfirmButton_SelectPatientLabel.setOpacity(0);
+    }
+
 
     private void clearTexts() {
         //betegfelvetel
@@ -615,6 +633,8 @@ public class MsiGuiController implements Initializable {
                 "\t-fx-border-width:2px;");
         SuccesPatient.setText(messageSuccess);
     }
+
+
 
     private boolean isValidBirthDate(String date){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");

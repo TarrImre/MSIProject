@@ -27,14 +27,22 @@ világos: #aaedfa
 }
 .table-view .column-header .label{
     -fx-text-fill: #333333;
+	
 }
 .table-view .table-cell{
     -fx-border-color: transparent;
     -fx-padding: 2 0 2 10px;
+
 }
 .table-row-cell: hover {
     -fx-background-color: #93f9b911;
     -fx-text-background-color: red;
+}
+.table-row-cell:selected {
+    -fx-background-color: #93f9b911;
+    -fx-background-insets: 0;
+	-fx-text-background-color: #ad5953;
+    -fx-background-radius: 1;
 }
 .table-row-cell: odd{
     -fx-background-color: #93f9b911;
@@ -77,6 +85,7 @@ világos: #aaedfa
     -fx-background-color: #FFF , #aaedfa;
     -fx-background-insets: 0 0 0 0, 0 0 0 0;
 	-fx-background-radius: 0;
+	-fx-prompt-text-fill: #4d4d4d;
 	/*-fx-opacity:0.4;*/
 }
 .text-field:focused {
@@ -109,12 +118,41 @@ világos: #aaedfa
     -fx-border-width: -1;
 }
 
+/*SZÍNEK
+sötétkék: #3e97a8
+halvány : #e3fbff
+sötétebb : #aaedfa
+gomb aktív: #ebb18f
+világos: #aaedfa
+*/
+/* Background color of the whole context menu*/
+.choice-box .context-menu { -fx-background-color: #3e97a8; }
+/* Focused item background color in the list*/
+.choice-box .menu-item:focused { -fx-background-color: #e3fbff; }
+/* Text color of non-focused items in the list*/
+.choice-box .menu-item > .label { -fx-text-fill: white; }
+/* Text color of focused item in the list*/
+.choice-box .menu-item:focused > .label { -fx-text-fill: black; }
+
+/*Background color of the control itself*/
+.choice-box {
+  -fx-background-color: #3e97a8;
+  -fx-mark-color: white; /* arrow color*/
+  -fx-background-radius:0;
+}
+
+/* Selected item text color on the control itself*/
+.choice-box > .label { -fx-text-fill: white; }
+
+
+
 
 .betegseg{
 	-fx-background-color:  #aaedfa;
     -fx-background-insets: 0 0 0 0, 0 0 0 0;
 	-fx-background-radius: 0;
 }
+
 
 
 
