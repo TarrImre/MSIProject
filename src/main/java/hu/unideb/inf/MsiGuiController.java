@@ -590,51 +590,95 @@ public class MsiGuiController implements Initializable {
 
     @FXML
     public void modifyButtonPushed(ActionEvent event){
+        if (!isAllFilledModify()){
+            ModifyMessageFailed("Minden mezőt kötelező kitölteni!");
+            return;
+        }
+
+        if (!zipcode_modify.getText().matches("[0-9]+") || !taj_modify.getText().matches("[0-9]+") || !housenum_modify.getText().matches("[0-9]+")){
+            ModifyMessageFailed("Az irányítószám, házszám és tajszám\n mezők csak számokat tartalmazhatnak!");
+            return;
+        }
+        if(taj_modify.getText().length() != 9){
+            ModifyMessageFailed("A tajszám 9 számot tartalmaz!");
+            return;
+        }
+        if(!isValidBirthDate(birthdate_modify.getText())){
+            ModifyMessageFailed("Helytelen születési dátum!\nHelyes formátum: ÉÉÉÉ-HH-NN");
+            return;
+        }
+        if (!name_modify.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+") || !mothersname_modify.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+") || !city_modify.getText().matches("[[a-zA-Z]+ÉÁÖÜÓŐÚŰÍéáöüóőúűí]+") || !street_modify.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+"))
+        {
+            ModifyMessageFailed("A Név, Anyja neve, Város és Utca mezők\n csak betűket tartalmazhatnak!");
+            return;
+        }
+
+
         try(JPAPatientDAO aDAO = new JPAPatientDAO()){
 
-            if (!zipcode_modify.getText().matches("[0-9]+") || !taj_modify.getText().matches("[0-9]+") || !housenum_modify.getText().matches("[0-9]+")){
-                ModifyMessageFailed("Az irányítószám, házszám és tajszám\n mezők csak számokat tartalmazhatnak!");
-                return;
-            }
-            if(taj_modify.getText().length() != 9){
-                ModifyMessageFailed("A tajszám 9 számot tartalmaz!");
-                return;
-            }
-            if(!isValidBirthDate(birthdate_modify.getText())){
-                ModifyMessageFailed("Helytelen születési dátum!\nHelyes formátum: ÉÉÉÉ-HH-NN");
-                return;
-            }
-            if (!name_modify.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+") || !mothersname_modify.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+") || !city_modify.getText().matches("[[a-zA-Z]+ÉÁÖÜÓŐÚŰÍéáöüóőúűí]+") || !street_modify.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+"))
-            {
-                ModifyMessageFailed("A Név, Anyja neve, Város és Utca mezők\n csak betűket tartalmazhatnak!");
-                return;
-            }
-
             List<Patient> patients = aDAO.getPatients();
-
+            boolean modify = false;
             for (Patient p : patients){
                 if (p.getCardNumber() == Integer.parseInt(cardnum_modify.getText())){
-                    aDAO.deletePatient(p);
+
+                    if (!(p.getName().matches(name_modify.getText()))) {
+                        p.setName(name_modify.getText());
+                        modify = true;
+                    }
+
+                    if (!(p.getNameOfMother().matches(mothersname_modify.getText()))) {
+                        p.setNameOfMother(mothersname_modify.getText());
+                        modify = true;
+                    }
+
+                    if (p.getSocialInsuranceId() != Integer.parseInt(taj_modify.getText())) {
+                        p.setSocialInsuranceId(Integer.parseInt(taj_modify.getText()));
+                        modify = true;
+                    }
+
+                    if (!(p.getBirthDate().matches(birthdate_modify.getText()))) {
+                        p.setBirthDate(birthdate_modify.getText());
+                        modify = true;
+                    }
+
+                    if (!(p.getDiagnose().matches(diagnose_modify.getText()))) {
+                        p.setDiagnose(diagnose_modify.getText());
+                        modify = true;
+                    }
+
+                    if (p.getZipCode() != Integer.parseInt(zipcode_modify.getText())) {
+                        p.setZipCode(Integer.parseInt(zipcode_modify.getText()));
+                        modify = true;
+                    }
+
+                    if (!(p.getCity().matches(city_modify.getText()))) {
+                        p.setCity(city_modify.getText());
+                        modify = true;
+                    }
+
+                    if (!(p.getStreet().matches(street_modify.getText()))) {
+                        p.setStreet(street_modify.getText());
+                        modify = true;
+                    }
+
+                    if (!(p.getStreetNumber().matches(housenum_modify.getText()))) {
+                        p.setStreetNumber(housenum_modify.getText());
+                        modify = true;
+                    }
+
+                    if (!modify){
+                        ModifyMessageSuccess("Nem történt módosítás!");
+                        clearTexts();
+                        return;
+                    }
+
+                    aDAO.updatePatient(p);
                 }
             }
 
-            Patient patient = new Patient();
-            patient.setName(name_modify.getText());
-            patient.setCity(city_modify.getText());
-            patient.setBirthDate(birthdate_modify.getText());
-            patient.setCardNumber(Integer.parseInt(cardnum_modify.getText()));
-            patient.setDiagnose(diagnose_modify.getText());
-            patient.setNameOfMother(mothersname_modify.getText());
-            patient.setStreetNumber(housenum_modify.getText());
-            patient.setZipCode(Integer.parseInt(zipcode_modify.getText()));
-            patient.setStreet(street_modify.getText());
-            patient.setSocialInsuranceId(Integer.parseInt(taj_modify.getText()));
-
-            aDAO.savePatient(patient);
-            clearTexts();
-
             patientsTable.setItems(listPatientsToUI());
             ModifyMessageSuccess("Sikeres módosítás!");
+            clearTexts();
 
         }catch (Exception e){
             e.printStackTrace();
@@ -642,6 +686,21 @@ public class MsiGuiController implements Initializable {
 
     }
 
+    private boolean isAllFilledModify() {
+        if(name_modify.getText() == null || name_modify.getText().trim().isEmpty()) return false;
+        if(city_modify.getText() == null || city_modify.getText().trim().isEmpty()) return false;
+        if(zipcode_modify.getText() == null || zipcode_modify.getText().trim().isEmpty()) return false;
+        if(street_modify.getText() == null || street_modify.getText().trim().isEmpty()) return false;
+        if(taj_modify.getText() == null || taj_modify.getText().trim().isEmpty()) return false;
+        if(cardnum_modify.getText() == null || cardnum_modify.getText().trim().isEmpty()) return false;
+        if(diagnose_modify.getText() == null || diagnose_modify.getText().trim().isEmpty()) return false;
+        if(birthdate_modify.getText() == null || birthdate_modify.getText().trim().isEmpty()) return false;
+        if(mothersname_modify.getText() == null || mothersname_modify.getText().trim().isEmpty()) return false;
+        if(housenum_modify.getText() == null || housenum_modify.getText().trim().isEmpty()) return false;
+
+        return true;
+
+    }
 
 
     public void ConfirmButton_SelectPatientLabel_Action(ActionEvent event){
