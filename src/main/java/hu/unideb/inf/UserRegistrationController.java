@@ -9,16 +9,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import org.junit.Test;
 
 import java.io.IOException;
 import java.net.URL;
@@ -31,7 +27,6 @@ import java.math.*;
 import static org.junit.Assert.assertTrue;
 
 public class UserRegistrationController implements Initializable{
-
 
     @FXML
     private TextField usernameReg;
@@ -47,6 +42,12 @@ public class UserRegistrationController implements Initializable{
 
     @FXML
     private TextField passwordRegSecond;
+
+    @FXML
+    private Button registerButton;
+
+    @FXML
+    private Label registerMessageLabel;
 
     @FXML private Pane topPane;
     private double x,y;
@@ -78,67 +79,55 @@ public class UserRegistrationController implements Initializable{
     }
 
     @FXML
-    private Button registerButton;
+    private void userRegisterButtonPushed(ActionEvent event) {
 
-    @FXML
-    private Label registerErrorLabel;
+        if (!isAllFilled()){
+            registrationMessage("Minden mezőt kötelező kitölteni!");
+            clearTexts();
+            return;
+        }
 
-    @FXML
-    public void UserRegisterButtonPushed(ActionEvent event) {
+        if (!isValidEmailAddress(emailReg.getText())){
+            registrationMessage("Helyes e-mail formátumot adjon meg!");
+            clearTexts();
+            return;
+        }
+
+        if(!isValidUsername(usernameReg.getText())){
+            registrationMessage("Helytelen felhasználónév formátum!\n6-30 Karakter\nElső betű karakter betű\nCsak '_' spec. karakter!");
+            clearTexts();
+            return;
+            //6 - 30 Karakter, Első karakter betű, Speciális karakter csak '_' szerepelhet benne
+        }
+
+        if (!isValidPassword(passwordReg.getText())){
+            registrationMessage("Helytelen jelszó formátum!\n-Legalább 1 kis- és nagybetű, szám\n8-20 Karakter");
+            clearTexts();
+            return;
+            //Minimum 1 kis- és 1 nagy betű valamint szám, 8-20 karakter white space nélkül
+        }
+
         try(JPAUserDAO userDAO = new JPAUserDAO()) {
-
-            if (!isAllFilled()){
-                errorMessage("Minden mezőt kötelező kitölteni!");
-                clearTexts();
-                return;
-            }
-
-            if (!isValidEmailAddress(emailReg.getText())){
-                errorMessage("Helyes e-mail formátumot adjon meg!");
-                clearTexts();
-                return;
-            }
-
-            if(!isValidUsername(usernameReg.getText())){
-                errorMessage("Helytelen felhasználónév formátum!\n-Minimum 3 karakter\n-Nem tartalmazhat számot");
-                clearTexts();
-                return;
-                //6 - 30 hosszú betűvel kell kezdődnie
-                //nem tartlamaz spec karatert kivéve _
-            }
-
-            if (!isValidPassword(passwordReg.getText())){
-                errorMessage("Helytelen jelszó formátum!\n-Legalább 1 kis, 1 nagybetűt, számot\n-Minimum 8 karakter és maximum 20");
-                clearTexts();
-                return;
-
-                //A JELSZÓNAK TARTALAMZNI KELL 1 KIS 1 NAGY BETŰT LEGALÁBB, SZÁMOT,
-                //NEM LEHET BENNE WHITE SPACE ÉS 8-20 KARATKER LEHET
-                //NEM FÉR KI IMI BAZMEG
-            }
 
             User user = new User();
             user.setUsername(usernameReg.getText());
             user.setEmail(emailReg.getText());
-            user.setEmail(emailRegSecond.getText());
             user.setPassword(passwordReg.getText());
-            user.setPassword(passwordRegSecond.getText());
 
             if (userDAO.usernameAlreadyExists(user.getUsername()) || userDAO.emailAlreadyExists(user.getEmail())){
-                errorMessage("Ez a felhasználónév/email már foglalt!");
-                //clearTexts();
+                registrationMessage("Ez a felhasználónév/email már foglalt!");
+                clearTexts();
                 return;
             }
             
-            if (isEqual(emailRegSecond.getText(), emailReg.getText()) && isEqual(passwordReg.getText(), passwordRegSecond.getText())){
+            if (emailRegSecond.getText().matches(emailReg.getText()) && passwordReg.getText().matches(passwordRegSecond.getText())){
                 registerButton.setText("Sikeres regisztráció!");
                 user.setPassword(MD5Encryption(passwordReg.getText()));
                 userDAO.saveUser(user);
-                //Thread.sleep(2000);
-                succesregister(event);
+                openSuccessRegistrationWindowEvent(event);
 
             }else{
-                errorMessage("A jelszó/email mezők nem egyeznek!");
+                registrationMessage("A jelszó/email mezők nem egyeznek!");
                 clearTexts();
                 return;
             }
@@ -147,19 +136,19 @@ public class UserRegistrationController implements Initializable{
             e.printStackTrace();
         }
 
-        //ellenorzes
     }
 
     @FXML
-    void backtologin2(ActionEvent event) throws IOException {
-        loginwindow(event);
+    private void backToLoginButtonPushed(ActionEvent event) throws IOException {
+        openLoginWindowEvent(event);
     }
 
     @FXML
-    void successRegisterButton(ActionEvent event)  throws IOException {
-        loginwindow(event);
+    private void successRegistrationEvent(ActionEvent event)  throws IOException {
+        openLoginWindowEvent(event);
     }
-    private void succesregister(ActionEvent event) throws IOException {
+
+    private void openSuccessRegistrationWindowEvent(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/error.fxml"));
         Parent root = (Parent) fxmlLoader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -171,7 +160,7 @@ public class UserRegistrationController implements Initializable{
         stage.show();
     }
 
-    private void loginwindow(ActionEvent event) throws IOException {
+    private void openLoginWindowEvent(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loginpage.fxml"));
         Parent root = (Parent) fxmlLoader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -187,11 +176,6 @@ public class UserRegistrationController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-    }
-
-    private boolean isEqual(String textOne, String textTwo){
-
-        return textOne.equals(textTwo);
     }
 
     private void clearTexts() {
@@ -211,20 +195,20 @@ public class UserRegistrationController implements Initializable{
         return true;
     }
 
-    public boolean isValidEmailAddress(String email) {
+    private boolean isValidEmailAddress(String email) {
         String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
         java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
         java.util.regex.Matcher m = p.matcher(email);
         return m.matches();
     }
 
-    private void errorMessage(String message){
-        registerErrorLabel.setStyle("" +
+    private void registrationMessage(String message){
+        registerMessageLabel.setStyle("" +
                 "-fx-font-weight:bold;\n" +
                 "\t-fx-background-color:rgba(215, 117, 117, 0.8);\n" +
                 "\t-fx-border-color: red;\n" +
                 "\t-fx-border-width:2px;");
-        registerErrorLabel.setText(message);
+        registerMessageLabel.setText(message);
     }
 
     private static boolean isValidPassword(String password) {
@@ -252,7 +236,7 @@ public class UserRegistrationController implements Initializable{
         return new BigInteger(1,m.digest()).toString(16);
     }
 
-    public static boolean isValidUsername(String name) {
+    private static boolean isValidUsername(String name) {
         String regex = "^[A-Za-z]\\w{2,29}$";
 
         Pattern p = Pattern.compile(regex);

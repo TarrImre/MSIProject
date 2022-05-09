@@ -137,12 +137,6 @@ public class MsiGuiController implements Initializable {
     private RadioButton radioFemale;
 
     @FXML
-    private RadioButton radioMale_modify;
-
-    @FXML
-    private RadioButton radioFemale_modify;
-
-    @FXML
     private Label foundElementsNumber;
 
     public void setModel(Model model) {
@@ -307,7 +301,7 @@ public class MsiGuiController implements Initializable {
     @FXML
     private ChoiceBox<String> myChoiceBox;
 
-    private String[] searchelements={"Név","Város","Kartonszám","TAJ/Azonosító"};
+    private final String[] searchelements={"Név","Város","Kartonszám","TAJ/Azonosító"};
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -354,7 +348,7 @@ public class MsiGuiController implements Initializable {
     }
 
     @FXML
-    private Label SuccesPatient,RemoveSuccesPatient;
+    private Label SuccesPatient,RemoveSuccesPatient,ModifyMessage;
 
     ObservableList<Patient> listPatientsForSearching(String elementToSearch, String searchBarText){
         ObservableList<Patient> patients = FXCollections.observableArrayList();
@@ -599,20 +593,20 @@ public class MsiGuiController implements Initializable {
         try(JPAPatientDAO aDAO = new JPAPatientDAO()){
 
             if (!zipcode_modify.getText().matches("[0-9]+") || !taj_modify.getText().matches("[0-9]+") || !housenum_modify.getText().matches("[0-9]+")){
-                Message("Az irányítószám, házszám és tajszám mezők\n csak számokat tartalmazhatnak!");
+                ModifyMessageFailed("Az irányítószám, házszám és tajszám\n mezők csak számokat tartalmazhatnak!");
                 return;
             }
             if(taj_modify.getText().length() != 9){
-                Message("A tajszám 9 számot tartalmaz!");
+                ModifyMessageFailed("A tajszám 9 számot tartalmaz!");
                 return;
             }
             if(!isValidBirthDate(birthdate_modify.getText())){
-                Message("Helytelen születési dátum!\nHelyes formátum: ÉÉÉÉ-HH-NN");
+                ModifyMessageFailed("Helytelen születési dátum!\nHelyes formátum: ÉÉÉÉ-HH-NN");
                 return;
             }
             if (!name_modify.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+") || !mothersname_modify.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+") || !city_modify.getText().matches("[[a-zA-Z]+ÉÁÖÜÓŐÚŰÍéáöüóőúűí]+") || !street_modify.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+"))
             {
-                Message("A Név, Anyja neve, Város és Utca mezők\n csak betűket tartalmazhatnak!");
+                ModifyMessageFailed("A Név, Anyja neve, Város és Utca mezők\n csak betűket tartalmazhatnak!");
                 return;
             }
 
@@ -636,16 +630,11 @@ public class MsiGuiController implements Initializable {
             patient.setStreet(street_modify.getText());
             patient.setSocialInsuranceId(Integer.parseInt(taj_modify.getText()));
 
-            if (radioMale_modify.isSelected()){
-                patient.setGender("MALE");
-            }else {
-                patient.setGender("FEMALE");
-            }
             aDAO.savePatient(patient);
             clearTexts();
 
             patientsTable.setItems(listPatientsToUI());
-
+            ModifyMessageSuccess("Sikeres módosítás!");
 
         }catch (Exception e){
             e.printStackTrace();
@@ -688,8 +677,6 @@ public class MsiGuiController implements Initializable {
         birthdate_modify.setText(""); //YYYY-MM-DD FORMÁTUM
         mothersname_modify.setText("");
         housenum_modify.setText("");
-        radioMale_modify.setSelected(false);
-        radioFemale_modify.setSelected(false);
 
     }
 
@@ -743,6 +730,22 @@ public class MsiGuiController implements Initializable {
                 "\t-fx-border-color: green;\n" +
                 "\t-fx-border-width:2px;");
         SuccesPatient.setText(messageSuccess);
+    }
+    private void ModifyMessageSuccess(String modifyMessage){
+        ModifyMessage.setStyle("" +
+                "-fx-font-weight:bold;\n" +
+                "\t-fx-background-color:rgba(116, 214, 137, 0.8);\n" +
+                "\t-fx-border-color: green;\n" +
+                "\t-fx-border-width:2px;");
+        ModifyMessage.setText(modifyMessage);
+    }
+    private void ModifyMessageFailed(String modifyMessage){
+        ModifyMessage.setStyle("" +
+                "-fx-font-weight:bold;\n" +
+                "\t-fx-background-color:rgba(215, 117, 117, 0.8);\n" +
+                "\t-fx-border-color: red;\n" +
+                "\t-fx-border-width:2px;");
+        ModifyMessage.setText(modifyMessage);
     }
 
 

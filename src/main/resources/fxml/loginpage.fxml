@@ -28,7 +28,7 @@
             <Button layoutX="281.0" layoutY="6.0" mnemonicParsing="false" onAction="#Tray" prefHeight="25.0" prefWidth="16.0" styleClass="TalcaButtonImage" />
          </children>
       </Pane>
-      <Button layoutX="-5.0" layoutY="355.0" mnemonicParsing="false" onAction="#openUserRegistration" prefHeight="37.0" prefWidth="325.0" text="Regisztráció">
+      <Button layoutX="-5.0" layoutY="355.0" mnemonicParsing="false" onAction="#openUserRegistrationInterfaceEvent" prefHeight="37.0" prefWidth="325.0" text="Regisztráció">
          <styleClass>
             <String fx:value="custom-button" />
             <String fx:value="register" />
