@@ -17,14 +17,12 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.math.BigInteger;
 import java.net.URL;
+import java.security.MessageDigest;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.security.*;
-import java.math.*;
-
-import static org.junit.Assert.assertTrue;
 
 public class UserRegistrationController implements Initializable{
 
@@ -129,7 +127,6 @@ public class UserRegistrationController implements Initializable{
             }else{
                 registrationMessage("A jelszó/email mezők nem egyeznek!");
                 clearTexts();
-                return;
             }
 
         }catch(Exception e){
@@ -150,7 +147,7 @@ public class UserRegistrationController implements Initializable{
 
     private void openSuccessRegistrationWindowEvent(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/error.fxml"));
-        Parent root = (Parent) fxmlLoader.load();
+        Parent root = fxmlLoader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -191,12 +188,11 @@ public class UserRegistrationController implements Initializable{
         if(emailReg.getText() == null || emailReg.getText().trim().isEmpty()) return false;
         if(emailRegSecond.getText() == null || emailRegSecond.getText().trim().isEmpty()) return false;
         if(passwordReg.getText() == null || passwordReg.getText().trim().isEmpty()) return false;
-        if(passwordRegSecond.getText() == null || passwordRegSecond.getText().trim().isEmpty()) return false;
-        return true;
+        return passwordRegSecond.getText() != null && !passwordRegSecond.getText().trim().isEmpty();
     }
 
     private boolean isValidEmailAddress(String email) {
-        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        String ePattern = "^[a-zA-Z\\d.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
         java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
         java.util.regex.Matcher m = p.matcher(email);
         return m.matches();
