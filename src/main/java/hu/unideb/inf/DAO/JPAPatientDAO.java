@@ -37,8 +37,7 @@ public class JPAPatientDAO implements PatientDAO{
     public List<Patient> getPatients() {
         TypedQuery<Patient> query = entityManager.createQuery(
                 "SELECT patient FROM Patient patient", Patient.class);
-        List<Patient> patients = query.getResultList();
-        return patients;
+        return query.getResultList();
     }
 
     public boolean cardnumberAlreadyExists(int cardNumber) {
@@ -47,9 +46,7 @@ public class JPAPatientDAO implements PatientDAO{
 
         List<Patient> ret = query.getResultList();
 
-        if (ret.size() > 0) return true;
-
-        return false;
+        return ret.size() > 0;
     }
 
 

@@ -380,7 +380,7 @@
                                           <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="kartonszam_label1" minWidth="-Infinity" text="Kartonszám" />
-                                                <TextField id="textField1" fx:id="cardnum_input_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS">
+                                                <TextField id="textField1" fx:id="cardnum_modify" editable="false" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS">
                                                    <cursor>
                                                       <Cursor fx:constant="DEFAULT" />
                                                    </cursor>
@@ -390,89 +390,57 @@
                                           <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="49.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="nev_label1" minWidth="-Infinity" text="Név" />
-                                                <TextField id="textField1" fx:id="name_input_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="name_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="84.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="anyaneve_label1" minWidth="-Infinity" text="Anyja neve" />
-                                                <TextField id="textField1" fx:id="mothersname_input_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="mothersname_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="119.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="taj_label1" minWidth="-Infinity" text="TAJ / Azonosító" />
-                                                <TextField id="textField1" fx:id="taj_input_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="taj_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="154.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="szuletesidatum_label1" minWidth="-Infinity" text="Születési dátum" />
-                                                <TextField id="textField1" fx:id="birthdate_input_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="birthdate_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
-                                          <TextArea id="textArea1" fx:id="diagnose_input_modify" layoutX="94.0" layoutY="196.0" prefHeight="77.0" prefWidth="533.0" styleClass="betegseg" wrapText="true" />
+                                          <TextArea id="textArea1" fx:id="diagnose_modify" layoutX="94.0" layoutY="196.0" prefHeight="77.0" prefWidth="533.0" styleClass="betegseg" wrapText="true" />
                                           <Label id="label2" layoutX="14.0" layoutY="195.0" prefHeight="17.0" prefWidth="59.0" text="Diagnózis" />
                                           <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="14.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="iranyitoszam_label1" minWidth="-Infinity" text="Irányítószám" />
-                                                <TextField id="textField1" fx:id="zipcode_input_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="zipcode_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="49.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="varos_label1" minWidth="-Infinity" text="Város" />
-                                                <TextField id="textField1" fx:id="city_input_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="city_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="84.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="utca_label1" minWidth="-Infinity" text="Utca" />
-                                                <TextField id="textField1" fx:id="street_input_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="street_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="119.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="hazszam_label1" minWidth="-Infinity" prefHeight="17.0" prefWidth="51.0" text="Házszám" />
-                                                <TextField id="textField1" fx:id="housenum_input_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="housenum_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox layoutX="686.0" layoutY="210.0" />
-                                          <HBox layoutX="390.0" layoutY="154.0" prefHeight="25.0" prefWidth="237.0">
-                                             <children>
-                                                <Label alignment="TOP_CENTER" text="Nem:">
-                                                   <HBox.margin>
-                                                      <Insets top="3.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                                <RadioButton fx:id="radioMale_modify" contentDisplay="RIGHT" mnemonicParsing="false" text="Férfi">
-                                                   <toggleGroup>
-                                                      <ToggleGroup fx:id="neme1" />
-                                                   </toggleGroup>
-                                                   <HBox.margin>
-                                                      <Insets left="22.0" top="3.0" />
-                                                   </HBox.margin>
-                                                </RadioButton>
-                                                <RadioButton fx:id="radioFemale_modify" mnemonicParsing="false" text="Nő" toggleGroup="$neme1">
-                                                   <HBox.margin>
-                                                      <Insets left="20.0" top="3.0" />
-                                                   </HBox.margin>
-                                                </RadioButton>
-                                             </children>
-                                          </HBox>
-                                          <Button fx:id="ApplyModify" layoutX="668.0" layoutY="187.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Módosítások mentése" />
-                                          <Pane layoutX="922.0" layoutY="27.0" prefHeight="216.0" prefWidth="301.0" styleClass="loginhatter">
-                                             <children>
-                                                <Button fx:id="LoadCardnumModifyButton" layoutX="51.0" layoutY="143.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Betöltés" />
-                                                <TextField fx:id="LoadCardnumModify" layoutX="27.0" layoutY="67.0" prefHeight="41.0" prefWidth="248.0" />
-                                                <Label layoutX="75.0" layoutY="43.0" text="Betöltés kartonszám alapján!" />
-                                             </children>
-                                          </Pane>
-                                          <Pane fx:id="SuccesModify" layoutX="669.0" layoutY="127.0" prefHeight="45.0" prefWidth="199.0" styleClass="successregister">
-                                             <children>
-                                                <Label layoutX="44.0" layoutY="10.0" style="-fx-font-size: 16;" text="Sikeres módítás" />
-                                             </children>
-                                          </Pane>
+                                          <HBox layoutX="390.0" layoutY="154.0" prefHeight="25.0" prefWidth="237.0" />
+                                          <Button fx:id="ApplyModify" layoutX="686.0" layoutY="129.0" mnemonicParsing="false" onAction="#modifyButtonPushed" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Módosítások mentése" />
+                                          <Label fx:id="ModifyMessage" alignment="CENTER" layoutX="952.0" layoutY="104.0" prefHeight="100.0" prefWidth="238.0" />
                                        </children>
                                        <padding>
                                           <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />

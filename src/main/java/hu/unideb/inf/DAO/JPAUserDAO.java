@@ -1,13 +1,11 @@
 package hu.unideb.inf.DAO;
 
 import hu.unideb.inf.Modell.User;
-import org.h2.engine.Session;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-import javax.transaction.Transaction;
 import java.util.List;
 
 public class JPAUserDAO implements UserDAO {
@@ -35,8 +33,7 @@ public class JPAUserDAO implements UserDAO {
     @Override
     public List<User> getUsers() {
         TypedQuery<User> query = entityManager.createQuery("SELECT user FROM User user", User.class);
-        List<User> users = query.getResultList();
-        return users;
+        return query.getResultList();
     }
 
     public boolean validate(String userName, String password) {
@@ -58,9 +55,7 @@ public class JPAUserDAO implements UserDAO {
 
         List<User> ret = query.getResultList();
 
-        if (ret.size() > 0) return true;
-
-        return false;
+        return ret.size() > 0;
     }
 
     public boolean emailAlreadyExists(String email){
@@ -69,9 +64,7 @@ public class JPAUserDAO implements UserDAO {
 
         List<User> ret = query.getResultList();
 
-        if (ret.size() > 0) return true;
-
-        return false;
+        return ret.size() > 0;
     }
 
     @Override

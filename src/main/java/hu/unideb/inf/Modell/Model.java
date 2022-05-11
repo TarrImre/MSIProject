@@ -1,12 +1,10 @@
 package hu.unideb.inf.Modell;
 
-import java.time.LocalDate;
-
 public class Model {
 
-    private Patient patient;
+    private final Patient patient;
 
-    private User user;
+    private final User user;
 
     public Model() {
 
