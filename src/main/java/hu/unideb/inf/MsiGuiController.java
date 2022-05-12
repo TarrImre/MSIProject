@@ -19,6 +19,9 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -163,7 +166,6 @@ public class MsiGuiController implements Initializable {
     }
 
     @FXML private AnchorPane parent;
-
     public void WinterButton(ActionEvent event){
         parent.getStylesheets().remove("fxml/autumn.css");
         parent.getStylesheets().remove("fxml/light.css");
@@ -173,6 +175,7 @@ public class MsiGuiController implements Initializable {
         parent.getStylesheets().remove("fxml/green.css");
         parent.getStylesheets().remove("fxml/pink.css");
         parent.getStylesheets().add("fxml/style.css");
+
     }
     public void AutumnButton(ActionEvent event){
         parent.getStylesheets().remove("fxml/style.css");

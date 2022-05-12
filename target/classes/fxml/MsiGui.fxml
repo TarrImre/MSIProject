@@ -32,6 +32,28 @@
             <Label layoutX="77.0" layoutY="32.0" style="-fx-font-size: 16;" text="Biztosan ki szeretne lépni?" />
          </children>
       </Pane>
+      <Pane fx:id="overlay" layoutX="367.0" layoutY="283.0" prefHeight="149.0" prefWidth="529.0" styleClass="overlay" stylesheets="@style.css">
+         <children>
+            <Button fx:id="overlayhidebutton" layoutX="331.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#overlayActionHide" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css">
+               <styleClass>
+                  <String fx:value="Bigbutton" />
+                  <String fx:value="logout" />
+               </styleClass>
+            </Button>
+            <Button fx:id="helpButton" layoutX="216.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#HelpAction" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css">
+               <styleClass>
+                  <String fx:value="Bigbutton" />
+                  <String fx:value="help" />
+               </styleClass>
+            </Button>
+            <Button fx:id="themeoverlayButton" layoutX="104.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#themeoverlayAction" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css">
+               <styleClass>
+                  <String fx:value="Bigbutton" />
+                  <String fx:value="themes" />
+               </styleClass>
+            </Button>
+         </children>
+      </Pane>
       <Pane fx:id="themeoverlay" layoutX="440.0" layoutY="96.0" prefHeight="479.0" prefWidth="387.0" styleClass="overlay" stylesheets="@style.css">
          <children>
             <Pane layoutX="14.0" layoutY="14.0" prefHeight="91.0" prefWidth="173.0" styleClass="themePaneBg">
@@ -116,7 +138,7 @@
                         <Image url="@img/blue.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="14.0" layoutY="42.0" style="-fx-font-weight: bold;" text="RGB" textFill="WHITE">
+                  <Label layoutX="14.0" layoutY="42.0" style="-fx-font-weight: bold;" text="MÉG SEMMI" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -157,28 +179,6 @@
             <Button fx:id="themeoverlayButtonHide" layoutX="158.0" layoutY="420.0" mnemonicParsing="false" onAction="#themeoverlayActionHide" prefHeight="38.0" prefWidth="81.0" styleClass="custom-button" text="Bezárás" />
          </children>
       </Pane>
-      <Pane fx:id="overlay" layoutX="367.0" layoutY="283.0" prefHeight="149.0" prefWidth="529.0" styleClass="overlay" stylesheets="@style.css">
-         <children>
-            <Button fx:id="overlayhidebutton" layoutX="331.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#overlayActionHide" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css">
-               <styleClass>
-                  <String fx:value="Bigbutton" />
-                  <String fx:value="logout" />
-               </styleClass>
-            </Button>
-            <Button fx:id="helpButton" layoutX="216.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#HelpAction" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css">
-               <styleClass>
-                  <String fx:value="Bigbutton" />
-                  <String fx:value="help" />
-               </styleClass>
-            </Button>
-            <Button fx:id="themeoverlayButton" layoutX="104.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#themeoverlayAction" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css">
-               <styleClass>
-                  <String fx:value="Bigbutton" />
-                  <String fx:value="themes" />
-               </styleClass>
-            </Button>
-         </children>
-      </Pane>
       <Pane fx:id="overlay_help" layoutX="447.0" layoutY="125.0" prefHeight="472.0" prefWidth="387.0" styleClass="overlay" stylesheets="@style.css">
          <children>
             <Button fx:id="helpButtonHide" layoutX="354.0" layoutY="4.0" minHeight="17.0" minWidth="16.0" mnemonicParsing="false" onAction="#helpOverlayActionHide" prefHeight="25.0" prefWidth="25.0" stylesheets="@style.css">
@@ -187,7 +187,7 @@
                   <String fx:value="logout" />
                </styleClass>
             </Button>
-            <TextArea editable="false" layoutX="6.0" layoutY="32.0" prefHeight="427.0" prefWidth="374.0" styleClass="betegseg" text="Copyright © 2022 MSI Projekt All rights reserved.&#10;&#10;Verzió: 0.4.1&#10;&#10;Fejlesztők:&#10;Dobos Martin&#10;Laza Sándor&#10;Tarr Imre&#10;&#10;Lorem ipsum dolor sit amet, consectetur adipiscing elit. &#10;Integer euismod maximus turpis, a pellentesque enim rhonc vel. &#10;Donec ultricies viverra metus sit amet gravida. D&#10;onec sagittis, enim ac varius pellentesque, erat orci elementum &#10;arcu, quis mattis velit nulla ac massa. Proin volutpat felis vel cond&#10;imentum scelerisque. Mauris ultrices nisi augue, porta lacinia n&#10;ibh pellentesque tempor. Aliquam dictum ipsum variu&#10;s sem tempor pellentesque. Praesent euismod ante vel conseq&#10;uat semper. Praesent purus mauris, pulvinar sed ultrices nec, p&#10;ulvinar vitae neque. In lobortis justo ante, non imperdiet quam l&#10;uctus ac. Fusce at bibendum libero. Vivamus vehicula velit quis &#10;aliquam commodo. &#10;Curabitur lacus dolor, congue vel nibh eu, scelerisque accu&#10;msan libero. Class aptent taciti sociosqu ad litora torquent&#10; per conubia nostra, per inceptos himenaeos. Nulla iaculis nunc&#10; ac augue luctus, eu dapibus just. Vivamus ornare quam f&#10;acilisis, euismod turpis vel, vulputate dui. Phasellus sem est,&#10; vestibulum ac malesuada a, euismod non orci.&#10;&#10;Quisque maximus sit amet nisl dignissim facilisis. &#10;Donec ornare tellus vel interdum tempus. Proin maximus, &#10;ante ornare iaculis aliquet, ligula eros sodales odio, ut dig&#10;nissim libero magna in erat. Ut vel metus quam. Morbi in orci&#10; auctor, cursus urna sit amet, viverra turpis. Proin mollis facilisis &#10;enim quis ornare. Morbi vel tortor dui. Aenean sed turpis preti&#10;um, cursus quam et, varius elit. Phasellus vitae semper libero. V&#10;ivamus vel cursus dui. Maecenas sed imperdiet ex. Donec volutp&#10;at velit diam, eu malesuada orci tincidunt quis. Donec vitae matt&#10;is tellus. Suspendisse porta mauris sed odio laoreet feugiat. Pr&#10;oin pulvinar porta neque, non gravida felis sollicitudin non. Ali&#10;quam eu dui vitae quam fringilla iaculis.&#10;&#10;Lorem ipsum dolor sit amet, consectetur adipiscing elit. &#10;Integer euismod maximus turpis, a pellentesque enim rhonc vel. &#10;Donec ultricies viverra metus sit amet gravida. D&#10;onec sagittis, enim ac varius pellentesque, erat orci elementum &#10;arcu, quis mattis velit nulla ac massa. Proin volutpat felis vel cond&#10;imentum scelerisque. Mauris ultrices nisi augue, porta lacinia n&#10;ibh pellentesque tempor. Aliquam dictum ipsum variu&#10;s sem tempor pellentesque. Praesent euismod ante vel conseq&#10;uat semper. Praesent purus mauris, pulvinar sed ultrices nec, p&#10;ulvinar vitae neque. In lobortis justo ante, non imperdiet quam l&#10;uctus ac. Fusce at bibendum libero. Vivamus vehicula velit quis &#10;aliquam commodo. &#10;Curabitur lacus dolor, congue vel nibh eu, scelerisque accu&#10;msan libero. Class aptent taciti sociosqu ad litora torquent&#10; per conubia nostra, per inceptos himenaeos. Nulla iaculis nunc&#10; ac augue luctus, eu dapibus just. Vivamus ornare quam f&#10;acilisis, euismod turpis vel, vulputate dui. Phasellus sem est,&#10; vestibulum ac malesuada a, euismod non orci.&#10;&#10;Quisque maximus sit amet nisl dignissim facilisis. &#10;Donec ornare tellus vel interdum tempus. Proin maximus, &#10;ante ornare iaculis aliquet, ligula eros sodales odio, ut dig&#10;nissim libero magna in erat. Ut vel metus quam. Morbi in orci&#10; auctor, cursus urna sit amet, viverra turpis. Proin mollis facilisis &#10;enim quis ornare. Morbi vel tortor dui. Aenean sed turpis preti&#10;um, cursus quam et, varius elit. Phasellus vitae semper libero. V&#10;ivamus vel cursus dui. Maecenas sed imperdiet ex. Donec volutp&#10;at velit diam, eu malesuada orci tincidunt quis. Donec vitae matt&#10;is tellus. Suspendisse porta mauris sed odio laoreet feugiat. Pr&#10;oin pulvinar porta neque, non gravida felis sollicitudin non. Ali&#10;" />
+            <TextArea editable="false" layoutX="6.0" layoutY="32.0" prefHeight="427.0" prefWidth="374.0" styleClass="betegseg" text="MSI_Projekt&#10;Központi adatbázis kezelő szoftver az egészségügyi&#10;adminisztráció megkönnyítésére.&#10;&#10;Leírás&#10;Projektünk célja egy könnyen kezelhető, átlátható szoftver&#10;készítése, amely megkönnyíti, meggyorsítja és biztonságossá&#10;teszi a mindennapi adatfeldolgozást az egészségügyi&#10;intézményekben.&#10;&#10;Jellegzetességek&#10;Adatbázis titkosítási technológia.&#10;Felhasználó barát grafikus interfész.&#10;Páciensek adatai lekérdezése különböző szempontok szerint.&#10;&#10;Fejlesztők&#10;Laza Sándor --- lazasandor17@gmail.com&#10;Tarr Imre --- tarr.imre2630@gmail.com&#10;Dobos Martin --- dobi.vv@gmail.com&#10;&#10;Copyright © 2022 MSI Projekt All rights reserved.&#10;Verzió: 0.4.1" />
          </children>
       </Pane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="1128.0">
