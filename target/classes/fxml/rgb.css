@@ -18,7 +18,7 @@ input: #424549
 
 .root{
    /* -fx-background-color: linear-gradient(to bottom right, #cfffc9, #ffeab0);*/
-   -fx-background-color: #1E2124;
+	-fx-background-color: linear-gradient(to bottom right, rgb(255,0,0), rgb(90,1,130), rgb(0,107,205) , rgb(0,205,148), rgb(200,205,0));
     /*-fx-background-radius: 15;*/
 	-fx-font: 12px "Helvetica";
 }
@@ -217,10 +217,10 @@ input: #424549
 
 
 .split-pane:horizontal > .split-pane-divider {
-   -fx-background-color:#2E3136;
+   -fx-background-color: linear-gradient(to bottom right, rgb(255,0,0), rgb(90,1,130), rgb(0,107,205) , rgb(0,205,148), rgb(200,205,0));
 }
 .split-pane:vertical > .split-pane-divider {
-   -fx-background-color: #2E3136;
+   -fx-background-color: linear-gradient(to bottom right, rgb(255,0,0), rgb(90,1,130), rgb(0,107,205) , rgb(0,205,148), rgb(200,205,0));
 }
 
 

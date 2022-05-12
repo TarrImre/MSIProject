@@ -33,7 +33,6 @@ public class LoginController implements Serializable {
 
     @FXML
     private Pane topPane;
-
     private double x,y;
 
     public void init(Stage stage){

@@ -3,6 +3,7 @@ package hu.unideb.inf;
 import hu.unideb.inf.DAO.JPAPatientDAO;
 import hu.unideb.inf.Modell.Model;
 import hu.unideb.inf.Modell.Patient;
+import javafx.animation.FillTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,6 +20,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -160,25 +162,92 @@ public class MsiGuiController implements Initializable {
 
     }
 
-    @FXML
-    private AnchorPane parent;
+    @FXML private AnchorPane parent;
 
-    public void BlueButton(ActionEvent event){
+    public void WinterButton(ActionEvent event){
+        parent.getStylesheets().remove("fxml/autumn.css");
+        parent.getStylesheets().remove("fxml/light.css");
         parent.getStylesheets().remove("fxml/dark.css");
+        parent.getStylesheets().remove("fxml/razer.css");
+        parent.getStylesheets().remove("fxml/rgb.css");
+        parent.getStylesheets().remove("fxml/green.css");
+        parent.getStylesheets().remove("fxml/pink.css");
         parent.getStylesheets().add("fxml/style.css");
-
     }
-
     public void AutumnButton(ActionEvent event){
         parent.getStylesheets().remove("fxml/style.css");
+        parent.getStylesheets().remove("fxml/light.css");
+        parent.getStylesheets().remove("fxml/dark.css");
+        parent.getStylesheets().remove("fxml/razer.css");
+        parent.getStylesheets().remove("fxml/rgb.css");
+        parent.getStylesheets().remove("fxml/green.css");
+        parent.getStylesheets().remove("fxml/pink.css");
+        parent.getStylesheets().add("fxml/autumn.css");
+    }
+    public void LightButton(ActionEvent event){
+        parent.getStylesheets().remove("fxml/style.css");
+        parent.getStylesheets().remove("fxml/autumn.css");
+        parent.getStylesheets().remove("fxml/dark.css");
+        parent.getStylesheets().remove("fxml/razer.css");
+        parent.getStylesheets().remove("fxml/rgb.css");
+        parent.getStylesheets().remove("fxml/green.css");
+        parent.getStylesheets().remove("fxml/pink.css");
+        parent.getStylesheets().add("fxml/light.css");
+    }
+    public void DarkButton(ActionEvent event){
+        parent.getStylesheets().remove("fxml/style.css");
+        parent.getStylesheets().remove("fxml/autumn.css");
+        parent.getStylesheets().remove("fxml/light.css");
+        parent.getStylesheets().remove("fxml/razer.css");
+        parent.getStylesheets().remove("fxml/rgb.css");
+        parent.getStylesheets().remove("fxml/green.css");
+        parent.getStylesheets().remove("fxml/pink.css");
         parent.getStylesheets().add("fxml/dark.css");
-
+    }
+    public void RazerButton(ActionEvent event){
+        parent.getStylesheets().remove("fxml/style.css");
+        parent.getStylesheets().remove("fxml/autumn.css");
+        parent.getStylesheets().remove("fxml/light.css");
+        parent.getStylesheets().remove("fxml/dark.css");
+        parent.getStylesheets().remove("fxml/rgb.css");
+        parent.getStylesheets().remove("fxml/green.css");
+        parent.getStylesheets().remove("fxml/pink.css");
+        parent.getStylesheets().add("fxml/razer.css");
+    }
+    public void RGBButton(ActionEvent event){
+        parent.getStylesheets().remove("fxml/style.css");
+        parent.getStylesheets().remove("fxml/autumn.css");
+        parent.getStylesheets().remove("fxml/light.css");
+        parent.getStylesheets().remove("fxml/dark.css");
+        parent.getStylesheets().remove("fxml/razer.css");
+        parent.getStylesheets().remove("fxml/green.css");
+        parent.getStylesheets().remove("fxml/pink.css");
+        parent.getStylesheets().add("fxml/rgb.css");
+    }
+    public void GreenButton(ActionEvent event){
+        parent.getStylesheets().remove("fxml/style.css");
+        parent.getStylesheets().remove("fxml/autumn.css");
+        parent.getStylesheets().remove("fxml/light.css");
+        parent.getStylesheets().remove("fxml/dark.css");
+        parent.getStylesheets().remove("fxml/razer.css");
+        parent.getStylesheets().remove("fxml/rgb.css");
+        parent.getStylesheets().remove("fxml/pink.css");
+        parent.getStylesheets().add("fxml/green.css");
+    }
+    public void PinkButton(ActionEvent event){
+        parent.getStylesheets().remove("fxml/style.css");
+        parent.getStylesheets().remove("fxml/autumn.css");
+        parent.getStylesheets().remove("fxml/light.css");
+        parent.getStylesheets().remove("fxml/dark.css");
+        parent.getStylesheets().remove("fxml/razer.css");
+        parent.getStylesheets().remove("fxml/rgb.css");
+        parent.getStylesheets().remove("fxml/green.css");
+        parent.getStylesheets().add("fxml/pink.css");
     }
 
-    @FXML
-    private Pane overlay;
-    @FXML
-    private Button overlaybutton,overlayhidebutton;
+
+    @FXML private Pane overlay;
+    @FXML private Button overlaybutton,overlayhidebutton;
 
     @FXML
     void overlayAction(ActionEvent event) {
@@ -199,11 +268,9 @@ public class MsiGuiController implements Initializable {
     }
 
     @FXML Pane exitoverlay;
-
     @FXML Button ExitOverlayButtonShow,ExitOverlayButtonHide;
 
     @FXML
-
     void ExitOverlayButtonAction(ActionEvent event) {
         if (event.getSource() == ExitOverlayButtonShow)
         {
@@ -219,11 +286,8 @@ public class MsiGuiController implements Initializable {
     }
 
 //THEME
-    @FXML
-    private Pane themeoverlay;
-
-    @FXML
-    private Button themeoverlayButton,themeoverlayButtonHide;
+    @FXML private Pane themeoverlay;
+    @FXML private Button themeoverlayButton,themeoverlayButtonHide;
 
     @FXML
     void themeoverlayAction(ActionEvent event) {
@@ -274,11 +338,8 @@ public class MsiGuiController implements Initializable {
         stage.show();
     }
 
-    @FXML
-    private Pane overlay_help;
-
-    @FXML
-    private Button helpButton,helpButtonHide;
+    @FXML private Pane overlay_help;
+    @FXML private Button helpButton,helpButtonHide;
 
     @FXML
     void HelpAction(ActionEvent event) {
@@ -298,9 +359,7 @@ public class MsiGuiController implements Initializable {
     }
 
 
-    @FXML
-    private ChoiceBox<String> myChoiceBox;
-
+    @FXML private ChoiceBox<String> myChoiceBox;
     private final String[] searchelements={"Név","Város","Kartonszám","TAJ/Azonosító"};
 
     @Override
@@ -342,13 +401,10 @@ public class MsiGuiController implements Initializable {
 
     }
 
-    @FXML
-    void DisableMouse2(MouseEvent event) {
+    @FXML void DisableMouse2(MouseEvent event) {
         cardnum_input.setEditable(false);
     }
-
-    @FXML
-    private Label SuccesPatient,RemoveSuccesPatient,ModifyMessage;
+    @FXML private Label SuccesPatient,RemoveSuccesPatient,ModifyMessage;
 
     ObservableList<Patient> listPatientsForSearching(String elementToSearch, String searchBarText){
         ObservableList<Patient> patients = FXCollections.observableArrayList();
@@ -441,8 +497,7 @@ public class MsiGuiController implements Initializable {
         }
     }
 
-    @FXML
-    public void PatientRegisterButtonPushed(ActionEvent event) {
+    @FXML public void PatientRegisterButtonPushed(ActionEvent event) {
 
         try(JPAPatientDAO aDAO = new JPAPatientDAO()){
 

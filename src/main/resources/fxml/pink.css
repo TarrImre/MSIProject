@@ -1,44 +1,33 @@
 /*SZÍNEK
-vörös: #1E2124
-világos sárga: #424549
-sötét narancs:  #2E3136
-sárga: #424549
-gomb aktív: #2E3136
-input: #424549
-*/
-
-/*SZÍNEK
-vörös: #1E2124
-világos sárga: #424549
-sötét narancs:  #2E3136
-sárga: #424549
-gomb aktív: #2E3136
-input: #424549
+vörös: #9E7777
+világos sárga: #F5E8C7
+sötét narancs:  #d4ab8a
+sárga: #DEBA9D
+gomb aktív: #d4ab8a
+input: #dbb495
 */
 
 .root{
    /* -fx-background-color: linear-gradient(to bottom right, #cfffc9, #ffeab0);*/
-   -fx-background-color: #1E2124;
+   -fx-background-color: #9E7777;
     /*-fx-background-radius: 15;*/
 	-fx-font: 12px "Helvetica";
 }
-.label{
-	-fx-text-fill: white;
-}
+
 .table-view {
 	-fx-padding: -1px;
-    -fx-background-color:#424549;
-	-fx-text-background-color:white;
+    -fx-background-color:#F5E8C7;
+	
 }
 .table-view .column-header{
-	-fx-background-color: #2E3136;
+	-fx-background-color: #d4ab8a;
 
 }
 .table-column{
 	-fx-alignment: CENTER;
 }
 .table-view .column-header .label{
-    -fx-text-fill: white;
+    -fx-text-fill: #333333;
 	
 }
 .table-view .table-cell{
@@ -48,21 +37,21 @@ input: #424549
 }
 .table-row-cell: hover {
     -fx-background-color: #93f9b911;
-    -fx-text-background-color:#0f0f0f;
+    -fx-text-background-color: red;
 }
 .table-row-cell:selected {
     -fx-background-color: #93f9b911;
     -fx-background-insets: 0;
-	-fx-text-background-color:white;
+	-fx-text-background-color: #ad5953;
     -fx-background-radius: 1;
 }
 .table-row-cell: odd{
-    -fx-background-color: #424549;
+    -fx-background-color: #93f9b911;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
 }
 .table-row-cell: even{
-    -fx-background-color: #4A4C51;
+    -fx-background-color: #1dbbdd11;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
 }
@@ -71,57 +60,42 @@ input: #424549
 
 
 .tabpane{
-	-fx-background-color: linear-gradient(to bottom right, #424549, #424549);
-	-fx-text-base-color: white;
+	-fx-background-color: linear-gradient(to bottom right, #F5E8C7, #F5E8C7);
 }
 .tab-pane .tab-header-area .tab-header-background {
     /*-fx-opacity: 0;*/
-	-fx-background-color: #1E2124;
-	-fx-text-background-color:white;
-	-fx-text-fill:white;
+	-fx-background-color: #9E7777;
 }
 .tab-pane
 {
     -fx-tab-min-width:90px;
-	-fx-text-background-color:white;
-	-fx-text-fill:white;
 }
 .tab{
     -fx-background-insets: 0 1 0 1,0,0;
-	-fx-text-background-color:white;
-	-fx-text-fill:white;
 }
 .tab-pane .tab
 {
-    -fx-background-color: #2E3136;
-	-fx-text-background-color:white;
-	-fx-text-fill:white;
+    -fx-background-color: #d4ab8a;
 }
 .tab-pane .tab:selected
 {
-    -fx-background-color: #424549;
-	-fx-text-background-color:white;
-	-fx-text-fill:white;
+    -fx-background-color: #F5E8C7;
 }
 
 .text-field {
-    -fx-background-color: white , #4A4C51;
+    -fx-background-color: #FFF , #d4ab8a;
     -fx-background-insets: 0 0 0 0, 0 0 0 0;
 	-fx-background-radius: 0;
-	-fx-prompt-text-fill: white;
-	-fx-text-background-color:white;
-	-fx-text-fill:white;
+	-fx-prompt-text-fill: #4d4d4d;
 	/*-fx-opacity:0.4;*/
 }
 .text-field:focused {
-    -fx-background-color: #36393E , #36393E;
+    -fx-background-color: #dbb495 , #dbb495;
     -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1;
-	-fx-text-background-color:white;
-	-fx-text-fill:white;
 }
 .text-area {
-	-fx-control-inner-background:#2E3136;
-	-fx-highlight-text-fill:white; -fx-text-fill: white;
+	-fx-control-inner-background:#d4ab8a;
+	-fx-highlight-text-fill: #000000; -fx-text-fill: black;
 	/*-fx-opacity:0.4;*/
 }
 .text-area .scroll-pane {
@@ -136,9 +110,9 @@ input: #424549
 }
 .text-area:focused {
     -fx-background-insets: 0;
-    -fx-background-color: transparent, #2E3136, transparent, #2E3136;
+    -fx-background-color: transparent, #dbb495, transparent, #dbb495;
     -fx-background-radius: 0, 0, 0, 0;
-	-fx-text-background-color:white;
+
     -fx-focus-color: -fx-control-inner-background;
     -fx-faint-focus-color: -fx-control-inner-background;
     -fx-text-box-border: -fx-control-inner-background;
@@ -147,17 +121,17 @@ input: #424549
 
 
 /* Background color of the whole context menu*/
-.choice-box .context-menu { -fx-background-color: #1E2124; }
+.choice-box .context-menu { -fx-background-color: #9E7777; }
 /* Focused item background color in the list*/
-.choice-box .menu-item:focused { -fx-background-color: #424549; }
+.choice-box .menu-item:focused { -fx-background-color: #F5E8C7; }
 /* Text color of non-focused items in the list*/
 .choice-box .menu-item > .label { -fx-text-fill: white; }
 /* Text color of focused item in the list*/
-.choice-box .menu-item:focused > .label { -fx-text-fill: white; }
+.choice-box .menu-item:focused > .label { -fx-text-fill: black; }
 
 /*Background color of the control itself*/
 .choice-box {
-  -fx-background-color: #1E2124;
+  -fx-background-color: #9E7777;
   -fx-mark-color: white; /* arrow color*/
   -fx-background-radius:0;
 }
@@ -169,7 +143,7 @@ input: #424549
 
 
 .betegseg{
-	-fx-background-color:  #4A4C51;
+	-fx-background-color:  #d4ab8a;
     -fx-background-insets: 0 0 0 0, 0 0 0 0;
 	-fx-background-radius: 0;
 }
@@ -180,54 +154,45 @@ input: #424549
 .custom-button {
     -fx-font-size: 16px;
     -fx-padding: 10;
-    -fx-background-color: #2E3136;
+    -fx-background-color: #d4ab8a;
 	-fx-background-radius: 0;
-	-fx-text-background-color:white;
-	-fx-text-fill:white;
 }
 .custom-button:hover {
     -fx-font-size: 16px;
     -fx-padding: 10;
-    -fx-background-color: #424549;
+    -fx-background-color: #dbb495;
 	-fx-background-radius: 0;
-	-fx-text-background-color:white;
-	-fx-text-fill:white;
 }
 .custom-button.register {
     -fx-font-size: 16px;
     -fx-padding: 10;
     -fx-background-color: #89c2cc;
 	-fx-background-radius: 0;
-	-fx-text-background-color:white;
-	-fx-text-fill:white;
 }
 .custom-button.register:hover {
     -fx-font-size: 16px;
     -fx-padding: 10;
-    -fx-background-color: #424549;
+    -fx-background-color: #dbb495;
 	-fx-background-radius: 0;
-	-fx-text-background-color:white;
-	-fx-text-fill:white;
 }
 .sidepane{
-	-fx-background-color: #2E3136;
-	-fx-text-fill:white;
+	-fx-background-color: #d4ab8a;
 }
 
 
 
 .split-pane:horizontal > .split-pane-divider {
-   -fx-background-color:#2E3136;
+   -fx-background-color:#d4ab8a;
 }
 .split-pane:vertical > .split-pane-divider {
-   -fx-background-color: #2E3136;
+   -fx-background-color: #d4ab8a;
 }
 
 
 
 
 .radio-button .radio {
-	-fx-background-color:  #424549;
+	-fx-background-color:  #d4ab8a;
 	-fx-border-color: 0px;
 	-fx-border-radius: 0px; 
 }
@@ -235,10 +200,10 @@ input: #424549
  	-fx-shape: "M1.73,12.91 8.1,19.28 22.79,4.59 22.79,1.59 8.1,16.28 1.73,9.91";
 }*/
 .radio-button:selected /*.mark*/{
-	-fx-background-color:  #424549;
+	-fx-background-color:  #dbb495;
 }
 .radio-button:selected .dot{
-	-fx-background-color:  #424549;
+	-fx-background-color:  #dbb495;
 }
 .radio-button:selected .radio {
 	-fx-background-color: 0px;
@@ -247,7 +212,7 @@ input: #424549
 
 
 .tabpaneanchorpane{
-	-fx-background-color:#424549;
+	-fx-background-color:#F5E8C7;
 
 }
 
@@ -257,13 +222,13 @@ input: #424549
 		LOGIN
 *************************/
 .loginhatter{
-	-fx-background-color: linear-gradient(to bottom right, #25282A, #25282A);
+	-fx-background-color: linear-gradient(to bottom right, #d4ab8a, #9E7777);
 }
 .logininput{
-	-fx-background-color:#424549;
+	-fx-background-color:#F5E8C7;
 }
 .logininput:focused{
-	-fx-background-color:#2E3136;
+	-fx-background-color:#d4ab8a;
 }
 
 
@@ -315,7 +280,7 @@ input: #424549
 
 
 .overlay{
-	-fx-background-color: linear-gradient(to bottom right, #2E3136, #1E2124);
+	-fx-background-color: linear-gradient(to bottom right, #d4ab8a, #9E7777);
 }
 
 .Bigbutton { 
@@ -350,13 +315,11 @@ input: #424549
 .themeButton {
     -fx-font-size: 12px;
     -fx-padding: 2;
-    -fx-background-color: #2E3136;
+    -fx-background-color: #d4ab8a;
 	-fx-background-radius: 0;
-	-fx-text-background-color:white;
-	-fx-text-fill:white;
 }
 .themeButton:hover {
-    -fx-background-color: #424549;
+    -fx-background-color: #dbb495;
 }
 
 
