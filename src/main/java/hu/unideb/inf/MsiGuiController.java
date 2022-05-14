@@ -166,86 +166,80 @@ public class MsiGuiController implements Initializable {
     }
 
     @FXML private AnchorPane parent;
-    public void WinterButton(ActionEvent event){
-        parent.getStylesheets().remove("fxml/autumn.css");
-        parent.getStylesheets().remove("fxml/light.css");
-        parent.getStylesheets().remove("fxml/dark.css");
-        parent.getStylesheets().remove("fxml/razer.css");
-        parent.getStylesheets().remove("fxml/rgb.css");
-        parent.getStylesheets().remove("fxml/green.css");
-        parent.getStylesheets().remove("fxml/pink.css");
-        parent.getStylesheets().add("fxml/style.css");
 
+    @FXML
+    void withradius(ActionEvent event) {
+        parent.getStylesheets().remove("/fxml/withoutradius.css");
+        parent.getStylesheets().add("/fxml/withradius.css");
+    }
+    @FXML
+    void withoutradius(ActionEvent event){
+        parent.getStylesheets().remove("/fxml/withradius.css");
+        parent.getStylesheets().add("/fxml/withoutradius.css");
+    }
+
+    public void WinterButton(ActionEvent event){
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/autumn.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/light.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/dark.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/razer.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/green.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/pink.css").toExternalForm());
+        parent.getScene().getStylesheets().add(getClass().getResource("/fxml/style.css").toExternalForm());
     }
     public void AutumnButton(ActionEvent event){
-        parent.getStylesheets().remove("fxml/style.css");
-        parent.getStylesheets().remove("fxml/light.css");
-        parent.getStylesheets().remove("fxml/dark.css");
-        parent.getStylesheets().remove("fxml/razer.css");
-        parent.getStylesheets().remove("fxml/rgb.css");
-        parent.getStylesheets().remove("fxml/green.css");
-        parent.getStylesheets().remove("fxml/pink.css");
-        parent.getStylesheets().add("fxml/autumn.css");
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/style.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/light.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/dark.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/razer.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/green.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/pink.css").toExternalForm());
+        parent.getScene().getStylesheets().add(getClass().getResource("/fxml/autumn.css").toExternalForm());
     }
     public void LightButton(ActionEvent event){
-        parent.getStylesheets().remove("fxml/style.css");
-        parent.getStylesheets().remove("fxml/autumn.css");
-        parent.getStylesheets().remove("fxml/dark.css");
-        parent.getStylesheets().remove("fxml/razer.css");
-        parent.getStylesheets().remove("fxml/rgb.css");
-        parent.getStylesheets().remove("fxml/green.css");
-        parent.getStylesheets().remove("fxml/pink.css");
-        parent.getStylesheets().add("fxml/light.css");
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/autumn.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/style.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/dark.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/razer.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/green.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/pink.css").toExternalForm());
+        parent.getScene().getStylesheets().add(getClass().getResource("/fxml/light.css").toExternalForm());
     }
     public void DarkButton(ActionEvent event){
-        parent.getStylesheets().remove("fxml/style.css");
-        parent.getStylesheets().remove("fxml/autumn.css");
-        parent.getStylesheets().remove("fxml/light.css");
-        parent.getStylesheets().remove("fxml/razer.css");
-        parent.getStylesheets().remove("fxml/rgb.css");
-        parent.getStylesheets().remove("fxml/green.css");
-        parent.getStylesheets().remove("fxml/pink.css");
-        parent.getStylesheets().add("fxml/dark.css");
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/autumn.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/light.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/style.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/razer.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/green.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/pink.css").toExternalForm());
+        parent.getScene().getStylesheets().add(getClass().getResource("/fxml/dark.css").toExternalForm());
     }
     public void RazerButton(ActionEvent event){
-        parent.getStylesheets().remove("fxml/style.css");
-        parent.getStylesheets().remove("fxml/autumn.css");
-        parent.getStylesheets().remove("fxml/light.css");
-        parent.getStylesheets().remove("fxml/dark.css");
-        parent.getStylesheets().remove("fxml/rgb.css");
-        parent.getStylesheets().remove("fxml/green.css");
-        parent.getStylesheets().remove("fxml/pink.css");
-        parent.getStylesheets().add("fxml/razer.css");
-    }
-    public void RGBButton(ActionEvent event){
-        parent.getStylesheets().remove("fxml/style.css");
-        parent.getStylesheets().remove("fxml/autumn.css");
-        parent.getStylesheets().remove("fxml/light.css");
-        parent.getStylesheets().remove("fxml/dark.css");
-        parent.getStylesheets().remove("fxml/razer.css");
-        parent.getStylesheets().remove("fxml/green.css");
-        parent.getStylesheets().remove("fxml/pink.css");
-        parent.getStylesheets().add("fxml/rgb.css");
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/autumn.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/light.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/dark.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/style.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/green.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/pink.css").toExternalForm());
+        parent.getScene().getStylesheets().add(getClass().getResource("/fxml/razer.css").toExternalForm());
     }
     public void GreenButton(ActionEvent event){
-        parent.getStylesheets().remove("fxml/style.css");
-        parent.getStylesheets().remove("fxml/autumn.css");
-        parent.getStylesheets().remove("fxml/light.css");
-        parent.getStylesheets().remove("fxml/dark.css");
-        parent.getStylesheets().remove("fxml/razer.css");
-        parent.getStylesheets().remove("fxml/rgb.css");
-        parent.getStylesheets().remove("fxml/pink.css");
-        parent.getStylesheets().add("fxml/green.css");
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/autumn.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/light.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/dark.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/razer.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/style.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/pink.css").toExternalForm());
+        parent.getScene().getStylesheets().add(getClass().getResource("/fxml/green.css").toExternalForm());
     }
     public void PinkButton(ActionEvent event){
-        parent.getStylesheets().remove("fxml/style.css");
-        parent.getStylesheets().remove("fxml/autumn.css");
-        parent.getStylesheets().remove("fxml/light.css");
-        parent.getStylesheets().remove("fxml/dark.css");
-        parent.getStylesheets().remove("fxml/razer.css");
-        parent.getStylesheets().remove("fxml/rgb.css");
-        parent.getStylesheets().remove("fxml/green.css");
-        parent.getStylesheets().add("fxml/pink.css");
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/autumn.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/light.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/dark.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/razer.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/green.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/style.css").toExternalForm());
+        parent.getScene().getStylesheets().add(getClass().getResource("/fxml/pink.css").toExternalForm());
     }
 
 

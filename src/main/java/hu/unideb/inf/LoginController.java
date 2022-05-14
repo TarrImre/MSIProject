@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -107,10 +108,17 @@ public class LoginController implements Serializable {
         stage.setTitle("MSI Projekt");
         stage.setScene(new Scene(root1));
         stage.getIcons().add(new Image("/fxml/img/windowsicon.png"));
+
+        stage.getScene().setFill(Color.TRANSPARENT);
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.getScene().getStylesheets().add(getClass().getResource("/fxml/dark.css").toExternalForm());
+
         ((MsiGuiController)fxmlLoader.getController()).init(stage);
         Close(event);
         stage.show();
     }
+
+
 
     private void clearTexts(){
         username.setText("");

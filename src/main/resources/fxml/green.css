@@ -132,7 +132,7 @@ input: #9dc797
 
 
 /* Background color of the whole context menu*/
-.choice-box .context-menu { -fx-background-color: #679e5f; }
+.choice-box .context-menu { -fx-background-color: #87b881; }
 /* Focused item background color in the list*/
 .choice-box .menu-item:focused { -fx-background-color: #75a86d; }
 /* Text color of non-focused items in the list*/
@@ -142,7 +142,7 @@ input: #9dc797
 
 /*Background color of the control itself*/
 .choice-box {
-  -fx-background-color: #679e5f;
+  -fx-background-color: #87b881;
   -fx-mark-color: white; /* arrow color*/
   -fx-background-radius:0;
 }
@@ -233,7 +233,7 @@ input: #9dc797
 		LOGIN
 *************************/
 .loginhatter{
-	-fx-background-color: linear-gradient(to bottom right, #87b881, #679e5f);
+	-fx-background-color: linear-gradient(to bottom right, #679e5f, #679e5f);
 }
 .logininput{
 	-fx-background-color:#75a86d;
