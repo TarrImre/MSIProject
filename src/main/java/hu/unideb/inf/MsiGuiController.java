@@ -3,7 +3,6 @@ package hu.unideb.inf;
 import hu.unideb.inf.DAO.JPAPatientDAO;
 import hu.unideb.inf.Modell.Model;
 import hu.unideb.inf.Modell.Patient;
-import javafx.animation.FillTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,11 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -73,64 +68,64 @@ public class MsiGuiController implements Initializable {
     private TextField cardnumToRemove;
 
     @FXML
-    private TextField name_input;
+    private TextField nameInputField;
 
     @FXML
-    private TextField cardnum_input;
+    private TextField cardnumInputField;
 
     @FXML
-    private TextField mothersname_input;
+    private TextField motherNameInputField;
 
     @FXML
-    private TextField taj_input;
+    private TextField insuranceIdInputField;
 
     @FXML
-    private TextField birthdate_input;
+    private TextField birthdateInputField;
 
     @FXML
-    private TextArea diagnose_input;
+    private TextArea diagnoseInputField;
 
     @FXML
-    private TextField city_input;
+    private TextField cityInputField;
 
     @FXML
-    private TextField street_input;
+    private TextField streetInputField;
 
     @FXML
-    private TextField housenum_input;
+    private TextField streetNumberInputField;
 
     @FXML
-    private TextField zipcode_input;
+    private TextField zipcodeInputField;
 
     @FXML
-    private TextField name_modify;
+    private TextField modiyfNameInputField;
 
     @FXML
-    private TextField cardnum_modify;
+    private TextField modifyCardnumInputField;
 
     @FXML
-    private TextField mothersname_modify;
+    private TextField modifyMotherNameInputField;
 
     @FXML
-    private TextField taj_modify;
+    private TextField modifyInsuranceIdInputField;
 
     @FXML
-    private TextField birthdate_modify;
+    private TextField modifyBirthDateInputField;
 
     @FXML
-    private TextArea diagnose_modify;
+    private TextArea modifyDiagnoseInputField;
 
     @FXML
-    private TextField zipcode_modify;
+    private TextField modifyZipcodeInputField;
 
     @FXML
-    private TextField city_modify;
+    private TextField modifyCityInputField;
 
     @FXML
-    private TextField street_modify;
+    private TextField modifyStreetInputField;
 
     @FXML
-    private TextField housenum_modify;
+    private TextField modifyStreetNumberInputField;
 
     @FXML
     private TextField searchElementInput;
@@ -144,12 +139,43 @@ public class MsiGuiController implements Initializable {
     @FXML
     private Label foundElementsNumber;
 
+    @FXML Pane exitOverlay;
+
+    @FXML Button ExitOverlayButtonShow,ExitOverlayButtonHide;
+
+    @FXML private Pane topPane;
+
+    @FXML private AnchorPane parent;
+
+    @FXML private Pane overlay;
+
+    @FXML private Button overlayButton, overlayHideButton;
+
+    @FXML private Pane themeOverlay;
+
+    @FXML private Button themeOverlayButton, themeOverlayButtonHide;
+
+    @FXML private Pane overlay_help;
+
+    @FXML private Button helpButton,helpButtonHide;
+
+    @FXML private ChoiceBox<String> myChoiceBox;
+
+    @FXML Button RandomNumberButton;
+
+    @FXML private Pane foundElementsNumberID;
+
+    @FXML private Label SelectPatientLabel,DiagnoseLabel,Diagnoses;
+
+    @FXML private Button ConfirmButton_SelectPatientLabel;
+
+    private final String[] searchElements ={"Név","Város","Kartonszám","TAJ/Azonosító"};
+
+    private double x,y;
+
     public void setModel(Model model) {
         this.model = model;
     }
-
-    @FXML private Pane topPane;
-    private double x,y;
 
     public void init(Stage stage){
 
@@ -165,15 +191,14 @@ public class MsiGuiController implements Initializable {
 
     }
 
-    @FXML private AnchorPane parent;
-
     @FXML
-    void withradius(ActionEvent event) {
+    void themeWithRadius(ActionEvent event) {
         parent.getStylesheets().remove("/fxml/withoutradius.css");
         parent.getStylesheets().add("/fxml/withradius.css");
     }
+
     @FXML
-    void withoutradius(ActionEvent event){
+    void themeWithoutRadius(ActionEvent event){
         parent.getStylesheets().remove("/fxml/withradius.css");
         parent.getStylesheets().add("/fxml/withoutradius.css");
     }
@@ -187,6 +212,7 @@ public class MsiGuiController implements Initializable {
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/pink.css").toExternalForm());
         parent.getScene().getStylesheets().add(getClass().getResource("/fxml/style.css").toExternalForm());
     }
+
     public void AutumnButton(ActionEvent event){
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/style.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/light.css").toExternalForm());
@@ -196,6 +222,7 @@ public class MsiGuiController implements Initializable {
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/pink.css").toExternalForm());
         parent.getScene().getStylesheets().add(getClass().getResource("/fxml/autumn.css").toExternalForm());
     }
+
     public void LightButton(ActionEvent event){
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/autumn.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/style.css").toExternalForm());
@@ -205,6 +232,7 @@ public class MsiGuiController implements Initializable {
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/pink.css").toExternalForm());
         parent.getScene().getStylesheets().add(getClass().getResource("/fxml/light.css").toExternalForm());
     }
+
     public void DarkButton(ActionEvent event){
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/autumn.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/light.css").toExternalForm());
@@ -214,6 +242,7 @@ public class MsiGuiController implements Initializable {
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/pink.css").toExternalForm());
         parent.getScene().getStylesheets().add(getClass().getResource("/fxml/dark.css").toExternalForm());
     }
+
     public void RazerButton(ActionEvent event){
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/autumn.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/light.css").toExternalForm());
@@ -223,6 +252,7 @@ public class MsiGuiController implements Initializable {
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/pink.css").toExternalForm());
         parent.getScene().getStylesheets().add(getClass().getResource("/fxml/razer.css").toExternalForm());
     }
+
     public void GreenButton(ActionEvent event){
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/autumn.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/light.css").toExternalForm());
@@ -232,6 +262,7 @@ public class MsiGuiController implements Initializable {
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/pink.css").toExternalForm());
         parent.getScene().getStylesheets().add(getClass().getResource("/fxml/green.css").toExternalForm());
     }
+
     public void PinkButton(ActionEvent event){
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/autumn.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/light.css").toExternalForm());
@@ -242,65 +273,55 @@ public class MsiGuiController implements Initializable {
         parent.getScene().getStylesheets().add(getClass().getResource("/fxml/pink.css").toExternalForm());
     }
 
-
-    @FXML private Pane overlay;
-    @FXML private Button overlaybutton,overlayhidebutton;
-
     @FXML
     void overlayAction(ActionEvent event) {
-
-        if (event.getSource() == overlaybutton)
+        if (event.getSource() == overlayButton)
         {
             overlay.toFront();
         }
-
     }
 
     @FXML
     void overlayActionHide(ActionEvent event) {
-        if (event.getSource() == overlayhidebutton)
+        if (event.getSource() == overlayHideButton)
         {
             overlay.toBack();
         }
     }
 
-    @FXML Pane exitoverlay;
-    @FXML Button ExitOverlayButtonShow,ExitOverlayButtonHide;
-
     @FXML
     void ExitOverlayButtonAction(ActionEvent event) {
         if (event.getSource() == ExitOverlayButtonShow)
         {
-            exitoverlay.toFront();
+            exitOverlay.toFront();
         }
     }
+
     @FXML
     void ExitOverlayButtonActionHide2(ActionEvent event) {
         if (event.getSource() == ExitOverlayButtonHide)
         {
-            exitoverlay.toBack();
+            exitOverlay.toBack();
         }
     }
 
-//THEME
-    @FXML private Pane themeoverlay;
-    @FXML private Button themeoverlayButton,themeoverlayButtonHide;
+    //THEME
 
     @FXML
-    void themeoverlayAction(ActionEvent event) {
+    void themeOverlayAction(ActionEvent event) {
 
-        if (event.getSource() == themeoverlayButton)
+        if (event.getSource() == themeOverlayButton)
         {
-            themeoverlay.toFront();
+            themeOverlay.toFront();
         }
 
     }
 
     @FXML
-    void themeoverlayActionHide(ActionEvent event) {
-        if (event.getSource() == themeoverlayButtonHide)
+    void themeOverlayActionHide(ActionEvent event) {
+        if (event.getSource() == themeOverlayButtonHide)
         {
-            themeoverlay.toBack();
+            themeOverlay.toBack();
         }
     }
 
@@ -315,14 +336,13 @@ public class MsiGuiController implements Initializable {
         Stage s = (Stage) ((Node)event.getSource()).getScene().getWindow();
         s.setIconified(true);
     }
+
     @FXML
     public void LogoutButton(ActionEvent event) throws IOException {
-        loginwindow_main(event);
-        //BIZTOSAN KILEP?
+        backToLoginInterfaceEvent(event);
     }
 
-
-    private void loginwindow_main(ActionEvent event) throws IOException {
+    private void backToLoginInterfaceEvent(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loginpage.fxml"));
         Parent root = (Parent) fxmlLoader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -335,18 +355,14 @@ public class MsiGuiController implements Initializable {
         stage.show();
     }
 
-    @FXML private Pane overlay_help;
-    @FXML private Button helpButton,helpButtonHide;
-
     @FXML
     void HelpAction(ActionEvent event) {
-
         if (event.getSource() == helpButton)
         {
             overlay_help.toFront();
         }
-
     }
+
     @FXML
     void helpOverlayActionHide(ActionEvent event) {
         if (event.getSource() == helpButtonHide)
@@ -355,13 +371,9 @@ public class MsiGuiController implements Initializable {
         }
     }
 
-
-    @FXML private ChoiceBox<String> myChoiceBox;
-    private final String[] searchelements={"Név","Város","Kartonszám","TAJ/Azonosító"};
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        myChoiceBox.getItems().addAll(searchelements);
+        myChoiceBox.getItems().addAll(searchElements);
 
         cardNumberCol.setCellValueFactory(new PropertyValueFactory<>("cardNumber"));
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -376,8 +388,6 @@ public class MsiGuiController implements Initializable {
         patientsTable.setItems(listPatientsToUI());
     }
 
-    @FXML Button RandomNumberButton;
-
     @FXML
     void RandomNumberAction(ActionEvent event) {
         try (JPAPatientDAO patientDAO = new JPAPatientDAO()) {
@@ -390,7 +400,7 @@ public class MsiGuiController implements Initializable {
             }
             else if (event.getSource() == RandomNumberButton)
             {
-                cardnum_input.setText(Integer.toString(n));
+                cardnumInputField.setText(Integer.toString(n));
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -399,8 +409,9 @@ public class MsiGuiController implements Initializable {
     }
 
     @FXML void DisableMouse2(MouseEvent event) {
-        cardnum_input.setEditable(false);
+        cardnumInputField.setEditable(false);
     }
+
     @FXML private Label SuccesPatient,RemoveSuccesPatient,ModifyMessage;
 
     ObservableList<Patient> listPatientsForSearching(String elementToSearch, String searchBarText){
@@ -435,7 +446,6 @@ public class MsiGuiController implements Initializable {
         }catch (Exception e){
 
         }
-
         return patients;
     }
 
@@ -459,25 +469,22 @@ public class MsiGuiController implements Initializable {
     @FXML
     public void PatientRemoveButtonPushed(ActionEvent event){
 
-        try(JPAPatientDAO aDAO = new JPAPatientDAO()){
-            if(cardnumToRemove.getText().isEmpty()){
-                SearchPatientFailed("A törléshez ki kell tölteni a kartonszám mezőt!");
-                return;
-            }
+        if(cardnumToRemove.getText().isEmpty()){
+            SearchPatientFailed("A törléshez ki kell tölteni a kartonszám mezőt!");
+            return;
+        }
 
-            if (!cardnumToRemove.getText().matches("[0-9]+")){
-                SearchPatientFailed("A kartonszám csak számot tartalmaz!");
-                return;
-            }
+        if (!cardnumToRemove.getText().matches("[0-9]+")){
+            SearchPatientFailed("A kartonszám csak számot tartalmaz!");
+            return;
+        }
+
+        try(JPAPatientDAO aDAO = new JPAPatientDAO()){
 
             if (!aDAO.cardnumberAlreadyExists(Integer.parseInt(cardnumToRemove.getText()))){
                 SearchPatientFailed("A kartonszám nem létezik!");
                 return;
             }
-
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("BIZTOSAN TÖLRI?"); // IGEN vagy NEM gui?
-            alert.showAndWait();
 
             List<Patient> patients = aDAO.getPatients();
 
@@ -486,6 +493,8 @@ public class MsiGuiController implements Initializable {
                     aDAO.deletePatient(p);
                 }
             }
+
+            cardnumToRemove.setText("");
 
             patientsTable.setItems(listPatientsToUI());
 
@@ -496,42 +505,41 @@ public class MsiGuiController implements Initializable {
 
     @FXML public void PatientRegisterButtonPushed(ActionEvent event) {
 
+        if (!isAllFilled()){
+            MessageFailed("Minden mezőt kötelező kitölteni!");
+            return;
+        }
+        if (!zipcodeInputField.getText().matches("[0-9]+") || !insuranceIdInputField.getText().matches("[0-9]+") || !streetNumberInputField.getText().matches("[0-9]+")){
+            MessageFailed("Az irányítószám, házszám és tajszám mezők\n csak számokat tartalmazhatnak!");
+            return;
+        }
+        if(insuranceIdInputField.getText().length() != 9){
+            MessageFailed("A tajszám 9 számot tartalmaz!");
+            return;
+        }
+        if(!isValidBirthDate(birthdateInputField.getText())){
+            MessageFailed("Helytelen születési dátum!\nHelyes formátum: ÉÉÉÉ-HH-NN");
+            return;
+        }
+        if (!nameInputField.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+") || !motherNameInputField.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+") || !cityInputField.getText().matches("[[a-zA-Z]+ÉÁÖÜÓŐÚŰÍéáöüóőúűí]+") || !streetInputField.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+"))
+        {
+            MessageFailed("A Név, Anyja neve, Város és Utca mezők\n csak betűket tartalmazhatnak!");
+            return;
+        }
+
         try(JPAPatientDAO aDAO = new JPAPatientDAO()){
 
-            if (!isAllFilled()){
-                Message("Minden mezőt kötelező kitölteni!");
-                return;
-            }
-            if (!zipcode_input.getText().matches("[0-9]+") || !taj_input.getText().matches("[0-9]+") || !housenum_input.getText().matches("[0-9]+")){
-                Message("Az irányítószám, házszám és tajszám mezők\n csak számokat tartalmazhatnak!");
-                return;
-            }
-            if(taj_input.getText().length() != 9){
-                Message("A tajszám 9 számot tartalmaz!");
-                return;
-            }
-            if(!isValidBirthDate(birthdate_input.getText())){
-                Message("Helytelen születési dátum!\nHelyes formátum: ÉÉÉÉ-HH-NN");
-                return;
-            }
-            if (!name_input.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+") || !mothersname_input.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+") || !city_input.getText().matches("[[a-zA-Z]+ÉÁÖÜÓŐÚŰÍéáöüóőúűí]+") || !street_input.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+"))
-            {
-                Message("A Név, Anyja neve, Város és Utca mezők\n csak betűket tartalmazhatnak!");
-                return;
-            }
-
-
             Patient patient = new Patient();
-            patient.setName(name_input.getText());
-            patient.setCity(city_input.getText());
-            patient.setBirthDate(birthdate_input.getText());
-            patient.setCardNumber(Integer.parseInt(cardnum_input.getText()));
-            patient.setDiagnose(diagnose_input.getText());
-            patient.setNameOfMother(mothersname_input.getText());
-            patient.setStreetNumber(housenum_input.getText());
-            patient.setZipCode(Integer.parseInt(zipcode_input.getText()));
-            patient.setStreet(street_input.getText());
-            patient.setSocialInsuranceId(Integer.parseInt(taj_input.getText()));
+            patient.setName(nameInputField.getText());
+            patient.setCity(cityInputField.getText());
+            patient.setBirthDate(birthdateInputField.getText());
+            patient.setCardNumber(Integer.parseInt(cardnumInputField.getText()));
+            patient.setDiagnose(diagnoseInputField.getText());
+            patient.setNameOfMother(motherNameInputField.getText());
+            patient.setStreetNumber(streetNumberInputField.getText());
+            patient.setZipCode(Integer.parseInt(zipcodeInputField.getText()));
+            patient.setStreet(streetInputField.getText());
+            patient.setSocialInsuranceId(Integer.parseInt(insuranceIdInputField.getText()));
 
             if (radioMale.isSelected()){
                 patient.setGender("MALE");
@@ -552,12 +560,12 @@ public class MsiGuiController implements Initializable {
 
     }
 
-    @FXML private Pane foundElementsNumberID;
     @FXML
     public void SearchButtonPushed(ActionEvent event){
 
         String elementToSearch = searchElementInput.getText();
         String choiceBoxValue = myChoiceBox.getValue();
+
         if (elementToSearch.isEmpty()){
             SearchPatientFailed("Írjon be keresendő szöveget!");
             foundElementsNumberID.setOpacity(0);
@@ -611,14 +619,11 @@ public class MsiGuiController implements Initializable {
     }
 
     @FXML
-    public void ListAllPatientPushed(ActionEvent event){
+    public void ListAllPatientButtonPushed(ActionEvent event){
         patientsTable.setItems(listPatientsToUI());
         foundElementsNumberID.setOpacity(0);
         SearchPatientSuccess("Betegek listázva.");
     }
-
-    @FXML private Label SelectPatientLabel,DiagnoseLabel,Diagnoses;
-    @FXML private Button ConfirmButton_SelectPatientLabel;
 
     @FXML
     public void clickTable(MouseEvent event){
@@ -627,16 +632,16 @@ public class MsiGuiController implements Initializable {
             DiagnoseLabel.setText("Diagnózis:");
             Diagnoses.setText(patientsTable.getSelectionModel().getSelectedItem().getDiagnose());
             ConfirmButton_SelectPatientLabel.setOpacity(1);
-            cardnum_modify.setText(String.valueOf(patientsTable.getSelectionModel().getSelectedItem().getCardNumber()));
-            name_modify.setText(patientsTable.getSelectionModel().getSelectedItem().getName());
-            mothersname_modify.setText(patientsTable.getSelectionModel().getSelectedItem().getNameOfMother());
-            taj_modify.setText(String.valueOf(patientsTable.getSelectionModel().getSelectedItem().getSocialInsuranceId()));
-            birthdate_modify.setText(patientsTable.getSelectionModel().getSelectedItem().getBirthDate());
-            zipcode_modify.setText(String.valueOf(patientsTable.getSelectionModel().getSelectedItem().getZipCode()));
-            city_modify.setText(patientsTable.getSelectionModel().getSelectedItem().getCity());
-            street_modify.setText(patientsTable.getSelectionModel().getSelectedItem().getStreet());
-            housenum_modify.setText(patientsTable.getSelectionModel().getSelectedItem().getStreetNumber());
-            diagnose_modify.setText(patientsTable.getSelectionModel().getSelectedItem().getDiagnose());
+            modifyCardnumInputField.setText(String.valueOf(patientsTable.getSelectionModel().getSelectedItem().getCardNumber()));
+            modiyfNameInputField.setText(patientsTable.getSelectionModel().getSelectedItem().getName());
+            modifyMotherNameInputField.setText(patientsTable.getSelectionModel().getSelectedItem().getNameOfMother());
+            modifyInsuranceIdInputField.setText(String.valueOf(patientsTable.getSelectionModel().getSelectedItem().getSocialInsuranceId()));
+            modifyBirthDateInputField.setText(patientsTable.getSelectionModel().getSelectedItem().getBirthDate());
+            modifyZipcodeInputField.setText(String.valueOf(patientsTable.getSelectionModel().getSelectedItem().getZipCode()));
+            modifyCityInputField.setText(patientsTable.getSelectionModel().getSelectedItem().getCity());
+            modifyStreetInputField.setText(patientsTable.getSelectionModel().getSelectedItem().getStreet());
+            modifyStreetNumberInputField.setText(patientsTable.getSelectionModel().getSelectedItem().getStreetNumber());
+            modifyDiagnoseInputField.setText(patientsTable.getSelectionModel().getSelectedItem().getDiagnose());
         }
     }
 
@@ -647,74 +652,73 @@ public class MsiGuiController implements Initializable {
             return;
         }
 
-        if (!zipcode_modify.getText().matches("[0-9]+") || !taj_modify.getText().matches("[0-9]+") || !housenum_modify.getText().matches("[0-9]+")){
+        if (!modifyZipcodeInputField.getText().matches("[0-9]+") || !modifyInsuranceIdInputField.getText().matches("[0-9]+") || !modifyStreetNumberInputField.getText().matches("[0-9]+")){
             ModifyMessageFailed("Az irányítószám, házszám és tajszám\n mezők csak számokat tartalmazhatnak!");
             return;
         }
-        if(taj_modify.getText().length() != 9){
+        if(modifyInsuranceIdInputField.getText().length() != 9){
             ModifyMessageFailed("A tajszám 9 számot tartalmaz!");
             return;
         }
-        if(!isValidBirthDate(birthdate_modify.getText())){
+        if(!isValidBirthDate(modifyBirthDateInputField.getText())){
             ModifyMessageFailed("Helytelen születési dátum!\nHelyes formátum: ÉÉÉÉ-HH-NN");
             return;
         }
-        if (!name_modify.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+") || !mothersname_modify.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+") || !city_modify.getText().matches("[[a-zA-Z]+ÉÁÖÜÓŐÚŰÍéáöüóőúűí]+") || !street_modify.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+"))
+        if (!modiyfNameInputField.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+") || !modifyMotherNameInputField.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+") || !modifyCityInputField.getText().matches("[[a-zA-Z]+ÉÁÖÜÓŐÚŰÍéáöüóőúűí]+") || !modifyStreetInputField.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+"))
         {
             ModifyMessageFailed("A Név, Anyja neve, Város és Utca mezők\n csak betűket tartalmazhatnak!");
             return;
         }
-
 
         try(JPAPatientDAO aDAO = new JPAPatientDAO()){
 
             List<Patient> patients = aDAO.getPatients();
             boolean modify = false;
             for (Patient p : patients){
-                if (p.getCardNumber() == Integer.parseInt(cardnum_modify.getText())){
+                if (p.getCardNumber() == Integer.parseInt(modifyCardnumInputField.getText())){
 
-                    if (!(p.getName().matches(name_modify.getText()))) {
-                        p.setName(name_modify.getText());
+                    if (!(p.getName().matches(modiyfNameInputField.getText()))) {
+                        p.setName(modiyfNameInputField.getText());
                         modify = true;
                     }
 
-                    if (!(p.getNameOfMother().matches(mothersname_modify.getText()))) {
-                        p.setNameOfMother(mothersname_modify.getText());
+                    if (!(p.getNameOfMother().matches(modifyMotherNameInputField.getText()))) {
+                        p.setNameOfMother(modifyMotherNameInputField.getText());
                         modify = true;
                     }
 
-                    if (p.getSocialInsuranceId() != Integer.parseInt(taj_modify.getText())) {
-                        p.setSocialInsuranceId(Integer.parseInt(taj_modify.getText()));
+                    if (p.getSocialInsuranceId() != Integer.parseInt(modifyInsuranceIdInputField.getText())) {
+                        p.setSocialInsuranceId(Integer.parseInt(modifyInsuranceIdInputField.getText()));
                         modify = true;
                     }
 
-                    if (!(p.getBirthDate().matches(birthdate_modify.getText()))) {
-                        p.setBirthDate(birthdate_modify.getText());
+                    if (!(p.getBirthDate().matches(modifyBirthDateInputField.getText()))) {
+                        p.setBirthDate(modifyBirthDateInputField.getText());
                         modify = true;
                     }
 
-                    if (!(p.getDiagnose().matches(diagnose_modify.getText()))) {
-                        p.setDiagnose(diagnose_modify.getText());
+                    if (!(p.getDiagnose().matches(modifyDiagnoseInputField.getText()))) {
+                        p.setDiagnose(modifyDiagnoseInputField.getText());
                         modify = true;
                     }
 
-                    if (p.getZipCode() != Integer.parseInt(zipcode_modify.getText())) {
-                        p.setZipCode(Integer.parseInt(zipcode_modify.getText()));
+                    if (p.getZipCode() != Integer.parseInt(modifyZipcodeInputField.getText())) {
+                        p.setZipCode(Integer.parseInt(modifyZipcodeInputField.getText()));
                         modify = true;
                     }
 
-                    if (!(p.getCity().matches(city_modify.getText()))) {
-                        p.setCity(city_modify.getText());
+                    if (!(p.getCity().matches(modifyCityInputField.getText()))) {
+                        p.setCity(modifyCityInputField.getText());
                         modify = true;
                     }
 
-                    if (!(p.getStreet().matches(street_modify.getText()))) {
-                        p.setStreet(street_modify.getText());
+                    if (!(p.getStreet().matches(modifyStreetInputField.getText()))) {
+                        p.setStreet(modifyStreetInputField.getText());
                         modify = true;
                     }
 
-                    if (!(p.getStreetNumber().matches(housenum_modify.getText()))) {
-                        p.setStreetNumber(housenum_modify.getText());
+                    if (!(p.getStreetNumber().matches(modifyStreetNumberInputField.getText()))) {
+                        p.setStreetNumber(modifyStreetNumberInputField.getText());
                         modify = true;
                     }
 
@@ -739,75 +743,72 @@ public class MsiGuiController implements Initializable {
     }
 
     private boolean isAllFilledModify() {
-        if(name_modify.getText() == null || name_modify.getText().trim().isEmpty()) return false;
-        if(city_modify.getText() == null || city_modify.getText().trim().isEmpty()) return false;
-        if(zipcode_modify.getText() == null || zipcode_modify.getText().trim().isEmpty()) return false;
-        if(street_modify.getText() == null || street_modify.getText().trim().isEmpty()) return false;
-        if(taj_modify.getText() == null || taj_modify.getText().trim().isEmpty()) return false;
-        if(cardnum_modify.getText() == null || cardnum_modify.getText().trim().isEmpty()) return false;
-        if(diagnose_modify.getText() == null || diagnose_modify.getText().trim().isEmpty()) return false;
-        if(birthdate_modify.getText() == null || birthdate_modify.getText().trim().isEmpty()) return false;
-        if(mothersname_modify.getText() == null || mothersname_modify.getText().trim().isEmpty()) return false;
-        if(housenum_modify.getText() == null || housenum_modify.getText().trim().isEmpty()) return false;
+        if(modiyfNameInputField.getText() == null || modiyfNameInputField.getText().trim().isEmpty()) return false;
+        if(modifyCityInputField.getText() == null || modifyCityInputField.getText().trim().isEmpty()) return false;
+        if(modifyZipcodeInputField.getText() == null || modifyZipcodeInputField.getText().trim().isEmpty()) return false;
+        if(modifyStreetInputField.getText() == null || modifyStreetInputField.getText().trim().isEmpty()) return false;
+        if(modifyInsuranceIdInputField.getText() == null || modifyInsuranceIdInputField.getText().trim().isEmpty()) return false;
+        if(modifyCardnumInputField.getText() == null || modifyCardnumInputField.getText().trim().isEmpty()) return false;
+        if(modifyDiagnoseInputField.getText() == null || modifyDiagnoseInputField.getText().trim().isEmpty()) return false;
+        if(modifyBirthDateInputField.getText() == null || modifyBirthDateInputField.getText().trim().isEmpty()) return false;
+        if(modifyMotherNameInputField.getText() == null || modifyMotherNameInputField.getText().trim().isEmpty()) return false;
+        if(modifyStreetNumberInputField.getText() == null || modifyStreetNumberInputField.getText().trim().isEmpty()) return false;
 
         return true;
 
     }
 
-
     public void ConfirmButton_SelectPatientLabel_Action(ActionEvent event){
-        SelectPatientLabel.setText("A legkérdezéshez, válasszon ki egy beteget!");
+        SelectPatientLabel.setText("A lekérdezéshez válasszon ki egy beteget!");
         DiagnoseLabel.setText("");
         Diagnoses.setText("");
         ConfirmButton_SelectPatientLabel.setOpacity(0);
     }
 
-
     private void clearTexts() {
-        //betegfelvetel
-        name_input.setText("");
-        city_input.setText("");
-        zipcode_input.setText("");
-        street_input.setText("");
-        taj_input.setText("");  //9 SZÁM
-        cardnum_input.setText("");
-        diagnose_input.setText("");
-        birthdate_input.setText(""); //YYYY-MM-DD FORMÁTUM
-        mothersname_input.setText("");
-        housenum_input.setText("");
+        nameInputField.setText("");
+        cityInputField.setText("");
+        zipcodeInputField.setText("");
+        streetInputField.setText("");
+        insuranceIdInputField.setText("");
+        cardnumInputField.setText("");
+        diagnoseInputField.setText("");
+        birthdateInputField.setText("");
+        motherNameInputField.setText("");
+        streetNumberInputField.setText("");
         radioMale.setSelected(false);
         radioFemale.setSelected(false);
         //modify
-        name_modify.setText("");
-        city_modify.setText("");
-        zipcode_modify.setText("");
-        street_modify.setText("");
-        taj_modify.setText("");  //9 SZÁM
-        cardnum_modify.setText("");
-        diagnose_modify.setText("");
-        birthdate_modify.setText(""); //YYYY-MM-DD FORMÁTUM
-        mothersname_modify.setText("");
-        housenum_modify.setText("");
+        modiyfNameInputField.setText("");
+        modifyCityInputField.setText("");
+        modifyZipcodeInputField.setText("");
+        modifyStreetInputField.setText("");
+        modifyInsuranceIdInputField.setText("");
+        modifyCardnumInputField.setText("");
+        modifyDiagnoseInputField.setText("");
+        modifyBirthDateInputField.setText("");
+        modifyMotherNameInputField.setText("");
+        modifyStreetNumberInputField.setText("");
 
     }
 
     private boolean isAllFilled(){
-        if(name_input.getText() == null || name_input.getText().trim().isEmpty()) return false;
-        if(city_input.getText() == null || city_input.getText().trim().isEmpty()) return false;
-        if(zipcode_input.getText() == null || zipcode_input.getText().trim().isEmpty()) return false;
-        if(street_input.getText() == null || street_input.getText().trim().isEmpty()) return false;
-        if(taj_input.getText() == null || taj_input.getText().trim().isEmpty()) return false;
-        if(cardnum_input.getText() == null || cardnum_input.getText().trim().isEmpty()) return false;
-        if(diagnose_input.getText() == null || diagnose_input.getText().trim().isEmpty()) return false;
-        if(birthdate_input.getText() == null || birthdate_input.getText().trim().isEmpty()) return false;
-        if(mothersname_input.getText() == null || mothersname_input.getText().trim().isEmpty()) return false;
-        if(housenum_input.getText() == null || housenum_input.getText().trim().isEmpty()) return false;
+        if(nameInputField.getText() == null || nameInputField.getText().trim().isEmpty()) return false;
+        if(cityInputField.getText() == null || cityInputField.getText().trim().isEmpty()) return false;
+        if(zipcodeInputField.getText() == null || zipcodeInputField.getText().trim().isEmpty()) return false;
+        if(streetInputField.getText() == null || streetInputField.getText().trim().isEmpty()) return false;
+        if(insuranceIdInputField.getText() == null || insuranceIdInputField.getText().trim().isEmpty()) return false;
+        if(cardnumInputField.getText() == null || cardnumInputField.getText().trim().isEmpty()) return false;
+        if(diagnoseInputField.getText() == null || diagnoseInputField.getText().trim().isEmpty()) return false;
+        if(birthdateInputField.getText() == null || birthdateInputField.getText().trim().isEmpty()) return false;
+        if(motherNameInputField.getText() == null || motherNameInputField.getText().trim().isEmpty()) return false;
+        if(streetNumberInputField.getText() == null || streetNumberInputField.getText().trim().isEmpty()) return false;
         if (!radioMale.isSelected() && !radioFemale.isSelected()) return false;
 
         return true;
     }
 
-    private void Message(String message){
+    private void MessageFailed(String message){
         SuccesPatient.setStyle("" +
                 "-fx-font-weight:bold;\n" +
                 "\t-fx-background-color:rgba(215, 117, 117, 0.8);\n" +
@@ -842,6 +843,7 @@ public class MsiGuiController implements Initializable {
                 "\t-fx-border-width:2px;");
         SuccesPatient.setText(messageSuccess);
     }
+
     private void ModifyMessageSuccess(String modifyMessage){
         ModifyMessage.setStyle("" +
                 "-fx-font-weight:bold;\n" +
@@ -850,6 +852,7 @@ public class MsiGuiController implements Initializable {
                 "\t-fx-border-width:2px;");
         ModifyMessage.setText(modifyMessage);
     }
+
     private void ModifyMessageFailed(String modifyMessage){
         ModifyMessage.setStyle("" +
                 "-fx-font-weight:bold;\n" +
@@ -858,8 +861,6 @@ public class MsiGuiController implements Initializable {
                 "\t-fx-border-width:2px;");
         ModifyMessage.setText(modifyMessage);
     }
-
-
 
     private boolean isValidBirthDate(String date){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");

@@ -91,8 +91,8 @@ public class UserRegistrationController implements Initializable{
             return;
         }
 
-        if(!isValidUsername(usernameReg.getText())){
-            registrationMessage("Helytelen felhasználónév formátum!\n6-30 Karakter\nElső betű karakter betű\nCsak '_' spec. karakter!");
+        if(!isValidUsername(usernameReg.getText()) || usernameReg.getText().length() < 6 || usernameReg.getText().length() > 30 ){
+            registrationMessage("Helytelen felhasználónév formátum!\n6-30 Karakter, első karakter betű\nCsak '_' spec. karakter!");
             clearTexts();
             return;
             //6 - 30 Karakter, Első karakter betű, Speciális karakter csak '_' szerepelhet benne
