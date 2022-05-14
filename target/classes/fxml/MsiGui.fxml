@@ -24,7 +24,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="root" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.MsiGuiController">
    <children>
-      <Pane fx:id="exitoverlay" layoutX="922.0" layoutY="19.0" prefHeight="142.0" prefWidth="358.0" styleClass="loginhatter">
+      <Pane fx:id="exitOverlay" layoutX="922.0" layoutY="19.0" prefHeight="142.0" prefWidth="358.0" styleClass="loginhatter">
          <children>
             <Button layoutX="30.0" layoutY="82.0" mnemonicParsing="false" onAction="#Close" styleClass="custom-button" text="Kilépés" />
             <Button layoutX="124.0" layoutY="82.0" mnemonicParsing="false" onAction="#LogoutButton" styleClass="custom-button" text="Kijelentkezés" />
@@ -34,7 +34,7 @@
       </Pane>
       <Pane fx:id="overlay" layoutX="367.0" layoutY="283.0" prefHeight="149.0" prefWidth="529.0" styleClass="overlay">
          <children>
-            <Button fx:id="overlayhidebutton" layoutX="331.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#overlayActionHide" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css">
+            <Button fx:id="overlayHideButton" layoutX="331.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#overlayActionHide" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css">
                <styleClass>
                   <String fx:value="Bigbutton" />
                   <String fx:value="logout" />
@@ -46,7 +46,7 @@
                   <String fx:value="help" />
                </styleClass>
             </Button>
-            <Button fx:id="themeoverlayButton" layoutX="104.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#themeoverlayAction" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css">
+            <Button fx:id="themeOverlayButton" layoutX="104.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#themeOverlayAction" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css">
                <styleClass>
                   <String fx:value="Bigbutton" />
                   <String fx:value="themes" />
@@ -54,7 +54,7 @@
             </Button>
          </children>
       </Pane>
-      <Pane fx:id="themeoverlay" layoutX="440.0" layoutY="96.0" prefHeight="479.0" prefWidth="387.0" styleClass="overlay">
+      <Pane fx:id="themeOverlay" layoutX="440.0" layoutY="96.0" prefHeight="479.0" prefWidth="387.0" styleClass="overlay">
          <children>
             <Pane layoutX="14.0" layoutY="14.0" prefHeight="91.0" prefWidth="173.0" styleClass="themePaneBg">
                <children>
@@ -133,8 +133,8 @@
             </Pane>
             <Pane layoutX="198.0" layoutY="316.0" prefHeight="91.0" prefWidth="173.0" styleClass="themePaneBg">
                <children>
-                  <Button layoutX="11.0" layoutY="59.0" mnemonicParsing="false" onAction="#withradius" prefHeight="21.0" prefWidth="70.0" styleClass="themeButton" text="Radius" />
-                  <Button layoutX="87.0" layoutY="59.0" mnemonicParsing="false" onAction="#withoutradius" prefHeight="21.0" prefWidth="70.0" styleClass="themeButton" text="Radiusnelk" />
+                  <Button layoutX="11.0" layoutY="59.0" mnemonicParsing="false" onAction="#themeWithRadius" prefHeight="21.0" prefWidth="70.0" styleClass="themeButton" text="Radius" />
+                  <Button layoutX="87.0" layoutY="59.0" mnemonicParsing="false" onAction="#themeWithoutRadius" prefHeight="21.0" prefWidth="70.0" styleClass="themeButton" text="Radiusnelk" />
                   <Pane layoutX="31.0" layoutY="16.0" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: white; -fx-background-radius: 7; -fx-opacity: 0.6;" />
                   <Pane layoutX="107.0" layoutY="16.0" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: white; -fx-opacity: 0.6;" />
                </children>
@@ -169,7 +169,7 @@
                   <Button layoutX="14.0" layoutY="59.0" mnemonicParsing="false" onAction="#PinkButton" prefHeight="21.0" prefWidth="70.0" styleClass="themeButton" text="Alkalmazás" />
                </children>
             </Pane>
-            <Button fx:id="themeoverlayButtonHide" layoutX="158.0" layoutY="420.0" mnemonicParsing="false" onAction="#themeoverlayActionHide" prefHeight="38.0" prefWidth="81.0" styleClass="custom-button" text="Bezárás" />
+            <Button fx:id="themeOverlayButtonHide" layoutX="158.0" layoutY="420.0" mnemonicParsing="false" onAction="#themeOverlayActionHide" prefHeight="38.0" prefWidth="81.0" styleClass="custom-button" text="Bezárás" />
          </children>
       </Pane>
       <Pane fx:id="overlay_help" layoutX="447.0" layoutY="125.0" prefHeight="472.0" prefWidth="387.0" styleClass="overlay">
@@ -217,7 +217,7 @@
                                           <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="347.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="kartonszam_label" minWidth="-Infinity" text="Kartonszám" />
-                                                <TextField id="textField1" fx:id="cardnum_input" onMouseClicked="#DisableMouse2" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS">
+                                                <TextField id="textField1" fx:id="cardnumInputField" onMouseClicked="#DisableMouse2" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS">
                                                    <cursor>
                                                       <Cursor fx:constant="DEFAULT" />
                                                    </cursor></TextField>
@@ -227,51 +227,51 @@
                                           <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="49.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="nev_label" minWidth="-Infinity" text="Név" />
-                                                <TextField id="textField1" fx:id="name_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="nameInputField" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="84.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="anyaneve_label" minWidth="-Infinity" text="Anyja neve" />
-                                                <TextField id="textField1" fx:id="mothersname_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="motherNameInputField" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="119.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="taj_label" minWidth="-Infinity" text="TAJ / Azonosító" />
-                                                <TextField id="textField1" fx:id="taj_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="insuranceIdInputField" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="154.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="szuletesidatum_label" minWidth="-Infinity" text="Születési dátum" />
-                                                <TextField id="textField1" fx:id="birthdate_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="birthdateInputField" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
-                                          <TextArea id="textArea1" fx:id="diagnose_input" layoutX="94.0" layoutY="196.0" prefHeight="77.0" prefWidth="533.0" styleClass="betegseg" wrapText="true" />
+                                          <TextArea id="textArea1" fx:id="diagnoseInputField" layoutX="94.0" layoutY="196.0" prefHeight="77.0" prefWidth="533.0" styleClass="betegseg" wrapText="true" />
                                           <Label id="label2" layoutX="14.0" layoutY="195.0" prefHeight="17.0" prefWidth="59.0" text="Diagnózis" />
                                           <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="14.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="iranyitoszam_label" minWidth="-Infinity" text="Irányítószám" />
-                                                <TextField id="textField1" fx:id="zipcode_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="zipcodeInputField" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="49.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="varos_label" minWidth="-Infinity" text="Város" />
-                                                <TextField id="textField1" fx:id="city_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="cityInputField" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="84.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="utca_label" minWidth="-Infinity" text="Utca" />
-                                                <TextField id="textField1" fx:id="street_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="streetInputField" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="119.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="hazszam_label" minWidth="-Infinity" prefHeight="17.0" prefWidth="51.0" text="Házszám" />
-                                                <TextField id="textField1" fx:id="housenum_input" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="streetNumberInputField" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox layoutX="686.0" layoutY="210.0">
@@ -322,7 +322,7 @@
                                           </Pane>
                                           <Pane layoutX="14.0" layoutY="12.0" prefHeight="276.0" prefWidth="669.0" styleClass="loginhatter">
                                              <children>
-                                                <Button layoutX="430.0" layoutY="196.0" mnemonicParsing="false" onAction="#ListAllPatientPushed" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Összes beteg listázása" />
+                                                <Button layoutX="430.0" layoutY="196.0" mnemonicParsing="false" onAction="#ListAllPatientButtonPushed" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Összes beteg listázása" />
                                                 <Button layoutX="430.0" layoutY="45.0" mnemonicParsing="false" onAction="#SearchButtonPushed" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Keresés" />
                                                 <ChoiceBox fx:id="myChoiceBox" layoutX="20.0" layoutY="62.0" prefHeight="30.0" prefWidth="150.0" />
                                                 <TextField fx:id="searchElementInput" layoutX="181.0" layoutY="48.0" prefHeight="45.0" prefWidth="234.0" promptText="Írja be a keresendő szöveget!">
@@ -377,7 +377,7 @@
                                           <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="kartonszam_label1" minWidth="-Infinity" text="Kartonszám" />
-                                                <TextField id="textField1" fx:id="cardnum_modify" editable="false" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS">
+                                                <TextField id="textField1" fx:id="modifyCardnumInputField" editable="false" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS">
                                                    <cursor>
                                                       <Cursor fx:constant="DEFAULT" />
                                                    </cursor>
@@ -387,51 +387,51 @@
                                           <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="49.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="nev_label1" minWidth="-Infinity" text="Név" />
-                                                <TextField id="textField1" fx:id="name_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="modiyfNameInputField" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="84.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="anyaneve_label1" minWidth="-Infinity" text="Anyja neve" />
-                                                <TextField id="textField1" fx:id="mothersname_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="modifyMotherNameInputField" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="119.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="taj_label1" minWidth="-Infinity" text="TAJ / Azonosító" />
-                                                <TextField id="textField1" fx:id="taj_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="modifyInsuranceIdInputField" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="154.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="szuletesidatum_label1" minWidth="-Infinity" text="Születési dátum" />
-                                                <TextField id="textField1" fx:id="birthdate_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="modifyBirthDateInputField" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
-                                          <TextArea id="textArea1" fx:id="diagnose_modify" layoutX="94.0" layoutY="196.0" prefHeight="77.0" prefWidth="533.0" styleClass="betegseg" wrapText="true" />
+                                          <TextArea id="textArea1" fx:id="modifyDiagnoseInputField" layoutX="94.0" layoutY="196.0" prefHeight="77.0" prefWidth="533.0" styleClass="betegseg" wrapText="true" />
                                           <Label id="label2" layoutX="14.0" layoutY="195.0" prefHeight="17.0" prefWidth="59.0" text="Diagnózis" />
                                           <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="14.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="iranyitoszam_label1" minWidth="-Infinity" text="Irányítószám" />
-                                                <TextField id="textField1" fx:id="zipcode_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="modifyZipcodeInputField" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="49.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="varos_label1" minWidth="-Infinity" text="Város" />
-                                                <TextField id="textField1" fx:id="city_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="modifyCityInputField" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="84.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="utca_label1" minWidth="-Infinity" text="Utca" />
-                                                <TextField id="textField1" fx:id="street_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="modifyStreetInputField" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox id="HBox" alignment="CENTER" layoutX="391.0" layoutY="119.0" prefHeight="25.0" prefWidth="238.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="hazszam_label1" minWidth="-Infinity" prefHeight="17.0" prefWidth="51.0" text="Házszám" />
-                                                <TextField id="textField1" fx:id="housenum_modify" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="modifyStreetNumberInputField" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox layoutX="686.0" layoutY="210.0" />
@@ -462,7 +462,7 @@
          <children>
             <Button fx:id="ExitOverlayButtonShow" layoutX="1259.0" layoutY="-2.0" mnemonicParsing="false" onAction="#ExitOverlayButtonAction" prefHeight="16.0" prefWidth="16.0" styleClass="CloseButtonImage" />
             <Button layoutX="1241.0" layoutY="-1.0" mnemonicParsing="false" onAction="#Tray" prefHeight="25.0" prefWidth="16.0" styleClass="TalcaButtonImage" />
-            <Button fx:id="overlaybutton" layoutX="1222.0" layoutY="-2.0" mnemonicParsing="false" onAction="#overlayAction" prefHeight="25.0" prefWidth="16.0" styleClass="SettingsButtonImage" />
+            <Button fx:id="overlayButton" layoutX="1222.0" layoutY="-2.0" mnemonicParsing="false" onAction="#overlayAction" prefHeight="25.0" prefWidth="16.0" styleClass="SettingsButtonImage" />
          </children>
       </Pane>
    </children>
