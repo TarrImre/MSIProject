@@ -4,3 +4,46 @@
     -fx-background-radius: 20;
 /*-fx-font: 12px "Helvetica";*/
 }
+.overlay{
+	-fx-background-radius:15;
+}
+
+.themePaneBg{
+	-fx-background-radius:10;
+	-fx-border-radius:10;
+}
+
+.themeButton{
+	-fx-background-radius:10;
+}
+.loginhatter{
+	-fx-background-radius:0 0 0 20;
+}
+
+.custom-button{
+	-fx-background-radius:10;
+}
+.custom-button:hover {
+	-fx-background-radius:10;
+}
+.text-field {
+  
+    -fx-background-insets: 0 0 0 0, 0 0 0 0, 0 0 0 0;
+	-fx-background-radius: 10;
+	
+}
+.text-field:focused {
+    -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1;
+	-fx-background-radius: 10;
+
+}
+.text-area{
+	-fx-background-radius:10;
+}
+.text-area:focused{
+	-fx-background-radius: 10;
+	-fx-border-radius:10;
+}
+.Bigbutton{
+	-fx-border-radius:10;
+}
