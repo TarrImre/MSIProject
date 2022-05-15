@@ -151,19 +151,19 @@
       </Pane>
       <Pane fx:id="overlay" layoutX="367.0" layoutY="283.0" prefHeight="149.0" prefWidth="529.0" styleClass="overlay">
          <children>
-            <Button fx:id="overlayHideButton" layoutX="331.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#overlayActionHide" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css">
+            <Button fx:id="overlayHideButton" layoutX="331.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#overlayActionHide" prefHeight="100.0" prefWidth="100.0" stylesheets="@Winter.css">
                <styleClass>
                   <String fx:value="Bigbutton" />
                   <String fx:value="logout" />
                </styleClass>
             </Button>
-            <Button fx:id="helpButton" layoutX="216.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#HelpAction" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css">
+            <Button fx:id="helpButton" layoutX="216.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#HelpAction" prefHeight="100.0" prefWidth="100.0" stylesheets="@Winter.css">
                <styleClass>
                   <String fx:value="Bigbutton" />
                   <String fx:value="help" />
                </styleClass>
             </Button>
-            <Button fx:id="themeOverlayButton" layoutX="104.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#themeOverlayAction" prefHeight="100.0" prefWidth="100.0" stylesheets="@style.css">
+            <Button fx:id="themeOverlayButton" layoutX="104.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#themeOverlayAction" prefHeight="100.0" prefWidth="100.0" stylesheets="@Winter.css">
                <styleClass>
                   <String fx:value="Bigbutton" />
                   <String fx:value="themes" />
@@ -181,7 +181,7 @@
       </Pane>
       <Pane fx:id="overlay_help" layoutX="447.0" layoutY="125.0" prefHeight="472.0" prefWidth="387.0" styleClass="overlay">
          <children>
-            <Button fx:id="helpButtonHide" layoutX="354.0" layoutY="4.0" minHeight="17.0" minWidth="16.0" mnemonicParsing="false" onAction="#helpOverlayActionHide" prefHeight="25.0" prefWidth="25.0" stylesheets="@style.css">
+            <Button fx:id="helpButtonHide" layoutX="354.0" layoutY="4.0" minHeight="17.0" minWidth="16.0" mnemonicParsing="false" onAction="#helpOverlayActionHide" prefHeight="25.0" prefWidth="25.0" stylesheets="@Winter.css">
                <styleClass>
                   <String fx:value="Bigbutton" />
                   <String fx:value="logout" />

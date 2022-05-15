@@ -1,6 +1,7 @@
 package hu.unideb.inf;
 
 import hu.unideb.inf.DAO.JPAUserDAO;
+import hu.unideb.inf.Modell.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +21,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.util.List;
 
 public class LoginController implements Serializable {
 
@@ -34,6 +36,8 @@ public class LoginController implements Serializable {
 
     @FXML
     private Pane topPane;
+
+    public static String GlobalUsername;
     private double x,y;
 
     public void init(Stage stage){
@@ -73,8 +77,16 @@ public class LoginController implements Serializable {
                 loginWindowMessage("A felhasználó nem létezik!");
                 return;
             }
+            List<User> Users = userDAO.getUsers();
+            for (User u: Users) {
+                if (u.getUsername().matches(username.getText())){
+                    GlobalUsername = username.getText();
+                    openMsiUserInterfaceEvent(event, u.getTheme(), u.getRadius());
+                }
 
-            openMsiUserInterfaceEvent(event);
+            }
+
+
 
         }catch(Exception e){
             e.printStackTrace();
@@ -98,7 +110,7 @@ public class LoginController implements Serializable {
     }
 
     @FXML
-    private void openMsiUserInterfaceEvent(ActionEvent event) throws IOException {
+    private void openMsiUserInterfaceEvent(ActionEvent event, String theme, Boolean radius) throws IOException {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MsiGui.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
@@ -112,8 +124,11 @@ public class LoginController implements Serializable {
         stage.getScene().setFill(Color.TRANSPARENT);
         stage.initStyle(StageStyle.TRANSPARENT);
 
-        stage.getScene().getStylesheets().add(getClass().getResource("/fxml/style.css").toExternalForm());
-        stage.getScene().getStylesheets().add(getClass().getResource("/fxml/withradius.css").toExternalForm());
+        stage.getScene().getStylesheets().add(getClass().getResource("/fxml/"+ theme +".css").toExternalForm());
+        if (radius){
+            stage.getScene().getStylesheets().add(getClass().getResource("/fxml/withradius.css").toExternalForm());
+        }
+        else {stage.getScene().getStylesheets().add(getClass().getResource("/fxml/withoutradius.css").toExternalForm());}
 
         ((MsiGuiController)fxmlLoader.getController()).init(stage);
         Close(event);

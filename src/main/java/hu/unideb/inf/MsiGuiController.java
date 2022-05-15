@@ -1,10 +1,10 @@
 package hu.unideb.inf;
 
 import hu.unideb.inf.DAO.JPAPatientDAO;
+import hu.unideb.inf.DAO.JPAUserDAO;
 import hu.unideb.inf.Modell.Model;
 import hu.unideb.inf.Modell.Patient;
-import javafx.animation.FadeTransition;
-import javafx.animation.FillTransition;
+import hu.unideb.inf.Modell.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,7 +21,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,7 +28,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.*;
-import java.util.concurrent.Delayed;
 
 public class MsiGuiController implements Initializable {
 
@@ -199,12 +197,14 @@ public class MsiGuiController implements Initializable {
     void themeWithRadius(ActionEvent event) {
         parent.getStylesheets().remove("/fxml/withoutradius.css");
         parent.getStylesheets().add("/fxml/withradius.css");
+        setRadiusForUser(true);
     }
 
     @FXML
     void themeWithoutRadius(ActionEvent event){
         parent.getStylesheets().remove("/fxml/withradius.css");
         parent.getStylesheets().add("/fxml/withoutradius.css");
+        setRadiusForUser(false);
     }
 
     public void WinterButton(ActionEvent event){
@@ -214,47 +214,52 @@ public class MsiGuiController implements Initializable {
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/razer.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/green.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/pink.css").toExternalForm());
-        parent.getScene().getStylesheets().add(getClass().getResource("/fxml/style.css").toExternalForm());
+        parent.getScene().getStylesheets().add(getClass().getResource("/fxml/Winter.css").toExternalForm());
+        setThemeForUser("Winter");
     }
 
     public void AutumnButton(ActionEvent event){
-        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/style.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/Winter.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/light.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/dark.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/razer.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/green.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/pink.css").toExternalForm());
         parent.getScene().getStylesheets().add(getClass().getResource("/fxml/autumn.css").toExternalForm());
+        setThemeForUser("autumn");
     }
 
     public void LightButton(ActionEvent event){
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/autumn.css").toExternalForm());
-        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/style.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/Winter.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/dark.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/razer.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/green.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/pink.css").toExternalForm());
         parent.getScene().getStylesheets().add(getClass().getResource("/fxml/light.css").toExternalForm());
+        setThemeForUser("light");
     }
 
     public void DarkButton(ActionEvent event){
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/autumn.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/light.css").toExternalForm());
-        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/style.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/Winter.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/razer.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/green.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/pink.css").toExternalForm());
         parent.getScene().getStylesheets().add(getClass().getResource("/fxml/dark.css").toExternalForm());
+        setThemeForUser("dark");
     }
 
     public void RazerButton(ActionEvent event){
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/autumn.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/light.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/dark.css").toExternalForm());
-        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/style.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/Winter.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/green.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/pink.css").toExternalForm());
         parent.getScene().getStylesheets().add(getClass().getResource("/fxml/razer.css").toExternalForm());
+        setThemeForUser("razer");
     }
 
     public void GreenButton(ActionEvent event){
@@ -262,9 +267,10 @@ public class MsiGuiController implements Initializable {
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/light.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/dark.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/razer.css").toExternalForm());
-        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/style.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/Winter.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/pink.css").toExternalForm());
         parent.getScene().getStylesheets().add(getClass().getResource("/fxml/green.css").toExternalForm());
+        setThemeForUser("green");
     }
 
     public void PinkButton(ActionEvent event){
@@ -273,8 +279,9 @@ public class MsiGuiController implements Initializable {
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/dark.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/razer.css").toExternalForm());
         parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/green.css").toExternalForm());
-        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/style.css").toExternalForm());
+        parent.getScene().getStylesheets().remove(getClass().getResource("/fxml/Winter.css").toExternalForm());
         parent.getScene().getStylesheets().add(getClass().getResource("/fxml/pink.css").toExternalForm());
+        setThemeForUser("pink");
     }
 
     @FXML
@@ -866,4 +873,37 @@ public class MsiGuiController implements Initializable {
             return false;
         }
     }
+
+    private void setRadiusForUser(Boolean radius){
+        try(JPAUserDAO userDAO = new JPAUserDAO()) {
+            String name = LoginController.GlobalUsername;
+            List<User> Users = userDAO.getUsers();
+            for (User u: Users) {
+                if (u.getUsername().matches(name)){
+                    u.setRadius(radius);
+                    userDAO.updateUser(u);
+                }
+            }
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private void setThemeForUser(String theme){
+        try(JPAUserDAO userDAO = new JPAUserDAO()) {
+            String name = LoginController.GlobalUsername;
+            List<User> Users = userDAO.getUsers();
+            for (User u: Users) {
+                if (u.getUsername().matches(name)){
+                    u.setTheme(theme);
+                    userDAO.updateUser(u);
+                }
+            }
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
 }

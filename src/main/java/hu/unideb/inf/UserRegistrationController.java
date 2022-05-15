@@ -111,6 +111,8 @@ public class UserRegistrationController implements Initializable{
             user.setUsername(usernameReg.getText());
             user.setEmail(emailReg.getText());
             user.setPassword(passwordReg.getText());
+            user.setRadius(true);
+            user.setTheme("Winter");
 
             if (userDAO.usernameAlreadyExists(user.getUsername()) || userDAO.emailAlreadyExists(user.getEmail())){
                 registrationMessage("Ez a felhasználónév/email már foglalt!");

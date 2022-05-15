@@ -15,6 +15,10 @@ public class User implements Serializable {
     private String username;
     private String password;
 
+    private String theme;
+
+    private boolean radius;
+
     public int getId() {return id;}
 
     public void setId(int id) {this.id = id;}
@@ -31,5 +35,12 @@ public class User implements Serializable {
 
     public void setPassword(String password) {this.password = password;}
 
+    public void setTheme(String theme) {this.theme = theme;}
+
+    public String getTheme() {return theme;}
+
+    public void setRadius(Boolean Radius) {this.radius = Radius;}
+
+    public Boolean getRadius() {return radius;}
 
 }
