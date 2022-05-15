@@ -188,7 +188,7 @@ input: #424549
 .custom-button:hover {
     -fx-font-size: 16px;
     -fx-padding: 10;
-    -fx-background-color: #424549;
+    -fx-background-color: #34373b;
 	-fx-background-radius: 0;
 	-fx-text-background-color:white;
 	-fx-text-fill:white;
@@ -227,7 +227,7 @@ input: #424549
 
 
 .radio-button .radio {
-	-fx-background-color:  #424549;
+	-fx-background-color: #4A4C51;
 	-fx-border-color: 0px;
 	-fx-border-radius: 0px; 
 }
@@ -235,10 +235,10 @@ input: #424549
  	-fx-shape: "M1.73,12.91 8.1,19.28 22.79,4.59 22.79,1.59 8.1,16.28 1.73,9.91";
 }*/
 .radio-button:selected /*.mark*/{
-	-fx-background-color:  #424549;
+	-fx-background-color: #4A4C51;
 }
 .radio-button:selected .dot{
-	-fx-background-color:  #424549;
+	-fx-background-color:  #4A4C51;
 }
 .radio-button:selected .radio {
 	-fx-background-color: 0px;
@@ -358,7 +358,6 @@ input: #424549
 .themeButton:hover {
     -fx-background-color: #424549;
 }
-
 
 .registerError{
 	-fx-font-weight:bold;
