@@ -48,12 +48,12 @@ input: #1F2023
 }
 .table-row-cell: hover {
     -fx-background-color: #93f9b911;
-    -fx-text-background-color:#0f0f0f;
+    -fx-text-background-color:#dedede;
 }
 .table-row-cell:selected {
     -fx-background-color: #93f9b911;
     -fx-background-insets: 0;
-	-fx-text-background-color:#82d18d;
+	-fx-text-background-color:#ffffff;
     -fx-background-radius: 1;
 }
 .table-row-cell: odd{
@@ -107,7 +107,7 @@ input: #1F2023
 .text-field {
     -fx-background-color: #82d18d , #4A4C51;
     -fx-background-insets: 0 0 0 0, 0 0 0 0;
-	-fx-background-radius: 0;
+	  
 	-fx-prompt-text-fill: #82d18d;
 	-fx-text-background-color:#82d18d;
 	-fx-text-fill:#82d18d;
@@ -171,7 +171,7 @@ input: #1F2023
 .betegseg{
 	-fx-background-color:  #4A4C51;
     -fx-background-insets: 0 0 0 0, 0 0 0 0;
-	-fx-background-radius: 0;
+	  
 }
 
 
@@ -181,7 +181,7 @@ input: #1F2023
     -fx-font-size: 16px;
     -fx-padding: 10;
     -fx-background-color: #111215;
-	-fx-background-radius: 0;
+	  
 	-fx-text-background-color:#82d18d;
 	-fx-text-fill:#82d18d;
 }
@@ -189,7 +189,7 @@ input: #1F2023
     -fx-font-size: 16px;
     -fx-padding: 10;
     -fx-background-color: #36393E;
-	-fx-background-radius: 0;
+	  
 	-fx-text-background-color:#82d18d;
 	-fx-text-fill:#82d18d;
 }
@@ -197,7 +197,7 @@ input: #1F2023
     -fx-font-size: 16px;
     -fx-padding: 10;
     -fx-background-color: #111215;
-	-fx-background-radius: 0;
+	  
 	-fx-text-background-color:#82d18d;
 	-fx-text-fill:#82d18d;
 }
@@ -205,7 +205,7 @@ input: #1F2023
     -fx-font-size: 16px;
     -fx-padding: 10;
     -fx-background-color: #36393E;
-	-fx-background-radius: 0;
+	  
 	-fx-text-background-color:#82d18d;
 	-fx-text-fill:#82d18d;
 }
@@ -257,6 +257,9 @@ input: #1F2023
 		LOGIN
 *************************/
 .loginhatter{
+	-fx-background-color: linear-gradient(to bottom right, #25282A, #25282A);
+}
+.exit{
 	-fx-background-color: linear-gradient(to bottom right, #25282A, #25282A);
 }
 .logininput{
@@ -351,7 +354,7 @@ input: #1F2023
     -fx-font-size: 12px;
     -fx-padding: 2;
     -fx-background-color: #111215;
-	-fx-background-radius: 0;
+	  
 	-fx-text-background-color:#82d18d;
 	-fx-text-fill:#82d18d;
 }

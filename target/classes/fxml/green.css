@@ -48,12 +48,12 @@ input: #9dc797
 }
 .table-row-cell: hover {
     -fx-background-color: #93f9b911;
-    -fx-text-background-color: red;
+    -fx-text-background-color: #4b8044;
 }
 .table-row-cell:selected {
     -fx-background-color: #93f9b911;
     -fx-background-insets: 0;
-	-fx-text-background-color: #ad5953;
+	-fx-text-background-color: #1d4718;
     -fx-background-radius: 1;
 }
 .table-row-cell: odd{
@@ -96,7 +96,7 @@ input: #9dc797
 .text-field {
     -fx-background-color: #FFF , #87b881;
     -fx-background-insets: 0 0 0 0, 0 0 0 0;
-	-fx-background-radius: 0;
+	  
 	-fx-prompt-text-fill: #4d4d4d;
 	/*-fx-opacity:0.4;*/
 }
@@ -156,7 +156,7 @@ input: #9dc797
 .betegseg{
 	-fx-background-color:  #87b881;
     -fx-background-insets: 0 0 0 0, 0 0 0 0;
-	-fx-background-radius: 0;
+	  
 }
 
 
@@ -166,25 +166,25 @@ input: #9dc797
     -fx-font-size: 16px;
     -fx-padding: 10;
     -fx-background-color: #87b881;
-	-fx-background-radius: 0;
+	  
 }
 .custom-button:hover {
     -fx-font-size: 16px;
     -fx-padding: 10;
     -fx-background-color: #9dc797;
-	-fx-background-radius: 0;
+	  
 }
 .custom-button.register {
     -fx-font-size: 16px;
     -fx-padding: 10;
     -fx-background-color: #89c2cc;
-	-fx-background-radius: 0;
+	  
 }
 .custom-button.register:hover {
     -fx-font-size: 16px;
     -fx-padding: 10;
     -fx-background-color: #9dc797;
-	-fx-background-radius: 0;
+	  
 }
 .sidepane{
 	-fx-background-color: #87b881;
@@ -233,6 +233,9 @@ input: #9dc797
 		LOGIN
 *************************/
 .loginhatter{
+	-fx-background-color: linear-gradient(to bottom right, #679e5f, #679e5f);
+}
+.exit{
 	-fx-background-color: linear-gradient(to bottom right, #679e5f, #679e5f);
 }
 .logininput{
@@ -327,7 +330,7 @@ input: #9dc797
     -fx-font-size: 12px;
     -fx-padding: 2;
     -fx-background-color: #87b881;
-	-fx-background-radius: 0;
+	  
 }
 .themeButton:hover {
     -fx-background-color: #9dc797;
