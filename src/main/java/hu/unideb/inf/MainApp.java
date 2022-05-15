@@ -3,27 +3,19 @@ package hu.unideb.inf;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
-import java.io.IOException;
 
 
 public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/loginpage.fxml"));
+        FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("/fxml/loginpage.fxml"));
         Scene scene = new Scene(loader.load());
         stage.setScene(scene);
         scene.setFill(Color.TRANSPARENT);
@@ -32,17 +24,8 @@ public class MainApp extends Application {
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.getIcons().add(new Image("/fxml/img/windowsicon.png"));
 
-        ((MsiGuiController)loader.getController()).init(stage);
+        ((LoginController)loader.getController()).init(stage);
         stage.show();
-
-        /*Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
-
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add("/styles/Styles.css");
-
-        stage.setTitle("JavaFX and Maven");
-        stage.setScene(scene);
-        stage.show();*/
     }
 
 
