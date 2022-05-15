@@ -111,7 +111,9 @@ public class LoginController implements Serializable {
 
         stage.getScene().setFill(Color.TRANSPARENT);
         stage.initStyle(StageStyle.TRANSPARENT);
-        stage.getScene().getStylesheets().add(getClass().getResource("/fxml/dark.css").toExternalForm());
+
+        stage.getScene().getStylesheets().add(getClass().getResource("/fxml/style.css").toExternalForm());
+        stage.getScene().getStylesheets().add(getClass().getResource("/fxml/withradius.css").toExternalForm());
 
         ((MsiGuiController)fxmlLoader.getController()).init(stage);
         Close(event);

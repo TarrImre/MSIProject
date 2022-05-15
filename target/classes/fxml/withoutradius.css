@@ -4,3 +4,49 @@
     -fx-background-radius: 0;
 /*-fx-font: 12px "Helvetica";*/
 }
+.overlay{
+	-fx-background-radius:0;
+}
+
+.themePaneBg{
+	-fx-background-radius:0;
+	-fx-border-radius:0;
+}
+
+.themeButton{
+	-fx-background-radius:0;
+}
+.loginhatter{
+	-fx-background-radius:0;
+}
+.exit{
+	-fx-background-radius:0;
+}
+
+.custom-button{
+	-fx-background-radius:0;
+}
+.custom-button:hover {
+	-fx-background-radius:0;
+}
+.text-field {
+  
+    -fx-background-insets: 0 0 0 0, 0 0 0 0, 0 0 0 0;
+	-fx-background-radius: 0;
+	
+}
+.text-field:focused {
+    -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1;
+	-fx-background-radius: 0;
+
+}
+.text-area{
+	-fx-background-radius:0;
+}
+.text-area:focused{
+	-fx-background-radius: 0;
+	-fx-border-radius:0;
+}
+.Bigbutton{
+	-fx-border-radius:0;
+}
