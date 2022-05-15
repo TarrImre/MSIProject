@@ -12,7 +12,7 @@ az egészségügyi intézményekben.
 - Páciensek adatainak lekérdezése különböző szempontok szerint.
 
 ## Verziószám
-0.0.1?
+0.4.1
 
 ### Fejlesztők
 Laza Sándor --- lazasandor17@gmail.com  
@@ -20,4 +20,3 @@ Tarr Imre --- tarr.imre2630@gmail.com
 Dobos Martin --- dobi.vv@gmail.com
 
 ![msi projekt](https://toxy.hu/fs/msilogofeher.png)
- 
