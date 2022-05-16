@@ -47,6 +47,12 @@
 	-fx-background-radius: 0;
 	-fx-border-radius:0;
 }
-.Bigbutton{
-	-fx-border-radius:0;
+.Bigbutton { 
+	-fx-background-radius: 0;
+} 
+.choice-box {
+	-fx-background-radius:0;
+}
+.choice-box .context-menu {
+	-fx-background-radius:0;
 }

@@ -20,7 +20,9 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -353,17 +355,19 @@ public class MsiGuiController implements Initializable {
         backToLoginInterfaceEvent(event);
     }
 
+    @FXML
     private void backToLoginInterfaceEvent(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loginpage.fxml"));
-        Parent root = (Parent) fxmlLoader.load();
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.getIcons().add(new Image("/img/windowsicon.png"));
-        ((MsiGuiController)fxmlLoader.getController()).init(stage);
+        Parent root5 = (Parent) fxmlLoader.load();
+        Stage stage5 = new Stage();
+        stage5.initModality(Modality.APPLICATION_MODAL);
+        stage5.initStyle(StageStyle.UNDECORATED);
+        stage5.setTitle("MSI Projekt");
+        stage5.setScene(new Scene(root5));
+        stage5.getIcons().add(new Image("/fxml/img/windowsicon.png"));
+        ((LoginController)fxmlLoader.getController()).init(stage5);
         Close(event);
-        stage.show();
+        stage5.show();
     }
 
     @FXML

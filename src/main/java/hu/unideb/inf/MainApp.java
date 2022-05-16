@@ -1,17 +1,23 @@
 package hu.unideb.inf;
 
+import javafx.animation.FadeTransition;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 
 public class MainApp extends Application {
+
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -23,6 +29,7 @@ public class MainApp extends Application {
         stage.setTitle("MSI Projekt");
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.getIcons().add(new Image("/fxml/img/windowsicon.png"));
+
 
         ((LoginController)loader.getController()).init(stage);
         stage.show();

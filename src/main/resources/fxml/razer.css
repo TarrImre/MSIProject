@@ -48,12 +48,12 @@ input: #1F2023
 }
 .table-row-cell: hover {
     -fx-background-color: #93f9b911;
-    -fx-text-background-color:#dedede;
+    -fx-text-background-color:#cfffd5;
 }
 .table-row-cell:selected {
     -fx-background-color: #93f9b911;
     -fx-background-insets: 0;
-	-fx-text-background-color:#ffffff;
+	-fx-text-background-color:#a1bfa4;
     -fx-background-radius: 1;
 }
 .table-row-cell: odd{
@@ -62,7 +62,7 @@ input: #1F2023
     -fx-padding: 0.0em;
 }
 .table-row-cell: even{
-    -fx-background-color: #4A4C51;
+    -fx-background-color: #27282b;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
 }
@@ -159,7 +159,6 @@ input: #1F2023
 .choice-box {
   -fx-background-color: #0A0B0D;
   -fx-mark-color: #82d18d; /* arrow color*/
-  -fx-background-radius:0;
 }
 
 /* Selected item text color on the control itself*/
@@ -345,6 +344,13 @@ input: #1F2023
 	-fx-background-image: url('img/brush.png');
 }
 
+.BottomIMG{
+	-fx-background-image: url('img/msilogo_razer.png');
+    -fx-background-size: 80%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 50%;
+	-fx-background-color:transparent;
+}
 
 
 .themePaneBg { 
