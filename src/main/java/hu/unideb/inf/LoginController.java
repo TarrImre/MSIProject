@@ -128,20 +128,21 @@ public class LoginController implements Serializable {
             for (User u: Users) {
                 if (u.getUsername().matches(username.getText())){
 
+                    GlobalUsername = username.getText();
                     BgEventSuccess();
                     loginWindowMessageSuccess("Sikeres belépés!");
 
+                 /*   GlobalUsername = username.getText();
+                    openMsiUserInterfaceEvent(event, u.getTheme(), u.getRadius());*/
+
                     delay(1500, () -> {
                         try {
-
-                            GlobalUsername = username.getText();
                             openMsiUserInterfaceEvent(event, u.getTheme(), u.getRadius());
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                     });
-                    //GlobalUsername = username.getText();
-                   // openMsiUserInterfaceEvent(event, u.getTheme(), u.getRadius());
+
                 }
 
             }
@@ -163,6 +164,8 @@ public class LoginController implements Serializable {
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle("MSI Projekt");
             stage.setScene(new Scene(root1));
+            stage.getScene().setFill(Color.TRANSPARENT);
+            stage.initStyle(StageStyle.TRANSPARENT);
             stage.getIcons().add(new Image("/fxml/img/windowsicon.png"));
             ((UserRegistrationController)fxmlLoader.getController()).init(stage);
             Close(event);
@@ -223,6 +226,6 @@ public class LoginController implements Serializable {
     private void loginWindowMessageSuccess(String message){
         errorLabel.setStyle("-fx-text-fill:#46a356;-fx-font-weight:bold;");
         errorLabel.setText(message);
-        clearTexts();
+
     }
 }

@@ -24,10 +24,10 @@
 }
 
 .custom-button{
-	-fx-background-radius:10;
+	-fx-background-radius:15;
 }
 .custom-button:hover {
-	-fx-background-radius:10;
+	-fx-background-radius:15;
 }
 .text-field {
   
