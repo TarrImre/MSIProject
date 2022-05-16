@@ -2,6 +2,7 @@ package hu.unideb.inf;
 
 import hu.unideb.inf.DAO.JPAUserDAO;
 import hu.unideb.inf.Modell.User;
+import javafx.animation.FillTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +15,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Ellipse;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -63,6 +69,24 @@ public class UserRegistrationController implements Initializable{
         });
 
     }
+    @FXML private Ellipse ellipse;
+
+    void BgEventSuccess(){
+        FillTransition ft = new FillTransition(Duration.millis(500), ellipse);
+        ft.setFromValue(Color.rgb(24,119,242));
+        ft.setToValue(Color.rgb(91,181,106));
+        //ft.setCycleCount(Timeline.INDEFINITE);
+        //ft.setAutoReverse(true);
+        ft.play();
+    }
+    void BgEventError(){
+        FillTransition ft = new FillTransition(Duration.millis(500), ellipse);
+        ft.setFromValue(Color.rgb(24,119,242));
+        ft.setToValue(Color.rgb(181,91,91));
+        //ft.setCycleCount(Timeline.INDEFINITE);
+        //ft.setAutoReverse(true);
+        ft.play();
+    }
 
     @FXML
     private void Close(ActionEvent event) {
@@ -80,18 +104,21 @@ public class UserRegistrationController implements Initializable{
     private void userRegisterButtonPushed(ActionEvent event) {
 
         if (!isAllFilled()){
+            BgEventError();
             registrationMessage("Minden mezőt kötelező kitölteni!");
             clearTexts();
             return;
         }
 
         if (!isValidEmailAddress(emailReg.getText())){
+            BgEventError();
             registrationMessage("Helyes e-mail formátumot adjon meg!");
             clearTexts();
             return;
         }
 
         if(!isValidUsername(usernameReg.getText()) || usernameReg.getText().length() < 6 || usernameReg.getText().length() > 30 ){
+            BgEventError();
             registrationMessage("Helytelen felhasználónév formátum!\n6-30 Karakter, első karakter betű\nCsak '_' spec. karakter!");
             clearTexts();
             return;
@@ -99,6 +126,7 @@ public class UserRegistrationController implements Initializable{
         }
 
         if (!isValidPassword(passwordReg.getText())){
+            BgEventError();
             registrationMessage("Helytelen jelszó formátum!\n-Legalább 1 kis- és nagybetű, szám\n8-20 Karakter");
             clearTexts();
             return;
@@ -115,18 +143,29 @@ public class UserRegistrationController implements Initializable{
             user.setTheme("Winter");
 
             if (userDAO.usernameAlreadyExists(user.getUsername()) || userDAO.emailAlreadyExists(user.getEmail())){
+                BgEventError();
                 registrationMessage("Ez a felhasználónév/email már foglalt!");
                 clearTexts();
                 return;
             }
             
             if (emailRegSecond.getText().matches(emailReg.getText()) && passwordReg.getText().matches(passwordRegSecond.getText())){
-                registerButton.setText("Sikeres regisztráció!");
+                BgEventSuccess();
+                registrationMessageSuccess("Sikeres regisztráció!");
                 user.setPassword(MD5Encryption(passwordReg.getText()));
                 userDAO.saveUser(user);
-                openSuccessRegistrationWindowEvent(event);
+                LoginController.delay(1500, () -> {
+                    try {
+                        openLoginWindowEvent(event);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+
+
 
             }else{
+                BgEventError();
                 registrationMessage("A jelszó/email mezők nem egyeznek!");
                 clearTexts();
             }
@@ -143,33 +182,18 @@ public class UserRegistrationController implements Initializable{
     }
 
     @FXML
-    private void successRegistrationEvent(ActionEvent event)  throws IOException {
-        openLoginWindowEvent(event);
-    }
-
-    private void openSuccessRegistrationWindowEvent(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/error.fxml"));
-        Parent root = fxmlLoader.load();
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.getIcons().add(new Image("/img/windowsicon.png"));
-        ((UserRegistrationController)fxmlLoader.getController()).init(stage);
-        stage.show();
-    }
-
     private void openLoginWindowEvent(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loginpage.fxml"));
-        Parent root = (Parent) fxmlLoader.load();
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.getIcons().add(new Image("/img/windowsicon.png"));
-        ((UserRegistrationController)fxmlLoader.getController()).init(stage);
+        Parent root5 = (Parent) fxmlLoader.load();
+        Stage stage5 = new Stage();
+        stage5.initModality(Modality.APPLICATION_MODAL);
+        stage5.initStyle(StageStyle.UNDECORATED);
+        stage5.setTitle("MSI Projekt");
+        stage5.setScene(new Scene(root5));
+        stage5.getIcons().add(new Image("/fxml/img/windowsicon.png"));
+        ((LoginController)fxmlLoader.getController()).init(stage5);
         Close(event);
-        stage.show();
+        stage5.show();
     }
 
     @Override
@@ -201,11 +225,11 @@ public class UserRegistrationController implements Initializable{
     }
 
     private void registrationMessage(String message){
-        registerMessageLabel.setStyle("" +
-                "-fx-font-weight:bold;\n" +
-                "\t-fx-background-color:rgba(215, 117, 117, 0.8);\n" +
-                "\t-fx-border-color: red;\n" +
-                "\t-fx-border-width:2px;");
+        registerMessageLabel.setStyle("-fx-text-fill:#b55b5b;-fx-font-weight:bold;");
+        registerMessageLabel.setText(message);
+    }
+    private void registrationMessageSuccess(String message){
+        registerMessageLabel.setStyle("-fx-text-fill:#46a356;-fx-font-weight:bold;");
         registerMessageLabel.setText(message);
     }
 

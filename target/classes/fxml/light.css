@@ -248,21 +248,21 @@ input: #FFFFFF
 
 
 .CloseButtonImage { 
-    -fx-background-image: url('img/closeimage2.png');
+    -fx-background-image: url('img/closeimage2_dark.png');
     -fx-background-size: 100%;
     -fx-background-repeat: no-repeat;
     -fx-background-position: 50%;
 	-fx-background-color:transparent;
 }
 .TalcaButtonImage { 
-    -fx-background-image: url('img/talcaimage.png');
+    -fx-background-image: url('img/talcaimage_dark.png');
     -fx-background-size: 100%;
     -fx-background-repeat: no-repeat;
     -fx-background-position: 50%;
 	-fx-background-color:transparent;
 }
 .SettingsButtonImage { 
-    -fx-background-image: url('img/settings.png');
+    -fx-background-image: url('img/settings_dark.png');
     -fx-background-size: 80%;
     -fx-background-repeat: no-repeat;
     -fx-background-position: 50%;
@@ -317,6 +317,14 @@ input: #FFFFFF
 }
 .Bigbutton.themes{
 	-fx-background-image: url('img/brush.png');
+}
+
+.BottomIMG{
+	-fx-background-image: url('img/msilogodark.png');
+    -fx-background-size: 80%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 50%;
+	-fx-background-color:transparent;
 }
 
 
