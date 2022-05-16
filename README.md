@@ -14,6 +14,10 @@ az egészségügyi intézményekben.
 ## Verziószám
 1.0.0
 
+### Rendszerkövetelmények
+- 17-es java verzió
+
+
 ### Fejlesztők
 Laza Sándor --- lazasandor17@gmail.com  
 Tarr Imre --- tarr.imre2630@gmail.com  
