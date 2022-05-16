@@ -27,9 +27,9 @@
       <Pane layoutX="48.0" layoutY="97.0" prefHeight="325.0" prefWidth="248.0" styleClass="mainpane">
          <children>
             <Label fx:id="errorLabel" alignment="CENTER" layoutY="144.0" prefHeight="62.0" prefWidth="248.0" textAlignment="CENTER" />
-            <Button layoutX="53.0" layoutY="212.0" mnemonicParsing="false" onAction="#loginButtonPushed" prefHeight="45.0" prefWidth="143.0" styleClass="custom-button" text="Belépés" />
+            <Button layoutX="62.0" layoutY="214.0" mnemonicParsing="false" onAction="#loginButtonPushed" prefHeight="45.0" prefWidth="125.0" styleClass="custom-button" text="Belépés" />
             <TextField fx:id="username" layoutX="24.0" layoutY="40.0" prefHeight="37.0" prefWidth="200.0" promptText="Felhasználónév" styleClass="logininput" />
-            <Button layoutX="62.0" layoutY="263.0" mnemonicParsing="false" onAction="#openUserRegistrationInterfaceEvent" prefHeight="45.0" prefWidth="125.0" styleClass="registerButton" text="Regisztráció" />
+            <Button layoutX="62.0" layoutY="267.0" mnemonicParsing="false" onAction="#openUserRegistrationInterfaceEvent" prefHeight="45.0" prefWidth="125.0" styleClass="registerButton" text="Regisztráció" />
             <PasswordField fx:id="password" layoutX="24.0" layoutY="96.0" prefHeight="37.0" prefWidth="200.0" promptText="Jelszó" styleClass="logininput" />
          </children>
       </Pane>

@@ -119,6 +119,7 @@ public class LoginController implements Serializable {
         try(JPAUserDAO userDAO = new JPAUserDAO()) {
 
             if (!userDAO.validate(username.getText(), MD5Encryption(password.getText()))){
+                BgEventError();
                 loginWindowMessage("A felhasználó nem létezik!");
                 return;
             }
