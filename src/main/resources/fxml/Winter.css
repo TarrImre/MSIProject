@@ -161,7 +161,6 @@ világos: #aaedfa
     -fx-font-size: 16px;
     -fx-padding: 10;
     -fx-background-color: #aaedfa;
-	  	-fx-font-weight:bold;
 }
 .custom-button:hover {
     -fx-font-size: 16px;
@@ -332,7 +331,13 @@ lila: #aaedfa
     -fx-background-position: 50%;
 	-fx-background-color:transparent;
 }
-
+.ModifyLogo{
+	-fx-background-image: url('img/sidelogofeher.png');
+    -fx-background-size: 80%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 50%;
+	-fx-background-color:transparent;
+}
 
 .themePaneBg { 
     -fx-background-color:rgba(0, 0, 0, 0.5);

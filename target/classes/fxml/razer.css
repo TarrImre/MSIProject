@@ -180,7 +180,6 @@ input: #1F2023
     -fx-font-size: 16px;
     -fx-padding: 10;
     -fx-background-color: #111215;
-	  	-fx-font-weight:bold;
 	-fx-text-background-color:#82d18d;
 	-fx-text-fill:#82d18d;
 }
@@ -346,6 +345,14 @@ input: #1F2023
 
 .BottomIMG{
 	-fx-background-image: url('img/msilogo_razer.png');
+    -fx-background-size: 80%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 50%;
+	-fx-background-color:transparent;
+}
+
+.ModifyLogo{
+	-fx-background-image: url('img/sidelogorazer.png');
     -fx-background-size: 80%;
     -fx-background-repeat: no-repeat;
     -fx-background-position: 50%;
