@@ -164,7 +164,6 @@ input: #c79bcc
     -fx-font-size: 16px;
     -fx-padding: 10;
     -fx-background-color: #c79bcc;
-	-fx-font-weight:bold;
 }
 .custom-button:hover {
     -fx-font-size: 16px;
@@ -321,6 +320,14 @@ input: #c79bcc
 
 .BottomIMG{
 	-fx-background-image: url('img/msilogofeher.png');
+    -fx-background-size: 80%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 50%;
+	-fx-background-color:transparent;
+}
+
+.ModifyLogo{
+	-fx-background-image: url('img/sidelogofeher.png');
     -fx-background-size: 80%;
     -fx-background-repeat: no-repeat;
     -fx-background-position: 50%;

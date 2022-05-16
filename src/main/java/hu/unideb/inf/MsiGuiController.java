@@ -5,6 +5,7 @@ import hu.unideb.inf.DAO.JPAUserDAO;
 import hu.unideb.inf.Modell.Model;
 import hu.unideb.inf.Modell.Patient;
 import hu.unideb.inf.Modell.User;
+import javafx.animation.FillTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,9 +21,12 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Ellipse;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -483,23 +487,25 @@ public class MsiGuiController implements Initializable {
         return patients;
     }
 
+    @FXML private Label SuccessRemove;
+
     @FXML
     public void PatientRemoveButtonPushed(ActionEvent event){
 
         if(cardnumToRemove.getText().isEmpty()){
-            overlayErrorMessage("A törléshez ki kell tölteni a kartonszám mezőt!",0);
+            SuccessRemove.setText("A törléshez töltse ki a mezőt!");
             return;
         }
 
         if (!cardnumToRemove.getText().matches("[0-9]+")){
-            overlayErrorMessage("A kartonszám csak számot tartalmaz!",0);
+            SuccessRemove.setText("A kartonszám csak számot tartalmaz!");
             return;
         }
 
         try(JPAPatientDAO aDAO = new JPAPatientDAO()){
 
             if (!aDAO.cardnumberAlreadyExists(Integer.parseInt(cardnumToRemove.getText()))){
-                overlayErrorMessage("A kartonszám nem létezik!",0);
+                SuccessRemove.setText("A kartonszám nem létezik!");
                 return;
             }
 
@@ -507,6 +513,7 @@ public class MsiGuiController implements Initializable {
 
             for (Patient p : patients){
                 if (p.getCardNumber() == Integer.parseInt(cardnumToRemove.getText())){
+                    SuccessRemove.setText("Sikeresen törölve!");
                     aDAO.deletePatient(p);
                 }
             }
@@ -669,7 +676,7 @@ public class MsiGuiController implements Initializable {
     }
     @FXML private Pane overlayError;
     @FXML private Button overlayErrorHide_Button;
-    @FXML private Label errormsg;
+    @FXML private Label errormsg,errormsgBG;
     @FXML
     void overlayErrorHide_Action(ActionEvent event) {
         if (event.getSource() == overlayErrorHide_Button)
@@ -678,24 +685,31 @@ public class MsiGuiController implements Initializable {
         }
     }
 
+
     void overlayErrorMessage(String errormessage, int num){
         if(num == 0){
+            errormsgBG.setStyle(""+
+                    "-fx-background-color:#eda4a4;\n"+
+                    "\t-fx-opacity:1;");
             errormsg.setStyle(""+
                     "-fx-font-weight:bold;\n" +
                     //RED
-                    "\t-fx-text-fill: #ff7e75;\n" +
+                    "\t-fx-text-fill: black;\n" +
                     "\t-fx-font-size: 14;\n"+
-                    "\t-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 0);\n");
+                    "\t-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 4, 0, 0, 0);\n");
             errormsg.setText(errormessage);
             overlayError.toFront();
         }
         else{
+            errormsgBG.setStyle(""+
+                    "-fx-background-color:#a4edab;\n"+
+                    "\t-fx-opacity:1;");
             errormsg.setStyle(""+
                     "-fx-font-weight:bold;\n" +
                     //GREEN
-                    "\t-fx-text-fill: #6bd67a;\n" +
+                    "\t-fx-text-fill: black;\n" +
                     "\t-fx-font-size: 14;\n"+
-                    "\t-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 0);\n");
+                    "\t-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 4, 0, 0, 0);\n");
             errormsg.setText(errormessage);
             overlayError.toFront();
         }

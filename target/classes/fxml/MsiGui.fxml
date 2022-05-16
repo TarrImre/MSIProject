@@ -24,13 +24,6 @@
 
 <AnchorPane id="AnchorPane" fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="root" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.MsiGuiController">
    <children>
-      <Pane fx:id="overlayError" layoutX="485.0" layoutY="293.0" prefHeight="149.0" prefWidth="300.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0);" styleClass="overlay">
-         <children>
-            <Label alignment="CENTER" layoutY="51.0" prefHeight="47.0" prefWidth="300.0" style="-fx-background-color: #404040; -fx-opacity: 0.5;" textAlignment="CENTER" />
-            <Label fx:id="errormsg" alignment="CENTER" layoutY="51.0" prefHeight="47.0" prefWidth="300.0" textAlignment="CENTER" />
-            <Button fx:id="overlayErrorHide_Button" layoutY="125.0" mnemonicParsing="false" onAction="#overlayErrorHide_Action" prefHeight="25.0" prefWidth="300.0" styleClass="custom-button" text="Rendben" />
-         </children>
-      </Pane>
       <Pane fx:id="overlay" layoutX="367.0" layoutY="283.0" prefHeight="149.0" prefWidth="529.0" styleClass="overlay">
          <children>
             <Button fx:id="overlayHideButton" layoutX="331.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#overlayActionHide" prefHeight="100.0" prefWidth="100.0">
@@ -169,6 +162,13 @@
                </children>
             </Pane>
             <Button fx:id="themeOverlayButtonHide" layoutX="158.0" layoutY="420.0" mnemonicParsing="false" onAction="#themeOverlayActionHide" prefHeight="38.0" prefWidth="81.0" styleClass="custom-button" text="Bezárás" />
+         </children>
+      </Pane>
+      <Pane fx:id="overlayError" layoutX="485.0" layoutY="293.0" prefHeight="149.0" prefWidth="300.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0);" styleClass="overlay">
+         <children>
+            <Label fx:id="errormsgBG" alignment="CENTER" layoutY="41.0" prefHeight="47.0" prefWidth="300.0" textAlignment="CENTER" />
+            <Label fx:id="errormsg" alignment="CENTER" layoutY="41.0" prefHeight="47.0" prefWidth="300.0" textAlignment="CENTER" />
+            <Button fx:id="overlayErrorHide_Button" layoutX="100.0" layoutY="100.0" maxHeight="25.0" mnemonicParsing="false" onAction="#overlayErrorHide_Action" prefHeight="25.0" prefWidth="100.0" styleClass="custom-button" text="Rendben" />
          </children>
       </Pane>
       <Pane fx:id="exitOverlay" layoutX="922.0" layoutY="19.0" prefHeight="142.0" prefWidth="358.0" styleClass="exit">
@@ -311,6 +311,7 @@
                                              </children>
                                           </HBox>
                                           <Label fx:id="SuccesPatient" alignment="CENTER" layoutX="792.0" layoutY="47.0" prefHeight="100.0" prefWidth="238.0" />
+                                          <Pane layoutX="1024.0" layoutY="60.0" prefHeight="170.0" prefWidth="215.0" styleClass="ModifyLogo" />
                                        </children>
                                        <padding>
                                           <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
@@ -326,6 +327,7 @@
                                              <children>
                                                 <Button fx:id="patientRemoveButton" layoutX="51.0" layoutY="143.0" mnemonicParsing="false" onAction="#PatientRemoveButtonPushed" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Beteg törlése" />
                                                 <TextField fx:id="cardnumToRemove" layoutX="27.0" layoutY="67.0" prefHeight="41.0" prefWidth="248.0" promptText="Kartonszám" styleClass="custominput" />
+                                                <Label fx:id="SuccessRemove" alignment="CENTER" layoutX="27.0" layoutY="36.0" prefHeight="17.0" prefWidth="247.0" style="-fx-font-weight: bold;" />
                                              </children>
                                           </Pane>
                                           <Pane layoutX="14.0" layoutY="12.0" prefHeight="276.0" prefWidth="669.0" styleClass="loginhatter">
@@ -451,8 +453,8 @@
                                           </HBox>
                                           <HBox layoutX="686.0" layoutY="210.0" />
                                           <HBox layoutX="390.0" layoutY="154.0" prefHeight="25.0" prefWidth="237.0" />
-                                          <Button fx:id="ApplyModify" layoutX="686.0" layoutY="14.0" mnemonicParsing="false" onAction="#modifyButtonPushed" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Módosítások mentése" />
-                                          <Label fx:id="ModifyMessage" alignment="CENTER" layoutX="686.0" layoutY="147.0" prefHeight="130.0" prefWidth="300.0" />
+                                          <Button fx:id="ApplyModify" layoutX="697.0" layoutY="107.0" mnemonicParsing="false" onAction="#modifyButtonPushed" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Módosítások mentése" />
+                                          <Pane layoutX="1024.0" layoutY="60.0" prefHeight="170.0" prefWidth="215.0" styleClass="ModifyLogo" />
                                        </children>
                                        <padding>
                                           <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />

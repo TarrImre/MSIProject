@@ -169,7 +169,6 @@ input: #FFFFFF
     -fx-padding: 10;
     -fx-background-color: #1877F2;
 	-fx-text-fill:#FFF;
-	-fx-font-weight:bold;
 }
 .custom-button:hover {
     -fx-font-size: 16px;
@@ -337,6 +336,13 @@ input: #FFFFFF
 	-fx-background-color:transparent;
 }
 
+.ModifyLogo{
+	-fx-background-image: url('img/sidelogodark.png');
+    -fx-background-size: 80%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 50%;
+	-fx-background-color:transparent;
+}
 
 
 .themePaneBg { 
