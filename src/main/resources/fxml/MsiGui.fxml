@@ -33,19 +33,19 @@
       </Pane>
       <Pane fx:id="overlay" layoutX="367.0" layoutY="283.0" prefHeight="149.0" prefWidth="529.0" styleClass="overlay">
          <children>
-            <Button fx:id="overlayHideButton" layoutX="331.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#overlayActionHide" prefHeight="100.0" prefWidth="100.0" stylesheets="@Winter.css">
+            <Button fx:id="overlayHideButton" layoutX="331.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#overlayActionHide" prefHeight="100.0" prefWidth="100.0">
                <styleClass>
                   <String fx:value="Bigbutton" />
                   <String fx:value="logout" />
                </styleClass>
             </Button>
-            <Button fx:id="helpButton" layoutX="216.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#HelpAction" prefHeight="100.0" prefWidth="100.0" stylesheets="@Winter.css">
+            <Button fx:id="helpButton" layoutX="216.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#HelpAction" prefHeight="100.0" prefWidth="100.0">
                <styleClass>
                   <String fx:value="Bigbutton" />
                   <String fx:value="help" />
                </styleClass>
             </Button>
-            <Button fx:id="themeOverlayButton" layoutX="104.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#themeOverlayAction" prefHeight="100.0" prefWidth="100.0" stylesheets="@Winter.css">
+            <Button fx:id="themeOverlayButton" layoutX="104.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#themeOverlayAction" prefHeight="100.0" prefWidth="100.0">
                <styleClass>
                   <String fx:value="Bigbutton" />
                   <String fx:value="themes" />
@@ -173,10 +173,12 @@
       </Pane>
       <Pane fx:id="exitOverlay" layoutX="922.0" layoutY="19.0" prefHeight="142.0" prefWidth="358.0" styleClass="exit">
          <children>
-            <Button layoutX="30.0" layoutY="82.0" mnemonicParsing="false" onAction="#Close" styleClass="custom-button" text="Kilépés" />
-            <Button layoutX="124.0" layoutY="82.0" mnemonicParsing="false" onAction="#LogoutButton" styleClass="custom-button" text="Kijelentkezés" />
-            <Button fx:id="ExitOverlayButtonHide" layoutX="262.0" layoutY="82.0" mnemonicParsing="false" onAction="#ExitOverlayButtonActionHide2" styleClass="custom-button" text="Mégsem" />
-            <Label layoutX="77.0" layoutY="32.0" style="-fx-font-size: 16;" text="Biztosan ki szeretne lépni?" />
+            <Button layoutX="23.0" layoutY="86.0" mnemonicParsing="false" onAction="#Close" styleClass="custom-button" text="Kilépés" />
+            <Button layoutX="122.0" layoutY="86.0" mnemonicParsing="false" onAction="#LogoutButton" styleClass="custom-button" text="Kijelentkezés" />
+            <Button fx:id="ExitOverlayButtonHide" layoutX="261.0" layoutY="86.0" mnemonicParsing="false" onAction="#ExitOverlayButtonActionHide2" styleClass="custom-button" text="Mégsem" />
+            <Label layoutX="77.0" layoutY="52.0" style="-fx-font-size: 16;" text="Biztosan ki szeretne lépni?" />
+            <Label layoutX="109.0" layoutY="11.0" opacity="0.6" style="-fx-font-size: 14;" text="Bejelentkezve, mint" />
+            <Label fx:id="LoginAsName" alignment="CENTER" layoutX="76.0" layoutY="28.0" opacity="0.6" prefHeight="25.0" prefWidth="185.0" style="-fx-font-size: 14;" />
          </children>
       </Pane>
       <Pane fx:id="overlay_help" layoutX="447.0" layoutY="125.0" prefHeight="472.0" prefWidth="387.0" styleClass="overlay">
@@ -192,7 +194,7 @@
       </Pane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="1128.0">
          <children>
-            <SplitPane dividerPositions="0.48536209553158705" layoutY="19.0" orientation="VERTICAL" prefHeight="649.0" prefWidth="1280.0">
+            <SplitPane dividerPositions="0.4899845916795069" layoutY="19.0" orientation="VERTICAL" prefHeight="649.0" prefWidth="1280.0">
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0">
                      <children>
@@ -323,8 +325,7 @@
                                           <Pane layoutX="965.0" layoutY="42.0" prefHeight="216.0" prefWidth="301.0" styleClass="loginhatter">
                                              <children>
                                                 <Button fx:id="patientRemoveButton" layoutX="51.0" layoutY="143.0" mnemonicParsing="false" onAction="#PatientRemoveButtonPushed" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Beteg törlése" />
-                                                <TextField fx:id="cardnumToRemove" layoutX="27.0" layoutY="67.0" prefHeight="41.0" prefWidth="248.0" />
-                                                <Label layoutX="27.0" layoutY="50.0" text="Kartonszám" />
+                                                <TextField fx:id="cardnumToRemove" layoutX="27.0" layoutY="67.0" prefHeight="41.0" prefWidth="248.0" promptText="Kartonszám" styleClass="custominput" />
                                              </children>
                                           </Pane>
                                           <Pane layoutX="14.0" layoutY="12.0" prefHeight="276.0" prefWidth="669.0" styleClass="loginhatter">
@@ -332,7 +333,7 @@
                                                 <Button layoutX="430.0" layoutY="196.0" mnemonicParsing="false" onAction="#ListAllPatientButtonPushed" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Összes beteg listázása" />
                                                 <Button layoutX="430.0" layoutY="45.0" mnemonicParsing="false" onAction="#SearchButtonPushed" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Keresés" />
                                                 <ChoiceBox fx:id="myChoiceBox" layoutX="20.0" layoutY="62.0" prefHeight="30.0" prefWidth="150.0" />
-                                                <TextField fx:id="searchElementInput" layoutX="181.0" layoutY="48.0" prefHeight="45.0" prefWidth="234.0" promptText="Írja be a keresendő szöveget!">
+                                                <TextField fx:id="searchElementInput" layoutX="181.0" layoutY="48.0" prefHeight="45.0" prefWidth="234.0" promptText="Írja be a keresendő szöveget!" styleClass="custominput">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font></TextField>

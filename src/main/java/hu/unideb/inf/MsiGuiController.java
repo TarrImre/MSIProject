@@ -192,8 +192,11 @@ public class MsiGuiController implements Initializable {
             stage.setY(mouseEvent.getScreenY()-y);
 
         });
-
+        LoginAsName.setText(LoginController.GlobalUsername);
     }
+
+    @FXML private Label LoginAsName;
+
 
     @FXML
     void themeWithRadius(ActionEvent event) {
@@ -436,7 +439,7 @@ public class MsiGuiController implements Initializable {
 
             for (Patient p : listOfPatients){
                 if (elementToSearch.contains("Név")){
-                    if (p.getName().contains(searchBarText)){
+                    if (p.getName().toLowerCase().contains(searchBarText.toLowerCase())){
                         patients.add(p);
                     }
                 }
@@ -446,7 +449,7 @@ public class MsiGuiController implements Initializable {
                     }
                 }
                 else if(elementToSearch.contains("Város")){
-                    if (p.getCity().matches(searchBarText)){
+                    if (p.getCity().toLowerCase().matches(searchBarText.toLowerCase())){
                         patients.add(p);
                     }
                 }

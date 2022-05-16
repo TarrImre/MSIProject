@@ -180,7 +180,7 @@ input: #1F2023
     -fx-font-size: 16px;
     -fx-padding: 10;
     -fx-background-color: #111215;
-	  
+	  	-fx-font-weight:bold;
 	-fx-text-background-color:#82d18d;
 	-fx-text-fill:#82d18d;
 }

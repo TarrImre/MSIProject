@@ -1,5 +1,7 @@
 .loginhatter{
 	-fx-background-color: linear-gradient(to bottom right, #F3F5F9, #F3F5F9);
+	-fx-background-radius:0 0 20 20;
+	-fx-border-radius:0 0 20 20;
 }
 .exit{
 	-fx-background-color: linear-gradient(to bottom right, #25282A, #25282A);

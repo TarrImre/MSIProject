@@ -164,13 +164,13 @@ input: #c79bcc
     -fx-font-size: 16px;
     -fx-padding: 10;
     -fx-background-color: #c79bcc;
-	  
+	-fx-font-weight:bold;
 }
 .custom-button:hover {
     -fx-font-size: 16px;
     -fx-padding: 10;
     -fx-background-color: #b588ba;
-	  
+
 }
 .custom-button.register {
     -fx-font-size: 16px;
