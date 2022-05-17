@@ -317,6 +317,12 @@ input: #c79bcc
 .Bigbutton.themes{
 	-fx-background-image: url('img/brush.png');
 }
+.Bigbutton.trello{
+	-fx-background-image: url('img/trello.png');
+}
+.Bigbutton.github{
+	-fx-background-image: url('img/github.png');
+}
 
 .BottomIMG{
 	-fx-background-image: url('img/msilogofeher.png');
@@ -327,11 +333,12 @@ input: #c79bcc
 }
 
 .ModifyLogo{
-	-fx-background-image: url('img/sidelogofeher.png');
-    -fx-background-size: 80%;
+	-fx-background-image: url('img/shape_pink.png');
+    -fx-background-size: 100%;
     -fx-background-repeat: no-repeat;
     -fx-background-position: 50%;
 	-fx-background-color:transparent;
+	-fx-opacity:0.2;
 }
 
 
@@ -365,4 +372,25 @@ input: #c79bcc
 	-fx-background-color:rgba(255, 255, 255, 0.5);
 	-fx-border-color: white;
 	-fx-border-width:2px;
+}
+
+
+.table-view .virtual-flow .scroll-bar:vertical,
+.table-view .virtual-flow .scroll-bar:vertical .track,
+.table-view .virtual-flow .scroll-bar:vertical .track-background,
+.table-view .virtual-flow .scroll-bar:horizontal,
+.table-view .virtual-flow .scroll-bar:horizontal .track,
+.table-view .virtual-flow .scroll-bar:horizontal .track-background {
+    -fx-background-color: transparent;
+}
+.table-view .virtual-flow .scroll-bar .increment-button,
+.table-view .virtual-flow .scroll-bar .decrement-button {
+    -fx-opacity: 0;
+    -fx-padding: 2;
+}
+.table-view .virtual-flow .scroll-bar:vertical .thumb{
+    -fx-background-color:  linear-gradient(to bottom, #6C4B6E, #6C4B6E);
+}
+.table-view .virtual-flow .scroll-bar:horizontal .thumb {
+    -fx-background-color:  linear-gradient(to right, #6C4B6E, #6C4B6E);
 }

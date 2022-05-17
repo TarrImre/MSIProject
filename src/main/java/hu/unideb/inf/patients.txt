@@ -18,3 +18,15 @@ Kelemen Flóra;FEMALE;245;Hajdú Ramóna;690113649;2001-09-20;2907;Debrecen;Szeg
 Balog Laura;FEMALE;976;Szücs Mercédesz;029388114;2000-03-12;0386;Szolnok;Arany;164;Arccsont-törés
 Pásztor András;MALE;654;Bács Andrea;432289631;1999-12-09;6998;Budapest;Virág;4;Alkohol-mérgezés
 Lukács Lajos;MALE;6543;Szőke Anett;521251535;2015-11-27;9205;Szeged;Begri;9;Mióma
+Német Luca;FEMALE;69;Balogh Zsanett;426873595;2000-05-03;1402;Bojt;Kossuth;8;Alvás zavar
+Szabó Péter;MALE;1951;Borbély Zsanett;325698652;1990-12-08;4886;Kaposvár;Bokor;15;Epilepszia
+Szabó Nikoletta;FEMALE;4929;Rózsás Ivett;526874593;1992-01-03;3894;Mórahalom;Emőke;9;Trombofília
+Szőke Boglárka;FEMALE;1584;Kovács Nikolett;785632459;1991-05-04;1243;Budapest;Csonka;74;Epilepszia Áramütés
+Orsós Milán;MALE;1256;Halász Margit;421596357;2001-05-13;3894;Mórahalom;Hunyadi;1;Parkinson-Kór
+Gáspár László;MALE;8456;Gémes Dominika;526487115;1985-06-05;9067;Eger;Tisza;42;Polimyositis
+Jakab Adél;FEMALE;8462;Jabak Margit;148523458;1999-03-15;6648;Kecskemét;Endre körút;20;Masztocitózis Tenziós-Fejfájás
+László Kíra;FEMALE;4816;Szabó Zsófia;524863597;2000-01-05;9205;Gyomaendrőd;Lengyel tere;192;Alvási Apnoé
+Gáspár Angéla;FEMALE;1846;Gémes Dominika;478523619;1985-05-06;9067;Eger;Dalma part;57;Polimyositis
+Németh Gábor;MALE;181;Horváth Viktória;963698524;1989-05-06;8674;Balmazújváros;Csapó;3;Hiperszplénia
+Németh Gabriella;FEMALE;1845;Horváth Viktória;147856485;1988-04-05;8674;Balmazújváros;Juhász;53;Hiperszplénia
+Szabó Panna;FEMALE;1848;Borbély Zsanett;754128695;1989-11-07;4886;Kaposvár;Virág sétaút;80;Epilepszia

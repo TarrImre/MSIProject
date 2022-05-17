@@ -259,7 +259,7 @@ input: #1F2023
 	-fx-background-color: linear-gradient(to bottom right, #25282A, #25282A);
 }
 .exit{
-	-fx-background-color: linear-gradient(to bottom right, #25282A, #25282A);
+	-fx-background-color: linear-gradient(to bottom right, #25282A, #0A0B0D);
 }
 .logininput{
 	-fx-background-color:#1F2023;
@@ -343,6 +343,12 @@ input: #1F2023
 .Bigbutton.themes{
 	-fx-background-image: url('img/brush.png');
 }
+.Bigbutton.trello{
+	-fx-background-image: url('img/trello.png');
+}
+.Bigbutton.github{
+	-fx-background-image: url('img/github.png');
+}
 
 .BottomIMG{
 	-fx-background-image: url('img/msilogored.png');
@@ -354,11 +360,12 @@ input: #1F2023
 
 
 .ModifyLogo{
-	-fx-background-image: url('img/sidelogored.png');
-    -fx-background-size: 80%;
+	-fx-background-image: url('img/shape_verydark2.png');
+    -fx-background-size: 100%;
     -fx-background-repeat: no-repeat;
     -fx-background-position: 50%;
 	-fx-background-color:transparent;
+	-fx-opacity:0.2;
 }
 
 
@@ -400,4 +407,24 @@ input: #1F2023
 	-fx-border-width:2px;
 	-fx-text-background-color:#FFF;
 	-fx-text-fill:#FFF;
+}
+
+.table-view .virtual-flow .scroll-bar:vertical,
+.table-view .virtual-flow .scroll-bar:vertical .track,
+.table-view .virtual-flow .scroll-bar:vertical .track-background,
+.table-view .virtual-flow .scroll-bar:horizontal,
+.table-view .virtual-flow .scroll-bar:horizontal .track,
+.table-view .virtual-flow .scroll-bar:horizontal .track-background {
+    -fx-background-color: transparent;
+}
+.table-view .virtual-flow .scroll-bar .increment-button,
+.table-view .virtual-flow .scroll-bar .decrement-button {
+    -fx-opacity: 0;
+    -fx-padding: 2;
+}
+.table-view .virtual-flow .scroll-bar:vertical .thumb{
+    -fx-background-color:  linear-gradient(to bottom, #E9161D, #E9161D);
+}
+.table-view .virtual-flow .scroll-bar:horizontal .thumb {
+    -fx-background-color:  linear-gradient(to right, #E9161D, #E9161D);
 }

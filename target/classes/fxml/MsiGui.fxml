@@ -24,28 +24,6 @@
 
 <AnchorPane id="AnchorPane" fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="root" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.MsiGuiController">
    <children>
-      <Pane fx:id="overlay" layoutX="367.0" layoutY="283.0" prefHeight="149.0" prefWidth="529.0" styleClass="overlay">
-         <children>
-            <Button fx:id="overlayHideButton" layoutX="331.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#overlayActionHide" prefHeight="100.0" prefWidth="100.0">
-               <styleClass>
-                  <String fx:value="Bigbutton" />
-                  <String fx:value="logout" />
-               </styleClass>
-            </Button>
-            <Button fx:id="helpButton" layoutX="216.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#HelpAction" prefHeight="100.0" prefWidth="100.0">
-               <styleClass>
-                  <String fx:value="Bigbutton" />
-                  <String fx:value="help" />
-               </styleClass>
-            </Button>
-            <Button fx:id="themeOverlayButton" layoutX="104.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#themeOverlayAction" prefHeight="100.0" prefWidth="100.0">
-               <styleClass>
-                  <String fx:value="Bigbutton" />
-                  <String fx:value="themes" />
-               </styleClass>
-            </Button>
-         </children>
-      </Pane>
       <Pane fx:id="themeOverlay" layoutX="440.0" layoutY="96.0" prefHeight="479.0" prefWidth="387.0" styleClass="overlay">
          <children>
             <Pane layoutX="14.0" layoutY="14.0" prefHeight="91.0" prefWidth="173.0" styleClass="themePaneBg">
@@ -171,6 +149,40 @@
             <Button fx:id="overlayErrorHide_Button" layoutX="100.0" layoutY="100.0" maxHeight="25.0" mnemonicParsing="false" onAction="#overlayErrorHide_Action" prefHeight="25.0" prefWidth="100.0" styleClass="custom-button" text="Rendben" />
          </children>
       </Pane>
+      <Pane fx:id="overlay" layoutX="367.0" layoutY="283.0" prefHeight="149.0" prefWidth="529.0" styleClass="overlay">
+         <children>
+            <Button fx:id="overlayHideButton" layoutX="355.0" layoutY="25.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#overlayActionHide" prefHeight="100.0" prefWidth="100.0">
+               <styleClass>
+                  <String fx:value="Bigbutton" />
+                  <String fx:value="logout" />
+               </styleClass>
+            </Button>
+            <Button fx:id="helpButton" layoutX="244.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#HelpAction" prefHeight="100.0" prefWidth="100.0">
+               <styleClass>
+                  <String fx:value="Bigbutton" />
+                  <String fx:value="help" />
+               </styleClass>
+            </Button>
+            <Button fx:id="themeOverlayButton" layoutX="133.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#themeOverlayAction" prefHeight="100.0" prefWidth="100.0">
+               <styleClass>
+                  <String fx:value="Bigbutton" />
+                  <String fx:value="themes" />
+               </styleClass>
+            </Button>
+            <Button layoutX="76.0" layoutY="26.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#Github" prefHeight="45.0" prefWidth="46.0">
+               <styleClass>
+                  <String fx:value="Bigbutton" />
+                  <String fx:value="github" />
+               </styleClass>
+            </Button>
+            <Button layoutX="76.0" layoutY="81.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#Trello" prefHeight="45.0" prefWidth="46.0">
+               <styleClass>
+                  <String fx:value="Bigbutton" />
+                  <String fx:value="trello" />
+               </styleClass>
+            </Button>
+         </children>
+      </Pane>
       <Pane fx:id="exitOverlay" layoutX="922.0" layoutY="19.0" prefHeight="142.0" prefWidth="358.0" styleClass="exit">
          <children>
             <Button layoutX="23.0" layoutY="86.0" mnemonicParsing="false" onAction="#Close" styleClass="custom-button" text="Kilépés" />
@@ -198,7 +210,7 @@
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0">
                      <children>
-                        <TableView id="tableView1" fx:id="patientsTable" onMouseClicked="#clickTable" prefHeight="649.0" prefWidth="1280.0">
+                        <TableView id="tableView1" fx:id="patientsTable" onMouseClicked="#clickTable" prefHeight="651.0" prefWidth="1280.0">
                            <columns>
                               <TableColumn fx:id="cardNumberCol" maxWidth="750.0" minWidth="51.0" prefWidth="116.0" text="Kartonszám" />
                               <TableColumn fx:id="nameCol" maxWidth="750.0" minWidth="34.0" prefWidth="99.0" text="Név" />
@@ -223,6 +235,7 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1280.0">
                                        <children>
+                                          <Pane layoutX="620.0" layoutY="75.0" prefHeight="224.0" prefWidth="660.0" styleClass="ModifyLogo" />
                                           <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="347.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="kartonszam_label" minWidth="-Infinity" text="Kartonszám" />
@@ -310,8 +323,6 @@
                                                 </RadioButton>
                                              </children>
                                           </HBox>
-                                          <Label fx:id="SuccesPatient" alignment="CENTER" layoutX="792.0" layoutY="47.0" prefHeight="100.0" prefWidth="238.0" />
-                                          <Pane layoutX="1024.0" layoutY="60.0" prefHeight="170.0" prefWidth="215.0" styleClass="ModifyLogo" />
                                        </children>
                                        <padding>
                                           <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
@@ -453,8 +464,8 @@
                                           </HBox>
                                           <HBox layoutX="686.0" layoutY="210.0" />
                                           <HBox layoutX="390.0" layoutY="154.0" prefHeight="25.0" prefWidth="237.0" />
-                                          <Button fx:id="ApplyModify" layoutX="686.0" layoutY="14.0" mnemonicParsing="false" onAction="#modifyButtonPushed" prefHeight="50.0" prefWidth="200.0" styleClass="custom-button" text="Módosítások mentése" />
-                                          <Pane layoutX="1024.0" layoutY="60.0" prefHeight="170.0" prefWidth="215.0" styleClass="ModifyLogo" />
+                                          <Button fx:id="ApplyModify" layoutX="686.0" layoutY="14.0" mnemonicParsing="false" onAction="#modifyButtonPushed" prefHeight="47.0" prefWidth="200.0" styleClass="custom-button" text="Módosítások mentése" />
+                                          <Pane layoutX="620.0" layoutY="75.0" prefHeight="224.0" prefWidth="660.0" styleClass="ModifyLogo" />
                                        </children>
                                        <padding>
                                           <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
