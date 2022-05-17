@@ -16,6 +16,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -28,12 +32,16 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
+import java.awt.*;
 import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.*;
+import java.util.List;
 
 public class MsiGuiController implements Initializable {
 
@@ -198,6 +206,17 @@ public class MsiGuiController implements Initializable {
         });
         LoginAsName.setText(LoginController.GlobalUsername);
     }
+
+    @FXML
+    void Github(ActionEvent event) throws URISyntaxException, IOException{
+        Desktop.getDesktop().browse(new URI("https://github.com/DMartin20/MSIProject"));
+    }
+    @FXML
+    void Trello(ActionEvent event) throws URISyntaxException, IOException{
+        Desktop.getDesktop().browse(new URI("https://trello.com/b/HSbKUsTV/msi-projekt"));
+    }
+
+
 
     @FXML private Label LoginAsName;
 
@@ -935,7 +954,7 @@ public class MsiGuiController implements Initializable {
 
 
 
-        File dataIn = new File("resources\\patients.txt");
+        File dataIn = new File("src/main/java/hu/unideb/inf/patients.txt");
         BufferedReader br = new BufferedReader(new FileReader(dataIn));
         String st;
 

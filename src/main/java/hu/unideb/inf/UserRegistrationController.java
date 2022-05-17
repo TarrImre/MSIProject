@@ -119,7 +119,7 @@ public class UserRegistrationController implements Initializable{
 
         if(!isValidUsername(usernameReg.getText()) || usernameReg.getText().length() < 3 || usernameReg.getText().length() > 30 ){
             BgEventError();
-            registrationMessage("Helytelen felhasználónév formátum!\n3-30 Karakter, első karakter betű\nCsak '_' spec. karakter!");
+            registrationMessage("Helytelen felhasználónév formátum!\n3-30 Karakter, első karakter betű\nÉkezetet nem tartalmazhat!");
             clearTexts();
             return;
             //6 - 30 Karakter, Első karakter betű, Speciális karakter csak '_' szerepelhet benne
@@ -259,7 +259,7 @@ public class UserRegistrationController implements Initializable{
     }
 
     private static boolean isValidUsername(String name) {
-        String regex = "^[A-zíéáűőúöüóÍÉÁŰŐÚÖÜÓ]{2,29}$";
+        String regex = "^[a-zA-Z]\\w{2,29}$";
 
         Pattern p = Pattern.compile(regex);
 
