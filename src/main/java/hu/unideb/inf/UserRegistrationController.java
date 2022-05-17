@@ -209,7 +209,7 @@ public class UserRegistrationController implements Initializable{
         passwordRegSecond.setText("");
     }
 
-    private boolean isAllFilled() {
+    public boolean isAllFilled() {
         if(usernameReg.getText() == null || usernameReg.getText().trim().isEmpty()) return false;
         if(emailReg.getText() == null || emailReg.getText().trim().isEmpty()) return false;
         if(emailRegSecond.getText() == null || emailRegSecond.getText().trim().isEmpty()) return false;
@@ -217,7 +217,7 @@ public class UserRegistrationController implements Initializable{
         return passwordRegSecond.getText() != null && !passwordRegSecond.getText().trim().isEmpty();
     }
 
-    private boolean isValidEmailAddress(String email) {
+    public boolean isValidEmailAddress(String email) {
         String ePattern = "^[a-zA-Z\\d.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
         java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
         java.util.regex.Matcher m = p.matcher(email);
@@ -233,7 +233,7 @@ public class UserRegistrationController implements Initializable{
         registerMessageLabel.setText(message);
     }
 
-    private static boolean isValidPassword(String password) {
+    public static boolean isValidPassword(String password) {
         String regex = "^(?=.*[0-9])"
                 + "(?=.*[a-z])(?=.*[A-Z])"
                 + "(?=\\S+$).{8,20}$";
@@ -250,7 +250,7 @@ public class UserRegistrationController implements Initializable{
         return m.matches();
     }
 
-    private static String MD5Encryption(String s) throws Exception {
+    public static String MD5Encryption(String s) throws Exception {
 
         MessageDigest m = MessageDigest.getInstance("MD5");
         m.update(s.getBytes(),0,s.length());
@@ -258,7 +258,7 @@ public class UserRegistrationController implements Initializable{
         return new BigInteger(1,m.digest()).toString(16);
     }
 
-    private static boolean isValidUsername(String name) {
+    public static boolean isValidUsername(String name) {
         String regex = "^[a-zA-Z]\\w{2,29}$";
 
         Pattern p = Pattern.compile(regex);

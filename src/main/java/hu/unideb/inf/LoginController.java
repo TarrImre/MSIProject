@@ -34,19 +34,19 @@ import java.util.List;
 public class LoginController implements Serializable {
 
     @FXML
-    private TextField username;
+    public TextField username;
 
     @FXML
-    private TextField password;
+    public TextField password;
 
     @FXML
-    private Label errorLabel;
+    public Label errorLabel;
 
     @FXML
-    private Pane topPane;
+    public Pane topPane;
 
     public static String GlobalUsername;
-    private double x,y;
+    public double x,y;
 
 
 
@@ -77,7 +77,7 @@ public class LoginController implements Serializable {
 
     @FXML private Ellipse ellipse;
 
-    void BgEventSuccess(){
+    public void BgEventSuccess(){
         FillTransition ft = new FillTransition(Duration.millis(500), ellipse);
         ft.setFromValue(Color.rgb(24,119,242));
         ft.setToValue(Color.rgb(91,181,106));
@@ -85,7 +85,7 @@ public class LoginController implements Serializable {
         //ft.setAutoReverse(true);
         ft.play();
     }
-    void BgEventError(){
+    public void BgEventError(){
         FillTransition ft = new FillTransition(Duration.millis(500), ellipse);
         ft.setFromValue(Color.rgb(24,119,242));
         ft.setToValue(Color.rgb(181,91,91));
@@ -108,7 +108,7 @@ public class LoginController implements Serializable {
     }
 
     @FXML
-    void loginButtonPushed(ActionEvent event) {
+    public void loginButtonPushed(ActionEvent event) {
 
         if (!isAllFilled()){
             loginWindowMessage("Minden mezőt kötelező kitölteni!");
@@ -205,12 +205,12 @@ public class LoginController implements Serializable {
         password.setText("");
     }
 
-    private boolean isAllFilled() {
+    public boolean isAllFilled() {
         if(username.getText() == null || username.getText().trim().isEmpty()) return false;
         return password.getText() != null && !password.getText().trim().isEmpty();
     }
 
-    private static String MD5Encryption(String s) throws Exception {
+    public static String MD5Encryption(String s) throws Exception {
 
         MessageDigest m = MessageDigest.getInstance("MD5");
         m.update(s.getBytes(),0,s.length());
