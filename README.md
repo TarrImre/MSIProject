@@ -12,7 +12,11 @@ az egészségügyi intézményekben.
 - Páciensek adatainak lekérdezése különböző szempontok szerint.
 
 ## Verziószám
-0.4.1
+1.0.0
+
+### Rendszerkövetelmények
+- 17-es java verzió
+
 
 ### Fejlesztők
 Laza Sándor --- lazasandor17@gmail.com  

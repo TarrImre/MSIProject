@@ -28,7 +28,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -396,7 +396,11 @@ public class MsiGuiController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         myChoiceBox.getItems().addAll(searchElements);
-
+        try {
+            setRandomPatientDataToList();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         cardNumberCol.setCellValueFactory(new PropertyValueFactory<>("cardNumber"));
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         mothersNameCol.setCellValueFactory(new PropertyValueFactory<>("nameOfMother"));
@@ -453,7 +457,7 @@ public class MsiGuiController implements Initializable {
                     }
                 }
                 else if(elementToSearch.contains("Város")){
-                    if (p.getCity().toLowerCase().matches(searchBarText.toLowerCase())){
+                    if (p.getCity().toLowerCase().contains(searchBarText.toLowerCase())){
                         patients.add(p);
                     }
                 }
@@ -925,6 +929,51 @@ public class MsiGuiController implements Initializable {
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+
+    private void setRandomPatientDataToList() throws IOException {
+
+
+
+        File dataIn = new File("resources\\patients.txt");
+        BufferedReader br = new BufferedReader(new FileReader(dataIn));
+        String st;
+
+        List<Patient> randomPatients = new ArrayList<>();
+
+        while ((st = br.readLine()) != null){
+            StringTokenizer string = new StringTokenizer(st,";");
+            while (string.hasMoreTokens()){
+                Patient p = new Patient();
+                p.setName(string.nextToken());
+                p.setGender(string.nextToken());
+                p.setCardNumber(Integer.parseInt(string.nextToken()));
+                p.setNameOfMother(string.nextToken());
+                p.setSocialInsuranceId(Integer.parseInt(string.nextToken()));
+                p.setBirthDate(string.nextToken());
+                p.setZipCode(Integer.parseInt(string.nextToken()));
+                p.setCity(string.nextToken());
+                p.setStreet(string.nextToken());
+                p.setStreetNumber(string.nextToken());
+                p.setDiagnose(string.nextToken());
+                randomPatients.add(p);
+            }
+            System.out.println("\n");
+        }
+
+        try(JPAPatientDAO aDAO = new JPAPatientDAO()) {
+            List<Patient> deleteRandomPatients = aDAO.getPatients();
+            for (Patient p : deleteRandomPatients){
+                aDAO.deletePatient(p);
+            }
+            for (Patient p : randomPatients){
+                aDAO.savePatient(p);
+            }
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
     }
 
 }

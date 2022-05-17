@@ -1,0 +1,20 @@
+Gulyás Barbara;FEMALE;523;Németh Henrietta;761146256;1996-03-15;9099;Budapest;Mák;15;Polimyositis
+Novák Márk;MALE;2345;Jónás Ivett;647333675;1995-07-03;9148;Debrecen;Pillangó;73;Miaszténia Grávisz
+Egyed Géza;MALE;23;Bognár Zsófia;569054119;2005-11-11;8985;Budapest;Virág;57;Autoimmun Betegség
+Barta Tamara;FEMALE;5432;Fazekas Lili;598240958;2001-02-16;9281;Nyírlugos;Bátori;43;Alvási Apnoé
+Horváth Kíra;FEMALE;7543;Soós Virág;750786952;1963-12-31;6427;Tronyospálca;Rózsa;86;Orrpolip
+Papp Miklós;MALE;573;Pintér Adrienn;298629094;1991-05-27;9222;Beregdaróc;Petőfi;23;Meniere-Kór
+Fekete Judit;FEMALE;345;Szücs Enik;237809314;1994-01-01;6115;Tetétlen;Huszár;7;Masztocitózis
+Fazekas Zalán;MALE;12;Borbély Edina;150842477;2009-08-14;0344;Budapest;Begri;752;Trombofília
+Szabó Klaudia;FEMALE;8746;Dobos Zsanett;264802989;2007-01-14;0651;Berettyóújfalu;Veöres;126;Thalassemia
+Márton Ákos;MALE;3452;Gáspár Adrienn;446091529;2020-03-03;9292;Debrecen;Arany;45;Hiperszplénia
+Juhász Martin;MALE;423;Juhász Flóra;861680996;1974-09-20;7411;Derecske;Ibolya;6;Demencia
+Lengyel Dorina;FEMALE;6353;Farkas Hajnalka;073049373;1988-08-28;1010;Nyíregyháza;Orchidea;34;Epilepszia
+Pataki Virág;FEMALE;5434;Nagy Luca;316210993;1999-02-01;0055;Kecskemét;Móricz;85;Narkolepszia
+Rácz Erika;FEMALE;6764;Hegedüs Ágnes;494794566;1996-10-10;4062;Budapest;Sport;34;Friedreich-Szindróma
+Veres Barna;MALE;6858;Orsós Kamilla;722027879;1955-02-28;6926;Nyírbátor;Széchenyi;51;Parkinson-Kór
+Halász Tibor;MALE;2342;Szőke Georgin;535645198;1991-04-21;5694;Jászberény;Pesti;25;Tenziós-Fejfájás
+Kelemen Flóra;FEMALE;245;Hajdú Ramóna;690113649;2001-09-20;2907;Debrecen;Szegedi;53;Áramütés
+Balog Laura;FEMALE;976;Szücs Mercédesz;029388114;2000-03-12;0386;Szolnok;Arany;164;Arccsont-törés
+Pásztor András;MALE;654;Bács Andrea;432289631;1999-12-09;6998;Budapest;Virág;4;Alkohol-mérgezés
+Lukács Lajos;MALE;6543;Szőke Anett;521251535;2015-11-27;9205;Szeged;Begri;9;Mióma
