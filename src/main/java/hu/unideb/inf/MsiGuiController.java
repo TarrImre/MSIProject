@@ -81,73 +81,73 @@ public class MsiGuiController implements Initializable {
     private TableColumn<Patient, String> streetNumberCol;
 
     @FXML
-    private TextField cardnumToRemove;
+    public TextField cardnumToRemove;
 
     @FXML
-    private TextField nameInputField;
+    public TextField nameInputField;
 
     @FXML
-    private TextField cardnumInputField;
+    public TextField cardnumInputField;
 
     @FXML
-    private TextField motherNameInputField;
+    public TextField motherNameInputField;
 
     @FXML
-    private TextField insuranceIdInputField;
+    public TextField insuranceIdInputField;
 
     @FXML
-    private TextField birthdateInputField;
+    public TextField birthdateInputField;
 
     @FXML
-    private TextArea diagnoseInputField;
+    public TextArea diagnoseInputField;
 
     @FXML
-    private TextField cityInputField;
+    public TextField cityInputField;
 
     @FXML
-    private TextField streetInputField;
+    public TextField streetInputField;
 
     @FXML
-    private TextField streetNumberInputField;
+    public TextField streetNumberInputField;
 
     @FXML
-    private TextField zipcodeInputField;
+    public TextField zipcodeInputField;
 
     @FXML
-    private TextField modiyfNameInputField;
+    public TextField modifyNameInputField;
 
     @FXML
-    private TextField modifyCardnumInputField;
+    public TextField modifyCardnumInputField;
 
     @FXML
-    private TextField modifyMotherNameInputField;
+    public TextField modifyMotherNameInputField;
 
     @FXML
-    private TextField modifyInsuranceIdInputField;
+    public TextField modifyInsuranceIdInputField;
 
     @FXML
-    private TextField modifyBirthDateInputField;
+    public TextField modifyBirthDateInputField;
 
     @FXML
-    private TextArea modifyDiagnoseInputField;
+    public TextArea modifyDiagnoseInputField;
 
     @FXML
-    private TextField modifyZipcodeInputField;
+    public TextField modifyZipcodeInputField;
 
     @FXML
-    private TextField modifyCityInputField;
+    public TextField modifyCityInputField;
 
     @FXML
-    private TextField modifyStreetInputField;
+    public TextField modifyStreetInputField;
 
     @FXML
-    private TextField modifyStreetNumberInputField;
+    public TextField modifyStreetNumberInputField;
 
     @FXML
-    private TextField searchElementInput;
+    public TextField searchElementInput;
 
     @FXML
-    private RadioButton radioMale;
+    public RadioButton radioMale;
 
     @FXML
     private RadioButton radioFemale;
@@ -686,7 +686,7 @@ public class MsiGuiController implements Initializable {
             Diagnoses.setText(patientsTable.getSelectionModel().getSelectedItem().getDiagnose());
             ConfirmButton_SelectPatientLabel.setOpacity(1);
             modifyCardnumInputField.setText(String.valueOf(patientsTable.getSelectionModel().getSelectedItem().getCardNumber()));
-            modiyfNameInputField.setText(patientsTable.getSelectionModel().getSelectedItem().getName());
+            modifyNameInputField.setText(patientsTable.getSelectionModel().getSelectedItem().getName());
             modifyMotherNameInputField.setText(patientsTable.getSelectionModel().getSelectedItem().getNameOfMother());
             modifyInsuranceIdInputField.setText(String.valueOf(patientsTable.getSelectionModel().getSelectedItem().getSocialInsuranceId()));
             modifyBirthDateInputField.setText(patientsTable.getSelectionModel().getSelectedItem().getBirthDate());
@@ -701,7 +701,7 @@ public class MsiGuiController implements Initializable {
     @FXML private Button overlayErrorHide_Button;
     @FXML private Label errormsg,errormsgBG;
     @FXML
-    void overlayErrorHide_Action(ActionEvent event) {
+    public void overlayErrorHide_Action(ActionEvent event) {
         if (event.getSource() == overlayErrorHide_Button)
         {
             overlayError.toBack();
@@ -709,7 +709,7 @@ public class MsiGuiController implements Initializable {
     }
 
 
-    void overlayErrorMessage(String errormessage, int num){
+    public void overlayErrorMessage(String errormessage, int num){
         if(num == 0){
             errormsgBG.setStyle(""+
                     "-fx-background-color:#eda4a4;\n"+
@@ -758,7 +758,7 @@ public class MsiGuiController implements Initializable {
             overlayErrorMessage("Helytelen születési dátum!\nHelyes formátum: ÉÉÉÉ-HH-NN",0);
             return;
         }
-        if (!modiyfNameInputField.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+") || !modifyMotherNameInputField.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+") || !modifyCityInputField.getText().matches("[[a-zA-Z]+ÉÁÖÜÓŐÚŰÍéáöüóőúűí]+") || !modifyStreetInputField.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+"))
+        if (!modifyNameInputField.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+") || !modifyMotherNameInputField.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+") || !modifyCityInputField.getText().matches("[[a-zA-Z]+ÉÁÖÜÓŐÚŰÍéáöüóőúűí]+") || !modifyStreetInputField.getText().matches("[/^[a-zA-ZáéíöüóőúűÉÁÖÜÓŐÚŰÍ ,.'-]+$/u]+"))
         {
             overlayErrorMessage("A Név, Anyja neve, Város és Utca mezők\n csak betűket tartalmazhatnak!",0);
             return;
@@ -771,8 +771,8 @@ public class MsiGuiController implements Initializable {
             for (Patient p : patients){
                 if (p.getCardNumber() == Integer.parseInt(modifyCardnumInputField.getText())){
 
-                    if (!(p.getName().matches(modiyfNameInputField.getText()))) {
-                        p.setName(modiyfNameInputField.getText());
+                    if (!(p.getName().matches(modifyNameInputField.getText()))) {
+                        p.setName(modifyNameInputField.getText());
                         modify = true;
                     }
 
@@ -836,8 +836,8 @@ public class MsiGuiController implements Initializable {
 
     }
 
-    private boolean isAllFilledModify() {
-        if(modiyfNameInputField.getText() == null || modiyfNameInputField.getText().trim().isEmpty()) return false;
+    public boolean isAllFilledModify() {
+        if(modifyNameInputField.getText() == null || modifyNameInputField.getText().trim().isEmpty()) return false;
         if(modifyCityInputField.getText() == null || modifyCityInputField.getText().trim().isEmpty()) return false;
         if(modifyZipcodeInputField.getText() == null || modifyZipcodeInputField.getText().trim().isEmpty()) return false;
         if(modifyStreetInputField.getText() == null || modifyStreetInputField.getText().trim().isEmpty()) return false;
@@ -877,7 +877,7 @@ public class MsiGuiController implements Initializable {
         radioMale.setSelected(false);
         radioFemale.setSelected(false);
         //modify
-        modiyfNameInputField.setText("");
+        modifyNameInputField.setText("");
         modifyCityInputField.setText("");
         modifyZipcodeInputField.setText("");
         modifyStreetInputField.setText("");
@@ -890,7 +890,7 @@ public class MsiGuiController implements Initializable {
 
     }
 
-    private boolean isAllFilled(){
+    public boolean isAllFilled(){
         if(nameInputField.getText() == null || nameInputField.getText().trim().isEmpty()) return false;
         if(cityInputField.getText() == null || cityInputField.getText().trim().isEmpty()) return false;
         if(zipcodeInputField.getText() == null || zipcodeInputField.getText().trim().isEmpty()) return false;
@@ -906,7 +906,7 @@ public class MsiGuiController implements Initializable {
         return true;
     }
 
-    private boolean isValidBirthDate(String date){
+    public boolean isValidBirthDate(String date){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         try {
