@@ -415,7 +415,7 @@
                                           <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="49.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
                                              <children>
                                                 <Label id="label4" fx:id="nev_label1" minWidth="-Infinity" text="Név" />
-                                                <TextField id="textField1" fx:id="modiyfNameInputField" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
+                                                <TextField id="textField1" fx:id="modifyNameInputField" prefHeight="25.0" prefWidth="280.0" HBox.hgrow="ALWAYS" />
                                              </children>
                                           </HBox>
                                           <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="84.0" prefHeight="25.0" prefWidth="346.0" spacing="5.0">
