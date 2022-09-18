@@ -23,4 +23,4 @@ Laza Sándor --- lazasandor17@gmail.com
 Tarr Imre --- tarr.imre2630@gmail.com  
 Dobos Martin --- dobi.vv@gmail.com
 
-![msi projekt](https://toxy.hu/fs/msilogofeher.png)
+![msi projekt](https://toxy.hu/msilogofeher.png)
